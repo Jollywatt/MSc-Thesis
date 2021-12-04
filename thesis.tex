@@ -1,0 +1,35 @@
+\newif\ifdebug
+
+\debugtrue
+
+\input{preamble}
+
+
+
+\title{Geometric Algebra for Special and General Relativity}
+\author{Joseph Wilson}
+
+\begin{document}
+
+
+\newgeometry{margin=3.5cm} % begin front matter
+
+	\maketitle
+	\tableofcontents
+
+\restoregeometry % end front matter
+
+
+\ifdebug
+	\include{debug}
+\fi
+
+% FRONT MATTER
+
+
+
+\newgeometry{margin=3.5cm}
+
+\bibliography{references}
+
+\end{document}

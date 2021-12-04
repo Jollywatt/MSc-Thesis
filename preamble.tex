@@ -1,0 +1,86 @@
+% STRUCTURE AND LAYOUT
+
+\documentclass[
+	open=any,
+	headings=twolinechapter,
+]{scrbook}
+
+\usepackage[
+	\ifdebug showframe,\fi
+	a4paper,
+	inner=1.8cm,
+	marginparwidth=4cm,
+	marginparsep=8mm,
+	outer=\dimexpr1.8cm + 4cm + 8mm,
+	bottom=4cm,
+]{geometry}
+
+\usepackage{layout}
+
+
+
+\usepackage{sidenotes}
+\usepackage{mparhack} % improved margin note positioning
+
+
+% DEBUGGING
+
+\usepackage{lipsum}
+\usepackage{layout}
+
+
+
+% MATHEMATICS
+
+
+\input{symbols}
+
+\usepackage[
+	math-style=ISO
+]{unicode-math}
+\usepackage{physics}
+
+
+
+\usepackage{amsthm}
+	\newtheorem{definition}{Definition}
+	\newtheorem{theorem}{Theorem}
+	\newtheorem{lemma}{Lemma}
+	\newtheorem{corollary}{Corollary}
+
+
+% TYPOGRAPHY
+
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmathfont{Libertinus Math}
+
+
+% REFERENCING
+
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{my-thesis-style}
+\usepackage{doi}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+	\hypersetup{
+		colorlinks,
+		linkcolor={magenta!80!black},
+		urlcolor={blue!60!black},
+		citecolor={green!50!black},
+	}
+
+\usepackage{cleveref}
+
+% AUTONUM HACKS %
+	% supress dumb warning:
+	% [https://tex.stackexchange.com/a/285953/105570]
+	\let\globcount\newcount
+	\expandafter\def\csname ver@etex.sty\endcsname{3000/12/31}
+\usepackage{autonum}
+	% make \Cref work as well as \cref:
+	% [https://tex.stackexchange.com/a/471654/105570]
+	\makeatletter
+	\autonum@generatePatchedReferenceCSL{Cref}
+	\makeatother

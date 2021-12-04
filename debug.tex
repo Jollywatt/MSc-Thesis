@@ -1,0 +1,82 @@
+\layout
+
+\setcounter{chapter}{-1}
+\chapter{Proof of Document Features}
+
+\section{Referencing}
+
+\subsection{Automatic equation labels}
+Unlabelled, unreferenced:
+\begin{equation}
+	a^2 = π
+\end{equation}
+Labelled, unreferenced:
+\begin{equation}
+	\label{eqn:1}
+	b^2 = ρ
+\end{equation}
+Labelled, referenced:
+\begin{equation}
+	\label{eqn:2}
+	c^2 = σ
+\end{equation}
+See \cref{eqn:2}.
+
+\subsection{Reference naming}
+Suppose
+\begin{equation}
+	\label{eqn:3}
+	d^2 = η
+.\end{equation}
+\Cref{eqn:3} proves.
+\begin{theorem}[Diogenes]
+	\label{thm:1}
+	Something.
+\end{theorem}
+By \cref{thm:1}, something. \Cref{thm:1} states something.
+\begin{definition}
+	\label{def:1}
+	Deduction.
+\end{definition}
+See \cref{def:1}. \Cref{def:1} defines.
+\begin{lemma}
+	\label{lem:1}
+	Little.
+\end{lemma}
+A small result is \cref{lem:1}. \Cref{lem:1} is nice.
+
+
+\section{Side margins}
+
+\lipsum[1][1-6]\sidenote{
+	This is a sidenote.
+}
+\lipsum[2][1-3]\sidenote{
+	\lipsum[4][1-4]
+}
+\lipsum[3][1]\sidenote{
+	Does this fit?
+}
+\lipsum[3][2-4]
+
+\section{Links and citations}
+
+This is a \url{http://url.com}.
+A like to think this will turn out OK \cite{misner1973gravitation}.
+All my inspiration is from \cite{gallian2021abstract-algebra,spivak1975dg,lee2012diffgeo}.
+
+
+\section{Mathematical macros}
+
+Set builders:
+\begin{align}
+	\set{}, \set{1}, \set{1, 9\frac34}, \set{x^2 | x ∈ \RR}
+\end{align}
+Custom sizing:
+\begin{align}
+	\set[\bigg]{1}, \set[]{\int}
+\end{align}
+Misc.
+\begin{align}
+	\grade[p]{A + B}, \TA{(\TT^*ℳ)}, \EA[k]{V}, \SA{\RR^n}, \GA[2](V, η)
+\end{align}
