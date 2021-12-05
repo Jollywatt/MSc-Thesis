@@ -65,13 +65,16 @@ This definition can be generalised by relaxing associativity or by letting $\FF$
 However, we will use ``algebra'' exclusively to mean an associative algebra over a field (usually $\RR$).
 
 Any ring forms an associative algebra when considered as a one-dimensional vector space.
-The complex numbers can be viewed as a real $2$-dimensional algebra by defining $⊛$ to be complex multiplication.
+The complex numbers can be viewed as a real $2$-dimensional algebra by defining $⊛$ to be complex multiplication;
+\begin{math}
+	(x_1, y_1)⊛(x_2, y_2) ≔ (x_1x_2 - y_1y_2, x_1y_2 + y_1x_2)
+.\end{math}
 
 
 
 \subsubsection{The tensor algebra}
 
-The most general (associative) algebra containing a given vector space $V$ is the \textdef{tensor algebra over $\TA{V}$}.
+The most general (associative) algebra containing a given vector space $V$ is the \textdef{tensor algebra $\TA{V}$}.
 The tensor product $⊗$ satisfies exactly the relations of \cref{def:associative-algebra} with no others.
 Thus, the tensor algebra associative, bilinear and \emph{free} in the sense that no further information is required in its definition.
 
@@ -82,12 +85,10 @@ As a vector space, the tensor algebra is equal to the infinite direct sum
 \end{align}
 where each $\TA[k]{V}$ is the subspace of \textdef{tensors of grade $k$}.
 
-
-
 \subsubsection{Quotient algebras}
 
-Owing to the maximal generality of the free tensor algebra, any other associative algebras may be constructed a a \emph{quotient} of $\TA{V}$ with respect to an equivalence relation $\sim$.
-In order for a quotient $\TA{V}/{\sim}$ to itself form an algebra, the relation must preserve the associative algebra structure:
+Owing to the maximal generality of the free tensor algebra, any other associative algebras may be constructed as a \emph{quotient} of $\TA{V}$.
+In order for a quotient $\quot{\TA{V}}{\sim}$ by an equivalence relation $\sim$ to itself form an algebra, the relation must preserve the associative algebra structure:
 \begin{definition}
 	\label{def:congruence}
 	A \textdef{congruence} on an algebra $A$ is an equivalence relation $\sim$ which is compatible with the algebraic relations, so that if $a \sim a'$ and $b \sim b'$ then $a + b \sim a' + b'$ and $a⊛b \sim a'⊛b'$.
@@ -95,7 +96,7 @@ In order for a quotient $\TA{V}/{\sim}$ to itself form an algebra, the relation 
 The quotient of an algebra by a congruence naturally has the structure of an algebra, and so is called a \textdef{quotient algebra}.
 \begin{lemma}
 	\label{thm:quotient-algebra-by-congruence}
-	The \textdef{quotient} $A/{\sim}$ of an algebra $A$ by a congruence $\sim$, consisting of equivalence classes $[a] \in A/{\sim}$ as elements, forms an algebra with the naturally inherited operations $[a] + [b] ≔ [a + b]$ and $[a]⊛[b] ≔ [a⊛b]$.
+	The \textdef{quotient} $\quot A {\sim}$ of an algebra $A$ by a congruence $\sim$, consisting of equivalence classes $[a] \in \quot A {\sim}$ as elements, forms an algebra with the naturally inherited operations $[a] + [b] ≔ [a + b]$ and $[a]⊛[b] ≔ [a⊛b]$.
 \end{lemma}
 \begin{proof}
 	The fact that the operations $+$ and $⊛$ of the quotient are well-defined follows from the structure-preserving properties of the congruence.
@@ -107,6 +108,7 @@ The quotient of an algebra by a congruence naturally has the structure of an alg
 Instead of presenting an equivalence relation, it is often easier to define a congruence by specifying the set of elements which are equivalent to zero, from which all other equivalences follow from the algebra axioms.
 Such a set of all `zeroed' elements is called an ideal.
 \begin{definition}
+	\label{def:ideal}
 	A \textdef{(two-sided) ideal} of an algebra $A$ is a subset $I \subseteq A$ which is closed under addition and invariant under multiplication, so that
 	\begin{itemize}
 		\item if $a, b ∈ I$ then $a + b ∈ I$; and
@@ -114,6 +116,7 @@ Such a set of all `zeroed' elements is called an ideal.
 	\end{itemize}
 \end{definition}
 \begin{lemma}
+	\label{lem:congruence-ideal-equiv}
 	An ideal uniquely defines a congruence, and vice versa, by the identification of $I$ as the set of elements equivalent to zero;
 	\begin{math}
 		a \sim 0 \iff a ∈ I
@@ -121,7 +124,8 @@ Such a set of all `zeroed' elements is called an ideal.
 \end{lemma}
 \begin{proof}
 	The set $I ≔ \set{a | a \sim 0}$ is indeed an ideal because it is closed under addition (for $a, b ∈ I$ we have $\implies a + b \sim 0 + 0 = 0$ so $a + b ∈ I$) and invariant under multiplication (for any $a ∈ I$ and $r ∈ A$, we have $r⊛a \sim r⊛0 = 0 = 0⊛r \sim a⊛r$).
-	Conversely, the equivalence defined by $a \sim b ⟺ a - b ∈ I$ is a congruence, since if $a \sim a'$ and $b \sim b'$ then $\sim$ respects addition:
+	Conversely, let $a \sim a'$ and $b \sim b'$.
+	Since $\sim$ respects addition:
 	\begin{align}
 		\begin{aligned}
 			a - a' &∈ I
@@ -144,13 +148,50 @@ Such a set of all `zeroed' elements is called an ideal.
 		a⊛b - a'⊛b' ∈ I
 		\iff
 		a⊛b \sim a'⊛b'
-	.\end{align}
+	,\end{align}
+	the equivalence defined by $a \sim b ⟺ a - b ∈ I$ is a congruence.
 \end{proof}
 
+The equivalence of ideals and congruences is a general feature of abstract algebra.\sidenote{
+	For example, in group theory, ideals are \emph{normal subgroups} and a congruence is an equivalence relation satisfying $gag^{-1} \sim \op{id}$ whenever $a \sim \op{id}$.
+	A group modulo a normal subgroup forms a quotient group.
+}
+Furthermore, both can be given in terms of a homomorphism between algebras,\sidenote{
+	A \emph{homomorphism} is a structure-preserving map; in the case of algebras, a linear map $Ψ : A → A'$ which satisfies $Ψ(a⊛b) = Ψ(a)\mathrel{⊛'}Ψ(b)$.
+} and this is often the most convenient way to define a quotient.
+\begin{theorem}[first isomorphism theorem]
+	\label{thm:first-iso}
+	If $Ψ : A → B$ is a homomorphism, between algebras, then
+	\begin{enumerate}
+		\item the relation $a \sim b$ defined by $Ψ(a) = Ψ(b)$ is a congruence;
+			\label{item:first-iso:cong}
+		\item the kernel $I ≔ \ker Ψ$ is an ideal; and
+			\label{item:first-iso:ker}
+		\item the quotients $\quot{A}{\sim} ≡ \quot{A}{I} ≅ Ψ(A)$ are all isomorphic.
+			\label{item:first-iso:iso}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	We assume $A$ and $B$ associative algebras.
+	(For a proof in universal algebra, see \cite[§\,15]{gallian2021abstract-algebra}.)
+
+	To verify \cref{item:first-iso:cong}, suppose that $Ψ(a) = Ψ(a')$ and $Ψ(b) = Ψ(b')$ and note that $Ψ(a + a') = Ψ(b + b')$ by linearity and $Ψ(a⊛b) = Ψ(a'⊛b')$ from $Ψ(a⊛b) = Ψ(a)⊛Ψ(b)$, so the congruence properties of \cref{def:congruence} are satisfied.
+
+	For \cref{item:first-iso:ker}, note that $\ker Ψ$ is a vector subspace, and that $a ∈ \ker Ψ$ implies $a⊛r ∈ \ker Ψ$ for any $r ∈ A$ since $Ψ(a⊛r) = Ψ(a)⊛Ψ(r) = 0$.
+	Thus, $\ker Ψ$ is an ideal by \cref{def:ideal}.
+
+	The first equivalence in \cref{item:first-iso:iso} follows from \cref{lem:congruence-ideal-equiv}.
+	For an isomorphism $Φ : \quot A {\ker Ψ} → Ω(A)$, pick $Φ([a]) = Ψ(a)$.
+	This is well-defined because the choice of representative of the equivalence class $[a]$ does not matter; $a \sim a'$ if and only if $Ψ(a) = Ψ(a')$ by definition of $\sim$, which simultaneously shows that $Φ$ is injective.
+	Surjectivity follows since any element of $Ψ(A)$ is of the form $Ψ(a)$ which is the image of $[a]$.
+\end{proof}
+	
+
+\vskip3em
 
 
 \begin{definition}
-	The \textdef{dimension} $\dim A$ of a quotient algebra $A = \TA{V}/I$ algebra is its dimension as a vector space.
+	The \textdef{dimension} $\dim A$ of a quotient algebra $A = \quot {\TA{V}} I$ algebra is its dimension as a vector space.
 	The \textdef{base dimension} of $A$ is the dimension of the underlying vector space $V$.
 \end{definition}
 Algebras may be infinite-dimensional, even with finite base dimension, as in the following example.
