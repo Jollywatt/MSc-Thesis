@@ -1,6 +1,7 @@
 \newif\ifdebug
-
-\debugtrue
+% \debugtrue
+\newif\iffinal
+% \finaltrue
 
 \input{preamble}
 
@@ -12,6 +13,7 @@
 \begin{document}
 
 
+% FRONT MATTER
 \newgeometry{margin=3.5cm} % begin front matter
 
 	\maketitle
@@ -19,12 +21,15 @@
 
 \restoregeometry % end front matter
 
-
 \ifdebug
 	\include{debug}
 \fi
 
-% FRONT MATTER
+
+\include{part-1}
+
+
+
 
 
 

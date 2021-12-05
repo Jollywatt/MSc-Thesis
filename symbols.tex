@@ -19,7 +19,7 @@
 \newcommand{\manif}{\mathcal}	% manifold
 \newcommand{\cat}{\mathbf}	% category
 \newcommand{\liealg}{\mathfrak}	% Lie algebra
-\newcommand{\linmap}{\mathrm}	% linear map
+\newcommand{\lin}{\mathrm}	% linear map
 \newcommand{\rotor}{\mathscr}	% geometric algebra rotors
 
 % fields
@@ -30,6 +30,13 @@
 \newcommand{\HH}{\mathds{H}}
 \newcommand{\ZZ}{\mathds{Z}}
 \newcommand{\NN}{\mathds{N}}
+
+% groups
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GL}{GL}
+
+% transpose superscript
+\newcommand{\trans}{^{\mkern-1.5mu\mathsf{T}}}
 
 % geometric algebra
 \newcommand{\grade}[2][]{\left⟨ #2 \right⟩_{#1}}
@@ -51,7 +58,7 @@
 \newcommand{\fibrebundle}[4][]{#2 \inject #3 \overset{#1}{\surject} #4}
 
 
-\newcommand{\op}[1]{{\operatorname{#1}}}
+\renewcommand{\op}[1]{{\operatorname{#1}}}
 
 
 % algebras

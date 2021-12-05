@@ -1,0 +1,156 @@
+\part{Special Relativity and Geometric Algebra}
+
+\chapter{Introduction}
+
+The Special Theory of Relativity is a model of \emph{spacetime} --- the geometry in which physical events take place.
+Spacetime comprises the Euclidean dimensions of space and time, but only in a way relative to each observer moving through it: there exists no single `universal' ruler or clock.
+Instead, two observers in relative motion define different decompositions of spacetime, and their respective clocks and rulers are found to disagree in accordance with Lorentz transformation laws.
+The insight of special relativity is that one should focus not on the observer-dependent notions of space and time, but on the Lorentzian geometry of spacetime.
+
+Seven years after Albert Einstein introduced this theory,\sidenote{
+	Einstein’s paper \cite{einstein1905electrodynamics} was published in 1905, the so-called \emph{Annus Mirabilis} or ``miracle year'' during which he also published on the photoelectric effect, Brownian motion and the mass-energy equivalence.
+	Each of the four papers was a monumental contribution to modern physics.
+} he succeeded in formulating a relativistic picture which included gravity.
+In this General Theory of Relativity, gravitation is identified with the curvature of spacetime over astronomical distances.
+Both theories coincide locally when confined to sufficiently small extents of spacetime, over which the effects of curvature are negligible.
+
+With regard to the Erlangen program,\sidenote{
+	Introduced by Felix Klein in 1872 \cite{klein1893erlangen}, the Erlangen program is the characterisation of geometries (Euclidean, hyperbolic, projective, etc.) by their symmetry groups and the properties invariant under those groups.
+	E.g., Euclidean geometry studies the invariants of rigid transformations.
+} the study of local spacetime geometry amounts to the study of the Poincaré group of its intrinsic symmetries.
+These symmetries consist of translations and Lorentz transformations, the latter being the extension of the group of rotations of Euclidean space to the relativistic rotations of spacetime.
+The standard matrix representation of the Lorentz group is $\SO^+(1, 3)$, which is the connected component of the orthogonal group
+\begin{align}
+	\op{O}(1,3) = \set{\lin Λ ∈ \GL(\RR^4) | \lin Λ\trans\lin η\lin Λ = \lin η}
+\end{align}
+with respect to the bilinear form $η = ±\op{diag}(-1,+1,+1,+1)$.
+The rudimentary tools of matrix algebra are sufficient for an analysing the Lorentz group, and are familiar to any physicist.
+
+However, the last century has seen many other mathematical tools be applied to the study of `generalised' rotation groups such as $\SO^+(1,3)$ or the rotation group in $\RR^3$.
+Among these tools is the \emph{geometric algebra}, invented\sidenote{
+	Clifford algebra was independently discovered by Rudolf Lipschitz two years later \cite{lipschitz1880clifford-alg}. 
+	He was the first to use them to the study the orthogonal groups.
+} by William Clifford in 1878 \cite{clifford1878grassmann}, which is arguably much better suited to the description of rotations than orthogonal matrix groups, yet still largely unknown to physicists.
+It is informative to glean some of the history that led to this (perhaps unfortunate) state of affairs.
+
+\subsubsection{The quest for an optimal formalism for rotations}
+
+Mathematics has seen the invention of a variety of vector formalisms since the 1800s, and the question of which is best suited to physics has a long contentious history.
+The vector algebra ``war'' of 1890--1945 saw William Hamilton's prized quaternion algebra $\HH$, hailed as the optimal tool for describing rotations in $\RR^3$, struggle for popularity before being eventually left to gather dust as an old-fashioned curiosity.
+
+
+
+\chapter{Preliminary Theory}
+
+\todo{Intro}
+
+Therefore, this section introduces the abstract theory of associative and quotient algebras, which is more generally a part of \emph{ring theory}.\sidenote{
+	A \textdef{ring} is a field without the requirement that multiplicative inverses exist or that multiplication commutes; a field is a commutative ring in which non-zero elements are invertible.}
+Throughout, $\FF$ denotes the underlying field of some vector space $V$.
+Eventually, $\FF$ will always be taken to be $\RR$, but we may begin in generality.
+Most definitions in this chapter can be generalised without alteration by replacing the field $\FF$ with a ring; what follows is a brief survey of ring theory, specialised to the case of a field.
+
+\section{Associative Algebras}
+
+\begin{definition}
+	\label{def:associative-algebra}
+	An \textdef{associative algebra} $A$ is a vector space equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
+\end{definition}
+Associativity means $(𝒖 ⊛ 𝒗) ⊛ 𝒘 = 𝒖 ⊛ (𝒗 ⊛ 𝒘)$, while bilinearity means the product is:
+\begin{itemize}
+	\item compatible with scalars: $(λ𝒖) ⊛ 𝒗 = 𝒖 ⊛ (λ𝒗) = λ(𝒖 ⊛ 𝒗)$ for $λ \in \FF$; and
+	\item distributive over addition: $(𝒖 + 𝒗) ⊛ 𝒘 = 𝒖 ⊛ 𝒘 + 𝒗 ⊛ 𝒘$, and similarly for $𝒖 ⊛ (𝒗 + 𝒘)$.
+\end{itemize}
+This definition can be generalised by relaxing associativity or by letting $\FF$ be a ring.
+However, we will use ``algebra'' exclusively to mean an associative algebra over a field (usually $\RR$).
+
+Any ring forms an associative algebra when considered as a one-dimensional vector space.
+The complex numbers can be viewed as a real $2$-dimensional algebra by defining $⊛$ to be complex multiplication.
+
+
+
+\subsubsection{The tensor algebra}
+
+The most general (associative) algebra containing a given vector space $V$ is the \textdef{tensor algebra over $\TA{V}$}.
+The tensor product $⊗$ satisfies exactly the relations of \cref{def:associative-algebra} with no others.
+Thus, the tensor algebra associative, bilinear and \emph{free} in the sense that no further information is required in its definition.
+
+As a vector space, the tensor algebra is equal to the infinite direct sum
+\begin{align}
+	\label{eqn:tensor-algebra-graded-decomposition}
+	\TA{V} ≅ \bigoplus_{k=0}^∞ V^{⊗k} ≡ \FF ⊕ V ⊕ (V ⊗ V) ⊕ (V ⊗ V ⊗ V) ⊕ \cdots
+\end{align}
+where each $\TA[k]{V}$ is the subspace of \textdef{tensors of grade $k$}.
+
+
+
+\subsubsection{Quotient algebras}
+
+Owing to the maximal generality of the free tensor algebra, any other associative algebras may be constructed a a \emph{quotient} of $\TA{V}$ with respect to an equivalence relation $\sim$.
+In order for a quotient $\TA{V}/{\sim}$ to itself form an algebra, the relation must preserve the associative algebra structure:
+\begin{definition}
+	\label{def:congruence}
+	A \textdef{congruence} on an algebra $A$ is an equivalence relation $\sim$ which is compatible with the algebraic relations, so that if $a \sim a'$ and $b \sim b'$ then $a + b \sim a' + b'$ and $a⊛b \sim a'⊛b'$.
+\end{definition}
+The quotient of an algebra by a congruence naturally has the structure of an algebra, and so is called a \textdef{quotient algebra}.
+\begin{lemma}
+	\label{thm:quotient-algebra-by-congruence}
+	The \textdef{quotient} $A/{\sim}$ of an algebra $A$ by a congruence $\sim$, consisting of equivalence classes $[a] \in A/{\sim}$ as elements, forms an algebra with the naturally inherited operations $[a] + [b] ≔ [a + b]$ and $[a]⊛[b] ≔ [a⊛b]$.
+\end{lemma}
+\begin{proof}
+	The fact that the operations $+$ and $⊛$ of the quotient are well-defined follows from the structure-preserving properties of the congruence.
+	Addition is well-defined if $[a] + [b]$ does not depend on the choice of representatives: if $a' ∈ [a]$ then $[a'] + [b]$ should be $[a] + [b]$.
+	By congruence, we have from $a \sim a'$ so that $[a + b] = [a' + b]$ and indeed $[a] + [b] = [a'] + [b]$.
+	Likewise for $⊛$.
+\end{proof}
+
+Instead of presenting an equivalence relation, it is often easier to define a congruence by specifying the set of elements which are equivalent to zero, from which all other equivalences follow from the algebra axioms.
+Such a set of all `zeroed' elements is called an ideal.
+\begin{definition}
+	A \textdef{(two-sided) ideal} of an algebra $A$ is a subset $I \subseteq A$ which is closed under addition and invariant under multiplication, so that
+	\begin{itemize}
+		\item if $a, b ∈ I$ then $a + b ∈ I$; and
+		\item if $r ∈ A$ and $a ∈ I$ then $r⊛a ∈ I ∋ a⊛r$.
+	\end{itemize}
+\end{definition}
+\begin{lemma}
+	An ideal uniquely defines a congruence, and vice versa, by the identification of $I$ as the set of elements equivalent to zero;
+	\begin{math}
+		a \sim 0 \iff a ∈ I
+	.\end{math}
+\end{lemma}
+\begin{proof}
+	The set $I ≔ \set{a | a \sim 0}$ is indeed an ideal because it is closed under addition (for $a, b ∈ I$ we have $\implies a + b \sim 0 + 0 = 0$ so $a + b ∈ I$) and invariant under multiplication (for any $a ∈ I$ and $r ∈ A$, we have $r⊛a \sim r⊛0 = 0 = 0⊛r \sim a⊛r$).
+	Conversely, the equivalence defined by $a \sim b ⟺ a - b ∈ I$ is a congruence, since if $a \sim a'$ and $b \sim b'$ then $\sim$ respects addition:
+	\begin{align}
+		\begin{aligned}
+			a - a' &∈ I
+		\\	b - b' &∈ I
+		\end{aligned}
+		\;\Bigg\}
+		\implies
+		(a + b) - (a' + b') ∈ I
+		\iff
+		a + b \sim a' + b'
+	,\end{align}
+	and multiplication:
+	\begin{align}
+		\begin{aligned}
+			(a - a')⊛b &∈ I
+		\\	a'⊛(b - b') &∈ I
+		\end{aligned}
+		\;\Bigg\}
+		\implies
+		a⊛b - a'⊛b' ∈ I
+		\iff
+		a⊛b \sim a'⊛b'
+	.\end{align}
+\end{proof}
+
+
+
+\begin{definition}
+	The \textdef{dimension} $\dim A$ of a quotient algebra $A = \TA{V}/I$ algebra is its dimension as a vector space.
+	The \textdef{base dimension} of $A$ is the dimension of the underlying vector space $V$.
+\end{definition}
+Algebras may be infinite-dimensional, even with finite base dimension, as in the following example.

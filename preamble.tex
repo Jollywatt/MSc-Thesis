@@ -1,26 +1,57 @@
 % STRUCTURE AND LAYOUT
 
 \documentclass[
+	paper=a4,
+	fontsize=12pt,
 	open=any,
 	headings=twolinechapter,
 ]{scrbook}
 
+
+\newcommand{\notewidth}{4cm}
+\newcommand{\notesep}{6mm}
 \usepackage[
 	\ifdebug showframe,\fi
-	a4paper,
-	inner=1.8cm,
-	marginparwidth=4cm,
-	marginparsep=8mm,
-	outer=\dimexpr1.8cm + 4cm + 8mm,
+	inner=20mm,
+	marginparwidth=\notewidth,
+	marginparsep=\notesep,
+	outer=\dimexpr10mm + \notewidth + \notesep,
 	bottom=4cm,
 ]{geometry}
 
 \usepackage{layout}
 
 
-
-\usepackage{sidenotes}
 \usepackage{mparhack} % improved margin note positioning
+\usepackage{sidenotes}
+
+	% minimum vertical space between sidenotes
+	\setlength\marginparpush{15pt}
+
+	% make sidenote font size smaller
+	% https://tex.stackexchange.com/q/361622/105570
+	\makeatletter
+	\RenewDocumentCommand\sidenotetext{ o o +m }{%	  
+		\IfNoValueOrEmptyTF{#1}{%
+			\@sidenotes@placemarginal{#2}{\textsuperscript{\thesidenote}{}~\footnotesize#3}%
+			\refstepcounter{sidenote}%
+		}{%
+			\@sidenotes@placemarginal{#2}{\textsuperscript{#1}~#3}%
+		}%
+	}
+	\makeatother
+
+	% make sidenotes ragged
+	% https://tex.stackexchange.com/a/359580/105570
+	% \makeatletter
+	% \RenewDocumentCommand \@sidenotes@placemarginal { m m }
+	% {
+	%   \IfNoValueOrEmptyTF{#1}
+	% 	{\marginpar[{\raggedleftmarginnote #2}]{\raggedrightmarginnote #2}}
+	% 	{\marginnote{#2}[#1]}%
+	% }
+	% \makeatother
+
 
 
 % DEBUGGING
@@ -28,18 +59,21 @@
 \usepackage{lipsum}
 \usepackage{layout}
 
+\newcommand{\toself}[1]{\iffinal\else\textcolor{blue}{\{\textsc{to self:} #1\}}\fi}
+\newcommand{\todo}[1]{\iffinal\else\textcolor{purple}{\{\textsc{to do:} #1\}}\fi}
+\newcommand{\urgent}[1]{\iffinal\else\textcolor{red}{\{\textsc{urgent:} #1\}}\fi}
+
 
 
 % MATHEMATICS
 
-
-\input{symbols}
-
 \usepackage[
-	math-style=ISO
+	math-style=ISO,
+	warnings-off={mathtools-colon,mathtools-overbracket},
 ]{unicode-math}
 \usepackage{physics}
 
+\input{symbols}
 
 
 \usepackage{amsthm}
@@ -54,6 +88,8 @@
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 \setmathfont{Libertinus Math}
+
+\newcommand{\textdef}{\textsc}
 
 
 % REFERENCING
@@ -74,13 +110,13 @@
 \usepackage{cleveref}
 
 % AUTONUM HACKS %
-	% supress dumb warning:
-	% [https://tex.stackexchange.com/a/285953/105570]
+	% supress dumb warning
+	% https://tex.stackexchange.com/a/285953/105570
 	\let\globcount\newcount
 	\expandafter\def\csname ver@etex.sty\endcsname{3000/12/31}
 \usepackage{autonum}
-	% make \Cref work as well as \cref:
-	% [https://tex.stackexchange.com/a/471654/105570]
+	% make \Cref work as well as \cref
+	% https://tex.stackexchange.com/a/471654/105570
 	\makeatletter
 	\autonum@generatePatchedReferenceCSL{Cref}
 	\makeatother
