@@ -16,7 +16,7 @@ In this General Theory of Relativity, gravitation is identified with the curvatu
 Both theories coincide locally when confined to sufficiently small extents of spacetime, over which the effects of curvature are negligible.
 In \cref{part:1}, we will focus on special relativity, leaving gravity and curvature to \cref{part:2}.
 
-In the wake of the Erlangen programme,\sidenote{
+In acknowledgement of the Erlangen programme,\sidenote{
 	Introduced by Felix Klein in 1872 \cite{klein1893erlangen}, the Erlangen program is the characterisation of geometries (Euclidean, hyperbolic, projective, etc.) by their symmetry groups and the properties invariant under those groups.
 	E.g., Euclidean geometry studies the invariants of rigid transformations.
 } the study of local spacetime geometry amounts to the study of its intrinsic symmetries.
@@ -246,6 +246,8 @@ Importantly, not all elements of a $\ZZ_2$-graded algebra are even or odd, and m
 	If $a ∈ A_{k_1} ⊕ \cdots ⊕ A_{k_n}$ is inhomogeneous, we may call it a $\set{k_1, ..., k_n}$-multivector.
 \end{definition}
 
+\subsubsection{Graded quotient algebras}
+
 A grading structure may or may not be inherited by a quotient --- in particular, not all quotients of $\TA{V}$ inherit its $\ZZ$-grading.
 When reasoning about quotients of graded algebras, the following fact is useful.
 \begin{lemma}
@@ -296,9 +298,9 @@ And so, we have a graded analogue to \cref{thm:quotient-algebra-by-congruence}:
 
 
 
-\section{The Wedge Product}
+\section{The Wedge Product: Multivectors}
 
-One of the simplest algebras to construct as a quotient $\quot {\TA{V}} I$, yet still one of the most useful, is the \emph{exterior algebra}, first introduced by Hermann Grassmann in 1844.
+One of the simplest algebras to construct as a quotient of the tensor algebra, yet still one of the most useful, is the \emph{exterior algebra}, first introduced by Hermann Grassmann in 1844.
 \begin{definition}
 	\label{def:exterior-algebra}
 	The \textdef{exterior algebra} over a vector space $V$ is
@@ -320,3 +322,61 @@ Since all terms of the form $𝒘∧𝒘 = 0$ are definitionally zero, we have
 for all vectors $𝒖, 𝒗 ∈ V$.
 By associativity, it follows that $𝒗_1 ∧ 𝒗_2 ∧ \cdots ∧ 𝒗_k$ vanishes exactly when the $𝒗_i$ are linearly dependent.
 
+The ideal $\gen{𝒖 ⊗ 𝒖}$ is homogeneous with respect to the $\ZZ$-grading of the parent tensor algebra.
+Therefore, $\EA{V}$ is itself $\ZZ$-graded.
+In particular, it is the direct sum of fixed-grade subspaces
+\begin{align}
+	\EA{V} = \bigoplus_{k=0}^{\dim V} \EA[k]{V}
+	\qqtext{where}
+	\EA[k]{V} = \spanof{𝒗_1 ∧ 𝒗_2 ∧ \cdots ∧ 𝒗_k | 𝒗_i ∈ V}
+,\end{align}
+and the wedge product respects grade, $(\EA[p]{V}) ∧ (\EA[q]{V}) \subseteq \EA[p + q]{V}$.
+By counting the number of possible linearly independent sets of $k$ vectors in $\dim V$ dimensions, it follows that
+\begin{align}
+	\dim\EA[k]{V} = \binom{\dim V}{k}
+,	\qqtext{and hence}
+	\dim\EA{V} = 2^{\dim V}
+.\end{align}
+Thus, the exterior algebra with base dimension $n$ is $2^n$-dimensional.
+
+
+
+
+\section{The Metric: Length and Angle}
+
+The tensor and exterior algebras considered so far are build from a vector space $V$ alone.
+Notions of length and angle are central to geometry, but are not intrinsic to a vector space --- additional structure must be provided.
+\begin{definition}
+	A \textdef{metric}\sidenote{a.k.a. an \emph{inner product}, or \emph{symmetric bilinear form}} is a function $η : V × V \to \FF$, often written
+	$ η(𝒖, 𝒗) ≡ \ip{𝒖, 𝒗} $
+	which satisfies
+	\begin{itemize}
+		\item symmetry, $\ip{𝒖, 𝒗} = \ip{𝒗, 𝒖}$; and
+		\item linearity, $\ip{α𝒖 + β𝒗, 𝒘} = α\ip{𝒖, 𝒘} + β\ip{𝒗, 𝒘}$ for $α, β \in \FF$.
+	\end{itemize}
+\end{definition}
+
+Linearity in either argument implies linearity in the other by symmetry, so $η$ is bilinear.
+
+A vector space $V$ together with a metric $η$ is called an \textdef{inner product space} $(V, η)$.
+Alternatively, instead of a metric, an inner product space may be constructed with a quadratic form:
+\begin{definition}
+	A \textdef{quadratic form} is a function $q : V \to \FF$ satisfying
+	\begin{itemize}
+		\item $q(λ𝒗) = λ^2q(𝒗)$ for all $λ \in \FF$; and
+		\item the requirement that the \textdef{polarization of $q$},
+		\begin{align}
+			(𝒖, 𝒗) \mapsto q(𝒖 + 𝒗) - q(𝒖) - q(𝒗)
+		,\end{align}
+		is bilinear.
+	\end{itemize}
+\end{definition}
+To any quadratic form $q$ there is a unique associated bilinear form, which is \emph{compatible} in the sense that $q(𝒖) = \ip{𝒖,𝒖}$.
+It is recovered\sidenote{
+	Except, of course, if the characteristic of $\FF$ is two.
+	We only consider fields of characteristic zero.
+} by the \emph{polarization identity}
+\begin{align}
+	\ip{𝒖, 𝒗} = \frac12\qty\big(q(𝒖 + 𝒗) - q(𝒖) - q(𝒗))
+.\end{align}
+The prescription of either $η$ or $q$ is therefore equivalent --- but the notion of a metric is more common in physics, whereas the mathematical viewpoint often starts with a quadratic form.
