@@ -2,11 +2,15 @@
 \usepackage{xparse}
 \usepackage{ifthen}
 
+\renewcommand{\op}[1]{{\operatorname{#1}}}
+
 \usepackage{mathtools}
 \DeclarePairedDelimiterX{\setdelim}[1]{\{}{\}}{\setargs{#1}}
+\DeclarePairedDelimiterX{\dblsetdelim}[1]{\{\!\{}{\}\!\}}{\setargs{#1}}
 \NewDocumentCommand{\setargs}{>{\SplitArgument{1}{|}}m}{\setargsaux#1}
 \NewDocumentCommand{\setargsaux}{mm}{\IfNoValueTF{#2}{#1}{#1\nonscript\:\delimsize\vert\allowbreak\nonscript\:\mathopen{}#2}}%
 \newcommand{\set}[2][*]{\ifthenelse{\equal{\detokenize{#1}}{*}}{\setdelim*{#2}}{\setdelim[#1]{#2}}}
+\newcommand{\dblset}[2][*]{\ifthenelse{\equal{\detokenize{#1}}{*}}{\dblsetdelim*{#2}}{\setdelim[#1]{#2}}}
 
 
 % basis vectors
@@ -14,6 +18,8 @@
 \newcommand{\ve}{\vb{e}}
 \newcommand{\vg}{\vb{γ}}
 \newcommand{\vs}{\vec{σ}}
+
+\newcommand{\spanof}{\op{span}\set}
 
 % special structures
 \newcommand{\manif}{\mathcal}	% manifold
@@ -38,6 +44,11 @@
 % quotient structure
 \newcommand{\quot}[2]{\left. #1 \middle/ #2 \right.}
 
+% generator
+% \DeclarePairedDelimiter{\doubleangle}{⟨\!⟨}{⟩\!⟩}
+\DeclarePairedDelimiter{\doubleangle}{\{\!\{}{\}\!\}}
+\newcommand{\gen}{\dblset}
+
 % transpose superscript
 \newcommand{\trans}{^{\mkern-1.5mu\mathsf{T}}}
 
@@ -61,7 +72,6 @@
 \newcommand{\fibrebundle}[4][]{#2 \inject #3 \overset{#1}{\surject} #4}
 
 
-\renewcommand{\op}[1]{{\operatorname{#1}}}
 
 
 % algebras
