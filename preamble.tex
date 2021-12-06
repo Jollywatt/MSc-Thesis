@@ -43,14 +43,14 @@
 
 	% make sidenotes ragged
 	% https://tex.stackexchange.com/a/359580/105570
-	% \makeatletter
-	% \RenewDocumentCommand \@sidenotes@placemarginal { m m }
-	% {
-	%   \IfNoValueOrEmptyTF{#1}
-	% 	{\marginpar[{\raggedleftmarginnote #2}]{\raggedrightmarginnote #2}}
-	% 	{\marginnote{#2}[#1]}%
-	% }
-	% \makeatother
+	\makeatletter
+	\RenewDocumentCommand \@sidenotes@placemarginal { m m }
+	{
+	  \IfNoValueOrEmptyTF{#1}
+		{\marginpar[{\raggedleftmarginnote #2}]{\raggedrightmarginnote #2}}
+		{\marginnote{#2}[#1]}%
+	}
+	\makeatother
 
 
 
@@ -87,8 +87,10 @@
 % TYPOGRAPHY
 
 \setmainfont{Libertinus Serif}
-\setsansfont{Libertinus Sans}
-\setmathfont{Libertinus Math}
+% \setsansfont{Libertinus Sans}
+% \setmathfont{Libertinus Math}
+
+\linespread{1.05}
 
 \newcommand{\textdef}{\textsc}
 

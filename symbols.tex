@@ -57,8 +57,6 @@
 % geometric algebra
 \newcommand{\grade}[2][]{\left⟨ #2 \right⟩_{#1}}
 
-
-
 % differential geometry
 \newcommand{\TT}{\mathrm{T}}
 
@@ -84,3 +82,13 @@
 \newcommand{\GA}[1][]{𝒢_{#1}}
 
 \newcommand{\forms}[1][]{\op{Ω}^{#1}}
+
+
+% shortcuts
+
+% easy dotted sequence: \dotted{𝒖_{\i}}{⊗}{k} → 𝒖_1 ⊗ ··· ⊗ 𝒖_k
+\newcommand{\dotted}[4][1]{
+	{\def\i{#1} #2}
+	#3 \if,#3 \dots \else \cdots \fi #3
+	{\def\i{#4} #2}
+}
