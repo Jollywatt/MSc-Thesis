@@ -1,11 +1,12 @@
 \part{Special Relativity and Geometric Algebra}
+\label{part:1}
 
 \chapter{Introduction}
 
 The Special Theory of Relativity is a model of \emph{spacetime} --- the geometry in which physical events take place.
 Spacetime comprises the Euclidean dimensions of space and time, but only in a way relative to each observer moving through it: there exists no single `universal' ruler or clock.
-Instead, two observers in relative motion define different decompositions of spacetime, and their respective clocks and rulers are found to disagree in accordance with Lorentz transformation laws.
-The insight of special relativity is that one should focus not on the observer-dependent notions of space and time, but on the Lorentzian geometry of spacetime.
+Instead, two observers in relative motion define different decompositions of spacetime, and their respective clocks and rulers are found to disagree according to the Lorentz transformation laws.
+The insight of special relativity is that one should focus not on the observer-dependent notions of space and time, but on the Lorentzian geometry of spacetime itself.
 
 Seven years after Albert Einstein introduced this theory,\sidenote{
 	Einstein’s paper \cite{einstein1905electrodynamics} was published in 1905, the so-called \emph{Annus Mirabilis} or ``miracle year'' during which he also published on the photoelectric effect, Brownian motion and the mass-energy equivalence.
@@ -13,42 +14,51 @@ Seven years after Albert Einstein introduced this theory,\sidenote{
 } he succeeded in formulating a relativistic picture which included gravity.
 In this General Theory of Relativity, gravitation is identified with the curvature of spacetime over astronomical distances.
 Both theories coincide locally when confined to sufficiently small extents of spacetime, over which the effects of curvature are negligible.
+In \cref{part:1}, we will focus on special relativity, leaving gravity and curvature to \cref{part:2}.
 
-With regard to the Erlangen program,\sidenote{
+In the wake of the Erlangen programme,\sidenote{
 	Introduced by Felix Klein in 1872 \cite{klein1893erlangen}, the Erlangen program is the characterisation of geometries (Euclidean, hyperbolic, projective, etc.) by their symmetry groups and the properties invariant under those groups.
 	E.g., Euclidean geometry studies the invariants of rigid transformations.
-} the study of local spacetime geometry amounts to the study of the Poincaré group of its intrinsic symmetries.
-These symmetries consist of translations and Lorentz transformations, the latter being the extension of the group of rotations of Euclidean space to the relativistic rotations of spacetime.
-The standard matrix representation of the Lorentz group is $\SO^+(1, 3)$, which is the connected component of the orthogonal group
+} the study of local spacetime geometry amounts to the study of its intrinsic symmetries.
+These symmetries form the Poincaré group, and consist of spacetime translations and Lorentz transformations, the latter being the extension of the group of rotations of Euclidean space to the relativistic rotations of spacetime.
+The standard matrix representation of the Lorentz group, $\SO^+(1, 3)$, is the connected component of the orthogonal group
 \begin{align}
 	\op{O}(1,3) = \set{\lin Λ ∈ \GL(\RR^4) | \lin Λ\trans\lin η\lin Λ = \lin η}
 \end{align}
 with respect to the bilinear form $η = ±\op{diag}(-1,+1,+1,+1)$.
-The rudimentary tools of matrix algebra are sufficient for an analysing the Lorentz group, and are familiar to any physicist.
+The rudimentary tools of matrix algebra are sufficient for an analys the Lorentz group, and are familiar to any physicist.
 
-However, the last century has seen many other mathematical tools be applied to the study of `generalised' rotation groups such as $\SO^+(1,3)$ or the rotation group in $\RR^3$.
+However, the last century has seen many other mathematical tools be applied to the study of generalised rotation groups such as $\SO^+(1,3)$ or the rotation group $\SO(3)$ of $\RR^3$.
 Among these tools is the \emph{geometric algebra}, invented\sidenote{
 	Clifford algebra was independently discovered by Rudolf Lipschitz two years later \cite{lipschitz1880clifford-alg}. 
 	He was the first to use them to the study the orthogonal groups.
-} by William Clifford in 1878 \cite{clifford1878grassmann}, which is arguably much better suited to the description of rotations than orthogonal matrix groups, yet still largely unknown to physicists.
+} by William Clifford in 1878 \cite{clifford1878grassmann}.
+Geometric algebra remains largely unknown in the physics community, despite arguably being far superior for the analysis of rotations than traditional matrix techniques.
 It is informative to glean some of the history that led to this (perhaps unfortunate) state of affairs.
 
 \subsubsection{The quest for an optimal formalism for rotations}
 
 Mathematics has seen the invention of a variety of vector formalisms since the 1800s, and the question of which is best suited to physics has a long contentious history.
+
 The vector algebra ``war'' of 1890--1945 saw William Hamilton's prized quaternion algebra $\HH$, hailed as the optimal tool for describing rotations in $\RR^3$, struggle for popularity before being eventually left to gather dust as an old-fashioned curiosity.
 
 
 
 \chapter{Preliminary Theory}
 
-\todo{Intro}
 
-Therefore, this section introduces the abstract theory of associative and quotient algebras, which is more generally a part of \emph{ring theory}.\sidenote{
-	A \textdef{ring} is a field without the requirement that multiplicative inverses exist or that multiplication commutes; a field is a commutative ring in which non-zero elements are invertible.}
-Throughout, $\FF$ denotes the underlying field of some vector space $V$.
-Eventually, $\FF$ will always be taken to be $\RR$, but we may begin in generality.
-Most definitions in this chapter can be generalised without alteration by replacing the field $\FF$ with a ring; what follows is a brief survey of ring theory, specialised to the case of a field.
+Many of the tools we will develop for the study of spacetime share the property of being associative algebras.
+As well as the geometric algebra of spacetime, we will encounter tensors, exterior forms, quaternions, and other structures in this category.
+Instead of defining each algebra axiomatically as needed, it is easier to develop the general theory and then define each algebra succinctly as a particular quotient of the free algebra.
+This enables the use of the same tools and the same terminology for the analysis of different algebras.
+
+Therefore, this section is an overview of the abstract theory of associative algebras, which more generally belongs to \emph{ring theory}.\sidenote{
+	A \textdef{ring} is a field without the requirement that multiplicative inverses exist or that multiplication commutes; a field is a commutative ring in which non-zero elements are invertible.
+}
+Algebras, quotients, gradings, homogeneous and inhomogeneous multivectors are defined.
+Throughout, $\FF$ denotes the underlying field of some vector space.
+(Eventually, $\FF$ will always be taken to be $\RR$, but we may begin in generality.)
+Most definitions in this chapter can be readily generalised by replacing the field $\FF$ with a ring.
 
 \section{Associative Algebras}
 
@@ -72,7 +82,7 @@ The complex numbers can be viewed as a real $2$-dimensional algebra by defining 
 
 
 
-\subsubsection{The tensor algebra}
+\subsubsection{The free tensor algebra}
 
 The most general (associative) algebra containing a given vector space $V$ is the \textdef{tensor algebra $\TA{V}$}.
 The tensor product $⊗$ satisfies exactly the relations of \cref{def:associative-algebra} with no others.
@@ -85,7 +95,7 @@ As a vector space, the tensor algebra is equal to the infinite direct sum
 \end{align}
 where each $\TA[k]{V}$ is the subspace of \textdef{tensors of grade $k$}.
 
-\subsubsection{Quotient algebras}
+\subsection{Quotient algebras}
 
 Owing to the maximal generality of the free tensor algebra, any other associative algebras may be constructed as a \emph{quotient} of $\TA{V}$.
 In order for a quotient $\quot{\TA{V}}{\sim}$ by an equivalence relation $\sim$ to itself form an algebra, the relation must preserve the associative algebra structure:
@@ -185,13 +195,84 @@ Furthermore, both can be given in terms of a homomorphism between algebras,\side
 	This is well-defined because the choice of representative of the equivalence class $[a]$ does not matter; $a \sim a'$ if and only if $Ψ(a) = Ψ(a')$ by definition of $\sim$, which simultaneously shows that $Φ$ is injective.
 	Surjectivity follows since any element of $Ψ(A)$ is of the form $Ψ(a)$ which is the image of $[a]$.
 \end{proof}
-	
 
-\vskip3em
 
+With the free tensor algebra and \cref{thm:first-iso} in hand, we are able to describe any associative algebra as a quotient of the form $\quot{\TA{V}}{I}$.
 
 \begin{definition}
-	The \textdef{dimension} $\dim A$ of a quotient algebra $A = \quot {\TA{V}} I$ algebra is its dimension as a vector space.
+	The \textdef{dimension} $\dim A$ of a quotient algebra $A = \quot {\TA{V}} I$ is its dimension as a vector space.
 	The \textdef{base dimension} of $A$ is the dimension of the underlying vector space $V$.
 \end{definition}
-Algebras may be infinite-dimensional, even with finite base dimension, as in the following example.
+Algebras may be infinite-dimensional, as is the case for the tensor algebra itself (which is a quotient by the trivial ideal).
+
+
+
+\subsection{Graded algebras}
+
+Associative algebras may possess another layer of useful structure: a grading.
+The grading of the tensor algebra has already been exhibited in \cref{eqn:tensor-algebra-graded-decomposition}.
+A grading is a generalisation of the degree or rank of tensors or forms, and of the notion of parity for objects functions or polynomials.
+
+\begin{definition}
+	\label{def:grading}
+	An algebra $A$ is \textdef{$R$-graded} for $(R, +)$ a monoid\,\sidenote{A \textdef{monoid} is a group without the requirement of inverses; i.e., a set with an associative binary operation for which there is an identity element.} if there exists a decomposition
+	\begin{align}
+		A = \bigoplus_{k ∈ R} A_{k}
+	\end{align}
+	such that $A_{i} ⊛ A_{j} ⊆ A_{i + j}$, i.e., $a ∈ A_{i}, b ∈ A_{j} ⟹ a ⊛ b ∈ A_{i + j}$.
+\end{definition}
+The monoid is usually taken to be $\NN$ or $\ZZ$ with addition, possibly modulo some integer.
+The tensor algebra $\TA{V}$ is $\NN$-graded, since if $a ∈ \TA[p]{V}$ and $b ∈ \TA[q]{V}$ then $a ⊗ b ∈ \TA[p + q]{V}$.
+Indeed, $\TA{V}$ is also $\ZZ$-graded if for $k < 0$ we understand $\TA[k]{V} ≔ \qty{\mathbf{0}}$ to be the trivial vector space.
+The tensor algebra is also $\ZZ_p$-graded, where $\ZZ_p ≡ \quot \ZZ {p\ZZ}$ is addition modulo any $p > 0$, since the decomposition
+\begin{align}
+	\TA{V} = \bigoplus_{k = 0}^{p - 1} Z_k
+	\qqtext{where}
+	Z_k = \bigoplus_{n = 0}^∞ \TA[k + np]{V}
+		= \TA[k]{V} ⊕ \TA[(k + p)]{V} ⊕ \cdots
+\end{align}
+satisfies $Z_i ⊗ Z_j \subseteq Z_k$ when $k ≡ i + j \mod p$.
+In particular, $\TA{V}$ is $\ZZ_2$-graded,\sidenote{
+	Algebras which are $\ZZ_2$-graded are sometimes called \emph{superalgebras}, with the prefix `super-' originating from supersymmetry theory.
+} its elements admit a notion of \emph{parity}: elements of $Z_0 = \FF ⊗ \TA[2]{V} ⊗ \cdots$ are even, while elements of $Z_1 = V ⊗ \TA[3]{V} ⊗ \cdots$ are odd, and parity is respected by $⊗$ as it is for integers.
+
+Importantly, not all elements of a $\ZZ_2$-graded algebra are either even or odd, and more generally not all elements of a graded algebra belong to a single graded subspace.
+\begin{definition}
+	If $A = \bigoplus_{k ∈ R} A_{k}$ is an $R$-graded algerba, then an element is \textdef{homogeneous} if it belongs to some $A_k$, in which case it is said to be a \textdef{$k$-vector}.
+	If $a ∈ A_{k_1} ⊛ \cdots ⊛ A_{k_n}$ is inhomogeneous, we may call it a $\set{k_1, ..., k_n}$-multivector.
+\end{definition}
+
+
+A grading structure may or may not be inherited by quotients.
+When reasoning about quotients of a graded algebras, the following fact is useful.
+\begin{lemma}
+	\label{lem:quotients-commute-with-direct-sums}
+	Quotients commute with direct sums, so if
+	\begin{align}
+		A = \bigoplus_{k ∈ R} A_k
+		\qqtext{then}
+		\quot{A}{\sim} = \bigoplus_{k ∈ R} (\quot{A_k}{\sim})
+	.\end{align}
+\end{lemma}
+Therefore, a quotient algebra of $\TA{V}$ will, as a vector space, admit a similar decomposition into subspaces of fixed grade as in \cref{eqn:tensor-algebra-graded-decomposition}.
+However, this does \emph{not} imply that the quotient algebra will itself be graded, in the sense of \cref{def:grading}.
+This motivates a stronger notion of congruence:
+\begin{definition}
+	A congruence $\sim$ on an $R$-graded algebra $A = \bigoplus_{k\in R} A_k$ is \textdef{homogeneous} (with respect to $R$) if all equivalent pairs $a \sim b$ of homogeneous non-zero elements $a ∈ A_i$ and $b ∈ A_j$ are of the same grade $a, b ∈ A_k$.
+\end{definition}
+The additional requirement that a congruence be homogeneous ensures that the equivalence relation, as well as respecting the basic algebraic relations, also preserves the grading structure.
+And so, we have an analogue to \cref{thm:quotient-algebra-by-congruence}:
+\begin{theorem}
+	\label{thm:quotient-algebra-by-homogeneous-congruence}
+	If an algebra $A$ is $R$-graded and $\sim$ is a homogeneous congruence on $A$, then the quotient $\quot{A}{\sim}$ is also $R$-graded.
+\end{theorem}
+\begin{proof}
+	By \cref{lem:quotients-commute-with-direct-sums}, the quotient ${A}/{\sim} = \bigoplus_{k∈R}({A_k}/{\sim})$ is a direct sum.
+	If $\sim$ is homogeneous, then the ${A_k}/{\sim}$ together respect the $R$-grading, meaning
+	\begin{align}
+		({A_i}/{\sim}) ⊛ ({A_j}/{\sim}) \subseteq {A_{i+j}}/{\sim}
+	.\end{align}
+	Hence, $\quot{A}{\sim}$ is itself $R$-graded.
+\end{proof}
+
+
