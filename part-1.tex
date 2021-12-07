@@ -364,15 +364,33 @@ Thus, the exterior algebra with base dimension $n$ is $2^n$-dimensional.
 \label{sec:exterior-algebra-as-antisymmetric}
 
 The exterior algebra may equivalently be viewed as the space of antisymmetric tensors equipped with an antisymmetrising product.
-Consider the (anti)\-sym\-metri\-sation map
+% Consider the (anti)\-sym\-metri\-sation map
+Consider the map
 \begin{align}
 	\label{eqn:(anti)symmetriser}
 	\op{Sym}^±(\dotted{𝒖_\i} ⊗ k) = \frac1{k!} \sum_{σ ∈ S_k} (±1)^σ \dotted{𝒖_{σ(\i)}} ⊗ k
 \end{align}
-where $(-1)^σ$ denotes the parity of the permutation $σ$ in the symmetric group of $k$ elements, $S_k$.
-By extending linearly, $\op{Sym}^± : \TA{V} → \TA{V}$ is defined on all tensors.
+where $(-1)^σ$ denotes the sign of the permutation $σ$ in the symmetric group of $k$ elements, $S_k$.
+By enforcing linearly, $\op{Sym}^± : \TA{V} → \TA{V}$ is defined on all tensors.
+A tensor $a$ is called \textdef{symmetric} if $\op{Sym}^+(a) = a$ and \textdef{antisymmetric} if $\op{Sym}^-(a) = a$.
 
-The kernel of the antisymmetrising map $\op{Sym}^-$ consists of tensor products of linearly dependent vectors, and sums thereof,\sidenote{
+Denote the image $\op{Sym}^-(\TA{V})$ by $S$.
+The linear map $\op{Sym}^- : \TA{V} → S$ is not an algebra homomorphism with respect to the tensor product on $S$, since, e.g.,
+\begin{math}
+	\op{Sym}^-(𝒖⊗𝒗) ≠ \op{Sym}^-(𝒖)⊗\op{Sym}^-(𝒗) = 𝒖 ⊗ 𝒗
+.\end{math}
+However, it is if we instead equip $S$ with the antisymmetrising product $∧ : S × S → S$ defined by
+\begin{align}
+	\label{eqn:wedge-as-antisymm}
+	a ∧ b ≔ \op{Sym}^-(a ⊗ b)
+.\end{align}
+This makes $\op{Sym}^- : \TA{V} → S$ an algebra homomorphism, and by \cref{thm:first-iso}, we have
+\begin{align}
+	\label{eqn:iso-of-antisym}
+	% \quot{\TA{V}}{\ker \op{Sym}^-} \cong \op{Sym}^-(\TA{V})
+	S \cong \quot{\TA{V}}{\ker \op{Sym}^-}
+.\end{align}
+Furthermore, note that the kernel of $\op{Sym}^-$ consists of tensor products of linearly dependent vectors, and sums thereof,\sidenote{
 	\begin{proof}
 		If $a = \dotted{𝒖_\i} ⊗ k$ where two vectors $𝒖_i = 𝒖_j$ are equal, then $\op{Sym}^-(a) = 0$ since each term in the sum in \cref{eqn:(anti)symmetriser} is paired with an equal and opposite term with $i ↔︎ j$ swapped.
 		If $\set{𝒖_i}$ is linearly dependent, any one vector is a sum of the others, so $a$ is a sum of blades with at least two vectors repeated.
@@ -382,28 +400,40 @@ The kernel of the antisymmetrising map $\op{Sym}^-$ consists of tensor products 
 	\ker \op{Sym}^- = \spanof{\dotted{𝒖_\i} ⊗ k | k ∈ \NN, \text{$\set{𝒖_i}$ linearly dependent}}
 ,\end{align}
 which is exactly the ideal $\gen{𝒖⊗𝒖}$.
-Therefore, we may also write \cref{def:exterior-algebra} as
+Therefore, the left-hand side of \cref{eqn:iso-of-antisym} is the exterior algebra of \cref{def:exterior-algebra}, and we have an algebra isomorphism
 \begin{math}
-	\EA{V} = \quot{\TA{V}}{\ker \op{Sym}^-}
-.\end{math}
+	\EA{V} \cong \op{Sym}^-(\TA{V})
+,\end{math}
+where the right-hand side is equipped with the product \eqref{eqn:wedge-as-antisymm}.
+This gives an alternative construction of the exterior algebra.
 
-Now equip $\op{Sym}^-$ with the antisymmetrised product
+\subsubsection{Note on conventions}
+
+The factor of $\frac1{k!}$ present in \cref{eqn:(anti)symmetriser} is not necessary for the above demonstration that $\EA{V} \cong \op{Sym}^-(\TA{V})$.
+Indeed, some authors omit the normalisation factor, which has the effect of changing \cref{eqn:wedge-as-antisymm} to
 \begin{align}
-	a \mathrel{∧'} b ≔ \op{Sym}^-(a ⊗ b)
-.\end{align}
-This makes $\op{Sym}^- : \TA{V} → \op{Sym}^-(\TA{V})$ an algebra homomorphism, since
-\begin{align}
-	\op{Sym}^-(a⊗b) = \op{Sym}^-(a) \mathrel{∧'} \op{Sym}^-(b)
-.\end{align}
-Then, by the first isomorphism theorem \ref{thm:first-iso}, we have
-\begin{math}
-	\EA{V} = \quot{\TA{V}}{\ker \op{Sym}^-} \cong \op{Sym}^-(\TA{V})
-.\end{math}
-This gives an alternative construction of the exterior algebra as the subalgebra of antisymmetric tensors.
-
-\subsubsection{Note on convention}
-
-\todo{Factors of $k!$...}
+	a ∧ b = \frac{(p + q)!}{p!q!}\op{Sym}^-(a ⊗ b)
+\end{align}
+for $a ∈ \op{Sym}^-(\TA[p]{V})$ and $b ∈ \op{Sym}^-(\TA[q]{V})$, in terms of our convention \eqref{eqn:(anti)symmetriser}.
+The different definitions of $∧$ as an antisymmetrising product lead to different identifications of $\EA{V}$ with $S$.
+\begin{table}[h]
+	\centering
+	\setlength{\tabcolsep}{20pt}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{cc}
+		\emph{Kobayashi--Nomizu} \cite{kobayashi1963dg}
+	&	\emph{Spivak} \cite{spivak1975dg}
+	\\	$a ∧ b ≔ \op{Sym}^-(a⊗b)$
+	&	$a ∧ b ≔ \frac{(p + q)!}{p!q!}\op{Sym}^-(a⊗b) $
+	\\	$𝒖 ∧ 𝒗 = \frac12(𝒖⊗𝒗 - 𝒗⊗𝒖)$
+	&	$𝒖 ∧ 𝒗 = 𝒖⊗𝒗 - 𝒗⊗𝒖$
+	\end{tabular}
+	\caption{
+		Different embeddings of $\EA{V}$ into $\TA{V}$.
+		We employ the Kobayashi--Nomizu convention as this is coincides with the wedge product of geometric algebra.
+		The Spivak convention is dominant for differential forms in physics.
+	}
+\end{table}
 
 \section{The Metric: Length and Angle}
 
