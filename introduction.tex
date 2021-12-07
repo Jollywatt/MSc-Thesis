@@ -1,0 +1,42 @@
+\chapter{Introduction}
+
+The Special Theory of Relativity is a model of \emph{spacetime} --- the geometry in which physical events take place.
+Spacetime comprises the Euclidean dimensions of space and time, but only in a way relative to each observer moving through it: there exists no single `universal' ruler or clock.
+Instead, two observers in relative motion define different decompositions of spacetime, and their respective clocks and rulers are found to disagree according to the Lorentz transformation laws.
+The insight of special relativity is that one should focus not on the observer-dependent notions of space and time, but on the Lorentzian geometry of spacetime itself.
+
+Seven years after Albert Einstein introduced this theory,\sidenote{
+	Einstein’s paper \cite{einstein1905electrodynamics} was published in 1905, the so-called \emph{Annus Mirabilis} or ``miracle year'' during which he also published on the photoelectric effect, Brownian motion and the mass-energy equivalence.
+	Each of the four papers was a monumental contribution to modern physics.
+} he succeeded in formulating a relativistic picture which included gravity.
+In this General Theory of Relativity, gravitation is identified with the curvature of spacetime over astronomical distances.
+Both theories coincide locally when confined to sufficiently small extents of spacetime, over which the effects of curvature are negligible.
+In \cref{part:1}, we will focus on special relativity, leaving gravity and curvature to \cref{part:2}.
+
+In acknowledgement of the Erlangen programme,\sidenote{
+	Introduced by Felix Klein in 1872 \cite{klein1893erlangen}, the Erlangen program is the characterisation of geometries (Euclidean, hyperbolic, projective, etc.) by their symmetry groups and the properties invariant under those groups.
+	E.g., Euclidean geometry studies the invariants of rigid transformations.
+} the study of local spacetime geometry amounts to the study of its intrinsic symmetries.
+These symmetries form the Poincaré group, and consist of spacetime translations and Lorentz transformations, the latter being the extension of the group of rotations of Euclidean space to the relativistic rotations of spacetime.
+The standard matrix representation of the Lorentz group, $\SO^+(1, 3)$, is the connected component of the orthogonal group
+\begin{align}
+	\op{O}(1,3) = \set{\lin Λ ∈ \GL(\RR^4) | \lin Λ\trans\lin η\lin Λ = \lin η}
+\end{align}
+with respect to the bilinear form $η = ±\op{diag}(-1,+1,+1,+1)$.
+The rudimentary tools of matrix algebra are sufficient for an analys the Lorentz group, and are familiar to any physicist.
+
+However, the last century has seen many other mathematical tools be applied to the study of generalised rotation groups such as $\SO^+(1,3)$ or the rotation group $\SO(3)$ of $\RR^3$.
+Among these tools is the \emph{geometric algebra}, invented\sidenote{
+	Clifford algebra was independently discovered by Rudolf Lipschitz two years later \cite{lipschitz1880clifford-alg}. 
+	He was the first to use them to the study the orthogonal groups.
+} by William Clifford in 1878 \cite{clifford1878grassmann}.
+Geometric algebra remains largely unknown in the physics community, despite arguably being far superior for the analysis of rotations than traditional matrix techniques.
+It is informative to glean some of the history that led to this (perhaps unfortunate) state of affairs.
+
+\subsubsection{The quest for an optimal formalism for rotations}
+
+Mathematics has seen the invention of a variety of vector formalisms since the 1800s, and the question of which is best suited to physics has a long contentious history.
+
+The vector algebra ``war'' of 1890--1945 saw William Hamilton's prized quaternion algebra $\HH$, hailed as the optimal tool for describing rotations in $\RR^3$, struggle for popularity before being eventually left to gather dust as an old-fashioned curiosity.
+
+
