@@ -1,4 +1,5 @@
 \chapter{Preliminary Theory}
+\label{cha:preliminary-theory}
 
 
 Many of the tools we will develop for the study of spacetime share the property of being associative algebras.
@@ -449,6 +450,7 @@ Note that this implies that $φ ∧ φ$ does not necessarily vanish for non-Abel
  
 
 
+
 \section{The Metric: Length and Angle}
 
 The tensor and exterior algebras considered so far are build from a vector space $V$ alone.
@@ -464,6 +466,17 @@ Notions of length and angle are central to geometry, but are not intrinsic to a 
 \end{definition}
 
 Linearity in either argument implies linearity in the other by symmetry, so $η$ is bilinear.
+A metric is \textdef{non-degenerate} if
+\begin{math}
+	\ip{𝒖, 𝒗} = 0
+\end{math}
+for all $𝒖$ implies that $𝒗$ is zero.
+With respect to a basis $\set{\ve_i}$ of $V$, the metric components
+\begin{math}
+	η_{ij} = \ip{\ve_i, \ve_j}
+\end{math}
+are defined.
+Non-degeneracy means that $\det η ≠ 0$ when viewing $η = [η_{ij}]$ as a matrix, and in this case the matrix inverse $η^{ij}$ is defined, and satisfies $η^{ik}η_{kj} = δ^i_j$.
 
 A vector space $V$ together with a metric $η$ is called an \textdef{inner product space} $(V, η)$.
 Alternatively, instead of a metric, an inner product space may be constructed with a quadratic form:
@@ -488,4 +501,42 @@ It is recovered\sidenote{
 .\end{align}
 The prescription of either $η$ or $q$ is therefore equivalent --- but the notion of a metric is more common in physics, whereas the mathematical viewpoint often starts with a quadratic form.
 
+
+\subsubsection{Covectors and dual bases}
+
+The dual space $V^* ≔ \set{f : V → \FF | \text{$f$ linear}}$ of a vector space consists of \textdef{dual vectors} or \textdef{covectors}, which are linear maps from $V$ into its underlying field.
+Convention dictates that components of vectors be written superscript, $𝒖 = u^i\ve_i ∈ V$, and covectors subscript, $φ = φ_i\ve^i ∈ V^*$, for bases $\set{\ve_i} \subset V$ and $\set{\ve^i} \subset V^*$.
+
+A metric $η$ on $V$ defines an isomorphism between itself and its dual space.
+Together known as the \textdef{musical isomorphisms}, the map $\flat : V → V^*$ and its inverse $\sharp : V^* → V$ are defined by
+\begin{align}
+	𝒖^\flat(𝒗) = \ip{𝒖, 𝒗}
+	\qqtext{and}
+	\ip{φ^\sharp, 𝒖} = φ(𝒖)
+\end{align}
+for $𝒖,𝒗 ∈ V$ and $φ ∈ V^*$.
+The names become justified when working with a basis, where the relations
+\begin{align}
+	(𝒖^\flat)_i = η_{ij}𝒖^j
+	\qqtext{and}
+	(φ^\sharp)^i = η^{ij}φ_j
+\end{align}
+show that $\flat$ lowers indices, while $\sharp$ raises them.
+
+The basis $\set{\ve_i}$ also defines a dual basis $\set{\ve^i}$ of $V^*$ via the metric by
+\begin{math}
+	\ve^i ≔ η^{ij}\ve_j^\flat
+.\end{math}
+Note that basis vectors and covectors defined in this way do not exist in the same vector space, but are related by their evaluation on one another via $\ve^i(\ve_j) = δ^i_j$.
+In some contexts, given a basis $\set{\ve_i}$ of $V$, we will define a dual basis $\set{\ve^i}$ of $V$ (not of $V^*$).
+By this we mean the dual basis vectors are instead defined as
+\begin{math}
+	\ve^i ≔ η^{ij}\ve_j
+,\end{math}
+relating to the non-dual basis vectors via $\ip{\ve^i, \ve_j} = δ^i_j$.
+
+%  or $\ve^i = η^{ij}\ve_j$.
+
+
+% \subsubsection{Hodge duality}
 
