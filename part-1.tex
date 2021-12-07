@@ -415,7 +415,7 @@ Indeed, some authors omit the normalisation factor, which has the effect of chan
 	a ∧ b = \frac{(p + q)!}{p!q!}\op{Sym}^-(a ⊗ b)
 \end{align}
 for $a ∈ \op{Sym}^-(\TA[p]{V})$ and $b ∈ \op{Sym}^-(\TA[q]{V})$, in terms of our convention \eqref{eqn:(anti)symmetriser}.
-The different definitions of $∧$ as an antisymmetrising product lead to different identifications of $\EA{V}$ with $S$.
+The different definitions of $∧$ as an antisymmetrising product lead to different identifications of $\EA{V}$ with $S$, as clarified in \cref{tbl:wedge-conventions}.
 \begin{table}[h]
 	\centering
 	\setlength{\tabcolsep}{20pt}
@@ -433,7 +433,52 @@ The different definitions of $∧$ as an antisymmetrising product lead to differ
 		We employ the Kobayashi--Nomizu convention as this is coincides with the wedge product of geometric algebra.
 		The Spivak convention is dominant for differential forms in physics.
 	}
+	\label{tbl:wedge-conventions}
 \end{table}
+
+
+\subsubsection{Exterior forms}
+
+The exterior algebra is most frequently encountered in physics in the theory of \emph{exterior (differential) forms}, which are alternating multilinear maps from a vector space.
+
+We may wish to use the exterior algebra $\EA{V^*}$ over the dual space of linear maps $V → \RR$ as a model for exterior forms.
+Using the dual basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\dotted{i_\i}{}k} \dotted{\ve^{i_\i}} ∧ k$, and each component acts on $\TA[k]{V}$ as
+\begin{align}
+	\label{eqn:poor-mans-exterior-form}
+	(\dotted{\ve^{i_\i}} ∧ k)(\dotted{𝒖_\i} ⊗ k) = \frac1{k!} \sum_{σ ∈ S_k} (-1)^σ\dotted{\ve^{i_{σ(\i)}}(𝒖_\i)}{}k
+.\end{align}
+However, this differs from the standard definition of exterior forms in two important ways:
+\begin{enumerate}
+	\item In \cref{eqn:poor-mans-exterior-form}, the dual vectors $\ve^i ∈ V^*$ are permuted while the order of the arguments $𝒖_i$ are preserved; but for standard exterior forms, the opposite is true.
+	This prevents the proper extension of $\EA{V^*}$ to non-Abelian vector-valued forms, where the values $\ve^i(𝒖_j)$ may not commute.
+	\item Trivially, we insist on the the Kobayashi---Nomizu convention of normalisation factor for $\EA{V^*}$; but the Spivak convention for exterior forms is much more standard in physics.
+\end{enumerate}
+Thus, we define exterior forms separately to the exterior algebra of covectors.
+
+\begin{definition}
+	For a vector space $V$, a \textdef{$k$-form} $φ ∈ \forms[k](V)$ is an alternating multilinear map $φ : \TA[k]{V} → \RR$.
+	For another vector space $A$, an \textdef{$A$-valued $k$-form} $φ ∈ \forms[k](V, A)$ is such a map $φ : \TA[k]{V} → A$ into $A$.
+\end{definition}
+The evaluation of a form is denoted $φ(\dotted{𝒖_\i} ⊗ k)$ or $φ(\dotted{𝒖_\i} , k)$, and the wedge product of a $p$-form $φ$ and $q$-form $ϕ$ is defined (in the Spivak convention)
+\begin{align}
+	\label{eqn:wedge-of-forms}
+	φ ∧ ϕ = \frac{(p + q)!}{p!q!} (φ ⊗ ϕ) \circ \op{Sym}^-
+.\end{align}
+Explicitly, \cref{eqn:wedge-of-forms} acts to antisymmetrise arguments.
+To see this, choose a basis $\set{\dx^μ}$ of $\forms(V)$, and compare to \cref{eqn:poor-mans-exterior-form},
+\begin{align}
+ 	(\dotted{\dx^{μ_\i}} ∧ k)(\dotted{𝒖_\i} ⊗ k) = \sum_{σ ∈ S_k} (-1)^σ \dotted{\dx^{μ_\i}(𝒖_{σ(\i)})}{}k
+.\end{align}
+% \begin{align}
+% 	φ ∧ ϕ = \op{Alt}(φ ⊗ ϕ)
+% \end{align}
+% where the alternating map
+% \begin{align}
+% 	\op{Alt}(f)(\dotted{𝒖_\i} ⊗ k) = k! f(\op{Sym}^-(\dotted{𝒖_\i} ⊗ k))
+% \end{align}
+% antisymmetrises arguments to the multilinear function $f$.
+ 
+
 
 \section{The Metric: Length and Angle}
 
