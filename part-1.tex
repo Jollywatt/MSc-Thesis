@@ -251,7 +251,7 @@ All elements of a graded algebra are either inhomogeneous or a $k$-vector for so
 \begin{definition}
 	A \textdef{$k$-blade} is a $k$-vector $a ∈ A_k$ of the form
 	\begin{math}
-		a = \dotted{𝒖_\i} ⊛ k
+		a = \etc{𝒖_\i} ⊛ k
 	\end{math}
 	where each $𝒖_i ∈ A_1$ is a $1$-vector.
 \end{definition}
@@ -337,7 +337,7 @@ Since all terms of the form $𝒘∧𝒘 = 0$ are definitionally zero, we have
 for all vectors $𝒖, 𝒗 ∈ V$.
 By associativity, it follows that $𝒗_1 ∧ 𝒗_2 ∧ \cdots ∧ 𝒗_k$ vanishes exactly when the $𝒗_i$ are linearly dependent.\sidenote{
 	\begin{proof}
-		Blades of the form $a = \dotted{𝒖_\i} ∧ k$ vanish when two or more vectors are repeated.
+		Blades of the form $a = \etc{𝒖_\i}∧k$ vanish when two or more vectors are repeated.
 		If $\set{𝒖_i}$ is linearly dependent, then any one $𝒖_i$ can be written in terms of the others, and thus $a$ can be expanded into a sum of such vanishing terms.
 	\end{proof}
 }
@@ -368,7 +368,7 @@ The exterior algebra may equivalently be viewed as the space of antisymmetric te
 Consider the map
 \begin{align}
 	\label{eqn:(anti)symmetriser}
-	\op{Sym}^±(\dotted{𝒖_\i} ⊗ k) = \frac1{k!} \sum_{σ ∈ S_k} (±1)^σ \dotted{𝒖_{σ(\i)}} ⊗ k
+	\op{Sym}^±(\etc{𝒖_\i}⊗k) = \frac1{k!} \sum_{σ ∈ S_k} (±1)^σ \etc{𝒖_{σ(\i)}}⊗k
 \end{align}
 where $(-1)^σ$ denotes the sign of the permutation $σ$ in the symmetric group of $k$ elements, $S_k$.
 By enforcing linearly, $\op{Sym}^± : \TA{V} → \TA{V}$ is defined on all tensors.
@@ -392,12 +392,12 @@ This makes $\op{Sym}^- : \TA{V} → S$ an algebra homomorphism, and by \cref{thm
 .\end{align}
 Furthermore, note that the kernel of $\op{Sym}^-$ consists of tensor products of linearly dependent vectors, and sums thereof,\sidenote{
 	\begin{proof}
-		If $a = \dotted{𝒖_\i} ⊗ k$ where two vectors $𝒖_i = 𝒖_j$ are equal, then $\op{Sym}^-(a) = 0$ since each term in the sum in \cref{eqn:(anti)symmetriser} is paired with an equal and opposite term with $i ↔︎ j$ swapped.
+		If $a = \etc{𝒖_\i}⊗k$ where two vectors $𝒖_i = 𝒖_j$ are equal, then $\op{Sym}^-(a) = 0$ since each term in the sum in \cref{eqn:(anti)symmetriser} is paired with an equal and opposite term with $i ↔︎ j$ swapped.
 		If $\set{𝒖_i}$ is linearly dependent, any one vector is a sum of the others, so $a$ is a sum of blades with at least two vectors repeated.
 	\end{proof}
 }
 \begin{align}
-	\ker \op{Sym}^- = \spanof{\dotted{𝒖_\i} ⊗ k | k ∈ \NN, \text{$\set{𝒖_i}$ linearly dependent}}
+	\ker \op{Sym}^- = \spanof{\etc{𝒖_\i}⊗k | k ∈ \NN, \text{$\set{𝒖_i}$ linearly dependent}}
 ,\end{align}
 which is exactly the ideal $\gen{𝒖⊗𝒖}$.
 Therefore, the left-hand side of \cref{eqn:iso-of-antisym} is the exterior algebra of \cref{def:exterior-algebra}, and we have an algebra isomorphism
@@ -437,15 +437,18 @@ The different definitions of $∧$ as an antisymmetrising product lead to differ
 \end{table}
 
 
-\subsubsection{Exterior forms}
+\subsection{Exterior forms}
 
-The exterior algebra is most frequently encountered in physics in the theory of \emph{exterior (differential) forms}, which are alternating multilinear maps from a vector space.
+The exterior algebra is most frequently encountered by physicists in the context of \emph{exterior (differential) forms}, which are alternating\sidenote{
+	An \textdef{alternating} linear map is one which changes sign upon any transposition of any pair of arguments.
+	E.g., if $f$ is alternating, then $f(𝒖, 𝒗, 𝒘) = -f(𝒗, 𝒖, 𝒘)$.
+} multilinear maps.
 
 We may wish to use the exterior algebra $\EA{V^*}$ over the dual space of linear maps $V → \RR$ as a model for exterior forms.
-Using the dual basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\dotted{i_\i}{}k} \dotted{\ve^{i_\i}} ∧ k$, and each component acts on $\TA[k]{V}$ as
+Using the dual basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\etc{i_\i}{}k} \etc{\ve^{i_\i}}∧k$, and each component acts on $\etc{𝒖_\i}⊗k ∈ \TA[k]{V}$ as
 \begin{align}
 	\label{eqn:poor-mans-exterior-form}
-	(\dotted{\ve^{i_\i}} ∧ k)(\dotted{𝒖_\i} ⊗ k) = \frac1{k!} \sum_{σ ∈ S_k} (-1)^σ\dotted{\ve^{i_{σ(\i)}}(𝒖_\i)}{}k
+	(\etc{\ve^{i_\i}}∧k)(\etc{𝒖_\i}⊗k) = \frac1{k!} \sum_{σ ∈ S_k} (-1)^σ\etc{\ve^{i_{σ(\i)}}(𝒖_\i)}{}k
 .\end{align}
 However, this differs from the standard definition of exterior forms in two important ways:
 \begin{enumerate}
@@ -453,13 +456,13 @@ However, this differs from the standard definition of exterior forms in two impo
 	This prevents the proper extension of $\EA{V^*}$ to non-Abelian vector-valued forms, where the values $\ve^i(𝒖_j)$ may not commute.
 	\item Trivially, we insist on the the Kobayashi---Nomizu convention of normalisation factor for $\EA{V^*}$; but the Spivak convention for exterior forms is much more standard in physics.
 \end{enumerate}
-Thus, we define exterior forms separately to the exterior algebra of covectors.
+Thus, we define exterior forms separately in order to match convention.
 
 \begin{definition}
 	For a vector space $V$, a \textdef{$k$-form} $φ ∈ \forms[k](V)$ is an alternating multilinear map $φ : \TA[k]{V} → \RR$.
 	For another vector space $A$, an \textdef{$A$-valued $k$-form} $φ ∈ \forms[k](V, A)$ is such a map $φ : \TA[k]{V} → A$ into $A$.
 \end{definition}
-The evaluation of a form is denoted $φ(\dotted{𝒖_\i} ⊗ k)$ or $φ(\dotted{𝒖_\i} , k)$, and the wedge product of a $p$-form $φ$ and $q$-form $ϕ$ is defined (in the Spivak convention)
+The evaluation of a form is denoted $φ(\etc{𝒖_\i}⊗k)$ or $φ(\etc{𝒖_\i},k)$, and the wedge product of a $p$-form $φ$ and $q$-form $ϕ$ is defined (in the Spivak convention)
 \begin{align}
 	\label{eqn:wedge-of-forms}
 	φ ∧ ϕ = \frac{(p + q)!}{p!q!} (φ ⊗ ϕ) \circ \op{Sym}^-
@@ -467,14 +470,26 @@ The evaluation of a form is denoted $φ(\dotted{𝒖_\i} ⊗ k)$ or $φ(\dotted{
 Explicitly, \cref{eqn:wedge-of-forms} acts to antisymmetrise arguments.
 To see this, choose a basis $\set{\dx^μ}$ of $\forms(V)$, and compare to \cref{eqn:poor-mans-exterior-form},
 \begin{align}
- 	(\dotted{\dx^{μ_\i}} ∧ k)(\dotted{𝒖_\i} ⊗ k) = \sum_{σ ∈ S_k} (-1)^σ \dotted{\dx^{μ_\i}(𝒖_{σ(\i)})}{}k
+ 	(\etc{\dx^{μ_\i}}∧k)(\etc{𝒖_\i}⊗k) = \sum_{σ ∈ S_k} (-1)^σ \etc{\dx^{μ_\i}(𝒖_{σ(\i)})}{}k
 .\end{align}
+
+If $φ, ϕ ∈ \forms(V, A)$ are $A$-valued forms, where $A$ is equipped with a bilinear product $⊛ : A × A → A$, then scalar multiplication may be replaced this product, so that
+\begin{align}
+	(φ ∧ ϕ)(\etc{𝒖_\i} ⊗ k) = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_\i} ⊗ p) ⊛ ϕ(\etc{𝒖_\i} ⊗ q)
+.\end{align}
+The product $⊛$ need not be commutative or associative; in particular, we may have Lie algebra--valued forms.
+For example, if $φ, ϕ ∈ \forms[1](V, \liealg g)$ are Lie algebra--valued, then
+\begin{align}
+	(φ ∧ ϕ)(𝒖, 𝒗) = [φ(𝒖), ϕ(𝒗)] - [φ(𝒗), ϕ(𝒖)]
+,\end{align}
+where $[\phantom{𝒖}, \phantom{𝒖}] : \liealg g × \liealg g → \liealg g$ is the Lie bracket.
+Note that this implies that $φ ∧ φ$ does not necessarily vanish for non-Abelian forms --- in the case above we have $(φ ∧ φ)(𝒖, 𝒗) = 2[φ(𝒖), φ(𝒗)]$.
 % \begin{align}
 % 	φ ∧ ϕ = \op{Alt}(φ ⊗ ϕ)
 % \end{align}
 % where the alternating map
 % \begin{align}
-% 	\op{Alt}(f)(\dotted{𝒖_\i} ⊗ k) = k! f(\op{Sym}^-(\dotted{𝒖_\i} ⊗ k))
+% 	\op{Alt}(f)(\etc{𝒖_\i}⊗k) = k! f(\op{Sym}^-(\etc{𝒖_\i}⊗k))
 % \end{align}
 % antisymmetrises arguments to the multilinear function $f$.
  

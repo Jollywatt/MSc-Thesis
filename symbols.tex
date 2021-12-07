@@ -87,8 +87,8 @@
 
 % shortcuts
 
-% easy dotted sequence: \dotted{𝒖_{\i}}{⊗}{k} → 𝒖_1 ⊗ ··· ⊗ 𝒖_k
-\newcommand{\dotted}[4][1]{
+% easy dotted sequence: \etc{𝒖_{\i}}{⊗}{k} → 𝒖_1 ⊗ ··· ⊗ 𝒖_k
+\newcommand{\etc}[4][1]{
 	{\def\i{#1} #2}
 	#3 \if,#3 \dots \else \cdots \fi #3
 	{\def\i{#4} #2}
