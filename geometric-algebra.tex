@@ -2,8 +2,16 @@
 \label{cha:geometric-algebra}
 
 In \cref{cha:preliminary-theory}, we defined the metric-independent exterior algebra of multivectors over a vector space $V$.
-Metrical operations can be achieved by introducing the Hodge dual (of \cref{sec:metrical-exterior-alg}), tacked onto $\EA{V}$.
-The geometric algebra is a generalisation of $\EA{V}$ which has the metric (and its concomitant notions of orientation and duality) built-in.
+Metrical operations can be achieved by introducing the Hodge dual (of \cref{sec:metrical-exterior-alg}) and tacking onto $\EA{V}$.
+The geometric algebra is a generalisation of $\EA{V}$ which has the metric (and its concomitant notions of orientation and duality) directly built-in.
+
+Geometric algebras are also known as real \emph{Clifford algebras} $Cl(V, q)$ after their first inventor.
+Especially in mathematics, Clifford algebras are defined in terms of a quadratic form $q$, and the vector space $V$ is usually complex.
+However, in physics, where $V$ is taken to be real and a metric $η$ is usually supplied instead of $q$, the name ``geometric algebra'' is preferred.\sidenote{
+	The newer name was coined by David Hestenes in the 1970s, who popularised Clifford algebra for physics \cite{hestenes1986ga-unified-language,hestenes1968ga}.
+}
+
+\subsubsection{Construction of the algebra}
 
 Informally put, the geometric algebra is obtained by enforcing the single rule
 \begin{align}
@@ -49,7 +57,7 @@ and also implies that $\GA[+](V, η)$ is closed under the geometric product, for
 
 
 
-\subsubsection{The Geometric Product of Vectors}
+\subsubsection{The geometric product of vectors}
 
 By expanding $(𝒖 + 𝒗)^2 = ⟨𝒖 + 𝒗, 𝒖 + 𝒗⟩$, it follows\sidenote{
 	$𝒖^2 + 𝒗𝒖 + 𝒖𝒗 + 𝒗^2 = ⟨𝒖,𝒖⟩ + 2⟨𝒖,𝒗⟩ + ⟨𝒗,𝒗⟩$
@@ -83,6 +91,9 @@ and some important features are immediate:
 
 \end{itemize}
 
+
+\subsubsection{Higher--grade elements}
+\todo{}
 
 
 \subsubsection{Fundamental algebra automorphisms}
@@ -143,3 +154,76 @@ In particular, the following result follows easily from reasoning about grades.
 \section{Relations with Other Algebras}
 
 An efficient way to become familiar with geometric algebras is to study their relations to other common algebras encountered in physics.
+
+\todo{}
+
+
+
+
+\section{Rotors and Associated Lie Groups}
+\label{sec:rotors}
+
+An orthogonal transformation in $n$ dimensions may be achieved by the composition of at most $n$ reflections.\sidenote{This is the Cartan--Dieudonné theorem \cite{cartan-dieudonne-theorem}.}
+A reflection may be described in the geometric algebra by conjugation with an invertible vector.
+For instance, the linear map
+\begin{align}
+	A \mapsto -𝒗A𝒗^{-1}
+	\label{eqn:multivector-reflection}
+\end{align}
+reflects the multivector $A$ along the vector $𝒗$, that is, across the hyperplane with normal $𝒗$.
+By composing reflections of this form, any orthogonal transformation may be built, acting on multivectors as
+\begin{align}
+	\label{eqn:multivector-conjugation-by-inverse}
+	A \mapsto \pm RAR^{-1}
+\end{align}
+for some $R = 𝒗_1𝒗_2\cdots 𝒗_3$, where the sign is positive for an even number of reflections, and negative for odd.
+
+Scaling the axis of reflection $𝒗$ by a non-zero scalar $λ$ does not affect the reflection map \eqref{eqn:multivector-reflection}, since $𝒗 ↦ λ𝒗$ is cancelled out by $𝒗^{-1} ↦ λ^{-1}𝒗^{-1}$.
+Therefore, a more direct correspondence exists between reflections and normalised vectors $\hat{𝒗}^2 = ±1$ (although there still remains an overall ambiguity in sign).
+For an orthogonal transformation built using normalised vectors,
+\begin{align}
+	R^{-1} = \hat{𝒗}_3^{-1}\cdots \hat{𝒗}_2^{-1}\hat{𝒗}_1^{-1} = ±\rev{R}	
+\end{align}
+since $\hat{𝒗}^{-1} = ±\hat{𝒗}$, and hence \cref{eqn:multivector-conjugation-by-inverse} may be written with the reversion instead of inversion:
+\begin{align}
+	\label{eqn:multivector-conjugation}
+	A ↦ \pm RA\rev{R}
+\end{align}
+
+
+All such elements $R^{-1} = ±R^†$ taken together form a group under the geometric product.
+This is called the \emph{pin} group:
+\begin{align}
+	\op{Pin}(p, q) ≔ \qty{R \in \GA(p, q) \mid RR^† = ±1}
+\end{align}
+There are two ``pinors'' for each orthogonal transformation, since $+R$ and $-R$ give the same map \eqref{eqn:multivector-conjugation}.
+Thus, the pin group forms a double cover of the orthogonal group $\operatorname{O}(p,q)$.
+
+Furthermore, the even-grade elements of $\op{Pin}(p,q)$ form a subgroup, called the \emph{spin} group:
+\begin{align}
+	\op{Spin}(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = ±1}
+\end{align}
+This forms a double cover of $\SO(p, q)$.
+
+Finally, the additional requirement that $RR^† = 1$ defines the restricted spinor group, or the \emph{rotor} group:
+\begin{align}
+	\op{Spin}^+(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = 1}
+\end{align}
+%
+\begin{marginfigure}
+\begin{tikzcd}[column sep=tiny, row sep=small]
+	\op{Spin}^+ & \op{Spin} & \op{Pin} \\
+	\SO^+ & \SO & \operatorname{O}
+	\arrow["⊆"{description}, draw=none, from=1-1, to=1-2]
+	\arrow["⊂"{description}, draw=none, from=1-2, to=1-3]
+	\arrow["⊆"{description}, draw=none, from=2-1, to=2-2]
+	\arrow["⊂"{description}, draw=none, from=2-2, to=2-3]
+	\arrow[two heads, from=1-1, to=2-1]
+	\arrow[two heads, from=1-2, to=2-2]
+	\arrow[two heads, from=1-3, to=2-3]
+\end{tikzcd}
+\caption{Relationships between Lie groups associated with a geometric algebra. An arrow $a \surject b$ signifies that $a$ is a double-cover of $b$.}
+\end{marginfigure}
+%
+The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$.
+Except for $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
