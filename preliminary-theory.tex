@@ -314,6 +314,7 @@ By counting the number of possible linearly independent sets of $k$ vectors in $
 .\end{align}
 Thus, the exterior algebra with base dimension $n$ is $2^n$-dimensional.
 
+
 \subsection{As antisymmetric tensors}
 
 \label{sec:exterior-algebra-as-antisymmetric}
@@ -403,7 +404,9 @@ We may wish to use the exterior algebra $\EA{V^*}$ over the dual space of linear
 Using the dual basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\etc{i_\i}{}k} \etc{\ve^{i_\i}}∧k$, and each component acts on $\etc{𝒖_\i}⊗k ∈ \TA[k]{V}$ as
 \begin{align}
 	\label{eqn:poor-mans-exterior-form}
-	(\etc{\ve^{i_\i}}∧k)(\etc{𝒖_\i}⊗k) = \frac1{k!} \sum_{σ ∈ S_k} (-1)^σ\etc{\ve^{i_{σ(\i)}}(𝒖_\i)}{}k
+	(\etc{\ve^{i_\i}}∧k)(\etc{𝒖_\i}⊗k)
+	&= \frac1{k!} \sum_{σ ∈ S_k} (-1)^σ\etc{\ve^{i_{σ(\i)}}(𝒖_\i)}{}k
+\\	&= \frac1{k!}\det[\ve^{i_m}(𝒖_n)]_{mn}
 .\end{align}
 However, this differs from the standard definition of exterior forms in two important ways:
 \begin{enumerate}
@@ -425,7 +428,9 @@ The evaluation of a form is denoted $φ(\etc{𝒖_\i}⊗k)$ or $φ(\etc{𝒖_\i}
 Explicitly, \cref{eqn:wedge-of-forms} acts to antisymmetrise arguments.
 To see this, choose a basis $\set{\dx^μ}$ of $\forms(V)$, and compare to \cref{eqn:poor-mans-exterior-form},
 \begin{align}
- 	(\etc{\dx^{μ_\i}}∧k)(\etc{𝒖_\i}⊗k) = \sum_{σ ∈ S_k} (-1)^σ \etc{\dx^{μ_\i}(𝒖_{σ(\i)})}{}k
+ 	(\etc{\dx^{μ_\i}}∧k)(\etc{𝒖_\i}⊗k)
+	&= \sum_{σ ∈ S_k} (-1)^σ \etc{\dx^{μ_\i}(𝒖_{σ(\i)})}{}k
+\\	&= \det [\dx^{μ_m}(𝒖_n)]_{mn}
 .\end{align}
 
 If $φ, ϕ ∈ \forms(V, A)$ are $A$-valued forms, where $A$ is equipped with a bilinear product $⊛ : A × A → A$, then scalar multiplication may be replaced this product, so that
@@ -537,6 +542,31 @@ relating to the non-dual basis vectors via $\ip{\ve^i, \ve_j} = δ^i_j$.
 
 %  or $\ve^i = η^{ij}\ve_j$.
 
+\subsection{Metrical exterior algebra}
 
-% \subsubsection{Hodge duality}
+In an exterior algebra $\EA{V}$ with a metric defined on $V$, there is an induced metric on $k$-vectors defined by
+\begin{align}
+	\ip{\etc{𝒖_\i}∧k, \etc{𝒗_\i}∧k}
+	&= \sum_{σ ∈ S_k} (-1)^σ \etc{\ip{𝒖_\i, 𝒗_{σ(\i)}}}{}k
+\\	&= \det [\ip{𝒖_m, 𝒖_n}]_{mn}
+.\end{align}
+In particular, a metric on $\EA{V}$ defines a notion of magnitude of pseudoscalars.
+\begin{definition}
+	Let $V$ be an $n$-dimensional vector space with a metric.
+	The \textdef{volume element} $\vol$ of the metrical exterior algebra $\EA{V}$ is the unique (up to sign) $n$-vector satisfying $\ip{\vol, \vol} = 1$.
+\end{definition}
+A choice of sign for the volume element defines an \textdef{orientation}.
+Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$, the basis is called right-handed if $\etc{\ve_\i}∧n = \vol$, and left-handed otherwise.
 
+
+\subsubsection{Hodge duality}
+
+A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a metric on $V$.
+\begin{definition}
+	Let $\EA{V}$ be a metrical exterior algebra with base dimension $n$ and volume element $\vol$.
+	The \textdef{Hodge dual} is the unique operator satisfying
+	\begin{align}
+		a ∧ \star b = \ip{a, b}\vol
+	\end{align}
+	for any $k$-vectors $a, b ∈ \EA[k]{V}$.
+\end{definition}
