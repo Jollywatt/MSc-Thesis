@@ -104,6 +104,12 @@ Thus, by extending the two fundamental isometries of $(V, η)$ in the two possib
 		\item \textdef{Grade involution $ι$} is the extension of the involution $ι(𝒖) = -𝒖$ to general multivectors by the rule $ι(ab) = ι(a)ι(b)$.
 	\end{itemize}
 \end{definition}
+If $a ∈ \GA[k](V, η)$ is a $k$-vector, then $ι(a) = (-1)^ka$ and $\rev{a} = \revsign{k}a$ where
+\begin{align}
+	\label{eqn:reversion-sign}
+	\revsign{k} = (-1)^{\frac{(k - 1)k}2}
+\end{align}
+is the sign of the reverse permutation on $k$ symbols.
 
 Reversion and grade involution together generate the four fundamental automorphisms
 \begin{center}
@@ -116,6 +122,21 @@ Reversion and grade involution together generate the four fundamental automorphi
 	\end{tabular}
 \end{center}
 which form a group isomorphic to $\ZZ_2^2$ under composition.
+
+
+
+These operations are very useful in practice.
+In particular, the following result follows easily from reasoning about grades.
+\begin{lemma}
+	\label{lem:grades-of-square}
+	If $a ∈ \GA[k](V, η)$ is a $k$-vector, then $a^2$ is a $4\NN$-multivector, i.e., a sum of blades of grade $\qty{0, 4, 8, \dots}$ only.
+\end{lemma}
+\begin{proof}
+	The multivector $a^2$ is its own reverse, since $\rev{(a^2)} = (\rev{a})^2 = (±a)^2 = a^2$, and hence has parts of grade $\set{4n, 4n + 1 | n ∈ \NN}$.
+	Similarly, $a^2$ is self-involutive, since $ι(a^2) = ι(a)^2 = (±a)^2 = a^2$.
+	It is thus of even grade, leaving the possible grades $\set{0, 4, 8, ...}$.
+\end{proof}
+
 
 
 
