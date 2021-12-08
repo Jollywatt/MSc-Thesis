@@ -94,6 +94,22 @@
 
 \newcommand{\textdef}{\textsc}
 
+\hyphenation{
+	auto-morph-ism
+	auto-morph-isms
+	anti-auto-morph-ism
+	anti-auto-morph-isms
+}
+
+% correct hyphenation for parenthesised prefixes.
+\newcommand{\paren}[1]{(#1\discretionary{-)}{}{)}\!~}
+% Usage: \paren{anti}disestablishment produces hyphenation like:
+% (anti)disestablishment (anti-) %
+% disestablishment (anti)disest- %
+% ablishment...
+
+
+\usepackage{testhyphens}
 
 \usepackage{caption}
 \setcapindent{0pt} % remove indentation for multiline (table) captions
