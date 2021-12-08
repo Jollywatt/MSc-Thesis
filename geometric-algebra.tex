@@ -93,18 +93,18 @@ The geometric algebra possesses this \paren{anti}automorphism operations.
 
 Isometries of $(V, η)$ are linear functions $f : V → V$ which preserve the metric, so that $\ip{f(𝒖), f(𝒗)} = \ip{𝒖, 𝒗}$ for any $𝒖, 𝒗 ∈ V$.
 Vector spaces always possess the involution isometry $ι(𝒖) = -𝒖$, as well as the trivial isometry.
-An isometry extends uniquely to an algebra \paren{anti}automorphism by defining $f(ab) = f(a)f(b)$ or $f(ab) = f(b)f(a)$.
+An isometry extends uniquely to an algebra \paren{anti}automorphism by defining $f(AB) = f(A)f(B)$ or $f(AB) = f(B)f(A)$.
 Thus, by extending the two fundamental isometries of $(V, η)$ in the two possible ways, we obtain four fundamental \paren{anti}automorphisms of $\GA(V, η)$.
 
 \begin{definition}
 	\ 
 	\begin{itemize}
-		\item \textdef{Reversion $\dagger$} is the identity map on vectors $\rev{𝒖} = 𝒖$ extended to general multivectors by the rule $\rev{(ab)} = \rev{b}\rev{a}$.
+		\item \textdef{Reversion $\dagger$} is the identity map on vectors $\rev{𝒖} = 𝒖$ extended to general multivectors by the rule $\rev{(AB)} = \rev{B}\rev{A}$.
 		
-		\item \textdef{Grade involution $ι$} is the extension of the involution $ι(𝒖) = -𝒖$ to general multivectors by the rule $ι(ab) = ι(a)ι(b)$.
+		\item \textdef{Grade involution $ι$} is the extension of the involution $ι(𝒖) = -𝒖$ to general multivectors by the rule $ι(AB) = ι(A)ι(B)$.
 	\end{itemize}
 \end{definition}
-If $a ∈ \GA[k](V, η)$ is a $k$-vector, then $ι(a) = (-1)^ka$ and $\rev{a} = \revsign{k}a$ where
+If $A ∈ \GA[k](V, η)$ is a $k$-vector, then $ι(A) = (-1)^k A$ and $\rev{A} = \revsign{k}A$ where
 \begin{align}
 	\label{eqn:reversion-sign}
 	\revsign{k} = (-1)^{\frac{(k - 1)k}2}
@@ -129,11 +129,11 @@ These operations are very useful in practice.
 In particular, the following result follows easily from reasoning about grades.
 \begin{lemma}
 	\label{lem:grades-of-square}
-	If $a ∈ \GA[k](V, η)$ is a $k$-vector, then $a^2$ is a $4\NN$-multivector, i.e., a sum of blades of grade $\qty{0, 4, 8, \dots}$ only.
+	If $A ∈ \GA[k](V, η)$ is a $k$-vector, then $A^2$ is a $4\NN$-multivector, i.e., a sum of blades of grade $\qty{0, 4, 8, \dots}$ only.
 \end{lemma}
 \begin{proof}
-	The multivector $a^2$ is its own reverse, since $\rev{(a^2)} = (\rev{a})^2 = (±a)^2 = a^2$, and hence has parts of grade $\set{4n, 4n + 1 | n ∈ \NN}$.
-	Similarly, $a^2$ is self-involutive, since $ι(a^2) = ι(a)^2 = (±a)^2 = a^2$.
+	The multivector $A^2$ is its own reverse, since $\rev{(A^2)} = (\rev{A})^2 = (±A)^2 = A^2$, and hence has parts of grade $\set{4n, 4n + 1 | n ∈ \NN}$.
+	Similarly, $A^2$ is self-involutive, since $ι(A^2) = ι(A)^2 = (±A)^2 = A^2$.
 	It is thus of even grade, leaving the possible grades $\set{0, 4, 8, ...}$.
 \end{proof}
 

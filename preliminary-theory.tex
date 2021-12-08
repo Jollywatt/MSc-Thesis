@@ -331,7 +331,7 @@ Consider the map
 \end{align}
 where $(-1)^σ$ denotes the sign of the permutation $σ$ in the symmetric group of $k$ elements, $S_k$.
 By enforcing linearly, $\op{Sym}^± : \TA{V} → \TA{V}$ is defined on all tensors.
-A tensor $a$ is called \textdef{symmetric} if $\op{Sym}^+(a) = a$ and \textdef{antisymmetric} if $\op{Sym}^-(a) = a$.
+A tensor $A$ is called \textdef{symmetric} if $\op{Sym}^+(A) = A$ and \textdef{antisymmetric} if $\op{Sym}^-(A) = A$.
 
 Denote the image $\op{Sym}^-(\TA{V})$ by $S$.
 The linear map $\op{Sym}^- : \TA{V} → S$ is not an algebra homomorphism with respect to the tensor product on $S$, since, e.g.,
@@ -341,7 +341,7 @@ The linear map $\op{Sym}^- : \TA{V} → S$ is not an algebra homomorphism with r
 However, it \emph{is} if we instead equip $S$ with the antisymmetrising product $∧ : S × S → S$ defined by
 \begin{align}
 	\label{eqn:wedge-as-antisymm}
-	a ∧ b ≔ \op{Sym}^-(a ⊗ b)
+	A ∧ B ≔ \op{Sym}^-(A ⊗ B)
 .\end{align}
 This makes $\op{Sym}^- : \TA{V} → S$ an algebra homomorphism, and by \cref{thm:first-iso}, we have
 \begin{align}
@@ -351,8 +351,8 @@ This makes $\op{Sym}^- : \TA{V} → S$ an algebra homomorphism, and by \cref{thm
 .\end{align}
 Furthermore, note that the kernel of $\op{Sym}^-$ consists of tensor products of linearly dependent vectors, and sums thereof,\sidenote{
 	\begin{proof}
-		If $a = \etc{𝒖_\i}⊗k$ where two vectors $𝒖_i = 𝒖_j$ are equal, then $\op{Sym}^-(a) = 0$ since each term in the sum in \cref{eqn:(anti)symmetriser} is paired with an equal and opposite term with $i ↔︎ j$ swapped.
-		If $\set{𝒖_i}$ is linearly dependent, any one vector is a sum of the others, so $a$ is a sum of blades with at least two vectors repeated.
+		If $A = \etc{𝒖_\i}⊗k$ where two vectors $𝒖_i = 𝒖_j$ are equal, then $\op{Sym}^-(A) = 0$ since each term in the sum in \cref{eqn:(anti)symmetriser} is paired with an equal and opposite term with $i ↔︎ j$ swapped.
+		If $\set{𝒖_i}$ is linearly dependent, any one vector is a sum of the others, so $A$ is a sum of blades with at least two vectors repeated.
 	\end{proof}
 }
 \begin{align}
@@ -375,9 +375,9 @@ The factor of $\frac1{k!}$ present in \cref{eqn:(anti)symmetriser} is not necess
 \end{math}
 Indeed, some authors omit the normalisation factor, which has the effect of changing \cref{eqn:wedge-as-antisymm} to
 \begin{align}
-	a ∧ b = \frac{(p + q)!}{p!q!}\op{Sym}^-(a ⊗ b)
+	A ∧ B = \frac{(p + q)!}{p!q!}\op{Sym}^-(A ⊗ B)
 \end{align}
-for $a$ and $b$ of respective grades $p$ and $q$, written in terms of our convention \eqref{eqn:(anti)symmetriser}.
+for $A$ and $B$ of respective grades $p$ and $q$, written in terms of our convention \eqref{eqn:(anti)symmetriser}.
 The different normalisations of $∧$ as an antisymmetrising product lead to distinct identifications of multivectors in $\EA{V}$ with tensors in $S \subset \TA{V}$, as clarified in \cref{tbl:wedge-conventions}.
 \begin{table}[h]
 	\centering
@@ -386,8 +386,8 @@ The different normalisations of $∧$ as an antisymmetrising product lead to dis
 	\begin{tabular}{cc}
 		\emph{Kobayashi--Nomizu} \cite{kobayashi1963dg}
 	&	\emph{Spivak} \cite{spivak1975dg}
-	\\	$a ∧ b ≔ \op{Sym}^-(a⊗b)$
-	&	$a ∧ b ≔ \frac{(p + q)!}{p!q!}\op{Sym}^-(a⊗b) $
+	\\	$A ∧ B ≔ \op{Sym}^-(A⊗B)$
+	&	$A ∧ B ≔ \frac{(p + q)!}{p!q!} \op{Sym}^-(A⊗B)$
 	\\	$𝒖 ∧ 𝒗 = \frac12(𝒖⊗𝒗 - 𝒗⊗𝒖)$
 	&	$𝒖 ∧ 𝒗 = 𝒖⊗𝒗 - 𝒗⊗𝒖$
 	\end{tabular}
@@ -410,10 +410,10 @@ The exterior algebra is most frequently encountered by physicists as an operatio
 We may wish to use the exterior algebra $\EA{V^*}$ over the dual space of linear maps $V → \RR$ as a model for exterior forms.
 Using a basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\etc{i_\i}{}k} \etc{\ve^{i_\i}}∧k$, and each component acts on $\etc{𝒖_\i}⊗k ∈ \TA[k]{V}$ as
 \begin{align}
-	\label{eqn:poor-mans-exterior-form}
 	(\etc{\ve^{i_\i}}∧k)(\etc{𝒖_\i}⊗k)
 	&= \frac1{k!} \sum_{σ ∈ S_k} (-1)^σ\etc{\ve^{i_{σ(\i)}}(𝒖_\i)}{}k
 \\	&= \frac1{k!}\det[\ve^{i_m}(𝒖_n)]_{mn}
+	\label{eqn:poor-mans-exterior-form}
 .\end{align}
 However, this differs from the standard definition of exterior forms in two important ways:
 \begin{enumerate}
@@ -577,9 +577,9 @@ A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a
 	Let $\EA{V}$ be a metrical exterior algebra with base dimension $n$ and volume element $\vol$.
 	The \textdef{Hodge dual} is the unique operator satisfying
 	\begin{align}
-		a ∧ \star b = \ip{a, b}\vol
+		A ∧ \star B = \ip{A, B}\vol
 	\end{align}
-	for any $k$-vectors $a, b ∈ \EA[k]{V}$.
+	for any $k$-vectors $A, B ∈ \EA[k]{V}$.
 \end{definition}
 
 The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates fixed-grade subspaces of the same dimension; in particular, $\star 1 = \vol$.
