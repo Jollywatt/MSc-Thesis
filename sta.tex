@@ -1,0 +1,26 @@
+\chapter{The Algebra of Spacetime}
+\label{cha:sta}
+
+
+Special relativity is geometry with a Lorentzian signature.
+The \textdef{spacetime algebra} (STA) is the name given to the geometric algebra of a Minkowski vector space, $\GA(\RR^4, η) ≡ \GA(1,3)$, where $η = ±\op{diag}(-1,+1,+1,+1)$.
+Other introductory material on the STA can be found in \cite{hestenes2003sta,gull1993sta,dressel2015sta}.
+
+
+We denote the standard vector basis by $\qty{\vb γ_μ}$, where Greek indices run over $\qty{0,1,2,3}$.
+This is a deliberate allusion to the Dirac $γ$-matrices, whose algebra is isomorphic to the STA --- however, the $\vg_μ ∈ \RR^{1+3}$ of STA are real, genuine spacetime vectors.
+A basis for the entire $2^4$-dimensional STA is then
+\begin{align}
+	\overset{\text{1 scalar}}
+		{\set[\big]{\vb 1}}
+∪	\overset{\text{4 vectors}}
+		{\set[\big]{\vg_0, \vg_i}}
+∪	\overset{\text{6 bivectors}}
+		{\set[\big]{\vg_0\vg_i, \vg_j\vg_k}}
+∪	\overset{\substack{\text{4 trivectors}}}
+		{\set[\big]{\vg_0\vg_j\vg_k, \vg_1\vg_2\vg_3}}
+∪	\overset{\substack{\text{1 pseudoscalar}}}
+		{\set[\big]{\vol ≔ \vg_0\vg_1\vg_2\vg_3}}
+\end{align}
+where Latin indices range over spacelike components, $\set{1,2,3}$.
+Blades shown on the left-hand side slot of $\set{\quad,\quad}$ are called \textdef{timelike}, and those in on right-hand side \textdef{spacelike}.

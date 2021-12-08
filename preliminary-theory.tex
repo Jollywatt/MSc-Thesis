@@ -2,21 +2,24 @@
 \label{cha:preliminary-theory}
 
 
-Many of the tools we will develop for the study of spacetime share the property of being associative algebras.
+Many of the tools we will develop for the study of spacetime take place in various associative algebras.
 As well as the geometric algebra of spacetime, we will encounter tensors, exterior forms, quaternions, and other structures in this category.
 Instead of defining each algebra axiomatically as needed, it is easier to develop the general theory and then define each algebra succinctly as a particular quotient of the free algebra.
-This enables the use of the same tools and the same terminology for the analysis of different algebras.
+This enables the use of the same tools and the same terminology thoughout.
 
 Therefore, this section is an overview of the abstract theory of associative algebras, which more generally belongs to \emph{ring theory}.\sidenote{
-	A \textdef{ring} is a field without the requirement that multiplicative inverses exist or that multiplication commutes; a field is a commutative ring in which non-zero elements are invertible.
+	A \textdef{ring} is a field without the requirement that multiplicative inverses exist nor that multiplication commutes.
+	%  a field is a commutative ring in which non-zero elements are invertible.
 }
-Algebras, quotients, gradings, homogeneous and inhomogeneous multivectors are defined.
-Throughout, $\FF$ denotes the underlying field of some vector space.
-(Eventually, $\FF$ will always be taken to be $\RR$, but we may begin in generality.)
+Algebras, quotients, gradings, homogeneous and inhomogeneous tensor and multivectors are defined, as well as standard operations on exterior forms.
 Most definitions in this chapter can be readily generalised by replacing the field $\FF$ with a ring.
+The excitable reader may skip this chapter and refer back as needed.
+
 
 \section{Associative Algebras}
 
+Throughout, $\FF$ denotes the underlying field of some vector space.
+(Eventually, $\FF$ will always be taken to be $\RR$, but we may begin in generality.)
 \begin{definition}
 	\label{def:associative-algebra}
 	An \textdef{associative algebra} $A$ is a vector space equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
