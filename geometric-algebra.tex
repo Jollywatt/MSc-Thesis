@@ -11,7 +11,7 @@ However, in physics, where $V$ is taken to be real and a metric $η$ is usually 
 	The newer name was coined by David Hestenes in the 1970s, who popularised Clifford algebra for physics \cite{hestenes1986ga-unified-language,hestenes1968ga}.
 }
 
-\subsubsection{Construction of the algebra}
+\subsubsection{Construction as a quotient algebra}
 
 Informally put, the geometric algebra is obtained by enforcing the single rule
 \begin{align}
@@ -163,6 +163,59 @@ An efficient way to become familiar with geometric algebras is to study their re
 \section{Rotors and Associated Lie Groups}
 \label{sec:rotors}
 
+
+
+There is a consistent pattern in the algebra isomorphisms listed above.
+Note how the complex numbers $\CC$ are fit for describing $\SO(2)$ rotations in the plane, and the quaternions $\HH$ describe $\SO(3)$ rotations in $\RR^3$.
+Common to both the respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is the identification of each ``imaginary unit'' in $\CC$ or $\HH$ with a \emph{unit bivector} in $\GA(n)$.
+\begin{itemize}
+	\item In $2$d, there is one linearly independent bivector, $𝒆_1𝒆_2$, and one imaginary unit, $i$.
+	\item In $3$d, there are $\dim \GA[2](3) = \binom{3}{2} = 3$ such bivectors, and so three imaginary units $\set{\ii, \jj, \kk}$ are needed.
+	\item In $(1+3)$d, we have $\dim \GA[2](1,3) = \binom{4}{2} = 6$, corresponding to three `spacelike' $\set{\ii, \jj, \kk}$ and three `timelike' $\set{i\ii, i\jj, i\kk}$ units of $\CC ⊗ \HH$.
+\end{itemize}
+The interpretation of a bivector is clear: it generates a rotation through the oriented plane which it spans.
+
+To see how bivectors act as rotations, observe that rotations in the $ℂ$-plane may be described as mappings
+\begin{math}
+	z ↦ e^{θi}z
+,\end{math}
+while $\RR^3$ rotations are described in $\HH$ using a double-sided transformation law,
+\begin{math}
+	% u → e^{\fracθ2\hat n}ue^{-\fracθ2\hat n}
+	u ↦ e^{θ\hat n/2}ue^{-θ\hat n/2}
+,\end{math}
+where $\hat n ∈ \spanof{\ii, \jj, \kk}$ is a unit quaternion defining the plane of rotation.
+Due to the commutativity of $\CC$, the double-sided transformation law is actually general to both $\CC$ and $\HH$.
+
+Similarly, rotations in a geometric algebra are described as
+\begin{align}
+	\label{eqn:rotor-application}
+	% u &↦ \rev{R}uR
+	u &↦ e^{-θ\hat{b}/2}ue^{θ\hat{b}/2}
+,\end{align}
+where $\hat{b} ∈ \GA[2](V, η)$ is a unit bivector.
+Multivectors of the form $R = e^σ$ for $σ ∈ \GA[2](V, η)$ are called \emph{rotors}.
+Immediate advantages to geometric algebra's rotor formalism are clear:
+\begin{itemize}
+	\item \emph{It is general to $n$ dimensions, and to any metric signature.}
+	Rotors describe generalised rotations,\sidenote{a.k.a., proper orthogonal transformations} depending on the metric and algebraic properties of the generating unitbivector $σ$.
+	If $σ^2 < 0$, then $e^σ$ describes a Euclidean rotation; if $σ^2 > 0$, then $e^σ$ is a hyperbolic rotation or \emph{Lorentz boost}.
+
+	\item \emph{Vectors are distinguished from bivectors.}
+	One of the subtler points about quaternions is their transformation properties under reflection.
+	A quaternion `vector' $v = x\ii + y\jj + z\kk$ reflects through the origin as $v \mapsto -v$, but a quaternion `rotor' of the same value is invariant --- vectors and pseudovectors are confused with the same kind of object.
+	Not so in the geometric algebra: vectors are vectors in $\GA[1]$, and $\RR^3$ pseudovectors are bivectors in $\GA[2]$.
+	The price to pay for the introduction of more objects is not a price but a benefit: the generalisation to arbitrary dimensions is immediate and the geometric role of objects becomes clear.
+	\sidenote{
+		See \cite{lasenby2016ga-unified-language,hestenes1986ga-unified-language,chappell2016quat-history} for similarly--impassioned testaments to the elegance of geometric algebra.
+	}
+\end{itemize}
+
+
+
+\subsubsection{The rotor groups}
+
+We will now see more rigorously how the rotor formalism arises.
 An orthogonal transformation in $n$ dimensions may be achieved by the composition of at most $n$ reflections.\sidenote{This is the Cartan--Dieudonné theorem \cite{cartan-dieudonne-theorem}.}
 A reflection may be described in the geometric algebra by conjugation with an invertible vector.
 For instance, the linear map
@@ -226,4 +279,40 @@ Finally, the additional requirement that $RR^† = 1$ defines the restricted spi
 \end{marginfigure}
 %
 The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$.
-Except for $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
+Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
+
+
+\subsubsection{The bivector subalgebra}
+
+The multivector commutator product
+\begin{align}
+	\label{eqn:commutator-prod}
+	A × B ≔ \frac12(AB - BA)
+\end{align}
+forms a Lie bracket on the space of bivectors $\GA[2]$.
+\begin{proof}
+	The commutator product $A \mapsto A × σ$ with a bivector $σ$ is a grade-preserving operation.
+	If $A = \grade[k]{A}$ then $Aσ$ and $σA$ are $\set{k - 2, k, k + 2}$-multivectors.
+	The $k ± 2$ parts are
+	\begin{align}
+		\grade[k ± 2]{Α×σ} = \frac12\qty(\grade[k±2]{Aσ} - \grade[k±2]{σA})
+	.\end{align}
+	However,
+	\begin{math}
+		\grade[k±2]{σA} = \revsign{k ± 2}\grade[k ± 2]{\rev{A}\rev{σ}} = -\revsign{k ± 2}\revsign{k}\grade[k ± 2]{Aσ}
+	\end{math}
+	and the reversion signs\sidenote{
+		Recall from \cref{eqn:reversion-sign} that $\rev{A} = \revsign{k}A$ for a $k$-vector where
+		\begin{math}
+			\revsign{k} = (-1)^{\frac{(k - 1)k}2}
+		.\end{math}
+	} satisfy $s_{k±2}s_k = -1$ for any $k$.
+	Hence, $\grade[k±2]{A×σ} = 0$, leaving only the grade $k$ part, $A × σ = \grade[k]{A × σ}$.
+	Clearly \cref{eqn:commutator-prod} is bilinear and satisfies the Jacobi identity, so $(\GA[2], ×)$ is closed and forms a Lie algebra.
+\end{proof}
+
+Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometric product The exponential of a bivector
+\begin{math}
+	e^σ = 1 + σ + \frac12 σ^2 + \cdots
+\end{math}
+is an even multivector.
