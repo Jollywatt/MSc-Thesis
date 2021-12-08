@@ -279,9 +279,9 @@ One of the simplest algebras to construct as a quotient of the tensor algebra, y
 	.\end{align}
 	The product in $\EA{V}$ is denoted $∧$ and called the \textdef{wedge product}.
 \end{definition}
-The ideal $\gen{𝒖 ⊗ 𝒖} ≡ \gen{𝒖 ⊗ 𝒖 | 𝒖 ∈ V}$ corresponds to the congruence $𝒖 ⊗ 𝒖 \sim 0$ for any vectors $𝒖 ∈ V$.
+The ideal $\gen{𝒖 ⊗ 𝒖} ≡ \gen{𝒖 ⊗ 𝒖 | 𝒖 ∈ V}$ corresponds to the congruence defined by $𝒖 ⊗ 𝒖 \sim 0$ for any vectors $𝒖 ∈ V$.
 The wedge product is also called the \emph{exterior}, \emph{alternating} or \emph{antisymmetric} product.
-The property suggested by its names may easily be seen by expanding the square of a sum;
+The property suggested by its various names is easily seen by expanding the square of a sum;
 \begin{align}
 	(𝒖 + 𝒗)∧(𝒖 + 𝒗) = 𝒖∧𝒖 + 𝒖∧𝒗 + 𝒗∧𝒖 + 𝒗∧𝒗
 .\end{align}
@@ -297,8 +297,7 @@ By associativity, it follows that $𝒗_1 ∧ 𝒗_2 ∧ \cdots ∧ 𝒗_k$ vani
 	\end{proof}
 }
 
-The ideal $\gen{𝒖 ⊗𝒖}$ is homogeneous with respect to the $\ZZ$-grading of the parent tensor algebra.
-Therefore, $\EA{V}$ is itself $\ZZ$-graded.
+The ideal $\gen{𝒖 ⊗𝒖}$ is homogeneous with respect to the $\ZZ$-grading of the parent tensor algebra; hence $\EA{V}$ is itself $\ZZ$-graded.
 In particular, it is the direct sum of fixed-grade subspaces
 \begin{align}
 	\EA{V} = \bigoplus_{k=0}^{\dim V} \EA[k]{V}
@@ -306,13 +305,17 @@ In particular, it is the direct sum of fixed-grade subspaces
 	\EA[k]{V} = \spanof{𝒗_1 ∧ 𝒗_2 ∧ \cdots ∧ 𝒗_k | 𝒗_i ∈ V}
 ,\end{align}
 and the wedge product respects grade, $(\EA[p]{V}) ∧ (\EA[q]{V}) \subseteq \EA[p + q]{V}$.
-By counting the number of possible linearly independent sets of $k$ vectors in $\dim V$ dimensions, it follows that
+By counting the number of possible linearly independent sets of $k$ vectors in $\dim V$ dimensions, it follows that in base dimension $\dim V = n$,
 \begin{align}
-	\dim\EA[k]{V} = \binom{\dim V}{k}
+	\dim\EA[k]{V} = \binom{n}{k}
 ,	\qqtext{and hence}
-	\dim\EA{V} = 2^{\dim V}
+	\dim\EA{V} = 2^{n}
 .\end{align}
-Thus, the exterior algebra with base dimension $n$ is $2^n$-dimensional.
+In particular, note that $\dim \EA[k]{V} = \dim \EA[n - k]{V}$.
+Elements of the one-dimensional subspace $\EA[n]{V}$ are called \textdef{pseudoscalars}.\sidenote{
+	The prefix `pseudo' means $k \mapsto n - k$.
+	Hence, a pseudovector is an $(n - 1)$-vector, etc.
+}
 
 
 \subsection{As antisymmetric tensors}
@@ -335,7 +338,7 @@ The linear map $\op{Sym}^- : \TA{V} → S$ is not an algebra homomorphism with r
 \begin{math}
 	\op{Sym}^-(𝒖⊗𝒗) ≠ \op{Sym}^-(𝒖)⊗\op{Sym}^-(𝒗) = 𝒖 ⊗ 𝒗
 .\end{math}
-However, it is if we instead equip $S$ with the antisymmetrising product $∧ : S × S → S$ defined by
+However, it \emph{is} if we instead equip $S$ with the antisymmetrising product $∧ : S × S → S$ defined by
 \begin{align}
 	\label{eqn:wedge-as-antisymm}
 	a ∧ b ≔ \op{Sym}^-(a ⊗ b)
@@ -356,22 +359,26 @@ Furthermore, note that the kernel of $\op{Sym}^-$ consists of tensor products of
 	\ker \op{Sym}^- = \spanof{\etc{𝒖_\i}⊗k | k ∈ \NN, \text{$\set{𝒖_i}$ linearly dependent}}
 ,\end{align}
 which is exactly the ideal $\gen{𝒖⊗𝒖}$.
-Therefore, the left-hand side of \cref{eqn:iso-of-antisym} is the exterior algebra of \cref{def:exterior-algebra}, and we have an algebra isomorphism
+Therefore, the right-hand side of \cref{eqn:iso-of-antisym} is identically the exterior algebra of \cref{def:exterior-algebra}.
+Hence, we have an algebra isomorphism
 \begin{math}
-	\EA{V} \cong \op{Sym}^-(\TA{V})
+	\op{Sym}^-(\TA{V}) \cong \EA{V}
 ,\end{math}
-where the right-hand side is equipped with the product \eqref{eqn:wedge-as-antisymm}.
+where the left-hand side is equipped with the product \eqref{eqn:wedge-as-antisymm}.
 This gives an alternative construction of the exterior algebra.
 
 \subsubsection{Note on conventions}
 
-The factor of $\frac1{k!}$ present in \cref{eqn:(anti)symmetriser} is not necessary for the above demonstration that $\EA{V} \cong \op{Sym}^-(\TA{V})$.
+The factor of $\frac1{k!}$ present in \cref{eqn:(anti)symmetriser} is not necessary for the above fact that
+\begin{math}
+	\op{Sym}^-(\TA{V}) \cong \EA{V}
+\end{math}
 Indeed, some authors omit the normalisation factor, which has the effect of changing \cref{eqn:wedge-as-antisymm} to
 \begin{align}
 	a ∧ b = \frac{(p + q)!}{p!q!}\op{Sym}^-(a ⊗ b)
 \end{align}
-for $a ∈ \op{Sym}^-(\TA[p]{V})$ and $b ∈ \op{Sym}^-(\TA[q]{V})$, in terms of our convention \eqref{eqn:(anti)symmetriser}.
-The different definitions of $∧$ as an antisymmetrising product lead to different identifications of $\EA{V}$ with $S$, as clarified in \cref{tbl:wedge-conventions}.
+for $a$ and $b$ of respective grades $p$ and $q$, written in terms of our convention \eqref{eqn:(anti)symmetriser}.
+The different normalisations of $∧$ as an antisymmetrising product lead to distinct identifications of multivectors in $\EA{V}$ with tensors in $S \subset \TA{V}$, as clarified in \cref{tbl:wedge-conventions}.
 \begin{table}[h]
 	\centering
 	\setlength{\tabcolsep}{20pt}
@@ -387,7 +394,7 @@ The different definitions of $∧$ as an antisymmetrising product lead to differ
 	\caption{
 		Different embeddings of $\EA{V}$ into $\TA{V}$.
 		We employ the Kobayashi--Nomizu convention as this is coincides with the wedge product of geometric algebra.
-		The Spivak convention is dominant for differential forms in physics.
+		The Spivak convention is dominant for exterior differential forms in physics.
 	}
 	\label{tbl:wedge-conventions}
 \end{table}
@@ -395,13 +402,13 @@ The different definitions of $∧$ as an antisymmetrising product lead to differ
 
 \subsection{Exterior forms}
 
-The exterior algebra is most frequently encountered by physicists in the context of \emph{exterior (differential) forms}, which are alternating\sidenote{
-	An \textdef{alternating} linear map is one which changes sign upon any transposition of any pair of arguments.
-	E.g., if $f$ is alternating, then $f(𝒖, 𝒗, 𝒘) = -f(𝒗, 𝒖, 𝒘)$.
+The exterior algebra is most frequently encountered by physicists as an operation on \emph{exterior (differential) forms}, which are alternating\sidenote{
+	An \textdef{alternating} linear map is one which changes sign upon transposition of any pair of arguments.
+	% E.g., if $f$ is alternating, then $f(𝒖, 𝒗, 𝒘) = -f(𝒗, 𝒖, 𝒘)$.
 } multilinear maps.
 
 We may wish to use the exterior algebra $\EA{V^*}$ over the dual space of linear maps $V → \RR$ as a model for exterior forms.
-Using the dual basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\etc{i_\i}{}k} \etc{\ve^{i_\i}}∧k$, and each component acts on $\etc{𝒖_\i}⊗k ∈ \TA[k]{V}$ as
+Using a basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\etc{i_\i}{}k} \etc{\ve^{i_\i}}∧k$, and each component acts on $\etc{𝒖_\i}⊗k ∈ \TA[k]{V}$ as
 \begin{align}
 	\label{eqn:poor-mans-exterior-form}
 	(\etc{\ve^{i_\i}}∧k)(\etc{𝒖_\i}⊗k)
@@ -414,11 +421,11 @@ However, this differs from the standard definition of exterior forms in two impo
 	This prevents the proper extension of $\EA{V^*}$ to non-Abelian vector-valued forms, where the values $\ve^i(𝒖_j)$ may not commute.
 	\item Trivially, we insist on the the Kobayashi---Nomizu convention of normalisation factor for $\EA{V^*}$; but the Spivak convention for exterior forms is much more standard in physics.
 \end{enumerate}
-Thus, we define exterior forms separately in order to match convention.
+Thus, we define exterior forms separately from the exterior algebra.
 
 \begin{definition}
-	For a vector space $V$, a \textdef{$k$-form} $φ ∈ \forms[k](V)$ is an alternating multilinear map $φ : \TA[k]{V} → \RR$.
-	For another vector space $A$, an \textdef{$A$-valued $k$-form} $φ ∈ \forms[k](V, A)$ is such a map $φ : \TA[k]{V} → A$ into $A$.
+	For a vector space $V$ over $\FF$, a \textdef{$k$-form} $φ ∈ \forms[k](V)$ is an alternating multilinear map $φ : \TA[k]{V} → \FF$.
+	For another vector space $A$, an \textdef{$A$-valued $k$-form} $φ ∈ \forms[k](V, A)$ is such a map $φ : \TA[k]{V} → A$ with codomain $A$.
 \end{definition}
 The evaluation of a form is denoted $φ(\etc{𝒖_\i}⊗k)$ or $φ(\etc{𝒖_\i},k)$, and the wedge product of a $p$-form $φ$ and $q$-form $ϕ$ is defined (in the Spivak convention)
 \begin{align}
@@ -433,17 +440,19 @@ To see this, choose a basis $\set{\dx^μ}$ of $\forms(V)$, and compare to \cref{
 \\	&= \det [\dx^{μ_m}(𝒖_n)]_{mn}
 .\end{align}
 
-If $φ, ϕ ∈ \forms(V, A)$ are $A$-valued forms, where $A$ is equipped with a bilinear product $⊛ : A × A → A$, then scalar multiplication may be replaced this product, so that
+If $φ, ϕ ∈ \forms(V, A)$ are $A$-valued forms, where $A$ is equipped with a bilinear product $⊛ : A × A → A$, then scalar multiplication may be replaced by $⊛$ so that
 \begin{align}
 	(φ ∧ ϕ)(\etc{𝒖_\i} ⊗ k) = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_\i} ⊗ p) ⊛ ϕ(\etc{𝒖_\i} ⊗ q)
 .\end{align}
-The product $⊛$ need not be commutative or associative; in particular, we may have Lie algebra--valued forms.
+The product $⊛$ need not be commutative nor associative; in particular, we may have Lie algebra--valued forms.
 For example, if $φ, ϕ ∈ \forms[1](V, \liealg g)$ are Lie algebra--valued, then
 \begin{align}
 	(φ ∧ ϕ)(𝒖, 𝒗) = [φ(𝒖), ϕ(𝒗)] - [φ(𝒗), ϕ(𝒖)]
 ,\end{align}
 where $[\phantom{𝒖}, \phantom{𝒖}] : \liealg g × \liealg g → \liealg g$ is the Lie bracket.
-Note that this implies that $φ ∧ φ$ does not necessarily vanish for non-Abelian forms --- in the case above we have $(φ ∧ φ)(𝒖, 𝒗) = 2[φ(𝒖), φ(𝒗)]$.
+Note that this implies that $φ ∧ φ$ does not necessarily vanish for non-Abelian forms.\sidenote{
+	E.g., in the case above we have $(φ ∧ φ)(𝒖, 𝒗) = 2[φ(𝒖), φ(𝒗)]$.
+}
 % \begin{align}
 % 	φ ∧ ϕ = \op{Alt}(φ ⊗ ϕ)
 % \end{align}
@@ -481,7 +490,7 @@ With respect to a basis $\set{\ve_i}$ of $V$, the metric components
 	η_{ij} = \ip{\ve_i, \ve_j}
 \end{math}
 are defined.
-Non-degeneracy means that $\det η ≠ 0$ when viewing $η = [η_{ij}]$ as a matrix, and in this case the matrix inverse $η^{ij}$ is defined, and satisfies $η^{ik}η_{kj} = δ^i_j$.
+Non-degeneracy means that $\det η ≠ 0$ when viewing $η = [η_{ij}]$ as a matrix, and in this case the matrix inverse $η^{ij}$ is also defined and satisfies $η^{ik}η_{kj} = δ^i_j$.
 
 A vector space $V$ together with a metric $η$ is called an \textdef{inner product space} $(V, η)$.
 Alternatively, instead of a metric, an inner product space may be constructed with a quadratic form:
@@ -513,14 +522,14 @@ The dual space $V^* ≔ \set{f : V → \FF | \text{$f$ linear}}$ of a vector spa
 Convention dictates that components of vectors be written superscript, $𝒖 = u^i\ve_i ∈ V$, and covectors subscript, $φ = φ_i\ve^i ∈ V^*$, for bases $\set{\ve_i} \subset V$ and $\set{\ve^i} \subset V^*$.
 
 A metric $η$ on $V$ defines an isomorphism between itself and its dual space.
-Together known as the \textdef{musical isomorphisms}, the map $\flat : V → V^*$ and its inverse $\sharp : V^* → V$ are defined by
+Collectively known as the \textdef{musical isomorphisms}, the map $\flat : V → V^*$ and its inverse $\sharp : V^* → V$ are defined by
 \begin{align}
 	𝒖^\flat(𝒗) = \ip{𝒖, 𝒗}
 	\qqtext{and}
 	\ip{φ^\sharp, 𝒖} = φ(𝒖)
 \end{align}
 for $𝒖,𝒗 ∈ V$ and $φ ∈ V^*$.
-The names become justified when working with a basis, where the relations
+The names become justified when working with a basis; the relations
 \begin{align}
 	(𝒖^\flat)_i = η_{ij}𝒖^j
 	\qqtext{and}
@@ -528,17 +537,18 @@ The names become justified when working with a basis, where the relations
 \end{align}
 show that $\flat$ lowers indices, while $\sharp$ raises them.
 
-The basis $\set{\ve_i}$ also defines a dual basis $\set{\ve^i}$ of $V^*$ via the metric by
+The basis $\set{\ve_i}$ also defines a \textdef{dual basis $\set{\ve^i} \subset V^*$ of $V$} via the metric by
 \begin{math}
 	\ve^i ≔ η^{ij}\ve_j^\flat
 .\end{math}
 Note that basis vectors and covectors defined in this way do not exist in the same vector space, but are related by their evaluation on one another via $\ve^i(\ve_j) = δ^i_j$.
-In some contexts, given a basis $\set{\ve_i}$ of $V$, we will define a dual basis $\set{\ve^i}$ of $V$ (not of $V^*$).
+In some contexts, given a basis $\set{\ve_i}$ of $V$, we will define a dual basis $\set{\ve^i} \subset V$ (not in $V^*$).
 By this we mean the dual basis vectors are instead defined as
 \begin{math}
 	\ve^i ≔ η^{ij}\ve_j
 ,\end{math}
 relating to the non-dual basis vectors via $\ip{\ve^i, \ve_j} = δ^i_j$.
+We use both senses of dual basis, but the distinction can often be safely ignored.
 
 %  or $\ve^i = η^{ij}\ve_j$.
 
@@ -550,7 +560,7 @@ In an exterior algebra $\EA{V}$ with a metric defined on $V$, there is an induce
 	&= \sum_{σ ∈ S_k} (-1)^σ \etc{\ip{𝒖_\i, 𝒗_{σ(\i)}}}{}k
 \\	&= \det [\ip{𝒖_m, 𝒖_n}]_{mn}
 .\end{align}
-In particular, a metric on $\EA{V}$ defines a notion of magnitude of pseudoscalars.
+In particular, a metric on $\EA{V}$ defines a magnitude for pseudoscalars.
 \begin{definition}
 	Let $V$ be an $n$-dimensional vector space with a metric.
 	The \textdef{volume element} $\vol$ of the metrical exterior algebra $\EA{V}$ is the unique (up to sign) $n$-vector satisfying $\ip{\vol, \vol} = 1$.
