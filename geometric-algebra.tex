@@ -311,8 +311,27 @@ forms a Lie bracket on the space of bivectors $\GA[2]$.
 	Clearly \cref{eqn:commutator-prod} is bilinear and satisfies the Jacobi identity, so $(\GA[2], ×)$ is closed and forms a Lie algebra.
 \end{proof}
 
-Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometric product The exponential of a bivector
+Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometric product, the exponential
 \begin{math}
 	e^σ = 1 + σ + \frac12 σ^2 + \cdots
 \end{math}
-is an even multivector.
+of a bivector is an even multivector.
+Furthermore, note that the reverse $\rev{(e^σ)} = e^{\rev{σ}} = e^{-σ}$ is the inverse, and also that $e^σ$ is continuously connected to the identity by the path $e^{λσ}$ for $λ ∈ [0, 1]$.
+Therefore, $e^σ ∈ \op{Spin}^+$ is a rotor, and we have a Lie algebra--Lie group correspondence shown in \cref{fig:bivector-liealg}.
+Thus, both the rotor groups and their Lie algebras are directly represented within the mother algebra $\GA(p, q)$.
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzcd}[column sep=small]
+		\op{Spin}^+(p, q) & \SO^+(p, q) \\
+		\GA[2](p, q) & \liealg{so}(p, q)
+		\arrow["\exp"{description}, from=2-1, to=1-1]
+		\arrow["\cong"{description}, draw=none, from=2-1, to=2-2]
+		\arrow["\exp"{description}, from=2-2, to=1-2]
+		\arrow[two heads, from=1-1, to=1-2]
+	\end{tikzcd}
+	\caption{
+		The Lie algebras $\liealg{so}(p, q)$ and $\GA[2](p, q)$ under $×$ are isomorphic, and are associated respectively to $\SO^+(p, q)$ and its universal double cover $\op{Spin}^+(p, q)$.
+	}
+	\label{fig:bivector-liealg}
+\end{figure}
