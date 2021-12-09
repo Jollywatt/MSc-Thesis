@@ -1,8 +1,0 @@
-Injectivity
-Poincaré
-spacetime
-monoid
-multivectors
-covector
-covectors
-Covectors
