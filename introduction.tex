@@ -13,11 +13,11 @@ In this General Theory of Relativity, gravitation is identified with the curvatu
 Both theories coincide locally when confined to sufficiently small extents of spacetime, over which the effects of curvature are negligible.
 In \cref{part:1}, we will focus on special relativity, leaving gravity and curvature to \cref{part:2}.
 
-In acknowledgement of the Erlangen programme,\sidenote{
+In reference to the Erlangen programme,\sidenote{
 	Introduced by Felix Klein in 1872 \cite{klein1893erlangen}, the Erlangen program is the characterisation of geometries (Euclidean, hyperbolic, projective, etc.) by their symmetry groups and the properties invariant under those groups.
 	E.g., Euclidean geometry studies the invariants of rigid transformations.
 } the study of local spacetime geometry amounts to the study of its intrinsic symmetries.
-These symmetries form the Poincaré group, and consist of spacetime translations and Lorentz transformations, the latter being the extension of the group of rotations of Euclidean space to the relativistic rotations of spacetime.
+These symmetries form the Poincaré group, and consist of spacetime translations and Lorentz transformations, the latter being the extension of the rotation group for Euclidean space to relativistic rotations of spacetime.
 The standard matrix representation of the Lorentz group, $\SO^+(1, 3)$, is the connected component of the orthogonal group
 \begin{align}
 	\op{O}(1,3) = \set{\lin Λ ∈ \GL(\RR^4) | \lin Λ\trans\lin η\lin Λ = \lin η}
@@ -30,13 +30,21 @@ Among these tools is the \emph{geometric algebra}, invented\sidenote{
 	Clifford algebra was independently discovered by Rudolf Lipschitz two years later \cite{lipschitz1880clifford-alg}. 
 	He was the first to use them to the study the orthogonal groups.
 } by William Clifford in 1878 \cite{clifford1878grassmann}.
-Geometric algebra remains largely unknown in the physics community, despite arguably being far superior for the analysis of rotations than traditional matrix techniques.
-It is informative to glean some of the history that led to this (perhaps unfortunate) state of affairs.
+Geometric algebra remains largely unknown in the physics community, despite arguably being far superior for the description of rotations than traditional matrix techniques.
+It is good to glean some of the history that led to this (perhaps unfortunate) state of the field.
 
 \subsubsection{The quest for an optimal formalism for rotations}
 
 Mathematics has seen the invention of a variety of vector formalisms since the 1800s, and the question of which is best suited to physics has a long contentious history.
 
-The vector algebra ``war'' of 1890--1945 saw William Hamilton's prized quaternion algebra $\HH$, hailed as the optimal tool for describing rotations in $\RR^3$, struggle for popularity before being eventually left to gather dust as an old-fashioned curiosity.
+Complex numbers had been known for a long time\sidenote{
+	Since Wessel, Argand and Gauss in the 1700s \cite{chappell2016quat-history}.
+} to be useful descriptions of planar rotations.
+William Hamilton's efforts to extend the same ideas into three dimensions by inventing a ``multiplication of triples'' bore fruition in 1843, when the quaternion algebra $\ii^2 = \jj^2 = \kk^2 = \ii\jj\kk = -1$ came to him in revelation.
+In following decades, William Gibbs developed the vector calculus of $\RR^3$ with the usual vector cross and dot products.
+The ensuing vector algebra ``war'' of 1890--1945 saw Hamilton's prized\sidenote{
+	Hamilton had dedicated following in the time that quaternions were in fasion: the \emph{Quaternion Society} existed from 1895 to 1913.
+} quaternion algebra $\HH$, hailed as the optimal tool for describing $3$d rotations, struggle for popularity against Gibbs' easier-to-visualise vector calculus.
+Today, quaternions are generally regarded in physics as an old-fashioned mathematical curiosity.
 
 
