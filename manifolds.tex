@@ -1,1 +1,63 @@
 \chapter{The Failure of Fields}
+
+
+
+
+
+
+
+\chapter{Fibre Bundles}
+\label{cha:fibre-bundles}
+
+\todo{Treating physical things as fields} would suggest that all values are directly comparable, making expressions like $f(x) + f(y) ∈ A$ geometrically meaningful for different points $x,y ∈ ℳ$.
+However, an important lesson from physical theories like general relativity is that it is very often beneficial to distinguish between codomains \emph{at each point in the domain}.
+
+\begin{marginfigure}
+	\centering
+	\includefigure[0.6\columnwidth]{sphere}
+	\caption{
+		Vectors in different tangent spaces, and their basis-dependent representation as an $\RR^2$-valued field.
+	}
+	\label{fig:ball}
+\end{marginfigure}
+
+This can be motivated with the simple example of a fluid flowing on a sphere:
+The instantaneous fluid velocity at a point is a vector lying in the sphere's tangent plane at that point.
+If the fluid flow is given as a field $f : \Sphere^2 → \RR^2$, then any two velocity vectors exist in the ``same'' space, even when \emph{geometrically} they do not (\cref{fig:ball}).
+This is more than a purely philosophical point: the fluid flow's representation as a field $f : \Sphere^2 → \RR^2$ is dependent on the choice of basis, i.e., the way in which the single codomain $\RR^2$ is identified with each tangent plane on the sphere.
+We would do better with a more geometrical representation of the vector field which is independent of any choice of basis, viewing the fluid velocities at different points as existing in different spaces.
+
+This leads to the formulation of a tangent ``bundle'' $\TT \Sphere^2$, where all the tangent planes of $\Sphere^2$ are collected in a disjoint union forming a manifold.
+The vector field on the sphere now becomes a ``section'' of $\TT \Sphere^2$, which is a map $f : \Sphere^2 → \TT \Sphere^2$ satisfying some conditions.
+The tangent bundle is a special case of a ``fibre bundle'', which is a manifold consisting of disjoint copies of a space (called the ``fibre'') taken at every point in a base manifold.
+
+
+\begin{definition}
+	\label{def:fibre-bundle}
+	A \textdef{fibre bundle} $\fibrebundle[π] F ℱ ℳ$ consists of
+	\begin{itemize}
+		% \item a \textdef{fibre manifold} $A$;
+		\item a \textdef{bulk manifold} $ℱ$;
+		\item a \textdef{base manifold} $ℳ$; and
+		\item a surjection $π : ℱ → ℳ$, the \textdef{projection}, such that
+		\item the inverse image $F_x ≔ π^{-1}(x)$ of a base point $x ∈ ℳ$ is homeomorphic to the \textdef{fibre} $F$.
+	\end{itemize}
+\end{definition}
+
+
+\begin{marginfigure}
+	\includefigure[\columnwidth]{fibre-bundle}
+	\caption{
+		(a) A field $f : ℳ → F$, where values at any point can be compared.
+		(b) A fibre bundle $\fibrebundle F ℱ ℳ$ with a section $f ∈ \secs(ℱ)$ whose individual fibres $F$ are labelled by base point in $ℳ$.
+	}
+\end{marginfigure}
+
+
+
+
+The definition above, and all that follow, take place in the category of manifolds.
+This means all maps between manifolds \emph{are assumed to be continuous}.
+Furthermore, if the qualifier ``smooth'' is present, then the objects exist in the category of \emph{smooth manifolds} in which all maps are smooth (i.e., infinitely differentiable).
+
+Thus, the projection $π : 𝒜 → ℳ$ in \cref{def:fibre-bundle} is required to be continuous; and in a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.

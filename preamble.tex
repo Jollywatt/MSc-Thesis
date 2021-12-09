@@ -2,7 +2,7 @@
 
 \documentclass[
 	paper=a4,
-	fontsize=12pt,
+	fontsize=13pt,
 	open=any,
 	headings=twolinechapter,
 ]{scrbook}
@@ -117,6 +117,18 @@
 \usepackage{caption}
 \setcapindent{0pt} % remove indentation for multiline (table) captions
 \captionsetup{font=footnotesize}
+
+
+
+
+% FIGURES
+
+\newcommand{\includefigure}[2][\columnwidth]{
+	\graphicspath{{figures/}}
+	\def\svgwidth{#1}
+	\input{figures/#2.pdf_tex}
+}
+
 
 
 % REFERENCING

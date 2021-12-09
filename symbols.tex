@@ -61,29 +61,6 @@
 % transpose superscript
 \newcommand{\trans}{^{\mkern-1.5mu\mathsf{T}}}
 
-% geometric algebra
-\newcommand{\grade}[2][]{\left⟨ #2 \right⟩_{#1}}
-
-\newcommand{\vol}{\mathds{I}}
-
-\newcommand{\rev}[1]{#1^\dagger}
-\newcommand{\revsign}[1]{s_{#1}}
-
-% differential geometry
-\newcommand{\TT}{\mathrm{T}}
-
-% injection, surjection, bijection
-\newcommand{\inject}{\hookrightarrow} % ↪︎
-\newcommand{\surject}{\twoheadrightarrow} % ↠
-\usepackage{trimclip}
-\newcommand{\biject}{\mathrel{%
-\mathrlap{\clipbox*{0 -1ex {0.5\width} {\height}}{$\inject$}}%
-\surject}}
-
-% fibre bundle A ↪︎ B ↠ C
-\newcommand{\fibrebundle}[4][]{#2 \inject #3 \overset{#1}{\surject} #4}
-
-
 
 
 % algebras
@@ -104,3 +81,44 @@
 	#3 \if,#3 \dots \else \cdots \fi #3
 	{\def\i{#4} #2}
 }
+
+
+% geometric algebra
+\newcommand{\grade}[2][]{\left⟨ #2 \right⟩_{#1}}
+
+\newcommand{\vol}{\mathds{I}}
+
+\newcommand{\rev}[1]{#1^\dagger}
+\newcommand{\revsign}[1]{s_{#1}}
+
+
+
+
+
+
+
+% DIFFERENTIAL GEOMETRY
+
+
+% topological sphere
+\newcommand{\Sphere}{\mathscr{S}}
+
+
+% tangent bundle, vertical bundle
+\DeclareMathOperator{\TT}{T}
+\DeclareMathOperator{\VV}{V}
+
+% section of bundle
+\DeclareMathOperator{\secs}{Γ}
+
+% injection, surjection, bijection
+\newcommand{\inject}{\hookrightarrow} % ↪︎
+\newcommand{\surject}{\twoheadrightarrow} % ↠
+\usepackage{trimclip}
+\newcommand{\biject}{\mathrel{%
+\mathrlap{\clipbox*{0 -1ex {0.5\width} {\height}}{$\inject$}}%
+\surject}}
+
+% fibre bundle A ↪︎ B ↠ C
+\newcommand{\fibrebundle}[4][]{#2 \inject #3 \overset{#1}{\surject} #4}
+
