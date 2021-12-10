@@ -72,6 +72,7 @@ The tangent bundle is a special case of a ``fibre bundle'', which is a manifold 
 	\end{itemize}
 \end{definition}
 
+Since \cref{def:fibre-bundle} takes place in the category of manifolds, the projection $π : 𝒜 → ℳ$ is continuous; and in a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.
 
 \begin{marginfigure}
 	\includefigure[\columnwidth]{fibre-bundle}
@@ -85,4 +86,47 @@ The tangent bundle is a special case of a ``fibre bundle'', which is a manifold 
 
 
 
-Thus, the projection $π : 𝒜 → ℳ$ in \cref{def:fibre-bundle} is required to be continuous; and in a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.
+
+\subsubsection{Trivialisations and coordinates}
+
+The bulk $ℱ$ of a fibre bundle $\fibrebundle F ℱ ℳ$ is itself a manifold (of dimension $\dim ℱ = \dim ℳ + \dim F$) so we may always prescribe local coordinates on $ℱ$.
+If we already have coordinates $\set{x^μ}$ on the base $ℳ$ and $\set{x^a}$ on a fibre $F$, then we often want to use the same coordinates $\set{x^μ, x^a}$ to describe the bulk $ℱ$.
+This first requires a way of continuously splitting the bulk $ℱ → ℳ × F$ into its base and fibre ``components'', in a way which respects the fibred structure of the bundle.
+This splitting is known as a \emph{trivialisation} of the bundle.
+\begin{definition}
+	A \textdef{trivialisation} of a fibre bundle $\fibrebundle[π] F ℱ ℳ$ is a homeomorphism $φ : ℱ → ℳ × F$ such that
+	\begin{math}
+		\op{pr}_1 ∘ φ = π
+	.\end{math}
+\end{definition}
+It is not always possible to find a trivialisation of a fibre bundle, and if it is, the bundle is called a \textdef{trivial fibre bundle} and there may be different possible trivialisations.\sidenote{
+	A simple non-trivial fibre bundle is the Möbius strip, viewed as a bundle over the circle $\Sphere^1$ with fibre $[0, 1]$.
+	The trivial bundle $\Sphere^1 × [0, 1]$ describes a strip without a twist.
+}
+
+However, it is always possible trivialise \emph{locally}.
+That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a trivialisation.
+Hence, it is always possible to assign the local coordinates $\set{x^μ, x^a}$ to the bulk of a fibre bundle, where $x^μ$ are coordinates on the base and $x^a$ are coordinates on the fibres, and where $x^μ$ do not vary along the fibres.
+
+
+
+
+
+
+
+
+\subsubsection{Sections of fibre bundles}
+
+
+In the language of fibre bundles, a field $f : ℳ → A$ becomes a \emph{section}, which is a map $f : ℳ → 𝒜$ into the bulk $𝒜$ such that $f(x) ∈ A_x$.
+\begin{definition}
+	A \textdef{section} $f$ of a fibre bundle $\fibrebundle[π] F ℱ ℳ$ is a right-inverse of $π$.
+	The space of sections is denoted
+	\begin{align}
+		\secs(ℱ) = \set{f : ℳ → ℱ | π∘f = \op{id}}
+	.\end{align}
+\end{definition}
+(Again, sections $f ∈ \secs(ℱ)$ are assumed continuous, and \textdef{smooth sections} are sections of smooth fibre bundles for which $f$ is smooth.)
+
+
+For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is a section $𝒖 ∈ \secs(\TT\Sphere^2)$ of the tangent bundle, with a single vector at $x ∈ \Sphere^2$ is denoted $𝒖|_x ∈ \TT_x\Sphere^2$.
