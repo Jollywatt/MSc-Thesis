@@ -21,6 +21,11 @@
 
 \usepackage{layout}
 
+\usepackage[strict]{changepage}
+\newenvironment{fullwidth}
+  {\begin{adjustwidth*}{}{\dimexpr-\marginparwidth-\marginparsep\relax}\vspace{-\baselineskip}}
+  {\end{adjustwidth*}}
+
 
 \usepackage{mparhack} % improved margin note positioning
 \usepackage{sidenotes}

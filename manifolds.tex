@@ -55,9 +55,9 @@ If the fluid flow is given as a field $f : \Sphere^2 → \RR^2$, then any two ve
 This is more than a purely philosophical point: the fluid flow's representation as a field $f : \Sphere^2 → \RR^2$ is dependent on the choice of basis, i.e., the way in which the single codomain $\RR^2$ is identified with each tangent plane on the sphere.
 We would do better with a more geometrical representation of the vector field which is independent of any choice of basis, viewing the fluid velocities at different points as existing in different spaces.
 
-This leads to the formulation of a tangent ``bundle'' $\TT \Sphere^2$, where all the tangent planes of $\Sphere^2$ are collected in a disjoint union forming a manifold.
-The vector field on the sphere now becomes a ``section'' of $\TT \Sphere^2$, which is a map $f : \Sphere^2 → \TT \Sphere^2$ satisfying some conditions.
-The tangent bundle is a special case of a ``fibre bundle'', which is a manifold consisting of disjoint copies of a space (called the ``fibre'') taken at every point in a base manifold.
+This leads to the formulation of a tangent \emph{bundle} $\TT \Sphere^2$, where all the tangent planes of $\Sphere^2$ are collected in a disjoint union forming a \emph{bulk manifold}.
+The vector field on the sphere now becomes a \emph{section} of $\TT \Sphere^2$, which is a map $f : \Sphere^2 → \TT \Sphere^2$ satisfying some conditions.
+The tangent bundle is a special case of a \emph{fibre bundle}, which is a manifold consisting of disjoint copies of a space (called the \emph{fibre}) taken at every point in a base manifold.
 
 
 \begin{definition}
@@ -72,7 +72,8 @@ The tangent bundle is a special case of a ``fibre bundle'', which is a manifold 
 	\end{itemize}
 \end{definition}
 
-Since \cref{def:fibre-bundle} takes place in the category of manifolds, the projection $π : 𝒜 → ℳ$ is continuous; and in a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.
+\Cref{def:fibre-bundle} takes place in the category of manifolds, so the projection $π : ℱ → ℳ$ is continuous.
+In a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.
 
 \begin{marginfigure}
 	\includefigure[\columnwidth]{fibre-bundle}
@@ -106,7 +107,7 @@ It is not always possible to find a trivialisation of a fibre bundle, and if it 
 
 However, it is always possible trivialise \emph{locally}.
 That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a trivialisation.
-Hence, it is always possible to assign the local coordinates $\set{x^μ, x^a}$ to the bulk of a fibre bundle, where $x^μ$ are coordinates on the base and $x^a$ are coordinates on the fibres, and where $x^μ$ do not vary along the fibres.
+Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}$ to the bulk of a fibre bundle, where $x^μ$ are coordinates on the base and $x^a$ are coordinates on the fibres, such that $x^μ$ do not vary along the fibres.
 
 
 
@@ -118,7 +119,7 @@ Hence, it is always possible to assign the local coordinates $\set{x^μ, x^a}$ t
 \subsubsection{Sections of fibre bundles}
 
 
-In the language of fibre bundles, a field $f : ℳ → A$ becomes a \emph{section}, which is a map $f : ℳ → 𝒜$ into the bulk $𝒜$ such that $f(x) ∈ A_x$.
+In the language of fibre bundles, a field $f : ℳ → F$ becomes a \emph{section}, which is a ``vertical'' map $f : ℳ → ℱ$ into the bulk $ℱ$ such that $f(x) ∈ F_x$.
 \begin{definition}
 	A \textdef{section} $f$ of a fibre bundle $\fibrebundle[π] F ℱ ℳ$ is a right-inverse of $π$.
 	The space of sections is denoted
