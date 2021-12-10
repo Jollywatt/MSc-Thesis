@@ -1,0 +1,92 @@
+\chapter{Calculus in Flat Space(time)}
+
+\todo{
+	\begin{enumerate}
+		\item Exterior derivative and vector derivative
+		\item Stokes' theorem and the GA equivalent
+		\item Maxwell's equations
+	\end{enumerate}
+}
+
+
+\section{Integration}
+
+
+\subsection{Exterior Calculus}
+
+\begin{theorem}[Stokes' theorem in $\RR^n$]
+	\label{thm:flat-stokes}
+	If $R ⊆ \RR^n$ is a compact $k$-dimensional hypersurface with boundary $∂R$, then a smooth differential form $ω ∈ \forms[k - 1](R)$ satisfies
+	\begin{align}
+		\label{eqn:stokes}
+		\int_R \dd ω = \int_{∂R} ω
+	.\end{align}
+\end{theorem}
+\begin{proof}
+	Since $R$ is a $k$-dimensional region with boundary, every point $x ∈ R$ has a neighbourhood diffeomorphic to a neighbourhood of the origin in either $\RR^k$ or $H^k ≔ [0, ∞) ⊕ \RR^{k - 1}$, depending on whether $x$ is an interior point or a boundary point, respectively.
+	Let $\set{U_i}$ be a cover of $R$ consisting of such neighbourhoods.
+	Since $R$ is compact, we may assume $\bigcup_{i=1}^N \set{U_i} = R$ to be a finite covering.
+	Thus, we have finitely maps $h_i : U_i → X$ where $X$ is either $\RR^k$ or the half-space $H^k$, where $U_i \cong h_i(U_i)$ are diffeomorphic.
+
+	Finally, let $\set{ϕ_i : R → [0, 1]}$ be a partition of unity subordinate to $\set{U_i}$, so that $\set{x ∈ R | ϕ_i(x) > 0} ⊆ U_i$ and $ω = \sum_{i=1}^N ϕ_iω$.
+	We need only prove the equality \eqref{eqn:stokes} for each $ω_i ≔ ϕ_iω$, and the full result follows be linearity.
+	
+	With respect to the canonical coordinates of $X$, the $(k - 1)$-form $h_i^*ω_i$ can be written
+	\begin{align}
+		h_i^*ω_i = \sum_{j=1}^k f_j (-1)^{j - 1} \dd x^{1\cdots\hat{j}\cdots k}
+	\end{align}
+	using the multi-index notation $\dx^{\etc{i_\i}{}k} ≡ \etc{\dx^{i_\i}}∧k$, where the hat denotes an omitted term.
+	The factor of $(-1)^{j - 1}$ gives the $(k - 1)$-form the boundary orientation induced by the volume form $\dx^{\etc\i{}k}$ for convenience.
+	Since pullbacks commute with $\dd$,
+	\begin{align}
+		h^*\ddω_i = \dd(h_i^*ω_i) = \sum_{j=1}^k \pdv{f_j}{x^j} \dd x^{1\cdots n}
+	.\end{align}
+	There are then two cases to consider.
+	\begin{itemize}
+		\item \emph{Interior case.}
+		If $h_i : U_i → \RR^k$, then the right-hand side of \cref{eqn:stokes} vanishes because $ω_i$ is zero outside the neighbourhood $U_i ⊂ R$ which nowhere meets the boundary $∂R$.
+		\begin{align}
+			\int_{∂R} ω_i = \int_{∂U_i} ω_i = \int_∅ ω_i = 0
+		\end{align}
+		The left-hand side evaluates to
+		\begin{align}
+			\int_R \dd ω_i
+			&= \int_X \dd (h_i^*ω_i)
+			= \int_{\RR^k} \sum_{j=1}^k \pdv{f_j}{x^j} \dd x^{1\cdots n}
+		\\	&= \underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_k \sum_{j=1}^k \pdv{f_j}{x^j} \etc{dx^\i}{}{k}
+		\\	&= \underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_{k - 1} \sum_{j=1}^k \eval{f_j}_{x^j=-∞}^{+∞} (-1)^{j-1} dx^1\cdots\widehat{dx^j}\cdots dx^k
+			= 0
+		,\end{align}
+		which vanishes because $h_i^*ω_i$, and hence the $f_j$, vanish outside the neighbourhood $h_i(U_i) ⊂ \RR^k$.
+
+	\item \emph{Boundary case.}
+	If $h_i : U_i → H^k$, then the boundary $∂U_i ⊂ ∂R$ is mapped onto the hyperplane $∂H^k = \set{(0, \etc[2]{x^\i},k) | x^j ∈ \RR}$.
+	Thus, $dx^1 = 0$ on this boundary, and the right-hand side of \cref{eqn:stokes} becomes
+	\begin{align}
+		\int_{∂R}ω_i
+		&= \int_{∂U_i} h_i^*ω_i
+		= -\int_{\RR^{k - 1}} f_1 \etc[2]{dx^\i}{}k
+	\\	&= -\underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_{k - 1} f_1(0, \etc[2]{x^\i},k) \etc[2]{dx^\i}{}k
+	.\end{align}
+	The factor of $-1$ comes from the induced orientation of the boundary $∂H^k$, which is outward-facing, so in the \emph{negative} $x^1$ direction.
+	For the left-hand side of \cref{eqn:stokes},
+	\begin{align}
+		\int_R \dd ω_i
+		&= \int_{H^k} h_i^*\ddω_i
+		= \int_0^∞ \etc{\int_{-∞}^{+∞}}{}{} \sum_{j=1}^k \pdv{f_j}{x^j} \etc{dx^\i}{}k
+	\intertext{
+		All terms $\pdv{f_j}{x^j}dx^j$ in the sum for $j > 1$ integrate to boundary terms $x_j → ±∞$ where $f_j$ vanishes.
+		This leaves the single term from the integration of $dx^1$,
+	}
+		&= -\etc{\int_{-∞}^{+∞}}{}{} \eval{f_1}_{x^1=0}^∞ \etc[2]{dx^\i}k
+	.\end{align}
+
+	\end{itemize}
+
+	Thus, we have equality for all $ω_i$, so
+	\begin{align}
+		\int_R \dd ω = \sum_{i=1}^N \int_R \dd ω_i = \sum_{i=1}^N \int_{∂R} ω_i = \int_{∂R} ω
+	\end{align}
+	by linearity.
+\end{proof}
+

@@ -1,12 +1,40 @@
-\chapter{The Failure of Fields}
+\chapter{The Problem: Curvature}
 
 
 
 
 
 
+Here we only give a pragmatic definition of a manifold as a space which locally looks like $\RR^n$ upon which one can do calculus.
+(More rigour can be found in the first chapter of \cite{lee2012diffgeo}.)
+\begin{definition}
+	\label{def:manifold}
+	A \textdef{manifold $\manif M$ of dimension $n$} is a nice\sidenote{
+		Here, a `nice' topological space is:
+		\begin{enumerate}[leftmargin=1.3em]
+		\item \emph{Hausdorff}, meaning each distinct pair of points have mutually disjoint neighbourhoods (so it is ``not too small''); and
+		\item \emph{second-countable}, meaning there exists a countable base (so it is ``not too large'').
+		\end{enumerate}
+	} topological space which is locally Euclidean, meaning for every $x ∈ \manif M$ there exist neighbourhoods $x ∈ \manif U \subseteq \manif M$ and subsets $U \subseteq \RR^n$ with a homeomorphism (continuous bijection) $\manif U \biject U$ between them.
 
-\chapter{Fibre Bundles}
+	A \textdef{smooth manifold} is a manifold with the stricter requirement that $\manif U \biject U$ be a diffeomorphism (differentiable bijection).
+\end{definition}
+
+The definitions that follow take place in the category of manifolds.
+Furthermore, if the qualifier ``smooth'' is present, then the objects exist in the category of \emph{smooth manifolds} in which all maps are smooth (i.e., infinitely differentiable).
+This means all maps between manifolds are \emph{assumed to be continuous}.
+
+Essentially, \cref{def:manifold} is designed to guarantee that well-behaved local coordinates always exist.
+\begin{definition}
+	Let $\manif M$ be an $n$-dimensional manifold.
+	A \textdef{(global) coordinate chart $\set{x^i} ≡ \set{\etc{x^\i},n}$} of $ℳ$ is a set of scalar fields $x^i : \manif M → \RR$ such that each point in $ℳ$ is specified uniquely by the coordinate values $(x^1, ..., x^n) ∈ \RR^n$.
+	A \textdef{local coordinate chart} about a point $x ∈ \manif M$ is a coordinate chart of a neighbourhood of $x$.
+\end{definition}
+We will often call a point $x ∈ \manif M$ by the same symbol as the local coordinates $x^i : \manif M → \RR$ without the index --- but these objects are not interchangeable.
+
+
+
+\chapter{The Answer: Fibre Bundles}
 \label{cha:fibre-bundles}
 
 \todo{Treating physical things as fields} would suggest that all values are directly comparable, making expressions like $f(x) + f(y) ∈ A$ geometrically meaningful for different points $x,y ∈ ℳ$.
@@ -56,8 +84,5 @@ The tangent bundle is a special case of a ``fibre bundle'', which is a manifold 
 
 
 
-The definition above, and all that follow, take place in the category of manifolds.
-This means all maps between manifolds \emph{are assumed to be continuous}.
-Furthermore, if the qualifier ``smooth'' is present, then the objects exist in the category of \emph{smooth manifolds} in which all maps are smooth (i.e., infinitely differentiable).
 
 Thus, the projection $π : 𝒜 → ℳ$ in \cref{def:fibre-bundle} is required to be continuous; and in a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.

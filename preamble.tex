@@ -68,15 +68,16 @@
 % MATHEMATICS
 
 \usepackage{quiver} % must precede {physics}
-
-
+\usepackage{centernot}
 \usepackage[
 	math-style=ISO,
 	warnings-off={mathtools-colon,mathtools-overbracket},
 ]{unicode-math}
 \usepackage{physics}
 
+
 \input{symbols}
+
 
 
 \usepackage{amsthm}
@@ -91,12 +92,19 @@
 
 \setmainfont{Libertinus Serif}
 % \setsansfont{Libertinus Sans}
-% \setmathfont{Libertinus Math}
+
+\iffalse
+\setmathfont{Libertinus Math}
+\else
+\setmathfont{latinmodern-math.otf}
+\setmathfont[range=\varnothing]{Libertinus Math}
+\fi
 
 \linespread{1.07}
 
 \newcommand{\textdef}{\textsc}
 
+\usepackage{testhyphens}
 \hyphenation{
 	auto-morph-ism
 	auto-morph-isms
@@ -112,12 +120,11 @@
 % ablishment...
 
 
-\usepackage{testhyphens}
-
 \usepackage{caption}
 \setcapindent{0pt} % remove indentation for multiline (table) captions
 \captionsetup{font=footnotesize}
 
+\usepackage{enumitem}
 
 
 
