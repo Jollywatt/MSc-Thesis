@@ -24,14 +24,24 @@
 \end{theorem}
 \begin{proof}
 	Since $R$ is a $k$-dimensional region with boundary, every point $x ∈ R$ has a neighbourhood diffeomorphic to a neighbourhood of the origin in either $\RR^k$ or $H^k ≔ [0, ∞) ⊕ \RR^{k - 1}$, depending on whether $x$ is an interior point or a boundary point, respectively.
+
+	\begin{marginfigure}
+		\centering
+		\includefigure[\columnwidth]{stokes-theorem}
+		\caption{
+			Neighbourhoods in $R$ are diffeomorphic either to interior balls or boundary half-balls.
+		}
+		\label{fig:stokes-theorem}
+	\end{marginfigure}
+
 	Let $\set{U_i}$ be a cover of $R$ consisting of such neighbourhoods.
 	Since $R$ is compact, we may assume $\bigcup_{i=1}^N \set{U_i} = R$ to be a finite covering.
-	Thus, we have finitely maps $h_i : U_i → X$ where $X$ is either $\RR^k$ or the half-space $H^k$, where $U_i \cong h_i(U_i)$ are diffeomorphic.
+	Thus, we have finitely maps $h_i : U_i → X$ where $X$ is either $\RR^k$ or the half-space $H^k$, where $U_i \cong h_i(U_i)$ are diffeomorphic (see \cref{fig:stokes-theorem}).
 
 	Finally, let $\set{ϕ_i : R → [0, 1]}$ be a partition of unity subordinate to $\set{U_i}$, so that $\set{x ∈ R | ϕ_i(x) > 0} ⊆ U_i$ and $ω = \sum_{i=1}^N ϕ_iω$.
 	We need only prove the equality \eqref{eqn:stokes} for each $ω_i ≔ ϕ_iω$, and the full result follows be linearity.
 	
-	With respect to the canonical coordinates of $X$, the $(k - 1)$-form $h_i^*ω_i$ can be written
+	The form $h_i^*ω_i ∈ \forms[k - 1](X)$ can be written with respect to canonical coordinates of $X$ as
 	\begin{align}
 		h_i^*ω_i = \sum_{j=1}^k f_j (-1)^{j - 1} \dd x^{1\cdots\hat{j}\cdots k}
 	\end{align}
