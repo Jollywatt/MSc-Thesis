@@ -2,10 +2,9 @@
 \label{cha:geometric-algebra}
 
 In \cref{cha:preliminary-theory}, we defined the metric-independent exterior algebra of multivectors over a vector space $V$.
-Metrical operations can be achieved by introducing the Hodge dual (of \cref{sec:metrical-exterior-alg}) and tacking onto $\EA{V}$.
-The geometric algebra is a generalisation of $\EA{V}$ which has the metric (and its concomitant notions of orientation and duality) directly built-in.
+While metrical operations can be achieved by introducing the Hodge dual (of \cref{sec:metrical-exterior-alg}), tacking it onto $\EA{V}$, the geometric algebra is a generalisation of $\EA{V}$ which has the metric (and concomitant notions of orientation and duality) built-in.
 
-Geometric algebras are also known as real \emph{Clifford algebras} $Cl(V, q)$ after their first inventor.
+Geometric algebras are also known as real \emph{Clifford algebras} $Cl(V, q)$ after their first inventor \cite{clifford1878grassmann}.
 Especially in mathematics, Clifford algebras are defined in terms of a quadratic form $q$, and the vector space $V$ is usually complex.
 However, in physics, where $V$ is taken to be real and a metric $η$ is usually supplied instead of $q$, the name ``geometric algebra'' is preferred.\sidenote{
 	The newer name was coined by David Hestenes in the 1970s, who popularised Clifford algebra for physics \cite{hestenes1986ga-unified-language,hestenes1968ga}.
@@ -82,18 +81,62 @@ and some important features are immediate:
 	If $𝒖 = λ𝒗$, then $𝒖∧𝒗 = 0$ and $𝒖𝒗 = ⟨𝒖,𝒗⟩ = ⟨𝒗,𝒖⟩ = 𝒗𝒖$.
 	\item \emph{Orthogonal vectors anti-commute, and vice versa.}
 	If $⟨𝒖,𝒗⟩ = 0$, then $𝒖𝒗 = 𝒖∧𝒗 = -𝒗∧𝒖 = -𝒗𝒖$.
-
+\end{itemize}
+In particular, if $\set{\ve_i} ⊂ V$ is an orthonormal basis, then we have $\ve_i^2 = \ip{\ve_i, \ve_i}$ and $\ve_i\ve_j = -\ve_j\ve_i$, which can be summarised by the anticommutation relation
+\begin{math}
+	% \frac12\qty{\ve_i, \ve_j} = η_{ij}
+	\ve_i\ve_j + \ve_j\ve_i = 2η_{ij}
+.\end{math}
+\begin{itemize}
 	\item \emph{Vectors are invertible under the geometric product}.
 	If $𝒖$ is a vector for which the scalar $𝒖^2$ is non-zero, then $𝒖^{-1} = 𝒖/𝒖^2$.
 
 	\item \emph{Geometric multiplication produces objects of mixed grade.}
 	The product $𝒖𝒗$ has a scalar part $⟨𝒖,𝒗⟩$ and a bivector part $𝒖∧𝒗$.
-
 \end{itemize}
 
+\subsubsection{Higher-grade elements}
 
-\subsubsection{Higher--grade elements}
-\todo{}
+Given an orthonormal basis $\set{\ve_i} ⊂ V$, we can construct homogeneous elements of higher grade (i.e., multivectors) via geometric multiplication.
+If the components $A^{\etc{i_\i}{}k}$ are antisymmetric in all indices, then
+\begin{align}
+	A
+	= A^{\etc{i_\i}{}k} \etc{\ve_{i_\i}}{}k
+	= A^{\etc{i_\i}{}k} \etc{\ve_{i_\i}}∧k
+	∈ \GA[k](V, η)
+\end{align}
+is a homogeneous multivector, or $k$-vector.
+
+The geometric product of two homogeneous multivectors is generally inhomogeneous.
+We can gain insight by separating geometric products into grades and studying each part.
+\begin{definition}
+	The \textdef{grade $k$ projection} of a multivector $A ∈ \GA(V, η)$ is
+	\begin{align}
+		\grade[k]{A} =
+		\begin{cases}
+			A & \text{if $A ∈ \GA[k](V, η)$}
+		\\	0 & \text{otherwise.}
+		\end{cases}
+	\end{align}
+\end{definition}
+We can generalise the definition of the wedge product of vectors $𝒖∧𝒗 = \grade[2]{𝒖𝒗}$ to arbitrary homogeneous multivectors by taking the highest-grade part of their product,
+\begin{align}
+	A ∧ B = \grade[p + q]{AB}
+,\end{align}
+where $A ∈ \GA[p](V, η)$ and $B ∈ \GA[q](V, η)$.
+Dually, we can define an inner product on homogeneous multivectors by taking the lowest-grade part, $|p - q|$.
+These can be extended by linearity to inhomogeneous elements.
+\begin{definition}
+	Let $A, B ∈ \GA(V, η)$ be possibly inhomogeneous multivectors.
+	The \textdef{wedge product is}
+	\begin{align}
+		A∧B ≔ \sum_{p,q}\grade[p + q]{\grade[p]{A}\grade[q]{B}}
+	,\end{align}
+	and the \textdef{generalised inner product}, or ``fat dot'' product, is
+	\begin{align}
+		A \fatdot B ≔ \sum_{p,q}\grade[|p - q|]{\grade[p]{A}\grade[q]{B}}
+	.\end{align}
+\end{definition}
 
 
 \subsubsection{Fundamental algebra automorphisms}
@@ -157,8 +200,11 @@ An efficient way to become familiar with geometric algebras is to study their re
 
 \todo{Include $\CC$, $\HH$ and exterior forms!}
 
+\subsubsection{Algebra Isomorphisms}
+
 \begin{itemize}
 	\item\textbf{Complex numbers: $\GA[+](2) \cong \CC$}
+	
 	The complex plane is contained within $\GA(2)$ as the even subalgebra, with the isomorphism
 	\begin{align}
 	% 	\CC &≅ \GA[+](2)
@@ -242,6 +288,49 @@ An efficient way to become familiar with geometric algebras is to study their re
 	These form a complex representation of the \emph{algebra of spacetime}, $\GA(1,3)$, via $\ve_μ ⟷ γ_μ$.
 
 \end{itemize}
+
+
+
+\subsubsection{Relation to Exterior Forms}
+
+The exterior algebra 
+
+\begin{lemma}
+	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i},k)
+	.\end{align}
+\end{lemma}
+Note the reversed order of the wedge products on the right-hand side.
+The factor of $k!$ is due to the Spivak convention for exterior forms (replace $k! \mapsto 1$ for the Kobayashi--Nomizu convention).
+\begin{proof}
+	Fix an orthonormal basis $\set{\ve_i} ⊂ V$ and a dual basis $\ve^i \fatdot \ve_j = δ^i_j$.
+	Expanding the right-hand side with respect to his basis,
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1)
+		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \etc[k]{u_\i^{j_\i}}{}1
+	.\end{align}
+	The dot product of the two basis $k$-blades vanishes unless the index sets $\set{\etc{i_\i},k} = \set{\etc{j_\i},k}$ are the same, in which case
+	\begin{align}
+		(\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) = (-1)^σ
+	\end{align}
+	where $(-1)^σ$ is the sign of the permutation sending $i_p \mapsto j_p$ for $1 ≤ p ≤ k$.
+	Thus, for each term in the sum we have
+	\begin{align}
+		\etc{u_\i^{j_\i}}{}k = \etc{u_\i^{σ^{-1}(j_\i)}}{}k = \etc{u_{σ(\i)}^{i_\i}}{}k
+	,\end{align}
+	where the last equality is obtained by permuting the scalar components $u_{σ(p)}^{i_p}$ by $σ$.
+	Putting this together,
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1) = \sum_{σ ∈ S_k} (-1)^σ A_{\etc{i_\i}{}k} \etc{u_{σ(\i)}^{i_\i}}{}k
+	,\end{align}
+	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
+	\begin{align}
+		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}},k) = k! \, φ(\etc{𝒖_{σ(\i)}},k)
+	\end{align}
+	where all $k!$ terms are equal due to the alternating property of $φ$.
+\end{proof}
+
 
 
 
