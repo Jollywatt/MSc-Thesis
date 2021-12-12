@@ -135,6 +135,33 @@ These can be extended by linearity to inhomogeneous elements.
 		A \fatdot B ≔ \sum_{p,q}\grade[|p - q|]{\grade[p]{A}\grade[q]{B}}
 	.\end{align}
 \end{definition}
+These products work together nicely, extending the properties of dual vectors to blades.
+\begin{lemma}
+	\label{lem:dual-blades}
+	If $\set{\ve_i} ⊂ V$ is a basis with dual $\ve^i \fatdot \ve_j = δ^i_j$, then
+	\begin{align}
+		% (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧k) = (-1)^σ
+		(\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) = ε^i_j
+	\end{align}
+	where $ε^i_j = (-1)^σ$ is the sign of the permutation sending $σ(i_p) = j_p$ for $1 ≤ p ≤ k$ , or zero if there is no such permutation or if $i$ or $j$ contain repeated indices.
+\end{lemma}
+Note the reverse order of the $j$ indices --- the geometric product 
+\begin{proof}
+	If $i$ or $j$ contain repeated indices, then the left-hand side vanishes by antisymmetry of the wedge product, and the right-hand side by definition.
+	If $i$ contains no repeated indices, and the $j$ indices are some permutation $j_p = σ(i_p)$, then $\etc{\ve^{i_\i}}∧k = \etc{\ve^{i_\i}}{}k$ by orthogonality.
+	Rewriting the left-hand side,
+	\begin{align}
+		\grade{\etc{\ve^{i_\i}}{}k \etc[k]{\ve_{j_\i}}{}1}
+		= (-1)^σ \angbr[\big]{
+			\ve^{i_1}\cdots\underbrace{\ve^{i_k}\ve_{i_k}}_1\cdots\ve_{i_1}
+		}
+		= (-1)^σ
+	.\end{align}
+	Finally, if $i$ contains no repeated indices, but $j$ is not a permutation of $i$, then there is at least one pair of indices in the symmetric difference of $\set{i_p}$ and $\set{j_p}$, say $i_r$ and $j_s$.
+	Commuting this pair $\ve^{i_r}$ and $\ve_{j_s}$ together shows that the left-hand side vanishes, since $\ve^{i_r}\ve_{j_s} = 0$.
+\end{proof}
+
+
 
 
 \subsubsection{Fundamental algebra automorphisms}
@@ -188,28 +215,6 @@ In particular, the following result follows easily from reasoning about grades.
 	Similarly, $A^2$ is self-involutive, since $ι(A^2) = ι(A)^2 = (±A)^2 = A^2$.
 	It is thus of even grade, leaving the possible grades $\set{0, 4, 8, ...}$.
 \end{proof}
-These products work together
-\begin{lemma}
-	If $\set{\ve_i} ⊂ V$ is a basis with dual $\ve^i \fatdot \ve_j = δ^i_j$, then
-	\begin{align}
-		% (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧k) = (-1)^σ
-		(\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) = ε^i_j
-	\end{align}
-	where $ε^i_j = (-1)^σ$ is the sign of the permutation sending $σ(i_p) = j_p$ for $1 ≤ p ≤ k$ if $\set{\etc{i_\i},k} = \set{\etc{j_\i},k}$, or zero if there is no such permutation.
-\end{lemma}
-Note the reverse order of the $j$ indices.
-\begin{proof}
-	If the $i$ indices are not repeated, and the $j$ indices are some permutation $j_p = σ(i_p)$, then
-	\begin{align}
-		\grade{\etc{\ve^{i_\i}}{}k \etc[k]{\ve_{j_\i}}{}1}
-		= (-1)^σ \angbr[\big]{
-			\ve^{i_1}\cdots\underbrace{\ve^{i_k}\ve_{i_k}}_1\cdots\ve_{i_1}
-		}
-		= (-1)^σ
-	.\end{align}
-	\todo{...}
-\end{proof}
-
 
 
 \section{Relations to Other Algebras}
@@ -329,13 +334,8 @@ The factor of $k!$ is due to the Spivak convention for exterior forms (replace $
 		A \fatdot (\etc[k]{𝒖_\i}∧1)
 		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \etc[k]{u_\i^{j_\i}}{}1
 	.\end{align}
-	The dot product of the two basis $k$-blades vanishes unless the index sets $\set{\etc{i_\i},k} = \set{\etc{j_\i},k}$ are the same, in which case
-	\begin{align}
-		(\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) = (-1)^σ
-	\end{align}
-	\todo{reference lemma...}
-	where $(-1)^σ$ is the sign of the permutation sending $i_p \mapsto j_p$ for $1 ≤ p ≤ k$.
-	Thus, for each term in the sum we have
+	By \cref{lem:dual-blades}, the dot product of $k$-blades is $(-1)^σ$ is the sign of the permutation $σ(i_p) = j_p$, and zero for all non-permutation terms in the sum.
+	Thus, for each (non-zero) term in the sum we have
 	\begin{align}
 		\etc{u_\i^{j_\i}}{}k = \etc{u_\i^{σ^{-1}(j_\i)}}{}k = \etc{u_{σ(\i)}^{i_\i}}{}k
 	,\end{align}
