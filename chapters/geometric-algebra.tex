@@ -95,6 +95,16 @@ In particular, if $\set{\ve_i} ⊂ V$ is an orthonormal basis, then we have $\ve
 
 \subsubsection{Higher-grade elements}
 
+The bivector $𝒖 ∧ 𝒗$ is interpreted as the directed planar area spanned by the parallelogram with sides $𝒖$ and $𝒗$.
+Higher-grade elements represent directed parallelepipeds of (see \cref{fig:bivector}).
+\begin{marginfigure}
+	\includefigure[\columnwidth]{bivector}
+	\caption{
+		Bivectors and trivectors have orientations induced by the order of the wedge product.
+	}
+	\label{fig:bivector}
+\end{marginfigure}
+
 Given an orthonormal basis $\set{\ve_i} ⊂ V$, we can construct homogeneous elements of higher grade (i.e., multivectors) via geometric multiplication.
 If the components $A^{\etc{i_\i}{}k}$ are antisymmetric in all indices, then
 \begin{align}
@@ -145,7 +155,7 @@ These products work together nicely, extending the properties of dual vectors to
 	\end{align}
 	where $ε^i_j = (-1)^σ$ is the sign of the permutation sending $σ(i_p) = j_p$ for $1 ≤ p ≤ k$ , or zero if there is no such permutation or if $i$ or $j$ contain repeated indices.
 \end{lemma}
-Note the reverse order of the $j$ indices --- the geometric product 
+Note the reverse order of the $j$ indices.
 \begin{proof}
 	If $i$ or $j$ contain repeated indices, then the left-hand side vanishes by antisymmetry of the wedge product, and the right-hand side by definition.
 	If $i$ contains no repeated indices, and the $j$ indices are some permutation $j_p = σ(i_p)$, then $\etc{\ve^{i_\i}}∧k = \etc{\ve^{i_\i}}{}k$ by orthogonality.
@@ -367,11 +377,11 @@ Common to both the respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is t
 	\item In $3$d, there are $\dim \GA[2](3) = \binom{3}{2} = 3$ such bivectors, and so three imaginary units $\set{\ii, \jj, \kk}$ are needed.
 	\item In $(1+3)$d, we have $\dim \GA[2](1,3) = \binom{4}{2} = 6$, corresponding to three `spacelike' $\set{\ii, \jj, \kk}$ and three `timelike' $\set{i\ii, i\jj, i\kk}$ units of $\CC ⊗ \HH$.
 \end{itemize}
-The interpretation of a bivector is clear: it generates a rotation through the oriented plane which it spans.
+The interpretation of a bivector is clear: it takes the role of an `imaginary unit`, generating a rotation through the oriented plane which it spans.
 
 
 
-To see how bivectors act as rotations, observe that rotations in the $ℂ$-plane may be described as mappings
+To see how bivectors act as rotations, observe that rotations in the $\CC$-plane may be described as mappings
 \begin{math}
 	z ↦ e^{θi}z
 ,\end{math}
