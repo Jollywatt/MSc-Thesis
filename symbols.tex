@@ -54,8 +54,6 @@
 \newcommand{\quot}[2]{\left. #1 \middle/ #2 \right.}
 
 % generator
-% \DeclarePairedDelimiter{\doubleangle}{⟨\!⟨}{⟩\!⟩}
-\DeclarePairedDelimiter{\doubleangle}{\{\!\{}{\}\!\}}
 \newcommand{\gen}{\dblset}
 
 % transpose superscript
@@ -84,7 +82,8 @@
 
 
 % geometric algebra
-\newcommand{\grade}[2][]{\left⟨ #2 \right⟩_{#1}}
+\DeclarePairedDelimiter{\angbr}{⟨}{⟩}
+\newcommand{\grade}[2][]{\angbr*{#2}_{#1}}
 
 \newcommand{\vol}{\mathds{I}}
 
