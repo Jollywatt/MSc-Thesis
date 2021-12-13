@@ -1,5 +1,11 @@
+% \setchapterpreamble[r][.9\textwidth]{
+% 	\dictum[Lewis Carroll]{``Begin at the beginning, the King said dictum, ``and go on till you come to the end: then stop.''}
+% }
+
+
 \chapter{The Geometric Algebra}
 \label{cha:geometric-algebra}
+
 
 In \cref{cha:preliminary-theory}, we defined the metric-independent exterior algebra of multivectors over a vector space $V$.
 While metrical operations can be achieved by introducing the Hodge dual (of \cref{sec:metrical-exterior-alg}), tacking it onto $\EA{V}$, the geometric algebra is a generalisation of $\EA{V}$ which has the metric (and concomitant notions of orientation and duality) built-in.
@@ -10,7 +16,7 @@ However, in physics, where $V$ is taken to be real and a metric $η$ is usually 
 	The newer name was coined by David Hestenes in the 1970s, who popularised Clifford algebra for physics \cite{hestenes1986ga-unified-language,hestenes1968ga}.
 }
 
-\subsubsection{Construction as a quotient algebra}
+\section{Construction and Overview}
 
 Informally put, the geometric algebra is obtained by enforcing the single rule
 \begin{align}
@@ -93,7 +99,7 @@ In particular, if $\set{\ve_i} ⊂ V$ is an orthonormal basis, then we have $\ve
 	The product $𝒖𝒗$ has a scalar part $⟨𝒖,𝒗⟩$ and a bivector part $𝒖∧𝒗$.
 \end{itemize}
 
-\section{Higher-grade elements}
+\subsubsection{Higher-grade elements}
 \label{sec:higher-grade-elements}
 
 
@@ -166,7 +172,7 @@ Note the reverse order of the $j$ indices.
 
 \todo{into}
 
-\subsubsection{Fundamental algebra automorphisms}
+\subsection{Fundamental algebra automorphisms}
 
 Operations such complex conjugation $\overline{AB} = \overline{A}\,\overline{B}$ or matrix transposition $(AB)\trans = B\trans A\trans$ are useful because they preserve or reverse multiplication.
 Linear functions with this property are called algebra automorphisms or antiautomorphisms, respectively.
@@ -219,7 +225,7 @@ In particular, the following result follows easily from reasoning about grades.
 \end{proof}
 
 
-\subsubsection{Common algebra isomorphisms}
+\subsection{Common algebra isomorphisms}
 
 An efficient way to become familiar with geometric algebras is to study their relations to other common algebras encountered in physics.
 
@@ -315,51 +321,7 @@ An efficient way to become familiar with geometric algebras is to study their re
 
 
 
-\subsubsection{Relation to Exterior Forms}
-
-The geometric algebra is a generalisation of the exterior algeba.
-If the inner product is completely degenerate (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then there is an algebra isomorphism $\GA(V, 0) \cong \EA{V}$.
-
-A qualitative difference between $\GA(V, η)$ and $\EA{V}$, however, is that while inhomogeneous multivectors find little use in exterior algebra,\sidenote{
-	In fact, some authors \cite{flanders1963differential} leave sums of terms of differing grade undefined.
-} these have a significant geometrical describing reflections and rotations in $\GA(V, η)$.
-
-Exterior forms can be mimicked in the geometric algebra by making use of a dual basis $V$, as in the following lemma.
-Note that the dual space $V^*$ does not make an appearance --- all elements belong to $\GA(V, η)$.
-\begin{lemma}
-	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
-	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i},k)
-	.\end{align}
-\end{lemma}
-Note the reversed order of the wedge products on the left-hand side.
-The factor of $k!$ is due to the Spivak convention for exterior forms (replace $k! \mapsto 1$ for the Kobayashi--Nomizu convention).
-\begin{proof}
-	Fix an orthonormal basis $\set{\ve_i} ⊂ V$ and a dual basis $\ve^i \fatdot \ve_j = δ^i_j$.
-	Expanding the right-hand side with respect to his basis,
-	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1)
-		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \etc[k]{u_\i^{j_\i}}{}1
-	.\end{align}
-	By \cref{lem:dual-blades}, the dot product of $k$-blades is $(-1)^σ$ is the sign of the permutation $σ(i_p) = j_p$, and zero for all non-permutation terms in the sum.
-	Thus, for each (non-zero) term in the sum we have
-	\begin{align}
-		\etc{u_\i^{j_\i}}{}k = \etc{u_\i^{σ^{-1}(j_\i)}}{}k = \etc{u_{σ(\i)}^{i_\i}}{}k
-	,\end{align}
-	where the last equality is obtained by permuting the scalar components $u_{σ(p)}^{i_p}$ by $σ$.
-	Putting this together,
-	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1) = \sum_{σ ∈ S_k} (-1)^σ A_{\etc{i_\i}{}k} \etc{u_{σ(\i)}^{i_\i}}{}k
-	,\end{align}
-	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
-	\begin{align}
-		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}},k) = k! \, φ(\etc{𝒖_{σ(\i)}},k)
-	\end{align}
-	where all $k!$ terms are equal due to the alternating property of $φ$.
-\end{proof}
-
-
-\subsubsection{Even subalgebra isomorphisms}
+\subsection{Even subalgebra isomorphisms}
 
 As noted above, multivectors of even grade are closed under the geometric product, and form the even subalgebra $\GA[+](p, q)$.
 % Involution fixes even elements, since for $ι(A) = (-1)^{2k}A = A$ for a $2k$-vector, so ...
@@ -404,10 +366,58 @@ This provides an impressively efficient algebraic method for transforming relati
 
 
 
-\section{Higher notions of orthogonality}
 
 
-As discussed in \cref{sec:higher-grade-elements}, the lack of a $\ZZ$-grading means that a geometric product of blades is generally an inhomogeneous multivector.
+\subsection{Relation to Exterior Forms}
+
+The geometric algebra is a generalisation of the exterior algeba.
+If the inner product is completely degenerate (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then there is an algebra isomorphism $\GA(V, 0) \cong \EA{V}$.
+
+A qualitative difference between $\GA(V, η)$ and $\EA{V}$, however, is that while inhomogeneous multivectors find little use in exterior algebra,\sidenote{
+	In fact, some authors \cite{flanders1963differential} leave sums of terms of differing grade undefined.
+} these have a significant geometrical describing reflections and rotations in $\GA(V, η)$.
+
+Exterior forms can be mimicked in the geometric algebra by making use of a dual basis $V$, as in the following lemma.
+Note that the dual space $V^*$ does not make an appearance --- all elements belong to $\GA(V, η)$.
+\begin{lemma}
+	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i},k)
+	.\end{align}
+\end{lemma}
+Note the reversed order of the wedge products on the left-hand side.
+The factor of $k!$ is due to the Spivak convention for exterior forms (replace $k! \mapsto 1$ for the Kobayashi--Nomizu convention).
+\begin{proof}
+	Fix an orthonormal basis $\set{\ve_i} ⊂ V$ and a dual basis $\ve^i \fatdot \ve_j = δ^i_j$.
+	Expanding the right-hand side with respect to his basis,
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1)
+		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \etc[k]{u_\i^{j_\i}}{}1
+	.\end{align}
+	By \cref{lem:dual-blades}, the dot product of $k$-blades is $(-1)^σ$ is the sign of the permutation $σ(i_p) = j_p$, and zero for all non-permutation terms in the sum.
+	Thus, for each (non-zero) term in the sum we have
+	\begin{align}
+		\etc{u_\i^{j_\i}}{}k = \etc{u_\i^{σ^{-1}(j_\i)}}{}k = \etc{u_{σ(\i)}^{i_\i}}{}k
+	,\end{align}
+	where the last equality is obtained by permuting the scalar components $u_{σ(p)}^{i_p}$ by $σ$.
+	Putting this together,
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1) = \sum_{σ ∈ S_k} (-1)^σ A_{\etc{i_\i}{}k} \etc{u_{σ(\i)}^{i_\i}}{}k
+	,\end{align}
+	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
+	\begin{align}
+		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}},k) = k! \, φ(\etc{𝒖_{σ(\i)}},k)
+	\end{align}
+	where all $k!$ terms are equal due to the alternating property of $φ$.
+\end{proof}
+
+
+
+
+\section{Higher Notions of Orthogonality}
+
+
+As discussed at the start of this chapter, the lack of a $\ZZ$-grading means that a geometric product of blades is generally an inhomogeneous multivector.
 Geometrically, the grade $k$ part of product of blades reveals the degree to which the two blades are `orthogonal' or `parallel', in a certain $k$-dimensional sense.
 
 To see this, first consider the special case where the product of blades $a$ and $b$ is a homogeneous $k$-blade.

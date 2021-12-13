@@ -89,9 +89,9 @@ For example, $\gen{a} = \spanof{r ⊛ a ⊛ r' | r, r' ∈ A}$ is the ideal cons
 
 \begin{lemma}
 	\label{lem:congruence-ideal-equiv}
-	An ideal uniquely defines a congruence, and vice versa, by the identification of $I$ as the set of elements equivalent to zero;
+	An ideal uniquely defines a congruence, and vice versa, by the identification of $I$ as the set of zero elements,
 	\begin{math}
-		a \sim 0 \iff a ∈ I
+		a ∈ I \iff a \sim 0
 	.\end{math}
 \end{lemma}
 \begin{proof}
@@ -125,8 +125,8 @@ For example, $\gen{a} = \spanof{r ⊛ a ⊛ r' | r, r' ∈ A}$ is the ideal cons
 \end{proof}
 
 The equivalence of ideals and congruences is a general feature of abstract algebra.\sidenote{
-	For example, in group theory, ideals are \emph{normal subgroups} and a congruence is an equivalence relation satisfying $gag^{-1} \sim \op{id}$ whenever $a \sim \op{id}$.
-	A group modulo a normal subgroup forms a quotient group.
+	E.g., in group theory, ideals are \emph{normal subgroups} and define congruences, which are equivalence relations satisfying $gag^{-1} \sim \op{id}$ whenever $a \sim \op{id}$.
+	% A group modulo a normal subgroup forms a quotient group.
 }
 Furthermore, both can be given in terms of a homomorphism between algebras,\sidenote{
 	A \emph{homomorphism} is a structure-preserving map; in the case of algebras, a linear map $Ψ : A → A'$ which satisfies $Ψ(a⊛b) = Ψ(a)\mathrel{⊛'}Ψ(b)$.
