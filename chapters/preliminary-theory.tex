@@ -200,6 +200,7 @@ In particular, $\TA{V}$ is $\ZZ_2$-graded,\sidenote{
 
 Importantly, just as not all functions $f : \RR → \RR$ are even or odd, not all elements of a $\ZZ_2$-graded algebra are even or odd; and more generally not all elements of a graded algebra belong to a single graded subspace.
 \begin{definition}
+	\label{def:homogeneous-and-multivector}
 	If $A = \bigoplus_{k ∈ R} A_{k}$ is an $R$-graded algerba, then an element $a ∈ A$ is \textdef{homogeneous} if it belongs to some $A_k$, in which case it is said to be a \textdef{$k$-vector}.
 	If $a ∈ A_{k_1} ⊕ \cdots ⊕ A_{k_n}$ is inhomogeneous, we may call it a $\set{k_1, ..., k_n}$-multivector.
 \end{definition}
@@ -207,6 +208,7 @@ Importantly, just as not all functions $f : \RR → \RR$ are even or odd, not al
 All elements of a graded algebra are either inhomogeneous or a $k$-vector for some $k$; and each $k$-vector is either a \emph{$k$-blade }or a sum of $k$-blades.
 
 \begin{definition}
+	\label{def:blade}
 	A \textdef{$k$-blade} is a $k$-vector $a ∈ A_k$ of the form
 	\begin{math}
 		a = \etc{𝒖_\i} ⊛ k
@@ -215,7 +217,7 @@ All elements of a graded algebra are either inhomogeneous or a $k$-vector for so
 \end{definition}
 
 Note that not all $k$-vectors are blades.
-The simplest counterexample requires at least four dimensions: the bivector $\ve_1 ⊗ \ve_2 + \ve_3 ⊗ \ve_4 ∈ \TA[2]{(\RR^4)}$, where $\set{\ve_i}$ are the standard basis of $\RR^4$, cannot be factored into a blade of the form $𝒖 ⊗ 𝒗$ for any $𝒖, 𝒗 ∈ V$.
+For example, in the $\ZZ$-graded tensor algebra, the bivector $\ve_1 ⊗ \ve_2 + \ve_3 ⊗ \ve_4 ∈ \RR^4 ⊗ \RR^4$ where $\set{\ve_i}$ is the standard basis of $\RR^4$, cannot be factored into a blade of the form $𝒖 ⊗ 𝒗$ for any $𝒖, 𝒗 ∈ V$.
 
 \todo{Does this even make sense for a general graded algebra??}
 
@@ -301,13 +303,15 @@ By associativity, it follows that $𝒗_1 ∧ 𝒗_2 ∧ \cdots ∧ 𝒗_k$ vani
 }
 
 The ideal $\gen{𝒖 ⊗𝒖}$ is homogeneous with respect to the $\ZZ$-grading of the parent tensor algebra; hence $\EA{V}$ is itself $\ZZ$-graded.
-In particular, it is the direct sum of fixed-grade subspaces
+In particular, the direct sum of fixed-grade subspaces
 \begin{align}
 	\EA{V} = \bigoplus_{k=0}^{\dim V} \EA[k]{V}
 	\qqtext{where}
 	\EA[k]{V} = \spanof{𝒗_1 ∧ 𝒗_2 ∧ \cdots ∧ 𝒗_k | 𝒗_i ∈ V}
 ,\end{align}
-and the wedge product respects grade, $(\EA[p]{V}) ∧ (\EA[q]{V}) \subseteq \EA[p + q]{V}$.
+is respected by the wedge product, i.e., $(\EA[p]{V}) ∧ (\EA[q]{V}) \subseteq \EA[p + q]{V}$.
+\Cref{def:homogeneous-and-multivector,def:blade} carry over directly into $\EA{V}$, so elements of $\EA[k]{V}$ are $k$-vectors, and elements of the form $\etc{𝒖_\i}∧k$ are $k$-blades.
+
 By counting the number of possible linearly independent sets of $k$ vectors in $\dim V$ dimensions, it follows that in base dimension $\dim V = n$,
 \begin{align}
 	\dim\EA[k]{V} = \binom{n}{k}
@@ -319,6 +323,25 @@ Elements of the one-dimensional subspace $\EA[n]{V}$ are called \textdef{pseudos
 	The prefix `pseudo' means $k \mapsto n - k$.
 	Hence, a pseudovector is an $(n - 1)$-vector, etc.
 }
+
+Blades have direct geometric interpretations.
+The bivector $𝒖 ∧ 𝒗$ is interpreted as the directed planar area spanned by the parallelogram with sides $𝒖$ and $𝒗$.
+(Note that blades have no `shape'; only directed magnitude.)
+Similarly, higher-grade elements represent directed volume elements spanned by parallelepipeds (see \cref{fig:bivector}).
+\begin{marginfigure}
+	\includefigure[\columnwidth]{bivector}
+	\caption{
+		Bivectors and trivectors have orientations induced by the order of the wedge product.
+	}
+	\label{fig:bivector}
+\end{marginfigure}
+In fact, any $k$-blade may be viewed as a subspace of $V$ with an oriented scalar magnitude:
+\begin{definition}
+	The \textdef{span} of a non-zero $k$-blade $b = \etc{𝒖_i}∧k$ is the $k$-dimensional subspace
+	$\spanof b = \spanof{\etc{𝒖_\i},k}$.
+	Define the span of zero to be the trivial subspace.
+\end{definition}
+The definition does not depend on the particular decomposition of the blade as a wedge product of vectors: if $\etc{𝒖_\i}∧k = \etc{𝒗_\i}∧k$ then $\spanof{𝒖_i} = \spanof{𝒗_i}$.
 
 
 \subsection{As antisymmetric tensors}
@@ -372,10 +395,11 @@ This gives an alternative construction of the exterior algebra.
 
 \subsubsection{Note on conventions}
 
-The factor of $\frac1{k!}$ present in \cref{eqn:(anti)symmetriser} is not necessary for the above fact that
+The factor of $\frac1{k!}$ present in \cref{eqn:(anti)symmetriser} is not necessary for the isomorphism
 \begin{math}
 	\op{Sym}^-(\TA{V}) \cong \EA{V}
 \end{math}
+to follow.
 Indeed, some authors omit the normalisation factor, which has the effect of changing \cref{eqn:wedge-as-antisymm} to
 \begin{align}
 	A ∧ B = \frac{(p + q)!}{p!q!}\op{Sym}^-(A ⊗ B)
@@ -391,8 +415,8 @@ The different normalisations of $∧$ as an antisymmetrising product lead to dis
 	&	\emph{Spivak} \cite{spivak1975dg}
 	\\	$A ∧ B ≔ \op{Sym}^-(A⊗B)$
 	&	$A ∧ B ≔ \frac{(p + q)!}{p!q!} \op{Sym}^-(A⊗B)$
-	\\	$𝒖 ∧ 𝒗 = \frac12(𝒖⊗𝒗 - 𝒗⊗𝒖)$
-	&	$𝒖 ∧ 𝒗 = 𝒖⊗𝒗 - 𝒗⊗𝒖$
+	\\	$𝒖 ∧ 𝒗 ≡ \frac12(𝒖⊗𝒗 - 𝒗⊗𝒖)$
+	&	$𝒖 ∧ 𝒗 ≡ 𝒖⊗𝒗 - 𝒗⊗𝒖$
 	\end{tabular}
 	\caption{
 		Different embeddings of $\EA{V}$ into $\TA{V}$.

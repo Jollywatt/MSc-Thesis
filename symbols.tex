@@ -1,10 +1,14 @@
-% Set builder notation (usage: `\set{a | P(a)}` or `\set[\big]{1, 2}`)
-\usepackage{xparse}
-\usepackage{ifthen}
+\usepackage{mathtools}
 
 \renewcommand{\op}[1]{{\operatorname{#1}}}
 
-\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+
+% Set builder notation (usage: `\set{a | P(a)}` or `\set[\big]{1, 2}`)
+\usepackage{xparse}
+\usepackage{ifthen}
 \DeclarePairedDelimiterX{\setdelim}[1]{\{}{\}}{\setargs{#1}}
 \DeclarePairedDelimiterX{\dblsetdelim}[1]{\{\!\{}{\}\!\}}{\setargs{#1}}
 \NewDocumentCommand{\setargs}{>{\SplitArgument{1}{|}}m}{\setargsaux#1}
