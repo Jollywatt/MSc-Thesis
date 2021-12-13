@@ -225,7 +225,101 @@ In particular, the following result follows easily from reasoning about grades.
 \end{proof}
 
 
+
+\subsection{Even subalgebra isomorphisms}
+
+As noted above, multivectors of even grade are closed under the geometric product, and form the even subalgebra $\GA[+](p, q)$.
+% Involution fixes even elements, since for $ι(A) = (-1)^{2k}A = A$ for a $2k$-vector, so ...
+There is an isomorphism $\GA[+](p, q) \cong \GA[+](q, p)$ given by $\bar{\ve_i} ≔ \ve_i$ with opposite signature $\bar{\ve_i}^2 ≔ -\ve_i^2$, since the factor of $-1$ occurs only an even number of times for even elements.
+
+The even subalgebras are also isomorphic to full geometric algebras of one dimension less:
+\begin{lemma}
+	There are isomorphisms
+	\begin{align}
+		\GA[+](p,q) ≅ \GA(p,q - 1)
+		\qqtext{and}
+		\GA[+](p,q)≅ \GA(q,p - 1)
+	\end{align}
+	when $q ≥ 1$ and $p ≥ 1$, respectively.
+\end{lemma}
+\begin{proof}
+	Select a unit vector $𝒖 ∈ \GA(p, q)$ with $𝒖^2 = -1$, and define a linear map $Ψ_𝒖 : \GA(p, q - 1) → \GA[+](p, q)$ by
+	\begin{align}
+		Ψ_𝒖(A) =
+		\begin{cases}
+			A & \text{if $A$ is even}
+		\\	A ∧ 𝒖 & \text{if $A$ is odd}
+		\end{cases}
+	.\end{align}
+	Note we are taking $\GA(p, q - 1) ⊂ \GA(p, q)$ to be the subalgebra obtained by removing $𝒖$ (i.e., restricting $V$ to $𝒖^\perp$) so there is a canonical inclusion from the domain of $Ψ_𝒖$ to the codomain.
+	Let $A ∈ \GA(p, q - 1)$ be a $k$-vector.
+	Note that $A∧𝒖 = A𝒖$ since $𝒖 \perp \GA(p, q - 1)$, and that $A$ commutes with $𝒖$ if $k$ is even and anticommutes if $k$ is odd.
+
+	To so $Ψ_𝒖$ is a homomorphism, suppose $A, B ∈ \GA(p, q - 1)$ are both even;
+	then $Ψ_𝒖(AB) = AB = Ψ_𝒖(A)Ψ_𝒖(B)$.
+	If both are odd, then $AB$ is even and $Ψ_𝒖(AB) = AB = -AB𝒖^2 = A𝒖B𝒖 = Ψ_𝒖(A)Ψ_𝒖(B)$.
+	If $A$ is odd and $B$ even, then $Ψ_𝒖(AB) = AB𝒖 = A𝒖B = Ψ_𝒖(A)Ψ_𝒖(B)$ and similarly for $A$ even and $B$ odd.
+	Injectivity and surjectivity are clear, so $Ψ_𝒖$ is an algebra isomorphism.
+\end{proof}
+
+The special case $\GA[+](1,3) ≅ \GA(3)$ is of great relevance to special relativity, and is discussed in detail in \cref{sec:spacetime-split}.
+Here the isomorphism $Ψ_𝒖$ is called a \emph{space/time split} with respect to an observer of velocity $𝒖$.
+This provides an impressively efficient algebraic method for transforming relativistic quantities between inertial frames.
+
+
+
+
+
+
+
+
+\subsection{Relation to Exterior Forms}
+
+The geometric algebra is a generalisation of the exterior algeba.
+If the inner product is completely degenerate (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then there is an algebra isomorphism $\GA(V, 0) \cong \EA{V}$.
+
+A qualitative difference between $\GA(V, η)$ and $\EA{V}$, however, is that while inhomogeneous multivectors find little use in exterior algebra,\sidenote{
+	In fact, some authors \cite{flanders1963differential} leave sums of terms of differing grade undefined.
+} these have a significant geometrical describing reflections and rotations in $\GA(V, η)$.
+
+Exterior forms can be mimicked in the geometric algebra by making use of a dual basis $V$, as in the following lemma.
+Note that the dual space $V^*$ does not make an appearance --- all elements belong to $\GA(V, η)$.
+\begin{lemma}
+	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i},k)
+	.\end{align}
+\end{lemma}
+Note the reversed order of the wedge products on the left-hand side.
+The factor of $k!$ is due to the Spivak convention for exterior forms (replace $k! \mapsto 1$ for the Kobayashi--Nomizu convention).
+\begin{proof}
+	Fix an orthonormal basis $\set{\ve_i} ⊂ V$ and a dual basis $\ve^i \fatdot \ve_j = δ^i_j$.
+	Expanding the right-hand side with respect to his basis,
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1)
+		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \etc[k]{u_\i^{j_\i}}{}1
+	.\end{align}
+	By \cref{lem:dual-blades}, the dot product of $k$-blades is $(-1)^σ$ is the sign of the permutation $σ(i_p) = j_p$, and zero for all non-permutation terms in the sum.
+	Thus, for each (non-zero) term in the sum we have
+	\begin{align}
+		\etc{u_\i^{j_\i}}{}k = \etc{u_\i^{σ^{-1}(j_\i)}}{}k = \etc{u_{σ(\i)}^{i_\i}}{}k
+	,\end{align}
+	where the last equality is obtained by permuting the scalar components $u_{σ(p)}^{i_p}$ by $σ$.
+	Putting this together,
+	\begin{align}
+		A \fatdot (\etc[k]{𝒖_\i}∧1) = \sum_{σ ∈ S_k} (-1)^σ A_{\etc{i_\i}{}k} \etc{u_{σ(\i)}^{i_\i}}{}k
+	,\end{align}
+	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
+	\begin{align}
+		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}},k) = k! \, φ(\etc{𝒖_{σ(\i)}},k)
+	\end{align}
+	where all $k!$ terms are equal due to the alternating property of $φ$.
+\end{proof}
+
+
+
 \subsection{Common algebra isomorphisms}
+\label{sec:common-alg-isos}
 
 An efficient way to become familiar with geometric algebras is to study their relations to other common algebras encountered in physics.
 
@@ -321,192 +415,6 @@ An efficient way to become familiar with geometric algebras is to study their re
 
 
 
-\subsection{Even subalgebra isomorphisms}
-
-As noted above, multivectors of even grade are closed under the geometric product, and form the even subalgebra $\GA[+](p, q)$.
-% Involution fixes even elements, since for $ι(A) = (-1)^{2k}A = A$ for a $2k$-vector, so ...
-There is an isomorphism $\GA[+](p, q) \cong \GA[+](q, p)$ given by $\bar{\ve_i} ≔ \ve_i$ with opposite signature $\bar{\ve_i}^2 ≔ -\ve_i^2$, since the factor of $-1$ occurs only an even number of times for even elements.
-
-The even subalgebras are also isomorphic to full geometric algebras of one dimension less:
-\begin{lemma}
-	There are isomorphisms
-	\begin{align}
-		\GA[+](p,q) ≅ \GA(p,q - 1)
-		\qqtext{and}
-		\GA[+](p,q)≅ \GA(q,p - 1)
-	\end{align}
-	when $q ≥ 1$ and $p ≥ 1$, respectively.
-\end{lemma}
-\begin{proof}
-	Select a unit vector $𝒖 ∈ \GA(p, q)$ with $𝒖^2 = -1$, and define a linear map $Ψ_𝒖 : \GA(p, q - 1) → \GA[+](p, q)$ by
-	\begin{align}
-		Ψ_𝒖(A) =
-		\begin{cases}
-			A & \text{if $A$ is even}
-		\\	A ∧ 𝒖 & \text{if $A$ is odd}
-		\end{cases}
-	.\end{align}
-	Note we are taking $\GA(p, q - 1) ⊂ \GA(p, q)$ to be the subalgebra obtained by removing $𝒖$ (i.e., restricting $V$ to $𝒖^\perp$) so there is a canonical inclusion from the domain of $Ψ_𝒖$ to the codomain.
-	Let $A ∈ \GA(p, q - 1)$ be a $k$-vector.
-	Note that $A∧𝒖 = A𝒖$ since $𝒖 \perp \GA(p, q - 1)$, and that $A$ commutes with $𝒖$ if $k$ is even and anticommutes if $k$ is odd.
-
-	To so $Ψ_𝒖$ is a homomorphism, suppose $A, B ∈ \GA(p, q - 1)$ are both even;
-	then $Ψ_𝒖(AB) = AB = Ψ_𝒖(A)Ψ_𝒖(B)$.
-	If both are odd, then $AB$ is even and $Ψ_𝒖(AB) = AB = -AB𝒖^2 = A𝒖B𝒖 = Ψ_𝒖(A)Ψ_𝒖(B)$.
-	If $A$ is odd and $B$ even, then $Ψ_𝒖(AB) = AB𝒖 = A𝒖B = Ψ_𝒖(A)Ψ_𝒖(B)$ and similarly for $A$ even and $B$ odd.
-	Injectivity and surjectivity are clear, so $Ψ_𝒖$ is an algebra isomorphism.
-\end{proof}
-
-The special case $\GA[+](1,3) ≅ \GA(3)$ is of great relevance to special relativity, and is discussed in detail in \cref{sec:spacetime-split}.
-Here the isomorphism $Ψ_𝒖$ is called a \emph{space/time split} with respect to an observer of velocity $𝒖$.
-This provides an impressively efficient algebraic method for transforming relativistic quantities between inertial frames.
-
-
-
-
-
-
-
-
-\subsection{Relation to Exterior Forms}
-
-The geometric algebra is a generalisation of the exterior algeba.
-If the inner product is completely degenerate (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then there is an algebra isomorphism $\GA(V, 0) \cong \EA{V}$.
-
-A qualitative difference between $\GA(V, η)$ and $\EA{V}$, however, is that while inhomogeneous multivectors find little use in exterior algebra,\sidenote{
-	In fact, some authors \cite{flanders1963differential} leave sums of terms of differing grade undefined.
-} these have a significant geometrical describing reflections and rotations in $\GA(V, η)$.
-
-Exterior forms can be mimicked in the geometric algebra by making use of a dual basis $V$, as in the following lemma.
-Note that the dual space $V^*$ does not make an appearance --- all elements belong to $\GA(V, η)$.
-\begin{lemma}
-	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
-	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i},k)
-	.\end{align}
-\end{lemma}
-Note the reversed order of the wedge products on the left-hand side.
-The factor of $k!$ is due to the Spivak convention for exterior forms (replace $k! \mapsto 1$ for the Kobayashi--Nomizu convention).
-\begin{proof}
-	Fix an orthonormal basis $\set{\ve_i} ⊂ V$ and a dual basis $\ve^i \fatdot \ve_j = δ^i_j$.
-	Expanding the right-hand side with respect to his basis,
-	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1)
-		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \etc[k]{u_\i^{j_\i}}{}1
-	.\end{align}
-	By \cref{lem:dual-blades}, the dot product of $k$-blades is $(-1)^σ$ is the sign of the permutation $σ(i_p) = j_p$, and zero for all non-permutation terms in the sum.
-	Thus, for each (non-zero) term in the sum we have
-	\begin{align}
-		\etc{u_\i^{j_\i}}{}k = \etc{u_\i^{σ^{-1}(j_\i)}}{}k = \etc{u_{σ(\i)}^{i_\i}}{}k
-	,\end{align}
-	where the last equality is obtained by permuting the scalar components $u_{σ(p)}^{i_p}$ by $σ$.
-	Putting this together,
-	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1) = \sum_{σ ∈ S_k} (-1)^σ A_{\etc{i_\i}{}k} \etc{u_{σ(\i)}^{i_\i}}{}k
-	,\end{align}
-	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
-	\begin{align}
-		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}},k) = k! \, φ(\etc{𝒖_{σ(\i)}},k)
-	\end{align}
-	where all $k!$ terms are equal due to the alternating property of $φ$.
-\end{proof}
-
-
-
-
-\section{Higher Notions of Orthogonality}
-
-
-As discussed at the start of this chapter, the lack of a $\ZZ$-grading means that a geometric product of blades is generally an inhomogeneous multivector.
-Geometrically, the grade $k$ part of product of blades reveals the degree to which the two blades are `orthogonal' or `parallel', in a certain $k$-dimensional sense.
-
-To see this, first consider the special case where the product of blades $a$ and $b$ is a homogeneous $k$-blade.
-This occurs when there exists a common orthonormal basis $\qty{𝒆_i}$ such that
-\begin{align}
-	a &= α 𝒆_{i_1}𝒆_{i_2}\cdots𝒆_{i_p}
-&	&\text{ and }
-&	b &= β 𝒆_{j_1}𝒆_{j_2}\cdots𝒆_{j_q}
-\end{align}
-simultaneously, for scalars $α,β$.
-The resulting grade $k$ is the number of basis vectors $𝒆_{h_i}$ which are not common to both $a$ and $b$; i.e., $\set{h_i}$ is the symmetric difference of $i$ and $j$.
-% $\set{\etc{i_\i},p} \ominus \set{\etc{j_\i},q}$.
-\begin{align}
-	ab = ±αβ 𝒆_{h_1}𝒆_{h_2}\cdots 𝒆_{h_k}
-\end{align}
-Each pair of common basis vectors contribute an overall factor of $𝒆_i^2 = ±1$, and each transposition required to bring each pair together flips the overall sign.
-Thus, the possible values of $k$ are separated by steps of two, with the maximum $k = p + q$ attained when no basis vectors are in common.
-In terms of the spans of the blades, we have
-\begin{align}
-	k &= \underbrace{\dim\spanof{a}}_p + \underbrace{\dim\spanof{b}}_q - \underbrace{2\dim(\spanof{a}∩\spanof{b})}_{2m}
-% \\	&= p + q - 2m
-\\	&∈ \qty{|p - q|, |p - q| + 2, …, p + q - 2, p + q}
-	\label{eqn:possible-grades}
-.\end{align}
-Solving for the dimension of the intersection, we have
-\begin{align}
-	m = \frac12\qty(p + q - k)
-.\end{align}
-Thus, the higher the grade $k$ of the product $ab$, the lower the dimension $m$ of the intersection of their spans.
-
-
-
-We are used to the geometric meaning of two vectors being parallel or orthogonal.
-In terms of vector spans, they imply that the intersection is one or zero dimensional, respectively.
-Similarly, blades of higher grade can be `parallel' or `orthogonal' to varying degrees, depending on the dimension $m$ of their intersection.
-
-For example, the intersection of two $2$-blades may be of dimension two, one or (in four or more dimensions) zero.
-The notion of parallel (i.e., being a scalar multiple) remains clear ($m = 2$), but there are now two different types of orthogonality for 2-blades ($m = 1$ and $m = 0$).
-An example of the first type can be pictured as two planes meeting at right-angles along a line; the second type requires at least four dimensions.
-
-
-\begin{definition}
-	A $p$-blade $a$ and $q$-blade $b$ satisfying $ab = \grade[k]{ab}$ are called \textdef{$Δ$-orthogonal} where $Δ = k - |p - q| = n - m$.
-\end{definition}
-
-Informally, $Δ$-orthogonality of $a$ and $b$ means that $ab$ is of the $Δ$th grade above the minimum possible grade $|p - q|$.
-The higher $Δ$, the fewer linearly independent directions are shared by $a$ and $b$.
-Different cases are exemplified in \cref{tbl:blade-product-interpretations}.
-
-\begin{table*}
-	\centering
-	\renewcommand{\arraystretch}{1.15}
-	\begin{tabular}{CCCCCCcl}
-		p & q & k & \grade[k]{ab} & Δ & m & \emph{commutativity} & \emph{geometric interpretation of $ab = ⟨ab⟩_k$}
-	% \\[1ex]	\hline
-	\\[2pt]	\hline\hline
-		1 & 1 & 0 & a \fatdot b   & 0 & 1 & commuting     & vectors are parallel; $a \parallel b ⟺ a = λb$
-	\\	1 & 1 & 2 & a∧b           & 1 & 0 & anticommuting & vectors are orthogonal $a \perp b$
-	\\	\hline
-		2 & 2 & 0 & a \fatdot b   & 0 & 2 & commuting     & bivectors are parallel $a = λb$
-	\\	2 & 2 & 2 & a×b           & 1 & 1 & anticommuting & bivectors are at right-angles to each other
-	\\	2 & 2 & 4 & a∧b           & 2 & 0 & commuting     & --- %bivectors are $2$-orthogonal
-	\\	\hline
-		1 & 2 & 1 & a \fatdot b   & 0 & 1 & anticommuting & vector $a$ lies in plane of bivector $b$
-	\\	1 & 2 & 3 & a∧b           & 1 & 0 & commuting     & vector $a$ is normal to plane of bivector $b$
-	\\	\hline
-		2 & 3 & 1 & a \fatdot b   & 0 & 2 & commuting     & bivector $a$ lies in span of trivector $b$
-	\\	2 & 3 & 3 & \grade[3]{ab} & 1 & 1 & anticommuting & --- %bivector $a$ and trivector $b$ are $1$-orthogonal
-	\\	2 & 3 & 5 & a∧b           & 2 & 0 & commuting     & --- %bivector $a$ and trivector $b$ are $2$-orthogonal
-	% \\	\hline
-	% 	3 & 3 & 0 & a \fatdot b   & 0 & 3 & commuting     & trivectors are $0$-orthogonal
-	% \\	3 & 3 & 2 & \grade[2]{ab} & 1 & 2 & anticommuting & trivectors are $1$-orthogonal
-	% \\	3 & 3 & 4 & \grade[4]{ab} & 2 & 1 & commuting     & trivectors are $2$-orthogonal
-	% \\	3 & 3 & 6 & a∧b           & 3 & 0 & anticommuting & trivectors are $3$-orthogonal
-	\end{tabular}
-	\caption{
-		Geometric interpretation of the $k$-blade $ab = \grade[k]{ab}$ where $a$ and $b$ are of grades $p$ and $q$ respectively, and where $m = \dim(\spanof a ∩ \spanof b)$.
-	}
-	\label{tbl:blade-product-interpretations}
-\end{table*}
-
-
-Familiarity with some special cases may aid intuition when considering general products of blades.
-For instance, if the product of two bivectors is $σ_1σ_2 = σ_1·σ_2 + σ_1×σ_2$, then it is understood that $σ_1$ has a component parallel to $σ_2$, and a component which meets $σ_2$ at right-angles along a line of intersection.
-In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them.
-On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors share no common direction, existing in orthogonal planes (a scenario requiring at least four dimensions).
-
-
-
 
 
 \section{Rotors and the Associated Lie Groups}
@@ -514,9 +422,9 @@ On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors share no comm
 
 
 
-There is a consistent pattern in the algebra isomorphisms listed above.
+There is a consistent pattern in the algebra isomorphisms listed in \cref{sec:common-alg-isos}.
 Note how the complex numbers $\CC$ are fit for describing $\SO(2)$ rotations in the plane, and the quaternions $\HH$ describe $\SO(3)$ rotations in $\RR^3$.
-Common to both the respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is the identification of each ``imaginary unit'' in $\CC$ or $\HH$ with a \emph{unit bivector} in $\GA(n)$.
+Common to both their respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is the identification of each ``imaginary unit'' in $\CC$ or $\HH$ with a \emph{unit bivector} in $\GA(n)$.
 \begin{itemize}
 	\item In $2$d, there is one linearly independent bivector, $\ve_1\ve_2$, and one imaginary unit, $i$.
 	\item In $3$d, there are $\dim \GA[2](3) = \binom{3}{2} = 3$ such bivectors, and so three imaginary units $\set{\ii, \jj, \kk}$ are needed.
@@ -533,9 +441,9 @@ To see how bivectors act as rotations, observe that rotations in the $\CC$-plane
 while $\RR^3$ rotations are described in $\HH$ using a double-sided transformation law,
 \begin{math}
 	% u → e^{\fracθ2\hat n}ue^{-\fracθ2\hat n}
-	u ↦ e^{θ\hat n/2}ue^{-θ\hat n/2}
+	u ↦ e^{θ\vb{\hat n}/2}ue^{-θ\vb{\hat n}/2}
 ,\end{math}
-where $\hat n ∈ \spanof{\ii, \jj, \kk}$ is a unit quaternion defining the plane of rotation.
+where $\vb{\hat n} ∈ \spanof{\ii, \jj, \kk}$ is a unit quaternion defining the plane of rotation.
 Due to the commutativity of $\CC$, the double-sided transformation law is actually general to both $\CC$ and $\HH$.
 
 Similarly, rotations in a geometric algebra are described as
@@ -546,18 +454,20 @@ Similarly, rotations in a geometric algebra are described as
 ,\end{align}
 where $\hat{b} ∈ \GA[2](V, η)$ is a unit bivector.
 Multivectors of the form $R = e^σ$ for $σ ∈ \GA[2](V, η)$ are called \emph{rotors}.
-Immediate advantages to geometric algebra's rotor formalism are clear:
+Immediate advantages to the rotor formalism are clear:
 \begin{itemize}
 	\item \emph{It is general to $n$ dimensions, and to any metric signature.}
-	Rotors describe generalised rotations,\sidenote{a.k.a., proper orthogonal transformations} depending on the metric and algebraic properties of the generating unitbivector $σ$.
+
+	Rotors describe generalised rotations,\sidenote{a.k.a., proper orthogonal transformations} depending on the metric and algebraic properties of the exponentiated unit bivector $σ$.
 	If $σ^2 < 0$, then $e^σ$ describes a Euclidean rotation; if $σ^2 > 0$, then $e^σ$ is a hyperbolic rotation or \emph{Lorentz boost}.
 
 	\item \emph{Vectors are distinguished from bivectors.}
+
 	One of the subtler points about quaternions is their transformation properties under reflection.
 	A quaternion `vector' $v = x\ii + y\jj + z\kk$ reflects through the origin as $v \mapsto -v$, but a quaternion `rotor' of the same value is invariant --- vectors and pseudovectors are confused with the same kind of object.
 	Not so in the geometric algebra: vectors are vectors in $\GA[1]$, and $\RR^3$ pseudovectors are bivectors in $\GA[2]$.
-	The price to pay for the introduction of more objects is not a price but a benefit: the generalisation to arbitrary dimensions is immediate and the geometric role of objects becomes clear.
-	\sidenote{
+
+	It turns out that this price of introducing more algebraic objects is hardly a cost but a benefit: the generalisation to arbitrary dimensions is immediate and elegant, and the geometric role of objects becomes clear.\sidenote{
 		See \cite{lasenby2016ga-unified-language,hestenes1986ga-unified-language,chappell2016quat-history} for similarly impassioned testaments to the elegance of geometric algebra.
 	}
 \end{itemize}
@@ -574,7 +484,7 @@ For instance, the linear map
 	A \mapsto -𝒗A𝒗^{-1}
 	\label{eqn:multivector-reflection}
 \end{align}
-reflects the multivector $A$ along the vector $𝒗$, that is, across the hyperplane with normal $𝒗$.
+reflects the multivector $A$ along the vector $𝒗$ --- that is, across the hyperplane with normal $𝒗$.
 By composing reflections of this form, any orthogonal transformation may be built, acting on multivectors as
 \begin{align}
 	\label{eqn:multivector-conjugation-by-inverse}
@@ -588,7 +498,7 @@ For an orthogonal transformation built using normalised vectors,
 \begin{align}
 	R^{-1} = \hat{𝒗}_3^{-1}\cdots \hat{𝒗}_2^{-1}\hat{𝒗}_1^{-1} = ±\rev{R}	
 \end{align}
-since $\hat{𝒗}^{-1} = ±\hat{𝒗}$, and hence \cref{eqn:multivector-conjugation-by-inverse} may be written with the reversion instead of inversion:
+since $\hat{𝒗}^{-1} = ±\hat{𝒗}$, and hence \cref{eqn:multivector-conjugation-by-inverse} may be written in terms of reversion instead of inversion:
 \begin{align}
 	\label{eqn:multivector-conjugation}
 	A ↦ \pm RA\rev{R}
@@ -686,3 +596,104 @@ Thus, both the rotor groups and their Lie algebras are directly represented with
 	}
 	\label{fig:bivector-liealg}
 \end{figure}
+
+
+
+
+
+\section{Higher Notions of Orthogonality}
+
+
+As discussed at the start of this chapter, the lack of a $\ZZ$-grading means that a geometric product of blades is generally an inhomogeneous multivector.
+Geometrically, the grade $k$ part of product of blades reveals the degree to which the two blades are `orthogonal' or `parallel', in a certain $k$-dimensional sense.
+
+To see this, first consider the special case where the product of blades $a$ and $b$ is a homogeneous $k$-blade.
+This occurs when there exists a common orthonormal basis $\qty{𝒆_i}$ such that
+\begin{align}
+	a &= α \etc{\ve_{i_\i}}{}p
+&	&\text{ and }
+&	b &= β \etc{\ve_{j_\i}}{}q
+\end{align}
+simultaneously, for scalars $α,β$.
+Then, the product is
+\begin{align}
+	ab = ±αβ \etc{\ve_{h_\i}}{}k
+.\end{align}
+Each pair of parallel basis vectors in $a$ and $b$ contributes an overall factor of $\ve_i^2 = ±1$, and each transposition required to bring each pair together flips the overall sign.
+
+The resulting grade $k$ is the number of basis vectors $𝒆_{h_i}$ which are not common to both $a$ and $b$; i.e., $\set{h_i}$ is the symmetric difference of $i$ and $j$.
+% $\set{\etc{i_\i},p} \ominus \set{\etc{j_\i},q}$.
+Thus, the possible values of $k$ are separated by steps of two, with the maximum $k = p + q$ attained when no basis vectors are common to $a$ and $b$.
+In terms of the spans of the blades, we have
+\begin{align}
+	k &= \underbrace{\dim\spanof{a}}_p + \underbrace{\dim\spanof{b}}_q - \underbrace{2\dim(\spanof{a}∩\spanof{b})}_{2m}
+% \\	&= p + q - 2m
+\\	&∈ \qty{|p - q|, |p - q| + 2, …, p + q - 2, p + q}
+	\label{eqn:possible-grades}
+.\end{align}
+Solving for the dimension of the intersection, we have
+\begin{align}
+	m = \frac12\qty(p + q - k)
+.\end{align}
+Thus, the higher the grade $k$ of the product $ab$, the lower the dimension $m$ of the intersection of their spans.
+
+
+
+We are used to the geometric meaning of two vectors being parallel or orthogonal.
+In terms of vector spans, they imply that the intersection is one or zero dimensional, respectively.
+Similarly, blades of higher grade can be `parallel' or `orthogonal' to varying degrees, depending on the dimension of their intersection, $m$.
+
+For example, the intersection of two $2$-blades may be of dimension two, one or (in four or more dimensions) zero.
+The notion of parallel (i.e., being a scalar multiple) remains clear ($m = 2$), but there are now two different types of orthogonality for 2-blades ($m = 1$ and $m = 0$).
+An example of the first type can be pictured as two planes meeting at right-angles along a line; the second type requires at least four dimensions.
+
+
+\begin{definition}
+	A $p$-blade $a$ and $q$-blade $b$ satisfying $ab = \grade[k]{ab}$ are called \textdef{$Δ$-orthogonal} where $Δ = k - |p - q| = n - m$.
+\end{definition}
+
+Informally, $Δ$-orthogonality of $a$ and $b$ means that $ab$ is of the $Δ$th grade above the minimum possible grade $|p - q|$.
+The higher $Δ$, the fewer linearly independent directions are shared by (the spans of) $a$ and $b$.
+Different cases are exemplified in \cref{tbl:blade-product-interpretations}.
+
+\begin{table*}
+	% \centering
+	\renewcommand{\arraystretch}{1.15}
+	\begin{tabular}{CCCCCCcl}
+		p & q & k & \grade[k]{ab} & Δ & m & \emph{commutativity} & \emph{geometric interpretation of $ab = \ip{ab}_k$}
+	% \\[1ex]	\hline
+	\\[2pt]	\hline\hline
+		1 & 1 & 0 & a \fatdot b   & 0 & 1 & commuting     & vectors are parallel; $a \parallel b ⟺ a = λb$
+	\\	1 & 1 & 2 & a∧b           & 1 & 0 & anticommuting & vectors are orthogonal $a \perp b$
+	\\	\hline
+		2 & 2 & 0 & a \fatdot b   & 0 & 2 & commuting     & bivectors are parallel $a = λb$
+	\\	2 & 2 & 2 & a×b           & 1 & 1 & anticommuting & bivectors are at right-angles to each other
+	\\	2 & 2 & 4 & a∧b           & 2 & 0 & commuting     & bivectors are \emph{$2$-orthogonal}
+	\\	\hline
+		1 & 2 & 1 & a \fatdot b   & 0 & 1 & anticommuting & vector $a$ lies in plane of bivector $b$
+	\\	1 & 2 & 3 & a∧b           & 1 & 0 & commuting     & vector $a$ is normal to plane of bivector $b$
+	\\	\hline
+		2 & 3 & 1 & a \fatdot b   & 0 & 2 & commuting     & bivector $a$ lies in span of trivector $b$
+	\\	2 & 3 & 3 & \grade[3]{ab} & 1 & 1 & anticommuting & $a$ and $b$ are \emph{$1$-orthogonal}
+	\\	2 & 3 & 5 & a∧b           & 2 & 0 & commuting     & $a$ and $b$ are \emph{$2$-orthogonal}
+	% \\	\hline
+	% 	3 & 3 & 0 & a \fatdot b   & 0 & 3 & commuting     & trivectors are $0$-orthogonal
+	% \\	3 & 3 & 2 & \grade[2]{ab} & 1 & 2 & anticommuting & trivectors are $1$-orthogonal
+	% \\	3 & 3 & 4 & \grade[4]{ab} & 2 & 1 & commuting     & trivectors are $2$-orthogonal
+	% \\	3 & 3 & 6 & a∧b           & 3 & 0 & anticommuting & trivectors are $3$-orthogonal
+	\end{tabular}
+	\caption{
+		Geometric interpretation of the $k$-blade $ab = \grade[k]{ab}$ where $a$ and $b$ are of grades $p$ and $q$ respectively, and where $m = \dim(\spanof a ∩ \spanof b)$.
+	}
+	\label{tbl:blade-product-interpretations}
+\end{table*}
+
+
+Familiarity with some special cases may aid intuition when considering general products of blades.
+For instance, if the product of two bivectors is $σ_1σ_2 = σ_1·σ_2 + σ_1×σ_2$, then it is understood that $σ_1$ has a component parallel to $σ_2$, and a component which meets $σ_2$ at right-angles along a line of intersection.
+In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them.
+On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors share no common direction, existing in orthogonal planes (a scenario requiring at least four dimensions).
+
+
+
+

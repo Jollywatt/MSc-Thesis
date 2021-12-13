@@ -286,7 +286,7 @@ One of the simplest algebras to construct as a quotient of the tensor algebra, y
 \end{definition}
 The ideal $\gen{𝒖 ⊗ 𝒖} ≡ \gen{𝒖 ⊗ 𝒖 | 𝒖 ∈ V}$ corresponds to the congruence defined by $𝒖 ⊗ 𝒖 \sim 0$ for any vectors $𝒖 ∈ V$.
 The wedge product is also called the \emph{exterior}, \emph{alternating} or \emph{antisymmetric} product.
-The property suggested by its various names is easily seen by expanding the square of a sum;
+The property suggested by its various names is easily seen by expanding the square of a sum:
 \begin{align}
 	(𝒖 + 𝒗)∧(𝒖 + 𝒗) = 𝒖∧𝒖 + 𝒖∧𝒗 + 𝒗∧𝒖 + 𝒗∧𝒗
 .\end{align}
@@ -341,7 +341,8 @@ In fact, any $k$-blade may be viewed as a subspace of $V$ with an oriented scala
 	$\spanof b = \spanof{\etc{𝒖_\i},k}$.
 	Define the span of zero to be the trivial subspace.
 \end{definition}
-The definition does not depend on the particular decomposition of the blade as a wedge product of vectors: if $\etc{𝒖_\i}∧k = \etc{𝒗_\i}∧k$ then $\spanof{𝒖_i} = \spanof{𝒗_i}$.
+The definition does not depend on the particular decomposition of the blade as a wedge product of vector.
+(If $\etc{𝒖_\i}∧k = \etc{𝒗_\i}∧k$ are two such decompositions, then $\spanof{𝒖_i} = \spanof{𝒗_i}$.)
 
 
 \subsection{As antisymmetric tensors}
@@ -404,7 +405,7 @@ Indeed, some authors omit the normalisation factor, which has the effect of chan
 \begin{align}
 	A ∧ B = \frac{(p + q)!}{p!q!}\op{Sym}^-(A ⊗ B)
 \end{align}
-for $A$ and $B$ of respective grades $p$ and $q$, written in terms of our convention \eqref{eqn:(anti)symmetriser}.
+for $A$ and $B$ of respective grades $p$ and $q$, written with \eqref{eqn:(anti)symmetriser} including the factor $\frac1{k!}$.
 The different normalisations of $∧$ as an antisymmetrising product lead to distinct identifications of multivectors in $\EA{V}$ with tensors in $S \subset \TA{V}$, as clarified in \cref{tbl:wedge-conventions}.
 \begin{table}[h]
 	\centering
@@ -434,7 +435,7 @@ The exterior algebra is most frequently encountered by physicists as an operatio
 	% E.g., if $f$ is alternating, then $f(𝒖, 𝒗, 𝒘) = -f(𝒗, 𝒖, 𝒘)$.
 } multilinear maps.
 
-We may wish to use the exterior algebra $\EA{V^*}$ over the dual space of linear maps $V → \RR$ as a model for exterior forms.
+We \emph{could} use the exterior algebra $\EA{V^*}$ over the dual space of linear maps $V → \RR$ as a model for exterior forms.
 Using a basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the form $f = f_{\etc{i_\i}{}k} \etc{\ve^{i_\i}}∧k$, and each component acts on $\etc{𝒖_\i}⊗k ∈ \TA[k]{V}$ as
 \begin{align}
 	(\etc{\ve^{i_\i}}∧k)(\etc{𝒖_\i}⊗k)
@@ -471,14 +472,15 @@ If $φ, ϕ ∈ \forms(V, A)$ are $A$-valued forms, where $A$ is equipped with a 
 \begin{align}
 	(φ ∧ ϕ)(\etc{𝒖_\i} ⊗ k) = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_\i} ⊗ p) ⊛ ϕ(\etc{𝒖_\i} ⊗ q)
 .\end{align}
-The product $⊛$ need not be commutative nor associative; in particular, we may have Lie algebra--valued forms.
+The product $⊛$ need not be commutative nor associative.
+In particular, we may have Lie algebra--valued forms.
 For example, if $φ, ϕ ∈ \forms[1](V, \liealg g)$ are Lie algebra--valued, then
 \begin{align}
 	(φ ∧ ϕ)(𝒖, 𝒗) = [φ(𝒖), ϕ(𝒗)] - [φ(𝒗), ϕ(𝒖)]
 ,\end{align}
 where $[\phantom{𝒖}, \phantom{𝒖}] : \liealg g × \liealg g → \liealg g$ is the Lie bracket.
 Note that this implies that $φ ∧ φ$ does not necessarily vanish for non-Abelian forms.\sidenote{
-	E.g., in the case above we have $(φ ∧ φ)(𝒖, 𝒗) = 2[φ(𝒖), φ(𝒗)]$.
+	E.g., in the case above, $(φ ∧ φ)(𝒖, 𝒗) = 2[φ(𝒖), φ(𝒗)]$.
 }
 % \begin{align}
 % 	φ ∧ ϕ = \op{Alt}(φ ⊗ ϕ)
@@ -494,8 +496,8 @@ Note that this implies that $φ ∧ φ$ does not necessarily vanish for non-Abel
 
 \section{The Metric: Length and Angle}
 
-The tensor and exterior algebras considered so far are build from a vector space $V$ alone.
-Notions of length and angle are central to geometry, but are not intrinsic to a vector space --- additional structure must be provided.
+The tensor and exterior algebras considered so far are built from a vector space $V$ alone.
+Notions of length and angle are central to geometry, but are not intrinsic to a vector space --- this additional structure must be provided by a \emph{metric}.
 \begin{definition}
 	A \textdef{metric}\,\sidenote{a.k.a. an \emph{inner product}, or \emph{symmetric bilinear form}} is a function $η : V × V \to \FF$, often written
 	$ η(𝒖, 𝒗) ≡ \ip{𝒖, 𝒗} $
@@ -548,7 +550,7 @@ The prescription of either $η$ or $q$ is therefore equivalent --- but the notio
 The dual space $V^* ≔ \set{f : V → \FF | \text{$f$ linear}}$ of a vector space consists of \textdef{dual vectors} or \textdef{covectors}, which are linear maps from $V$ into its underlying field.
 Convention dictates that components of vectors be written superscript, $𝒖 = u^i\ve_i ∈ V$, and covectors subscript, $φ = φ_i\ve^i ∈ V^*$, for bases $\set{\ve_i} \subset V$ and $\set{\ve^i} \subset V^*$.
 
-A metric $η$ on $V$ defines an isomorphism between itself and its dual space.
+A metric $η$ on $V$ defines an isomorphism between $V$ and its dual space.
 Collectively known as the \textdef{musical isomorphisms}, the map $\flat : V → V^*$ and its inverse $\sharp : V^* → V$ are defined by
 \begin{align}
 	𝒖^\flat(𝒗) = \ip{𝒖, 𝒗}
@@ -556,7 +558,7 @@ Collectively known as the \textdef{musical isomorphisms}, the map $\flat : V →
 	\ip{φ^\sharp, 𝒖} = φ(𝒖)
 \end{align}
 for $𝒖,𝒗 ∈ V$ and $φ ∈ V^*$.
-The names become justified when working with a basis; the relations
+The names become justified when working with a basis: the relations
 \begin{align}
 	(𝒖^\flat)_i = η_{ij}𝒖^j
 	\qqtext{and}
@@ -564,18 +566,18 @@ The names become justified when working with a basis; the relations
 \end{align}
 show that $\flat$ lowers indices, while $\sharp$ raises them.
 
-The basis $\set{\ve_i}$ also defines a \textdef{dual basis $\set{\ve^i} \subset V^*$ of $V$} via the metric by
+Given a metric, a choice of basis $\set{\ve_i} ⊂ V$ also defines a \textdef{dual basis $\set{\ve^i} \subset V^*$ of $V$} via
 \begin{math}
 	\ve^i ≔ η^{ij}\ve_j^\flat
 .\end{math}
-Note that basis vectors and covectors defined in this way do not exist in the same vector space, but are related by their evaluation on one another via $\ve^i(\ve_j) = δ^i_j$.
-In some contexts, given a basis $\set{\ve_i}$ of $V$, we will define a dual basis $\set{\ve^i} \subset V$ (not in $V^*$).
-By this we mean the dual basis vectors are instead defined as
+Note that basis vectors and covectors defined in this way do not exist in the same vector space, but are related by their evaluation on one another by $\ve^i(\ve_j) = δ^i_j$.
+In some contexts, we will define a dual basis $\set{\ve^i}$ in $V$ (not in $V^*$), and by this we mean the dual basis to be defined instead as
 \begin{math}
 	\ve^i ≔ η^{ij}\ve_j
-,\end{math}
-relating to the non-dual basis vectors via $\ip{\ve^i, \ve_j} = δ^i_j$.
-We use both senses of dual basis, but the distinction can often be safely ignored.
+.\end{math}
+Then, dual and non-dual basis vectors are related via $\ip{\ve^i, \ve_j} = δ^i_j$.
+We use both senses of the term ``dual basis''.
+Often, the distinction can be safely ignored (since, after all, $V \cong V^*$).
 
 %  or $\ve^i = η^{ij}\ve_j$.
 
@@ -594,19 +596,22 @@ In particular, a metric on $\EA{V}$ defines a magnitude for pseudoscalars.
 	The \textdef{volume element} $\vol$ of the metrical exterior algebra $\EA{V}$ is the unique (up to sign) $n$-vector satisfying $\ip{\vol, \vol} = 1$.
 \end{definition}
 A choice of sign for the volume element defines an \textdef{orientation}.
-Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$, the basis is called right-handed if $\etc{\ve_\i}∧n = \vol$, and left-handed otherwise.
+Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$, the basis is called right-handed if $\etc{\ve_\i}∧n = \vol$ is the chosen volume element, and left-handed otherwise.
 
 
 \subsubsection{Hodge duality}
 
-A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a metric on $V$.
+A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a metric, which relates the $k$- and $(n - k)$-grade subspaces.
 \begin{definition}
 	Let $\EA{V}$ be a metrical exterior algebra with base dimension $n$ and volume element $\vol$.
-	The \textdef{Hodge dual} is the unique operator satisfying
+	The \textdef{Hodge dual} $\star$ is the unique linear operator satisfying
 	\begin{align}
 		A ∧ \star B = \ip{A, B}\vol
 	\end{align}
 	for any $k$-vectors $A, B ∈ \EA[k]{V}$.
 \end{definition}
 
-The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates fixed-grade subspaces of the same dimension; in particular, $\star 1 = \vol$.
+The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates each pair of fixed-grade subspaces of the same dimension.
+In particular, the scalars and pseudoscalars, $\star 1 = \vol$.
+
+\todo{Seems incomplete...}
