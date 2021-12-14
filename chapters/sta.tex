@@ -3,24 +3,153 @@
 
 
 Special relativity is geometry with a Lorentzian signature.
-The \textdef{spacetime algebra} (STA) is the name given to the geometric algebra of a Minkowski vector space, $\GA(\RR^4, η) ≡ \GA(1,3)$, where $η = ±\op{diag}(-1,+1,+1,+1)$.
+The \textdef{spacetime algebra} (STA) is the name given to the geometric algebra of a Minkowski vector space, $\GA(1,3) ≡ \GA(\RR^4, η)$, where $η = \op{diag}(+---{})$.
 Other introductory material on the STA can be found in \cite{hestenes2003sta,gull1993sta,dressel2015sta}.
 
 
 We denote the standard vector basis by $\qty{\vb γ_μ}$, where Greek indices run over $\qty{0,1,2,3}$.
 This is a deliberate allusion to the Dirac $γ$-matrices, whose algebra is isomorphic to the STA --- however, the $\vg_μ ∈ \RR^{1+3}$ of STA are real, genuine spacetime vectors.
 A basis for the entire $2^4$-dimensional STA is then
-\begin{align}
-	\overset{\text{1 scalar}}
-		{\set[\big]{\vb 1}}
-∪	\overset{\text{4 vectors}}
-		{\set[\big]{\vg_0, \vg_i}}
-∪	\overset{\text{6 bivectors}}
-		{\set[\big]{\vg_0\vg_i, \vg_j\vg_k}}
-∪	\overset{\substack{\text{4 trivectors}}}
-		{\set[\big]{\vg_0\vg_j\vg_k, \vg_1\vg_2\vg_3}}
-∪	\overset{\substack{\text{1 pseudoscalar}}}
-		{\set[\big]{\vol ≔ \vg_0\vg_1\vg_2\vg_3}}
-\end{align}
-where Latin indices range over spacelike components, $\set{1,2,3}$.
+\begin{fullwidth}
+	\newcommand{\below}[2]{\underset{#1}{\vphantom{\int}#2}}
+	\begin{align}
+		\overset{\text{1 scalar}}{
+			\set[\big]{ \below{+}{\vb 1} }
+		}
+	∪	\overset{\text{4 vectors}}{
+			\set[\big]{ \below{+}{\vg_0}, \; \below{-}{\vg_i}}
+		}
+	∪	\overset{\text{6 bivectors}}{
+			\set[\big]{ \below{+}{\vg_0\vg_i}, \; \below{-}{\vg_j\vg_k}}
+		}
+	∪	\overset{\substack{\text{4 trivectors}}}{
+			\set[\big]{ \below{-}{\vg_0\vg_j\vg_k}, \; \below{+}{\vg_1\vg_2\vg_3}}
+		}
+	∪	\overset{\substack{\text{1 pseudoscalar}}}{
+			\set[\big]{ \vol ≔ \below{-}{\vg_0\vg_1\vg_2\vg_3}}
+		}
+	\end{align}
+\end{fullwidth}
+where lowercase Latin indices range over spacelike components, $\set{1,2,3}$.
 Blades shown on the left-hand side of $\set{\quad,\quad}$ are called \textdef{timelike}, and those in on right-hand side \textdef{spacelike}.
+The sign below each basis blade shows its signature (the sign of its scalar square).
+
+
+\subsubsection{The pseudoscalar and duality}
+
+The right-handed unit pseudoscalar $\vol$ represents an oriented unit $4$-volume.
+It anticommutes with odd elements (vectors and trivectors) and commutes with even elements (bivectors and \paren{pseudo}scalars) of the STA.
+
+Since $\vol^2 = -1$, the scalar--pseudoscalar plane $\GA[0,4](1,3) = \op{span}_\RR\set{1, \vol}$ is isomorphic to the complex plane $\CC$.
+Thus, for the sake of computation, operations on $\set{0, 4}$-multivectors may be regarded as operations on complex numbers.
+In particular, we define the principal root $\sqrt{a}$ of a $\set{0,4}$-multivector $a ∈ \GA[0,4](1,3)$ in the same way as it is defined in $\CC$ with a branch cut at $θ = π$.
+It is worth emphasising that there are many square roots of $-1$ in the spacetime algebra, each with distinct geometrical meanings.\sidenote{
+	E.g., the spacelike bivector $(\vg_i\vg_j)^2 = -1$ represents a directed spacelike plane; the timelike vector $\vg_0^2 = -1$ a particle's velocity.
+}
+We single to single out $\sqrt{-1} = \vol$ as `the' principal root as this proves to be useful notationally.\sidenote{
+	In electromagnetism, the imaginary unit $i$ often represents the volume element $\vol$.
+	E.g., in the Riemann--Silberstein vector \cite{silberstein}, both $i$ and $\vol$ play roles similar to the Hodge dual \cite{dressel2015sta}.
+}
+
+The volume element ... \todo{is the Hodge dual}
+
+
+\section{The space/time split}
+\label{sec:spacetime-split}
+
+While we actually live in $\RR^{1,3}$ spacetime, to any particular observer it appears that space is $\RR^3$ with a separate scalar time parameter.
+This is reflected in the fact that $\GA[+](1,3)$ and $\GA(3)$ are isomorphic, from \cref{lem:even-subalg-isos}.
+In fact, there is a separate isomorphism associated to each timelike direction, corresponding to each inertial observer's personal spacetime split.
+Such a \textdef{space/time split} identifies \emph{even} multivectors in the spacetime algebra $\GA[+](1,3)$ with $\GA(3)$ multivectors, providing an efficient, purely algebraic method for switching between inertial frames \cite{hestenes2003sta}.
+
+
+Let $K$ be an inertial observer and for simplicity choose the standard basis $\qty{\vg_μ}$ so that $\vg_0$ is the instantaneous velocity of the $K$ frame.
+The three \textdef{relative vectors} $\vs_i ≔ \vg_i\vg_0$ form a vector basis for $\GA(3)$, since the $\vg_i\vg_0$ indeed satisfy $\vs_i^2 = -\vg_i^2\vg_0^2 = 1$ and $\vs_i\vs_j = -\vs_j\vs_i$ for $i ≠ j$.
+Because of the dependence on the frame's velocity vector $\vg_0$, the relative vectors $\vs_i$ are particular to the $K$ frame.
+With respect to the $K$ frame, we may view $\GA(3) ⊂ \GA(1,3)$ as embedded in the STA, allowing us to consider multivectors as belonging to both spaces.
+Note that the same volume element $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$ is shared by the algebras.
+
+For example a spacetime bivector $F = F^{μν}\vg_μ\vg_ν$ may be separated into timelike $F^{i0}$ and spacelike $F^{ij}$ components with respect to the $K$ frame and viewed as a $\qty{1,2}$-multivector in $\GA(3)$,
+\begin{align}
+	\label{eqn:sta-bivector-split}
+	F = F^{i0}\vg_i\vg_0 + F^{ij}\vg_i\vg_j
+	= E^i\vs_i + B^i\vol\vs_i = \vb{E} + \vol \vb{B}
+	\label{eqn:bivector-spacetime-split}
+,\end{align}
+where we use
+\begin{math}
+	\vg_i\vg_j
+	= (\vg_i\vg_0)(\vg_j\vg_0)
+	= -\vs_i\vs_j
+	= -ε_{ijk}\vol\vs_k
+.\end{math}
+Note that the relativistic representation $F$ is \emph{equal} to the frame-dependent representation --- they are the same spacetime object.
+\Cref{eqn:sta-bivector-split} is the frame-dependent decomposition of a spacetime bivector (or ``2-form'') into two $\RR^3$ vectors familiar from electromagnetic theory.
+
+
+A proper orthochronous Lorentz transformation $\lin Λ ∈ \SO^+(1,3)$ acts as a `sandwich' product $\lin Λ(A) = e^σ A e^{-σ}$ with a rotor $e^σ \in \op{Spin}^+(1,3)$.
+The rotor is generated by a spacetime bivector $σ ∈ \GA[2](1,3)$.
+The bivector $σ$ can be represented in the $K$ frame as
+\begin{align}
+	σ = \frac12(ξ^i \vg_i + θ^i \vol \vg_i)\vg_0
+	= \frac12(\vb ξ + \vol \vb θ)
+	\label{eqn:bivector-generator}
+\end{align}
+where $\vb ξ = ξ^i\vs_i ∈ \GA[1](3)$ is a rapidity vector and $\vol \vb θ ∈ \GA[2](3)$ is a rotation bivector.
+
+
+
+
+\section{The invariant bivector decomposition}
+\label{sec:invariant-bivector-decomposition}
+
+There is a clear analogy between the space/time split of a bivector \eqref{eqn:bivector-spacetime-split}, with its spacelike and timelike components, and the Cartesian form of a complex number, $x + iy$, with its real and imaginary parts.
+This similarity can be made more precise: just as we may express complex numbers in polar form $re^{iϕ} = x + iy$, we may use the invariant bivector decomposition to write $ρe^{\vol σ} = \vb E + \vol \vb B$.
+
+
+Non-null spacetime bivectors $σ \in \GA[2](1,3)$ may be \emph{normalised}, in the sense that there always exists some $N_σ \in \GA[0,4](1,3)$ such that
+\begin{align}
+	σ = N_σ\hat{σ} = \hat{σ}N_σ
+	\qqtext{where}
+	\hat{σ}^2 = 1
+.\end{align}
+In the null case $σ^2 = 0$, we let $\hat{σ}^2 = 0$ instead.
+This is possible because the square of a bivector is a $\set{0, 4}$-multivector (\cref{lem:grades-of-square}), which always has a principle square root (since $\GA[0,4](1,3) ≅ \CC$).
+Explicitly, let $σ^2 = α + \vol β = ρ^2e^{2\vol ϕ}$ for scalars $α, β, ρ, ϕ$, so that
+\begin{align}
+	N_σ
+	\coloneqq \sqrt{σ^2}
+	= ρe^{\vol ϕ}
+	\label{eqn:spacetime-bivector-normaliser}
+,\end{align}
+assuming without loss of generality that $ρ > 0$ and $ϕ \in (-π/2, π/2]$.
+Thus, the \textdef{invariant bivector decomposition}
+\begin{align}
+	\label{eqn:invariant-bivector-decomposition}
+	σ = ρe^{\vol ϕ}\hat{σ}
+	&= \underbrace{(ρ\cos ϕ)\hat{σ}}_{σ_+} + \underbrace{(ρ\sin ϕ)\vol\hat{σ}}_{σ_-}
+\end{align}
+separates $σ$ into commuting parts, $[σ_+, σ_-] = 0$, each of which satisfy $±σ_±^2 > 0$.
+This makes it a useful device for algebraic manipulations.
+Furthermore, the decomposition is unique, and does not depend on any particular space/time split.
+
+
+
+The decomposition can be used to show the non-injectivity of the exponential map in the STA.
+Take some bivector written in decomposed form,
+\begin{math}
+	σ = λ_+\hat σ + λ_-\vol\hat σ
+.\end{math}
+Each bivector in the family
+\begin{align}
+	σ_{n} = λ_+\hat σ + (λ_- + nπ)\vol\hat σ
+	\label{eqn:equivalent-generators}
+\end{align}
+for $n ∈ \ZZ$ exponentiates to the same rotor, up to an overall sign: 
+\begin{align}
+	e^{σ_{n}} = e^{σ_{0}}e^{nπ\vol\hat σ} = (-1)^ne^{σ_{0}}
+	\label{eqn:equivalent-rotors}
+\end{align}
+Note that $e^{\hat σ + \vol\hat σ} = e^{\hat σ}e^{\vol\hat σ}$ since $[\hat σ, \vol\hat σ] = 0$.
+All rotors \eqref{eqn:equivalent-rotors} correspond to the same $\SO^+(1,3)$ Lorentz transformation.
+\Cref{eqn:equivalent-rotors} shows that every Lorentz rotor $±e^{σ_0}$ is equal to a pure bivector exponential $e^{σ_n}$ with a shifted rotational part $λ_- \mapsto λ_- + n\pi$.

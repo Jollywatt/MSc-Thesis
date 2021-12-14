@@ -125,6 +125,18 @@
 % ablishment...
 
 
+
+% shortcuts (usage: define with `\newshortcut{abc}{expansion}` and use with `\x{abc}`.)
+\makeatletter
+\newcommand\newshortcut[2]{\@namedef{\detokenize{#1}}{#2}}
+\newcommand\x[1]{\@nameuse{\detokenize{#1}}}
+\makeatother
+
+\newshortcut{BCH full}{Baker--Campbell--Hausdorff--Dynkin}
+\newshortcut{BCH}{BCHD}
+
+
+
 \usepackage{caption}
 \setcapindent{0pt} % remove indentation for multiline (table) captions
 \captionsetup{font=footnotesize}
