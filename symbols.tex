@@ -5,6 +5,13 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
+\DeclareMathOperator{\arctanh}{arctanh}
+% trig
+\newcommand{\Co}{\mathrm{C}_}
+\newcommand{\Si}{\mathrm{S}_}
+\newcommand{\Ta}{\mathrm{T}_}
+
+
 
 % Set builder notation (usage: `\set{a | P(a)}` or `\set[\big]{1, 2}`)
 \usepackage{xparse}
@@ -97,7 +104,7 @@
 \newcommand{\bch}[2]{#1 \odot #2}
 
 % self-reverse and anti-self-reverse projections
-\newcommand{\srev}[1]{\qty{\!\qty{#1}\!}}
+\newcommand{\srev}[1]{\qty{\!\!\qty{#1}\!\!}}
 \newcommand{\arev}[1]{\qty[\!\qty[#1]\!]}
 
 

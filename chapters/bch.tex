@@ -1,0 +1,112 @@
+\chapter{Composition of Rotors in terms of their Generators}
+
+
+In studying proper orthogonal transformations, it is often easier to represent them in terms of their generators $σ_i ∈ \GA(p,q)$ belonging to the Lie algebra $\liealg{so}(p,q)$.
+A fundamental question is how such transformations compose in terms of these generators: ``given $σ_1$ and $σ_2$, what is $σ_3$ such that $e^{σ_1}e^{σ_2} = e^{σ_3}$?''
+This is of theoretical interest and is useful practically when representing transformations in terms of their generators is cheaper.
+One may use the \x{BCH full} (\x{BCH}) formula $\bch{σ_1}{σ_2} ≔ \ln(e^{σ_1}e^{σ_2})$ which is well studied in general Lie theory \cite{achilles2012bch-early}.
+However, the general \x{BCH} formula
+\begin{align}
+	\bch{a}{b} = a + b + \frac12[a, b] + \frac{1}{12}[a, [a, b]] + \frac{1}{12}[[a, b], b] + \cdots
+	\label{eqn:general-BCH-formula}
+\end{align}
+involves an infinite series of nested commutators and may not obviously admit a useful closed form.
+
+In the case of Lorentz transformations $\SO^+(1,3)$, some closed-form expressions for \cref{eqn:general-BCH-formula} have been found using a $2$-form representation of $\liealg{so}(1,3)$ \cite{coll2002sr-generator-composition,coll1990sr-generator-exponentiation}, but the expressions are complicated and do not clearly reduce to well-known formulae in, for example, the special cases of pure rotations or pure boosts.
+The rotor formalism of geometric algebra leads to an elegant closed form of \cref{eqn:general-BCH-formula} which, in the case of Lorentzian spacetime, is inexpensive to compute.
+
+
+
+
+\section{A geometric \x{BCH} formula}
+\label{sec:bch-derivation}
+
+Suppose $σ \in \GA[2](p, q)$ is a bivector in a geometric algebra of dimension $p + q ≤ 4$.
+By their definitions as formal power series, we have
+\begin{math}
+	e^{σ} = \cosh σ + \sinh σ
+,\end{math}
+where `$\cosh$' involves even powers of $σ$ and `$\sinh$' odd powers.
+For convenience, define the linear projections onto \emph{self-reverse} and \emph{anti-self-reverse} parts respectively as
+\begin{align}
+	\srev{A} &≔ \frac12\qty(A + \rev{A})
+&	&\text{and}
+&	\arev{A} &≔ \frac12\qty(A - \rev{A})
+	\label{eqn:rev-notation}
+.\end{align}
+Since any bivector obeys $\rev{σ} = -σ$, it follows that $\rev{(e^σ)} = e^{-σ} = \cosh σ - \sinh σ$.
+Using the notation \eqref{eqn:rev-notation}, the self-reverse and anti-self-reverse projections of $e^σ$ are $\srev{e^{σ}} = \cosh σ$ and $\arev{e^{σ}} = \sinh σ$, respectively.
+Furthermore, these two projections commute, and so
+\begin{align}
+	{\arev{e^{σ}}}{\srev{e^{σ}}}^{-1}
+	= {\srev{e^{σ}}}^{-1}{\arev{e^{σ}}}
+	= \frac{\arev{e^{σ}}}{\srev{e^{σ}}}
+	= \tanh σ
+\end{align}
+which leads to an expression for the logarithm of any rotor $\rotor R = \pm e^σ$.
+\begin{align}
+	σ = \log(\rotor R) = \arctanh\qty(\frac{\arev{\rotor R}}{\srev{\rotor R}})
+	\label{eqn:log-rotor}
+\end{align}
+Note that the overall sign of the rotor is not recovered, and $\log(+\rotor R) = \log(-\rotor R)$ according to \cref{eqn:log-rotor}.
+However, this does not affect the Lorentz transformation $\lin R \in \SO^+(p, q)$, since it is defined by $R(𝒖) = \rotor R𝒖\rev{\rotor R}$.
+The exact sign can be recovered by considering the relative signs of $\arev{\rotor R}$ and $\srev{\rotor R}$, as in \cite[§\,5.3]{lasenby2011ga-practical}.
+
+
+From \cref{eqn:log-rotor} we may derive a \x{BCH} formula by substituting $\rotor R = e^{σ_1}e^{σ_2}$ for any two bivectors $σ_i \in \GA[2](p, q)$.
+Using the shorthand $\Co{i} ≔ \cosh σ_i$ and $\Si{i} ≔ \sinh σ_i$, the composite rotor is
+\begin{align}
+	\rotor R = e^{σ_1}e^{σ_2}
+	= (\Co1 + \Si1)(\Co2 + \Si2)
+	= \Co1\Co2 + \Si1\Co2 + \Co1\Si1 + \Si1\Si2
+.\end{align}
+For $p + q < 4$, any even function of a bivector (such as $\Co{i}$) is a scalar, and for $p + q = 4$, is a $\qty{0,4}$-multivector $α + β\vol$.
+In either case, the $\Co{i}$ commute with even multivectors, so $[\Co{i}, \Co{j}] = [\Co{i}, \Si{j}] = 0$.
+Therefore, the self-reverse and anti-self-reverse parts are
+\begin{align}
+	\srev{\rotor R} &= \Co1\Co2 + \frac12\qty{\Si1, \Si2}
+&	&\text{and}
+&	\arev{\rotor R} &= \Si1\Co2 + \Co1\Si2 + \frac12\qty[\Si1, \Si2]
+	\label{eqn:arev-and-srev-parts}
+.\end{align}
+Hence, from \cref{eqn:log-rotor} we obtain an explicit \x{BCH} formula.
+
+\begin{theorem}[rotor \x{BCH} formula]
+	\label{eqn:geometric-BCH}
+	If $σ_i ∈ \GA[2](p, q)$ are bivectors, then $e^{σ_1}e^{σ_2} = ±e^{\bch{σ_1}{σ_2}}$ where
+	\begin{align}
+		\bch{σ_1}{σ_2}
+		% \coloneqq \log(e^{σ_1}e^{σ_2})
+		= \arctanh\qty(\frac{
+			\Ta1 + \Ta2 + \frac12\qty[\Ta1, \Ta2]
+		}{
+			1 + \frac12\qty{\Ta1, \Ta2}
+		})
+	\end{align}
+	where we abbreviate $\Ta{i} \coloneqq \tanh σ_i$.
+	Note that this satisfies the rotor equation with an overall ambiguity in sign.
+\end{theorem}
+
+We may wish to express \cref{eqn:geometric-BCH} in terms of geometrically significant products instead of \paren{anti}commutators.
+The geometric product of two bivectors $a$ and $b$ is generally a $\qty{0,2,4}$-multivector
+\begin{align}
+	ab = \grade[0]{ab} + \grade[2]{ab} + \grade[4]{ab}
+.\end{align}
+Employing the notation of Hestenes \cite{doran2003ga}, this may be written as
+\begin{align}
+	ab = a \fatdot b + a × b + a ∧ b
+	\label{eqn:bivector-products}
+,\end{align}
+where here $a×b = \grade[2]{ab} = \frac12(ab - ba)$ is the bivector \emph{commutator product}, and the scalar inner product $a \fatdot b = \grade[0]{ab}$ is extended to bivectors.
+We may then write a \x{BCH} formula in which the grade of each term is explicit:
+\begin{align}
+	\bch{σ_1}{σ_2} = \arctanh\qty(\frac{
+		\Ta1 + \Ta2 + \Ta1 × \Ta2
+	}{
+		1 + \Ta1 \fatdot \Ta2 + \Ta1 ∧ \Ta2 
+	})
+	\label{eqn:geometric-BCH-products}
+\end{align}
+The numerator is a bivector, while the denominator contains scalar ($\Ta1·\Ta2$) and $4$-vector ($\Ta1\wedge\Ta2$) terms.
+
+
