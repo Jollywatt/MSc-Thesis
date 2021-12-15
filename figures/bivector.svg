@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -49,9 +49,9 @@
      inkscape:bbox-nodes="true"
      inkscape:bbox-paths="true"
      inkscape:snap-smooth-nodes="true"
-     inkscape:zoom="2.0364675"
-     inkscape:cx="135.80549"
-     inkscape:cy="112.4236"
+     inkscape:zoom="2"
+     inkscape:cx="107.78699"
+     inkscape:cy="166.83398"
      inkscape:window-width="1920"
      inkscape:window-height="1012"
      inkscape:window-x="0"
@@ -407,10 +407,10 @@
        id="linearGradient3744"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.54283633,0.07847863,-0.22980771,0.21783541,19.244791,47.449503)"
-       x1="36.149769"
-       y1="-39.927578"
-       x2="-8.4506664"
-       y2="-14.796374" />
+       x1="3.170475"
+       y1="-43.778927"
+       x2="26.517368"
+       y2="-10.822509" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3726"
@@ -499,28 +499,28 @@
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="10.149201"
+       x="12.786144"
        y="19.32497"
        id="text2032-6-3"
        transform="scale(1.003371,0.99664032)"><tspan
          sodipodi:role="line"
          id="tspan2030-9-6"
-         x="10.149201"
+         x="12.786144"
          y="19.32497"
          style="font-size:3.88056px;stroke-width:0.264583">$𝒗$</tspan></text>
     <g
        id="g4342"
        transform="matrix(0.99951386,-0.23967801,-0.0720565,1.0177652,1.705586,5.5076319)">
       <path
-         style="font-variation-settings:normal;opacity:0.467939;vector-effect:none;fill:url(#linearGradient2198);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
+         style="font-variation-settings:normal;opacity:0.34679777;vector-effect:none;fill:url(#linearGradient2198);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
          d="M 15.655072,57.295876 28.611139,51.946513 46.692561,55.504351 33.723767,60.905768 15.655072,57.295876"
          id="path1313-3" />
       <path
-         style="font-variation-settings:normal;opacity:0.524943;vector-effect:none;fill:url(#linearGradient3736);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+         style="font-variation-settings:normal;opacity:0.28963206;vector-effect:none;fill:url(#linearGradient3736);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
          d="m 49.09527,41.771607 -2.409073,13.758769 -12.968793,5.401416 2.409074,-13.75877 z"
          id="path3710" />
       <path
-         style="font-variation-settings:normal;opacity:0.109442;vector-effect:none;fill:url(#linearGradient4301);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
+         style="font-variation-settings:normal;opacity:0.14082303;vector-effect:none;fill:url(#linearGradient4301);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
          d="m 31.026575,38.161717 -2.409073,13.758769 -12.968793,5.401416 2.409074,-13.75877 z"
          id="path3710-1" />
       <path
@@ -534,7 +534,7 @@
          id="path1763-5-2-0"
          sodipodi:nodetypes="cc" />
       <path
-         style="font-variation-settings:normal;opacity:0.627795;vector-effect:none;fill:url(#linearGradient4434);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+         style="font-variation-settings:normal;opacity:0.48544555;vector-effect:none;fill:url(#linearGradient4434);fill-opacity:1;stroke:none;stroke-width:0.0978289;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
          d="m 18.057783,43.563132 -2.409074,13.75877 18.068695,3.60989 2.409074,-13.75877 -18.068695,-3.60989"
          id="path3708" />
       <path
@@ -551,37 +551,37 @@
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        x="37.657524"
-       y="58.341114"
+       y="58.872063"
        id="text2032-6-2"
        transform="scale(1.003371,0.99664032)"><tspan
          sodipodi:role="line"
          id="tspan2030-9-9"
          x="37.657524"
-         y="58.341114"
+         y="58.872063"
          style="font-size:3.88056px;stroke-width:0.264583">$𝒖∧𝒗$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="7.3406296"
+       x="8.3954077"
        y="52.191872"
        id="text2032-6-2-3"
        transform="scale(1.003371,0.99664032)"><tspan
          sodipodi:role="line"
          id="tspan2030-9-9-1"
-         x="7.3406296"
+         x="8.3954077"
          y="52.191872"
          style="font-size:3.88056px;stroke-width:0.264583">$𝒘$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.88056px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="23.038412"
-       y="49.782345"
+       x="19.903358"
+       y="49.748383"
        id="text2032-6-2-3-9"
        transform="scale(1.003371,0.99664032)"><tspan
          sodipodi:role="line"
          id="tspan2030-9-9-1-4"
-         x="23.038412"
-         y="49.782345"
+         x="19.903358"
+         y="49.748383"
          style="font-size:3.88056px;stroke-width:0.264583">$𝒖∧𝒗∧𝒘$</tspan></text>
   </g>
 </svg>

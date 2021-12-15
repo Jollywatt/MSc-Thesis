@@ -1,10 +1,12 @@
 \chapter{Composition of Rotors in terms of their Generators}
 
 
-In studying proper orthogonal transformations, it is often easier to represent them in terms of their generators $σ_i ∈ \GA(p,q)$ belonging to the Lie algebra $\liealg{so}(p,q)$.
+In studying proper orthogonal transformations, it is often easier to represent them in terms of their generators $σ_i ∈ \GA(p,q)$ which belong to the Lie algebra $\liealg{so}(p,q)$.
 A fundamental question is how such transformations compose in terms of these generators: ``given $σ_1$ and $σ_2$, what is $σ_3$ such that $e^{σ_1}e^{σ_2} = e^{σ_3}$?''
 This is of theoretical interest and is useful practically when representing transformations in terms of their generators is cheaper.
-One may use the \x{BCH full} (\x{BCH}) formula $\bch{σ_1}{σ_2} ≔ \ln(e^{σ_1}e^{σ_2})$ which is well studied in general Lie theory \cite{achilles2012bch-early}.
+One may use the \x{BCH full}\sidenote{
+	Often simply Baker--Campbell--Hausdorff and permutations thereof.
+} (\x{BCH}) formula $\bch{σ_1}{σ_2} ≔ \log(e^{σ_1}e^{σ_2})$ which is well studied in general Lie theory \cite{achilles2012bch-early}.
 However, the general \x{BCH} formula
 \begin{align}
 	\bch{a}{b} = a + b + \frac12[a, b] + \frac{1}{12}[a, [a, b]] + \frac{1}{12}[[a, b], b] + \cdots
@@ -18,16 +20,16 @@ The rotor formalism of geometric algebra leads to an elegant closed form of \cre
 
 
 
-\section{A geometric \x{BCH} formula}
+\section{A Geometric \x{BCH} Formula}
 \label{sec:bch-derivation}
 
-Suppose $σ \in \GA[2](p, q)$ is a bivector in a geometric algebra of dimension $p + q ≤ 4$.
+Suppose $σ ∈ \GA[2](p, q)$ is a bivector in a geometric algebra of dimension $p + q ≤ 4$.
 By their definitions as formal power series, we have
 \begin{math}
 	e^{σ} = \cosh σ + \sinh σ
 ,\end{math}
 where `$\cosh$' involves even powers of $σ$ and `$\sinh$' odd powers.
-For convenience, define the linear projections onto \emph{self-reverse} and \emph{anti-self-reverse} parts respectively as
+For convenience, define the linear projections onto \textdef{self-reverse} and \textdef{anti-self-reverse} parts respectively as
 \begin{align}
 	\srev{A} &≔ \frac12\qty(A + \rev{A})
 &	&\text{and}
@@ -43,17 +45,17 @@ Furthermore, these two projections commute, and so
 	= \frac{\arev{e^{σ}}}{\srev{e^{σ}}}
 	= \tanh σ
 \end{align}
-which leads to an expression for the logarithm of any rotor $\rotor R = \pm e^σ$.
+which leads to an expression for the logarithm of any rotor $\rotor R = ± e^σ$.
 \begin{align}
 	σ = \log(\rotor R) = \arctanh\qty(\frac{\arev{\rotor R}}{\srev{\rotor R}})
 	\label{eqn:log-rotor}
 \end{align}
 Note that the overall sign of the rotor is not recovered, and $\log(+\rotor R) = \log(-\rotor R)$ according to \cref{eqn:log-rotor}.
-However, this does not affect the Lorentz transformation $\lin R \in \SO^+(p, q)$, since it is defined by $R(𝒖) = \rotor R𝒖\rev{\rotor R}$.
+However, this does not affect the Lorentz transformation $\lin R ∈ \SO^+(p, q)$, since it is defined by $R(𝒖) = \rotor R𝒖\rev{\rotor R}$.
 The exact sign can be recovered by considering the relative signs of $\arev{\rotor R}$ and $\srev{\rotor R}$, as in \cite[§\,5.3]{lasenby2011ga-practical}.
 
 
-From \cref{eqn:log-rotor} we may derive a \x{BCH} formula by substituting $\rotor R = e^{σ_1}e^{σ_2}$ for any two bivectors $σ_i \in \GA[2](p, q)$.
+From \cref{eqn:log-rotor} we may derive a \x{BCH} formula by substituting $\rotor R = e^{σ_1}e^{σ_2}$ for any two bivectors $σ_i ∈ \GA[2](p, q)$.
 Using the shorthand $\Co{i} ≔ \cosh σ_i$ and $\Si{i} ≔ \sinh σ_i$, the composite rotor is
 \begin{align}
 	\rotor R = e^{σ_1}e^{σ_2}
@@ -72,9 +74,10 @@ Therefore, the self-reverse and anti-self-reverse parts are
 Hence, from \cref{eqn:log-rotor} we obtain an explicit \x{BCH} formula.
 
 \begin{theorem}[rotor \x{BCH} formula]
-	\label{eqn:geometric-BCH}
-	If $σ_i ∈ \GA[2](p, q)$ are bivectors, then $e^{σ_1}e^{σ_2} = ±e^{\bch{σ_1}{σ_2}}$ where
+	\label{thm:geometric-BCH}
+	If $σ_1, σ_2 ∈ \GA[2](p, q)$ are bivectors in $p + q ≤ 4$ dimensions, then $e^{σ_1}e^{σ_2} = ±e^{\bch{σ_1}{σ_2}}$ where
 	\begin{align}
+		\label{eqn:geometric-BCH}
 		\bch{σ_1}{σ_2}
 		% \coloneqq \log(e^{σ_1}e^{σ_2})
 		= \arctanh\qty(\frac{
@@ -88,17 +91,15 @@ Hence, from \cref{eqn:log-rotor} we obtain an explicit \x{BCH} formula.
 \end{theorem}
 
 We may wish to express \cref{eqn:geometric-BCH} in terms of geometrically significant products instead of \paren{anti}commutators.
-The geometric product of two bivectors $a$ and $b$ is generally a $\qty{0,2,4}$-multivector
+A bivector product is generally a $\qty{0,2,4}$-multivector
 \begin{align}
-	ab = \grade[0]{ab} + \grade[2]{ab} + \grade[4]{ab}
-.\end{align}
-Employing the notation of Hestenes \cite{doran2003ga}, this may be written as
-\begin{align}
-	ab = a \fatdot b + a × b + a ∧ b
+	ab
+	&= \grade[0]{ab} + \grade[2]{ab} + \grade[4]{ab}
+\\	&= a \fatdot b + a × b + a ∧ b
 	\label{eqn:bivector-products}
-,\end{align}
-where here $a×b = \grade[2]{ab} = \frac12(ab - ba)$ is the bivector \emph{commutator product}, and the scalar inner product $a \fatdot b = \grade[0]{ab}$ is extended to bivectors.
-We may then write a \x{BCH} formula in which the grade of each term is explicit:
+.\end{align}
+where $a×b = \grade[2]{ab} = \frac12[a, b]$ is the commutator product.
+We may then write \cref{eqn:geometric-BCH} so that the grade of each term is explicit:
 \begin{align}
 	\bch{σ_1}{σ_2} = \arctanh\qty(\frac{
 		\Ta1 + \Ta2 + \Ta1 × \Ta2
@@ -110,3 +111,452 @@ We may then write a \x{BCH} formula in which the grade of each term is explicit:
 The numerator is a bivector, while the denominator contains scalar ($\Ta1·\Ta2$) and $4$-vector ($\Ta1\wedge\Ta2$) terms.
 
 
+
+
+
+
+
+\subsection{Zassenhaus-type formulae}
+
+It is interesting to generalise the \x{BCH} formula \eqref{eqn:general-BCH-formula} to three rotors
+\begin{math}
+	e^{σ_1}e^{σ_2}e^{σ_3} = e^σ
+\end{math}
+in an algebra $\GA(p, q)$ with $p + q ≤ 4$.
+A solution to this rotor equation is
+\begin{align}
+	σ = \log(±e^σ) = \arctanh\qty(\frac{\arev{e^{σ_1}e^{σ_2}e^{σ_3}}}{\srev{e^{σ_1}e^{σ_2}e^{σ_3}}})
+,\end{align}
+by \cref{eqn:log-rotor}.
+
+
+We will find it convenient to define the \textdef{anticommutator product} $A\wedot B ≔ \frac12\qty{A, B}$ to complement the commutator product $A×B$.
+The symbol ``$\wedot$'' is motivated by the fact that, for bivectors, we have
+\begin{math}
+	σ\wedot ρ = σ\cdot ρ + σ∧ρ
+\end{math}
+and thus
+\begin{align}
+	\label{eqn:(anti)com-prods}
+	σ\wedot ρ &≔ \frac12(σρ + ρσ) = \srev{σρ}
+,&	σ×ρ &≔ \frac12(σρ - ρσ) = \arev{σρ}
+.\end{align}
+
+
+
+
+
+Because $e^{σ_1}e^{σ_2}e^{σ_3} ∈ \GA[+](p, q)$ is an even multivector, the anti-self-reverse projection is exactly the bivector part,
+\begin{math}
+	\arev{e^{σ_1}e^{σ_2}e^{σ_3}} = \grade[2]{e^{σ_1}e^{σ_2}e^{σ_3}}
+,\end{math} and the self-reverse projection is the $\set{0,4}$-multivector part.\sidenote{
+	Recall $\rev{A} = \revsign{k}A$ for a $k$-vector $A$ where $(\etc{\revsign{\i}}{}4) = (++--{})$.
+}
+Decomposing $e^{σ_i} = \Co i + \Si i$, we find $2^3$ terms which separate into%
+\begin{fullwidth}
+	\begin{align}
+		\arev{e^{σ_1}e^{σ_2}e^{σ_3}} &=
+		% \grade[2]{e^{σ_1}e^{σ_2}e^{σ_3}} =
+		\Si1\Co2\Co3 +
+		\Co1\Si2\Co3 +
+		\Co1\Co2\Si3 +
+		(\Co1\Si2 + \Si1\Co2)×\Si3 +
+		(\Si1×\Si2)\Co3 +
+		\arev{\Si1\Si2\Si3} 
+	,\\	\srev{e^{σ_1}e^{σ_2}e^{σ_3}} &=
+		% \grade[0,4]{e^{σ_1}e^{σ_2}e^{σ_3}} =
+		\Co1\Co2\Co3 +
+		(\Co1\Si2 + \Si1\Co2) \wedot \Si3 +
+		(\Si1\wedot\Si2) \Co3 +
+		\srev{\Si1\Si2\Si3}
+	.\end{align}
+\end{fullwidth}
+The $\set{0,4}$-multivectors $\Co i$ commute with the bivectors $\Si i$, and products of $\Co i$ and $\Si j$ are themselves bivectors.
+Therefore, terms containing one $\Si i$ factor are bivectors, and terms containing two $\Si i$ factors, such as $\Si1\Si2\Co3$, are products of bivectors, or $\set{0, 2, 4}$-multivectors.
+These terms are split into bivectors $(\Si1×\Si2)\Co3$ and $\set{0,4}$-multivectors $(\Si1\wedot\Si2)\Co3$.
+
+
+Cancelling factors of $\Co1\Co2\Co3$, we then have
+\begin{align}
+	\label{eqn:ternary-bch.1}
+	\frac{\arev{e^{σ_1}e^{σ_2}e^{σ_3}}}{\srev{e^{σ_1}e^{σ_2}e^{σ_3}}} =
+	\frac{
+		\Ta1 + \Ta2 + \Ta3 + (\Ta1 + \Ta2)×\Ta3 + \Ta1 × \Ta2 + \arev{\Ta1\Ta2\Ta3}
+	}{
+		1 + (\Ta1 + \Ta2)\wedot \Ta3 + \Ta1 \wedot \Ta2 + \srev{\Ta1\Ta2\Ta3}
+	}
+\end{align}
+where $\Ta i ≔ \tanh σ_i$.
+The next lemma is used to rewrite the rightmost terms with \paren{anti}commutator products \eqref{eqn:(anti)com-prods}.
+\begin{lemma}
+	For any bivectors $σ,ρ,ω ∈ \GA[2](p, q)$ where $p + q ≤ 4$,
+	\begin{align}
+		\arev{σρω} &= (σ\wedotρ)\wedotω + (σ×ρ)×ω
+	,&	\srev{σρω} &= (σ×ρ)\wedotω
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	Observe that $\arev{σρω} = \grade[2]{σρω}$ since $σρω$ is a $\set{0, 2, 4}$-multivector, of which only the bivector part is anti-self-reverse.
+	Using associativity and linearity,
+	\begin{align}
+		\grade[2]{σρω} = \grade[2]{(σ\wedotρ)ω} + \grade[2]{(σ×ρ)ω} = (σ\wedotρ)ω + (σ×ρ)×ω
+	.\end{align}
+	The product $(σ\wedotρ)ω = (σ\wedot ρ)\wedot ω$ is between a $\set{0,4}$-multivector and a bivector, which may only contain bivector components.
+	The product $(σ×ρ)ω$ is between two bivectors, having bivector part $(σ×ρ)×ω$.
+
+	Similarly, note that
+	\begin{align}
+		\srev{σρω} = \grade[0,4]{(σ\wedotρ)ω} + \srev{(σ×ρ)ω} = (σ×ρ)\wedotω
+	,\end{align}
+	where the first term vanishes since $(σ\wedotρ)ω$ is a bivector.
+\end{proof}
+
+This allows us to collect the terms in \cref{eqn:ternary-bch.1} as
+{\begin{align}
+	\frac{\arev{e^{σ_1}e^{σ_2}e^{σ_3}}}{\srev{e^{σ_1}e^{σ_2}e^{σ_3}}}
+	% &= \frac{
+	% 	(\Ta1 + \Ta2 + \Ta1 × \Ta2) + \Ta3 + (\Ta1 + \Ta2 + \Ta1 × \Ta2)×\Ta3 + (\Ta1\wedot\Ta2)\wedot\Ta3
+	% }{
+	% 	1 + (\Ta1 + \Ta2 + \Ta1×\Ta2)\wedot \Ta3 + \Ta1 \wedot \Ta2
+	% }
+	&= \frac{
+		\Ta{12} + \Ta3 + \Ta{12}×\Ta3 + (\Ta1\wedot\Ta2)\wedot\Ta3
+	}{
+		1 + \Ta{12}\wedot \Ta3 + \Ta1 \wedot \Ta2
+	}
+\end{align}}
+where $\Ta{12} ≔ \Ta1 + \Ta2 + \Ta1×\Ta2$.
+This leads us to the
+\begin{theorem}
+	For bivectors $σ_i ∈ \GA[2](p, q)$ with $p + q ≤ 4$,
+	\begin{align}
+		e^{σ_1 + σ_2} &= e^{σ_1}e^{σ_2}e^ρ
+	\end{align}
+	where
+	\begin{align}
+		ρ &= \arctanh\qty(\frac{
+			F - R - R×F + S\wedot F
+		}{
+			1 - R\wedot F + S
+		})
+	,\\	F &= \tanh(σ_1 + σ_2)
+	,\\	R &= \tanh(σ_1)×\tanh(σ_2) + \tanh(σ_1) + \tanh(σ_2)
+	,\\	S &= \tanh(σ_1)\wedot\tanh(σ_2)
+	.\end{align}
+\end{theorem}
+
+\todo{First order corrections?}
+
+
+
+
+
+
+
+
+
+\subsection{In low dimensions: Rodrigues' rotation formula}
+
+It is illustrative to see how the \x{BCH} formula \eqref{eqn:geometric-BCH} reduces in low-dimensional special cases.
+Indeed, in two dimensions, all bivectors are scalar multiples of $\vol = \ve_1\ve_2$, and we recover the trivial case $e^ae^b = e^{a+b}$. %$\bch{a}{b} = a + b$.
+Specifically, in the Euclidean $\GA(2)$ plane (or anti-Euclidean $\GA(0,2)$ plane) we have $\vol^2 = -1$, and \cref{eqn:geometric-BCH} simplifies by way of the tangent angle addition identity
+\begin{align}
+	\arctan(\frac{\tan θ_1 + \tan θ_1}{1 - \tan θ_1 \tan θ_2}) = θ_1 + θ_2
+.\end{align}
+This identity encodes how angles add when given as the gradients of lines; $m = \tan θ$.
+
+Similarly, in the hyperbolic plane $\GA(1,1)$ with basis $\set{\ve_+, \ve_-}, \ve_±^2 = ±1$, the pseudoscalar $\vol = \ve_+\ve_-$ generates \emph{hyperbolic} rotations $e^{\vol ξ} = \cosh ξ + \vol\sinh ξ$ owing to the fact that $\vol^2 = -\ve_+^2\ve_-^2 = +1$.
+Then, \cref{eqn:geometric-BCH} simplifies by the hyperbolic angle addition identity
+\begin{align}
+	\arctanh\qty(\frac{\tanh ξ_1 + \tanh ξ_1}{1 + \tanh ξ_1 \tanh ξ_2}) = ξ_1 + ξ_2
+\end{align}
+which encodes how collinear rapidities add when given as relativistic velocities; $β = \tanh ξ$.
+
+Less trivially, a rotation in $\RR^3$ by $θ$ may be represented by its \textdef{Rodrigues vector}\sidenotemark\ $\vb r = \vb{\hat{r}}\tan\fracθ2$ pointing along the axis of rotation.
+The composition of two rotations is then succinctly encoded in Rodrigues' composition formula
+\begin{align}
+	\vb r_{12} = \frac{\vb r_1 + \vb r_2 - \vb r_1 × \vb r_2}{1 - \vb r_1 · \vb r_2}
+	\label{eqn:rodrigues-formula}
+\end{align}
+involving the standard vector dot and cross products.
+\sidenotetext{
+	Olinde Rodrigues first originated the formula in 1840 \cite[pp. 406]{rodrigues1840rotations}.
+}
+
+% \toself{Be explicit about the (1,3) to (3) split.}
+We can easily derive \cref{eqn:rodrigues-formula} as a special case of \cref{eqn:geometric-BCH-products} as follows:
+Let $σ_1, σ_2 ∈ \GA[2](3)$ be two bivectors defining the rotors $e^{σ_1}$ and $e^{σ_2}$ in three dimensions.
+In $\GA(3)$, the only $4$-vector is trivial, so $σ_1 ∧ σ_2 = 0$ and for the composite rotor $e^{σ_3} \coloneqq e^{σ_1}e^{σ_2}$ we have
+\begin{align}
+	σ_3 = \bch{σ_1}{σ_2} = \arctanh\qty(\frac{
+	\tanh σ_1 + \tanh σ_2 + \tanh σ_1 \times \tanh σ_2
+	}{
+	1 + \tanh σ_1 · \tanh σ_2
+	})
+\end{align}
+where $a × b$ is the commutator product of bivectors as in \cref{eqn:bivector-products}, not the vector cross product.
+Observe that Euclidean bivectors $σ_i ∈ \GA[2](3)$ have negative square (e.g., $(\ve_1\ve_2)^2 = -\ve_1^2\ve_2^2 = -1$) and relate to their dual normal vectors by $\vb{u}_i$ by $σ_i = \vb{u}_i\vol$.
+Therefore, by rewriting
+\begin{math}
+	\tanh σ_i
+	= \tanh (\vb{u}_i\vol)
+	= (\tan \vb{u}_i)\vol
+,\end{math}
+we obtain the formula in terms of plain vectors and the vector cross product.
+\begin{align}
+	\vb{u}_{12} = (\bch{\vb{u}_1\vol}{\vb{u}_2\vol})\vol^{-1}
+	= \arctan\qty(\frac{
+	\tan \vb{u}_1 + \tan \vb{u}_2 - \tan \vb{u}_1 \times \tan \vb{u}_2
+	}{
+	1 - \tan \vb{u}_1 · \tan \vb{u}_2
+	})
+\end{align}
+Indeed, a bivector $σ_i = \vb{u}_i\vol$ generates an $\RR^3$ rotation through an angle $θ = 2\|\vb{u}_i\|$ via the double-sided transformation law
+\begin{math}
+	a \mapsto e^{\vb{u}\vol}ae^{-\vb{u}\vol}
+.\end{math}
+Hence, $\tan \vb{u}_i = \vb{\hat{v}}_i\tan\fracθ2 ≡ \vb{r}_i$ are exactly the half-angle Rodrigues vectors, and we recover \cref{eqn:rodrigues-formula}.
+
+The necessity of the half-angle in the Rodrigues vectors reflects the fact that they actually generate \emph{rotors}, not direct rotations, and hence belong to the underlying spin representation of $\SO^+(3)$ --- a fact made clearer in the context of geometric algebra.
+
+
+
+
+
+
+
+
+
+\subsection{In higher dimensions}
+
+In fewer than four dimensions, the $4$-vector $\Ta1\wedge\Ta2 = 0$ appearing in the geometric \x{BCH} formula is trivial, and so \cref{eqn:geometric-BCH} involves only bivector addition and scalar multiplication.
+In four dimensions, there is one linearly independent $4$-vector --- the pseudoscalar --- which necessarily commutes with all even multivectors.
+However, in more than four dimensions, $4$-vectors do \emph{not} necessarily commute with bivectors, and the assumptions underlying \cref{eqn:arev-and-srev-parts} and hence the main result \eqref{eqn:geometric-BCH} fail.
+
+
+On the face of it, the \x{BCH} formula \eqref{eqn:geometric-BCH} in the four-dimensional case appears deceptively simple --- it hides complexity in the calculation of the trigonometric functions of arbitrary bivectors,
+\begin{fullwidth}
+	\begin{align}
+		\tanh σ_i &= σ - \frac13σ^3 + \frac{2}{15}σ^5 + \cdots
+	&	&\text{and}
+	&	\arctanh σ_i &= σ +\frac13σ^3 + \frac15σ^5 + \cdots
+		\label{eqn:trig-power-series}
+	.\end{align}
+\end{fullwidth}
+
+In fewer dimensions, $σ^2$ is a scalar, and so these power series are as easy to compute as their real equivalents.\sidenote{
+	If $σ^2 = N_σ^2 ∈ \RR$, then we have simply $\tanh σ = (\tanh N_σ)N_σ^{-1}σ$.
+}
+But in four dimensions, $σ^2$ is in general a $\qty{0,4}$-multivector (by lemma~\ref{lem:grades-of-square}) and the power series \eqref{eqn:trig-power-series} are more complicated.
+However, if $σ^2 \ne 0$ has a square root $N_σ = α + β\vol$ in the scalar--pseudoscalar plane, then one has $σ = N_σ\hat{σ} = \hat{σ}N_σ$ where $\hat{σ} \coloneqq σ/N_σ$ so that $\hat{σ}^2 = 1$.
+With a bivector $σ = N_σ\hat{σ}$ expressed in this form, the valuation of a formal power series $f(z) = \sum_{n=1}^\infty f_n z^n$ simplifies to
+\begin{align}
+\label{eqn:normalised-power-series}
+	\text{($f$ even)}&
+&	f(σ) &= \sum_{n = 1}^\infty f_{2n} σ^{2n}
+	= \sum_{n = 1}^\infty f_{2n} N_σ^{2n}
+	= f(N_σ)
+,\\	\text{($f$ odd)}&
+&	f(σ) &= \sum_{n = 1}^\infty f_{2n + 1} σ^{2n + 1}
+	= \sum_{n = 1}^\infty f_{2n} N_σ^{2n + 1} \hat{σ}
+	= f(N_σ)\hat{σ}
+.\end{align}
+This is especially useful in the case of Minkowski spacetime $\GA(1,3)$ because the scalar--pseudoscalar plane is isomorphic to $\CC$ and square roots always exist (see \cref{sec:invariant-bivector-decomposition}).
+From now on, we focus on the special case of Minkowski spacetime, and consider practical and theoretical applications.
+
+
+
+
+
+
+
+
+\section{\x{BCH} Composition in Spacetime}
+
+Because the geometric \x{BCH} formula is constructed from sums and products of bivectors, it involves only even spacetime multivectors.
+Therefore, in numerical applications, it is not necessary to represent the full STA, but only the even subalgebra $\GA[+](1,3) \cong \GA(3)$.
+
+The algebra of physical space $\GA(3)$ admits a faithful complex linear representation by the Pauli spin matrices \cite{baylis1989sta-pauli,lasenby2016ga-unified-language,hestenes2003sta}.
+The real dimension of both $\CC^{2×2}$ and $\GA(3)$ is eight, so there is no redundancy in the Pauli representation, so it is convenient for computer implementation.
+
+
+
+An even $\GA[+](1,3)$ multivector --- or equivalently, a general $\GA(3)$ multivector --- may be parametrised by four complex scalars $q^μ = \Re(q^μ) + i\Im(q^μ) ∈ \CC$ as
+\begin{align}
+	A = \Re(q^0) + \Re(q^i)\vs_i + \Im(q^i)\vol\vs_i + \Im(q^0)\vol
+,\end{align}
+where the $\vs_i$ may be read both as spacetime bivectors $\vs_i \equiv \vg_0\vg_i ∈ \GA[+](1,3)$ or as basis vectors of $\GA(3)$ under a space/time split.
+The Pauli matrices $σ_i ∈ \CC^{2×2}$ form a linear representation of $\GA(3)$ by the association $\vs_i \equiv σ_i$.
+Explicitly, identifying
+\begin{align}
+	\vs_1 &\equiv \mqty[
+		 0&+1\\
+		+1& 0\\
+	]
+&	\vs_2 &\equiv \mqty[
+		 0&-i\\
+		+i& 0\\
+	]
+&	\vs_3 &\equiv \mqty[
+		+1& 0\\
+		 0&-1\\
+	]
+\end{align}
+along with $1 \equiv I$ and $\vol \equiv iI$ where $I$ is the identity matrix, we obtain a representation of the multivector $A$ by a $2 × 2$ complex matrix:
+\begin{align}
+	\lin A \equiv \mqty[
+		q^0 + q^3 & q^1 - iq^2 \\
+		q^1 + iq^2 & q^0 - q^3
+	]
+	\label{eqn:multivector-as-matrix}
+.\end{align}
+
+
+
+
+
+
+A proper Lorentz transformation $\lin Λ ∈ \SO^+(1,3)$ is determined in the $K$ frame by a vector rapidity $\vb ξ ∈ \RR^3$ and axis-angle vector $\vb θ ∈ \RR^3$.
+The standard $4×4$ matrix representation of $\lin Λ$ is obtained as the exponential of the generator
+\begin{align}
+	\mqty[
+		 0 &  \vb ξ^T \\
+		\vb ξ & ε_{ijk}θ^k
+	] =
+	\qty[\begin{array}{llll}
+	0 & \phantom{±}ξ^1 & \phantom{±}ξ^2 & \phantom{±}ξ^3 \\
+	ξ^1 & \phantom{±}0 & +θ^3 & -θ^2 \\
+	ξ^2 & -θ^3 & \phantom{±}0 & +θ^1 \\
+	ξ^3 & +θ^2 & -θ^1 & \phantom{±}0
+	\end{array}]
+	\in \liealg{so}(1,3)
+	\label{eqn:lorentz-generator-matrix}
+.\end{align}
+In the spin representation, the transformation $\lin Λ$ corresponds to a rotor $\rotor L = e^σ$, and the generating bivector \eqref{eqn:bivector-generator} may be expressed via \cref{eqn:multivector-as-matrix} as the traceless complex matrix
+\begin{align}
+	\lin Σ = q^kσ_k = \mqty[
+		+q^3 & q^1 - iq^2 \\
+		q^1 + iq^2 & -q^3
+	]
+	\label{eqn:bivector-as-matrix}
+,\end{align}
+where $q^k \coloneqq \frac12(ξ^k + iθ^k) ∈ \CC$.
+% This represents the restriction of \eqref{eqn:multivector-as-matrix} to spacetime bivectors.
+Note that, since the square of a spacetime bivector is a $\qty{0,4}$-multivector, its representative matrix $\lin Σ$ squares to a complex scalar multiple of the identity.
+
+
+
+Given two generators $σ_i$ with matrix representations $\lin Σ_i$, the geometric \x{BCH} formula \eqref{eqn:geometric-BCH} reads
+\begin{align}
+	\lin Σ_3 ≔ \bch{\lin Σ_1}{\lin Σ_2} = \tanh^{-1}\qty(
+		\lin{\frac{ T_1 + T_2 + A }{ I + S }}
+	)
+	\label{eqn:matrix-BCH}
+,\end{align}
+where $\lin T_i ≔ \tanh \lin Σ_i$.
+To efficiently compute $\lin T_i$, make use of the fact that $\lin Σ_i^2 = λ_i^2\lin I$ is a complex multiple of the identity matrix and evaluate $\lin T_i = (\tanh λ_i)λ_i^{-1}\lin Σ_i$.
+In the null case $\lin Σ_i^2 = λ = 0$, we have trivially $\tanh \lin Σ_i = \lin Σ_i = \tanh^{-1} \lin Σ_i$.
+
+
+
+The commutator $\lin A ≔ \frac12[\lin T_1, \lin T_2]$ and anti-commutator $\lin S ≔ \frac12\qty{\lin T_1, \lin T_2}$ terms may be efficiently computed by separating the single matrix product $\lin{ Π ≔ T_1T_2 = A + S }$ into off-diagonal and diagonal components, respectively; i.e.,
+\begin{align}
+	\lin A_{ij} = (1 - δ_{ij})\lin Π_{ij}
+	\qqtext{and}
+	\lin S_{ij} = δ_{ij}\lin Π_{ij}
+.\end{align}
+The numerator of \cref{eqn:matrix-BCH} is therefore a matrix with zeros on the diagonal, and the denominator is a complex scalar multiple of the identity, so the argument of $\tanh^{-1}$, call it $\lin M$, is in the form \eqref{eqn:bivector-as-matrix}.
+Computing $\tanh^{-1} \lin M$ again simply amounts to
+\begin{math}
+	\lin Σ_3 = \tanh^{-1} \lin M = (\tanh^{-1} λ)λ^{-1}\lin M
+\end{math}
+where $\lin M^2 = λ^2\lin I$.
+
+The Lorentz generator in the standard vector representation \eqref{eqn:lorentz-generator-matrix} can then be recovered from $\lin Σ_3$ with the relations $ξ^k = 2\Re(q^k)$ and $θ^k = 2\Im(q^k)$, and the final $\SO^+(1,3)$ vector transformation is its $4×4$ matrix exponential.
+
+
+
+
+
+
+
+
+
+\subsection{Relativistic 3-velocities \& the Wigner Angle}
+
+As an example of its theoretical utility, we shall use the geometric \x{BCH} formula \eqref{eqn:geometric-BCH} to derive the composition law for arbitrary relativistic $3$-velocities.
+
+The innocuous problem of composing relativistic velocities has been called ``paradoxical'' \cite{ungar1989sr-velocity-composition,mocanu1992sr-velocity-composition,visser2011sr-velocity-composition}, owing in part to the fact that \emph{irrotational} boosts are not closed under composition, and that explicit matrix analysis becomes cumbersome.
+Of course, in reality there is no paradox, and the full description of the composition of boosts is pedagogically valuable as it highlights aspects of special relativity which differ from spatial intuition.
+
+
+We may speak of a rotation or boost as being \textdef{pure} relative to the $K$ frame.
+Technically, $σ$ generates a pure rotation (or pure boost) if, under the space/time split relative to the $K$ frame, $σ = \grade[2]{σ}$ is a pure bivector (or a pure vector) in $\GA(3)$.
+A pure rotation or pure boost relative to $K$ is \emph{not} pure in all other frames.
+
+The restriction of the \x{BCH} formula to pure boosts is not as simple as the restriction to rotations \eqref{eqn:rodrigues-formula}, because pure boosts do not form a closed subgroup of $\SO^+(1,3)$ as pure rotations do.
+Instead, the composition of two pure boosts $\rotor B_i$ is a pure boost composed with a pure rotation (or vice versa),
+\begin{align}
+	\rotor B_1\rotor B_2 = \rotor B\rotor R
+	\label{eqn:boost-boost-makes-boost-rotation}
+.\end{align}
+The direction of the boost $\rotor B$ lies within the plane defined by the boost directions of $\rotor B_1$ and $\rotor B_2$, and $\rotor R$ is a rotation through this plane by the \emph{Wigner angle} \cite{visser2011sr-velocity-composition}.
+Applying \cref{eqn:geometric-BCH} to this case immediately yields formulae for the resulting boost and rotation.\sidenote{
+	These results are equivalent to those in \cite{berry2020quat-sr} which are formulated using complexified quaternions.
+}
+
+
+
+For ease of algebra, we conduct the following analysis under a space/time split with respect to the $K$ frame.
+Under this split, a pure boost $\rotor B$ is generated by an $\RR^3$ vector $\frac{\vb ξ}{2}$, and a pure rotation $\rotor R$ is generated by an $\RR^3$ bivector $\fracθ2\hat{r}$.
+Here, $\vb ξ ∈ \GA[1](3)$ is the \emph{vector rapidity}, related to the velocity by $\vb v/c = \vb β = \tanh \vb ξ$, and the rotation is through an angle $θ$ in the plane spanned by the bivector $\hat{r} ∈ \GA[2](3)$.
+\Cref{eqn:geometric-BCH} with two pure boosts $\vb ξ_1$ and $\vb ξ_2$ is
+\begin{align}
+	\tanh(\bch{\frac{\vb ξ_1}{2}}{\frac{\vb ξ_2}{2}})
+	= \frac{𝒘_1 + 𝒘_2 + 𝒘_1 ∧ 𝒘_2}{1 + 𝒘_1⋅𝒘_2}
+	\label{eqn:boost-boost}
+\end{align}
+where $𝒘_i ≔ \tanh\frac{\vb ξ_i}{2}$ are the \emph{relativistic half-velocities}, also defined in \cite{berry2020quat-sr,berry2021quat-sr}.
+The generator \eqref{eqn:boost-boost} has vector and bivector (namely $𝒘_1 ∧ 𝒘_2$) parts, indicating that the Lorentz transformation it describes is indeed some combination of a boost and a rotation.
+
+
+Similarly, for an arbitrary pure boost and pure rotation,
+\begin{align}
+	\tanh(\bch{\frac{\vb ξ}2}{\fracθ2\hat{r}})
+	= \frac{𝒘 + ρ + \frac12[𝒘, ρ]}{1 + 𝒘\wedge ρ}
+	\label{eqn:boost-rotation}
+\end{align}
+where $ρ ≔ \tanh \frac{θ\hat{r}}2 = \hat{r}\tan\frac θ2$ is a bivector.
+In general, \cref{eqn:boost-rotation} has vector, bivector \emph{and} pseudoscalar parts (the commutator $\frac12[𝒘, ρ] = \grade[1]{𝒘ρ} + 𝒘 \wedge ρ$ and the denominator both have grade-three part $𝒘\wedge ρ$).
+However, \cref{eqn:boost-boost,eqn:boost-rotation} are equal by supposition of \cref{eqn:boost-boost-makes-boost-rotation}.
+By comparing parts of equal grade, we deduce the pseudoscalar part of \cref{eqn:boost-rotation} is zero.
+This requires $𝒘\wedge ρ = 0$ or, equivalently, that $𝒘$ lies in the plane defined by $ρ$ --- meaning the resulting boost is coplanar with the Wigner rotation as expected.
+Hence, for a coplanar boost and rotation, \cref{eqn:boost-rotation} is simply
+\begin{align}
+	\tanh(\bch{\frac{\vb ξ}2}{\fracθ2\hat{r}})
+	= 𝒘 + ρ + 𝒘ρ
+	\label{eqn:boost-rotation-coplanar}
+.\end{align}
+The term $𝒘ρ = \grade[1]{𝒘ρ} = -ρ𝒘$ is a vector orthogonal to $𝒘$ in the plane defined by $ρ$.
+
+
+
+
+Equating the bivector parts of \cref{eqn:boost-boost,eqn:boost-rotation-coplanar} determines the rotation
+\begin{align}
+	ρ &= \frac{𝒘_1 \wedge 𝒘_2}{1 + 𝒘_1 · 𝒘_2}
+,&	&\text{implying}
+&	θ = 2\tan^{-1}\qty(\frac{w_1w_2\sinϕ}{1 + w_1w_2\cosϕ})
+\end{align}
+where $ϕ$ is the angle between the two initial boosts (in the $K$ frame).
+The angle $θ$ is precisely the Wigner angle.
+Equating the vector parts determines the boost
+\begin{align}
+	𝒘 &= \frac{𝒘_1 + 𝒘_2}{1 + 𝒘_1⋅𝒘_2}(1 + ρ)^{-1}
+,\end{align}
+noting that $𝒘_i$ and $ρ$ do not commute.
+Substituting $ρ$ leads to the remarkably succinct composition law
+\begin{math}
+	𝒘 = (𝒘_1 + 𝒘_2)(1 + 𝒘_1𝒘_2)^{-1}
+\end{math}
+exhibited in \cite{berry2020quat-sr}, with the final relativistic velocity being $\vb β = \tanh \vb ξ = \tanh (2\tanh^{-1} 𝒘)$.
