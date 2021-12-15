@@ -272,18 +272,16 @@ Then, \cref{eqn:geometric-BCH} simplifies by the hyperbolic angle addition ident
 \end{align}
 which encodes how collinear rapidities add when given as relativistic velocities; $β = \tanh ξ$.
 
-Less trivially, a rotation in $\RR^3$ by $θ$ may be represented by its \textdef{Rodrigues vector}\sidenotemark\ $\vb r = \vb{\hat{r}}\tan\fracθ2$ pointing along the axis of rotation.
+Less trivially, a rotation in $\RR^3$ by $θ$ may be represented by its \textdef{Rodrigues vector}\sidenote{
+	Olinde Rodrigues first originated the formula in 1840 \cite[pp. 406]{rodrigues1840rotations}.
+} $\vb r = \vb{\hat{r}}\tan\fracθ2$ pointing along the axis of rotation.
 The composition of two rotations is then succinctly encoded in Rodrigues' composition formula
 \begin{align}
 	\vb r_{12} = \frac{\vb r_1 + \vb r_2 - \vb r_1 × \vb r_2}{1 - \vb r_1 · \vb r_2}
 	\label{eqn:rodrigues-formula}
 \end{align}
 involving the standard vector dot and cross products.
-\sidenotetext{
-	Olinde Rodrigues first originated the formula in 1840 \cite[pp. 406]{rodrigues1840rotations}.
-}
 
-% \toself{Be explicit about the (1,3) to (3) split.}
 We can easily derive \cref{eqn:rodrigues-formula} as a special case of \cref{eqn:geometric-BCH-products} as follows:
 Let $σ_1, σ_2 ∈ \GA[2](3)$ be two bivectors defining the rotors $e^{σ_1}$ and $e^{σ_2}$ in three dimensions.
 In $\GA(3)$, the only $4$-vector is trivial, so $σ_1 ∧ σ_2 = 0$ and for the composite rotor $e^{σ_3} \coloneqq e^{σ_1}e^{σ_2}$ we have
