@@ -1,5 +1,21 @@
 \chapter{Calculus in Flat Space(time)}
 
+So far, we have been concerned with special relativity at a single point in spacetime.
+The simplest first step toward a description of quantities extending across regions (i.e., fields) is the assumption of \emph{flat spacetime}.
+This is the statement that
+\begin{itemize}
+	\item points in spacetime are elements of a vector space $V$, and the difference of points is physically meaningful; and
+	\item fields are parametric functions of a point in spacetime.
+\end{itemize}
+These assumptions are acceptable in special relativity.
+But in arbitrary regions and in the presence of gravity, spacetime is curved and does not admit a meaningful vector space structure.
+This leads to differential geometry and forms \cref{part:2}.
+
+\begin{definition}
+	A \textdef{field} $F$ in a flat space $V$ is a differentiable function with domain $V$.
+\end{definition}
+
+
 \todo{
 	\begin{enumerate}
 		\item Exterior derivative and vector derivative
@@ -9,6 +25,37 @@
 }
 
 \section{Differentiation}
+
+
+The directional derivative of a field $F : V → A$ in the direction $𝒖 ∈ V$ is
+\begin{align}
+	% ∂_𝒖 F(x) = \lim_{ε → 0}\frac{F(x + ε𝒖) - F(x)}{ε}
+	∂_𝒖 F(x) = \dv{ε} \eval{F(x + ε𝒖)}_{ε = 0}
+	= \lim_{ε → 0}\frac{F(x + ε𝒖) - F(x)}{ε}
+\end{align}
+where the point $x ∈ V$ is also a vector.
+The directional derivative is linear in $𝒖$, since by a change of variables,
+\begin{math}
+	∂_{u^a\ve_a}
+	= \sum_a \dv{ε} \eval{F(x + εu^a\ve_a)}_{ε = 0}
+	= \sum_a u^a \dv{ε'} \eval{F(x + ε'\ve_a)}_{ε' = 0}
+	= u^a ∂_{\ve_a}
+.\end{math}
+
+
+Suppose $F : V → A$ is some algebra valued field.
+It is useful to define a kind of ``total'' derivative $\DD F$ which does not depend on a direction of differentiation, but instead encompasses, in a sense, all derivatives into a single object $\DD F : V → A$.
+The motivation for this construction is that it includes the soon-to-be-defined exterior derivative (of exterior algebra) and the vector derivative (of geometric algebra) as special cases.
+This derivative will be defined when there is a canonical inclusion $ι : V^* → A$ of dual vectors into the algebra $A$, which is true if $A$ is a quotient if $\TA{(V^*)}$.
+
+\begin{definition}
+	Let $A = \quot[\big]{\TA{(V^*)}}{I}$ be an algebra with product $⊛$.
+	The \textdef{algebraic derivative} of a field $F : V → A$ is
+	\begin{align}
+		\DD F = \ve^a ⊛ ∂_{\ve_a} F
+	\end{align}
+	where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases.
+\end{definition}
 
 \subsection{The Exterior Derivative}
 \subsection{The Vector Derivative}

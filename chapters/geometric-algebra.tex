@@ -62,11 +62,12 @@ where $\GA[+](V, η)$ is closed under the geometric product, forming the \textde
 
 \subsubsection{The geometric product of vectors}
 
-By expanding $(𝒖 + 𝒗)^2 = ⟨𝒖 + 𝒗, 𝒖 + 𝒗⟩$, it follows\sidenote{
-	$𝒖^2 + 𝒗𝒖 + 𝒖𝒗 + 𝒗^2 = ⟨𝒖,𝒖⟩ + 2⟨𝒖,𝒗⟩ + ⟨𝒗,𝒗⟩$
-} that
+% By expanding $(𝒖 + 𝒗)^2 = \ip{𝒖 + 𝒗, 𝒖 + 𝒗}$, it directly follows\sidenote{
+% 	$𝒖^2 + 𝒗𝒖 + 𝒖𝒗 + 𝒗^2 = \ip{𝒖,𝒖} + 2\ip{𝒖,𝒗} + \ip{𝒗,𝒗}$
+% } that
+By expanding $(𝒖 + 𝒗)^2 = \ip{𝒖 + 𝒗, 𝒖 + 𝒗}$, it directly follows that
 \begin{align}
-	⟨𝒖, 𝒗⟩ = \frac12(𝒖𝒗 + 𝒗𝒖)
+	\ip{𝒖, 𝒗} = \frac12(𝒖𝒗 + 𝒗𝒖)
 .\end{align}
 We recognise this as the symmetrised product of two vectors.
 The remaining antisymmetric part coincides with the \emph{alternating} or \emph{wedge} product familiar from exterior algebra
@@ -77,14 +78,14 @@ This is a $2$-vector, or bivector, in $\GA[2](V, η)$.
 Thus, the geometric product on vectors is
 \begin{align}
 	\label{eqn:geometric-prod-of-vectors}
-	𝒖𝒗 = ⟨𝒖, 𝒗⟩ + 𝒖∧𝒗
+	𝒖𝒗 = \ip{𝒖, 𝒗} + 𝒖∧𝒗
 ,\end{align}
 and some important features are immediate:
 \begin{itemize}
 	\item \emph{Parallel vectors commute, and vice versa:}
-	If $𝒖 = λ𝒗$, then $𝒖∧𝒗 = 0$ and $𝒖𝒗 = ⟨𝒖,𝒗⟩ = ⟨𝒗,𝒖⟩ = 𝒗𝒖$.
+	If $𝒖 = λ𝒗$, then $𝒖∧𝒗 = 0$ and $𝒖𝒗 = \ip{𝒖,𝒗} = \ip{𝒗,𝒖} = 𝒗𝒖$.
 	\item \emph{Orthogonal vectors anti-commute, and vice versa:}
-	If $⟨𝒖,𝒗⟩ = 0$, then $𝒖𝒗 = 𝒖∧𝒗 = -𝒗∧𝒖 = -𝒗𝒖$.
+	If $\ip{𝒖,𝒗} = 0$, then $𝒖𝒗 = 𝒖∧𝒗 = -𝒗∧𝒖 = -𝒗𝒖$.
 \end{itemize}
 In particular, if $\set{\ve_i} ⊂ V$ is an orthonormal basis, then we have $\ve_i^2 = \ip{\ve_i, \ve_i}$ and $\ve_i\ve_j = -\ve_j\ve_i$, which can be summarised by the anticommutation relation
 \begin{math}
@@ -96,7 +97,7 @@ In particular, if $\set{\ve_i} ⊂ V$ is an orthonormal basis, then we have $\ve
 	If $𝒖$ is a vector for which the scalar $𝒖^2$ is non-zero, then $𝒖^{-1} = 𝒖/𝒖^2$.
 
 	\item \emph{Geometric multiplication produces objects of mixed grade:}
-	The product $𝒖𝒗$ has a scalar part $⟨𝒖,𝒗⟩$ and a bivector part $𝒖∧𝒗$.
+	The product $𝒖𝒗$ has a scalar part $\ip{𝒖,𝒗}$ and a bivector part $𝒖∧𝒗$.
 \end{itemize}
 
 \subsubsection{Higher-grade elements}
@@ -170,7 +171,7 @@ Note the reverse order of the $j$ indices.
 
 \section{Relations to Other Algebras}
 
-\todo{into}
+An efficient way to become familiar with the geometric algebra is to exemplify its relationships and isomorphisms with other algebras and with itself.
 
 \subsection{Fundamental algebra automorphisms}
 
@@ -328,8 +329,7 @@ The factor of $k!$ is due to the Spivak convention for exterior forms (replace $
 \subsection{Common algebra isomorphisms}
 \label{sec:common-alg-isos}
 
-An efficient way to become familiar with geometric algebras is to study their relations to other common algebras encountered in physics.
-
+Many familiar algebraic structures in relativistic or quantum physics are special cases of geometric algebra.
 
 \begin{itemize}
 	\item\textbf{Complex numbers: $\GA[+](2) \cong \CC$}
@@ -347,7 +347,7 @@ An efficient way to become familiar with geometric algebras is to study their re
 
 	Similarly, the quaternions are the even subalgebra $\GA[+](3)$, with the isomorphism\sidenote{
 		Note the minus sign.
-		Viewed as rotations through respective normal planes, $(\ii, \jj, \kk)$ form a \emph{left}-\-handed basis.
+		Viewed as rotations through their respective normal planes, $(\ii, \jj, \kk)$ form a \emph{left}-\-handed basis.
 		This is because Hamilton chose $\ii\jj\kk = -1$, not $+1$.
 	}
 	\begin{align}

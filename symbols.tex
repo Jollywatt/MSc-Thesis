@@ -62,7 +62,13 @@
 \DeclareMathOperator{\GL}{GL}
 
 % quotient structure
-\newcommand{\quot}[2]{\left. #1 \middle/ #2 \right.}
+\newcommand{\quot}[3][*]{
+	\if*#1
+		\left. #2 \middle/ #3 \right.
+	\else
+		#2 #1/ #3
+	\fi
+}
 
 % generator
 \newcommand{\gen}{\dblset}
@@ -147,3 +153,9 @@
 % fibre bundle A ↪︎ B ↠ C
 \newcommand{\fibrebundle}[4][]{#2 \inject #3 \overset{#1}{\surject} #4}
 
+
+
+
+
+% derivatives
+\DeclareMathOperator{\DD}{D}
