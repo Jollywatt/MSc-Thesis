@@ -49,15 +49,19 @@ The motivation for this construction is that it includes the soon-to-be-defined 
 This derivative will be defined when there is a canonical inclusion $ι : V^* → A$ of dual vectors into the algebra $A$, which is true if $A$ is a quotient if $\TA{(V^*)}$.
 
 \begin{definition}
-	Let $A = \quot[\big]{\TA{(V^*)}}{I}$ be an algebra with product $⊛$.
-	The \textdef{algebraic derivative} of a field $F : V → A$ is
+	\label{def:algder}
+	Let $F : V → A$ be a field with values in an algebra $A$ with product $⊛$, equipped with an inclusion $ι : V^* → A$.
+	The \textdef{algebraic derivative} of $F$ is
 	\begin{align}
-		\DD F = \ve^a ⊛ ∂_{\ve_a} F
+		\DD F ≔ ι(\ve^a) ⊛ ∂_{\ve_a} F
 	\end{align}
-	where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases.
+	where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases (summation over $a$).
 \end{definition}
 
 \subsection{The Exterior Derivative}
+
+An exterior form field $φ : V → \forms(V, U)$ is called an exterior \emph{differential} form ...
+
 \subsection{The Vector Derivative}
 \subsection{Case Study: Maxwell's Equations}
 
