@@ -54,12 +54,12 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{bivector.pdf}}%
-    \put(0.39622911,1.07546508){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
+    \put(0.3962291,1.07546508){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
     \put(0.48958437,0.83782273){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖$\end{tabular}}}}%
-    \put(0.15381185,1.06395227){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒗$\end{tabular}}}}%
+    \put(0.15381185,1.06395228){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒗$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{bivector.pdf}}%
-    \put(0.71586637,0.17624448){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
-    \put(0.05458803,0.32619375){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒘$\end{tabular}}}}%
-    \put(0.31464982,0.38104239){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗∧𝒘$\end{tabular}}}}%
+    \put(0.71586636,0.17624449){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
+    \put(0.05458803,0.32619376){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒘$\end{tabular}}}}%
+    \put(0.31464982,0.3810424){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗∧𝒘$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
