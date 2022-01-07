@@ -5,7 +5,8 @@
 The investigations of \cref{part:1} were restricted to \emph{flat geometries}.
 In particular, special relativity models spacetime as a homogeneous, isotropic Minkowski vector space.
 However, the general theory of relativity incorporates gravity as the curvature of space itself.
-This calls for manifold geometry.
+Thus, spacetime no longer has an assumed vector space structure.
+This calls for \emph{manifold geometry}.
 
 
 
@@ -552,7 +553,7 @@ Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads $∇f(𝒖) = \dd f(𝒖) + 
 		∇f = \op{rej}_H{} ∘ \dd f
 			= \dd f - \op{proj}_H{} ∘ \dd f
 	.\end{align}
-	Using \eqref{eqn:lift-of-base-tangent-vectors}, the projection operator at $p ∈ ℱ$ can be written as
+	Using \cref{eqn:lift-of-base-tangent-vectors}, the projection operator at $p ∈ ℱ$ can be written as
 	\begin{align}
 		\op{proj}_{H_p} = \dd π|_{H_p}^{-1} ∘ \dd π
 	.\end{align}
@@ -591,11 +592,11 @@ Vertical motion fixes $π(p)$ and hence leaves the base coordinates $x^μ$ uncha
 (However, the fibre coordinates $x^a$ are \emph{not} required to be constant under horizontal motion.)
 The associated coordinate basis of $\TT ℱ$ is $(∂_A) = (∂_μ, ∂_a)$.
 
-The covariant derivative in \eqref{lem:covariant-derivative-rewritten} acting on a section $f : ℳ → ℱ$ in the direction $𝒖 ∈ \TT_x ℳ$ has the full form
+The covariant derivative in \cref{lem:covariant-derivative-rewritten} acting on a section $f : ℳ → ℱ$ in the direction $𝒖 ∈ \TT_x ℳ$ has the full form
 \begin{align}
 	∇_𝒖f ≔ ∇f(𝒖) = \dd f(𝒖) + Γ_f(𝒖)
 .\end{align}
-The connection map $Γ_f : \TTℳ → H ⊆ \TT ℱ$ is linear in $𝒖$, so we may write it as a bitensor (matrix-valued) section $Γ_f : ℳ → \TT^*ℳ ⊗ \TT ℱ$, which is equivalently a $\TT ℱ$-valued $1$-form.
+The connection map $Γ_f : \TTℳ → H ⊆ \TT ℱ$ is linear in $𝒖$, so it is a a $\TT ℱ$-valued $1$-form which we may write as a bitensor (matrix--valued) section $Γ_f : ℳ → \TT^*ℳ ⊗ \TT ℱ$.
 Without reference to $f$, we have $Γ : ℱ → \TT^*ℳ ⊗ \TT ℱ$ with $Γ_f(x) ≡ Γ(f(x))$.
 % The horizontal projection $\dd π|_{H_{f(x)}}^{-1} : \TT_xℳ → H_{f(x)} ⊆ \TT ℱ$ is a linear operator at each point in $ℱ$, so we may write it as a $\TT ℱ$-valued $1$-form.
 Define the components $Γ^A{}_μ : ℱ → ℝ$ of $Γ$ by
@@ -604,15 +605,15 @@ Define the components $Γ^A{}_μ : ℱ → ℝ$ of $Γ$ by
 	Γ_p = Γ^A{}_μ(p) \, ∂_A ⊗ \dd x^μ
 ,\end{align}
 noting that these are functions on the bulk (not just on the base).
-Thus, in the coordinate basis, the covariant derivative acting on a vector $𝒖 ∈ \TT_xℳ$ is
+Thus, in the coordinate basis, the covariant derivative of $f$ in the direction $𝒖 ∈ \TT_xℳ$ is
 \begin{align}
 	\label{eqn:covariant-derivative-coords.3}
 	∇f(𝒖) ≡ ∇_μf^A(x)u^μ \∂_A = \qty(∂_μ f^A(x) + Γ^A{}_μ(f
 	(x))) u^μ \∂_A
 .\end{align}
 Note that this is a sum over coordinate vectors both in the fibre, $\∂_a$, and in the base $\∂_μ$.
-However, since $∇f(𝒖) ∈ \VVℱ$ is vertical, we expect its horizontal components $∇_μ f^ν$ to vanish, leaving only vertical components $∇_μf^A \∂_A = ∇_μf^a \∂_a$.
-To verify this, note that
+However, since $∇f(𝒖) ∈ \VVℱ$ is vertical, we expect its horizontal components $∇_μ f^ν$ to vanish, leaving only vertical components.
+To verify that $∇_μf^A \∂_A = ∇_μf^a \∂_a$, note that
 \begin{align}
 	\label{eqn:covariant-derivative-coords.2}
 	\dd π (\dd f (𝒖)) = 𝒖
@@ -624,8 +625,8 @@ In effect, $\dd π$ projects onto components of the base,
 \begin{align}
 	\dd π(∂_μ f^A \∂_A) = ∂_μ f^ν \∂_ν
 ,\end{align}
-and so \eqref{eqn:covariant-derivative-coords.2} implies $∂_μ f^ν = -Γ^ν{}_μ$.
-Hence, the base components of the two terms in \eqref{eqn:covariant-derivative-coords.3} cancel, leaving only the fibre components,
+and so \cref{eqn:covariant-derivative-coords.2} implies $∂_μ f^ν = -Γ^ν{}_μ$.
+Hence, the base components of the two terms in \cref{eqn:covariant-derivative-coords.3} cancel, leaving only the fibre components,
 \begin{align}
 	% ∇f(𝒖) ≡ ∇_μf^a u^μ \∂_a = \qty(∂_μ f^a\big|_x + Γ^a{}_μ\big|_{f\smol{x}}) u^μ \∂_a
 	% ∇f(𝒖) ≡ ∇_μf^a u^μ \∂_a = \qty(∂_μ f^a + Γ^a{}_μ∘f) u^μ \∂_a
@@ -633,12 +634,80 @@ Hence, the base components of the two terms in \eqref{eqn:covariant-derivative-c
 .\end{align}
 
 This calculation is performed from the point of view that $f : ℳ → ℱ$ is a section, in which case $\dd f = \dd f^μ \∂_μ + \dd f^a \∂_a$ is a $1$-form with values in the bulk tangent space $\TTℱ = \TTℳ ⊕ \VVℱ$.
-In practice, it is usual to have a (local) trivialisation and have $f : ℳ → F$ be given as a field, in which case $\dd f = \dd f^a \∂_a ∈ \VVℱ$ instead.
-
+In practice, it is usual to have a (local) trivialisation where $f : ℳ → F$ is presented as a field, in which case $\dd f = \dd f^a \∂_a ∈ \VVℱ$ instead.
 In this case, the equivalent expression of \cref{lem:covariant-derivative-rewritten} is
 \begin{align}
 	\label{eqn:covder-of-trivialised-field}
 	∇f = \dd f + (Γ_f)^a\∂_a
 ,\end{align}
 where only the fibre components of $Γ_f$ (as specific to the trivialisation) are kept, ensuring the resulting derivative $∇f(𝒖) ∈ \VVℱ$ is vertical.
-This is usually how computations are performed --- but to reiterate, the expression \eqref{eqn:covder-of-trivialised-field} with $f : ℳ → F$ depends on a (local) trivialisation, whereas the previous sense of covariant derivative in which $f : ℳ → ℱ$ is purely geometrical.
+This is usually how computations are performed --- but to reiterate, the expression \eqref{eqn:covder-of-trivialised-field} with $f : ℳ → F$ depends on a (local) trivialisation, whereas the previous sense of covariant derivative of a section $f : ℳ → ℱ$ is purely geometrical.
+
+
+
+
+
+\section{Structure Preserving Connections}
+
+So far, we have treated connections in the setting of a general fibre bundle, in which fibres have the minimal structure of a smooth manifold.
+We now consider connections and their associated covariant derivatives on vector bundles with less or more structure.
+
+The transport operator over a path in a general fibre bundle is some invertible map between the two fibres terminating the path.
+For a vector bundle, we require the transport operator to be a linear map.
+Linearity allows the covariant derivative to be expressed as the limit of a difference, similar to the usual analytical definition of the derivative of a real function.
+\begin{lemma}
+	\label{lem:trans-and-covariant-der}
+	If $γ : [0, 1] → ℳ$ is a path and $𝒖 ∈ \secs_γ(𝒱)$ is a smooth section of vectors defined on $γ$, then
+	\begin{align}
+		∇_{\dot{γ}(0)} 𝒖|_{γ(0)}
+		= \dv{λ}\eval{\qty(𝒖|_{γ(λ)} - \trans_{γ(λ ← 0)}𝒖|_{γ(0)})}_{λ=0}
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	Using \cref{lem:dtrans-is-Γ}, the right-hand side is equal to
+	\begin{align}
+		\dd 𝒖(\dot γ(0)) + Γ(\dot γ(0)) \trans_{γ(0←0)} 𝒖
+		= (\dd 𝒖 + Γ 𝒖)(\dot γ(0)) = ∇_{\dot{γ}(0)} 𝒖
+	,\end{align}
+	since transport over a trivial path is the identity.
+\end{proof}
+
+As well as linearity, vector bundles may be equipped with further structure, placing further constraints on the connection.
+For example, equipped with a metric, and we may require the connection to be \emph{metric-compatible}.
+Given an associative product, we may require parallel transport to respect multiplication, etcetera.
+These requirements are all instances of \emph{functorality} of the transport operator.
+In general, if $ϕ$ is a $k$-ary multilinear operator (e.g., an inner product, an associative product, etc) then the transport operator \emph{respects} $ϕ$ if
+\begin{align}
+	\label{eqn:functorality-of-trans}
+	\trans_γ ϕ(\etc{a_\i},k) = ϕ(\trans_γ a_1, ..., \trans_γ a_k)
+\end{align}
+for values $a_i$ from the fibre at the start of $γ$.
+How does this requirement for structure-preservation translate to the associated covariant derivative?
+\begin{lemma}
+	\label{lem:covder-of-anything}
+	Let $ϕ$ be a multilinear $k$-ary operator on a vector bundle.
+	If the transport operator respects $ϕ$, then
+	\begin{align}
+		∇ ϕ(\etc{a_\i},k) = \dd ϕ(\etc{a_\i},k) + \sum_{i=1}^k ϕ(a_1, ..., Γ_{a_i}, ..., a_k)
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	The covariant derivative along some curve $γ$, by \cref{lem:trans-and-covariant-der}, is
+	\begin{align}
+		&\phantom{{}={}}∇_{\dot γ(0)} ϕ(\etc{a_\i},k)
+	% \\	&= \dv{λ} \eval{\qty( ϕ(\etc{a_\i},k)\big|_{γ(λ)} - \trans_{γ(λ ← 0)} ϕ(\etc{a_\i},k)|_{γ(0)})}_{λ=0}
+	\\	&= \dd (ϕ(\etc{a_\i},k))(\dot γ(0)) - \dv{λ} ϕ(\trans_{γ(λ ← 0)} a_1, ..., \trans_{γ(λ ← 0)} a_k)\Big|_{λ=0}
+	\\	&= \dd (ϕ(\etc{a_\i},k))(\dot γ(0)) - \sum_{i=1}^k ϕ\qty(a_1, ..., \dv{λ} \trans_{γ(λ ← 0)} a_i \Big|_{λ=0}, ..., a_k)
+	\\	&= \dd (ϕ(\etc{a_\i},k))(\dot γ(0)) + \sum_{i=1}^k ϕ(a_1, ..., Γ_{a_i}(\dot γ(0)), ..., a_k)
+	.\end{align}
+	Removing reference to the arbitrary direction of derivation $\dot γ(0)$ yields the result.
+\end{proof}
+
+Taking $ϕ : A × A → A$ to be the associative product of the algebra bundle $\fibrebundle A 𝒜 ℳ$, we recover the covariant product rule.
+\begin{corollary}
+	On an algebra bundle,
+	\begin{align}
+		∇_𝒖(a⊛b) = \dd(a⊛b)(𝒖) + Γ_a(𝒖)⊛b + a⊛Γ_b(𝒖)
+	.\end{align}
+\end{corollary}
+This corollary implies that a connection respecting an associative product is determined completely determined by the connection on the subbundle of grade-$1$ vectors $𝒱 ⊆ 𝒜$.

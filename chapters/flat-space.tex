@@ -3,18 +3,14 @@
 So far, we have been concerned with special relativity at a single point in spacetime.
 The next step is a description of \emph{fields}, which are quantities extending across regions of spacetime.
 The simplest step in this direction is the calculus of \emph{flat spacetime}.
-In a flat geometry, we make the assumtions that
+In a flat geometry, we assume that
 \begin{itemize}
-	\item points in spacetime are elements of a vector space, and differences of points are physically meaningful; and
-	\item fields are parametric functions of a single vector which represents a point in spacetime.
+	\item points in spacetime are elements of a vector space, with differences of points being physically meaningful; and that
+	\item fields are parametric functions of a single vector argument representing a location in spacetime.
 \end{itemize}
 For instance, the electromagnetic bivector in flat space $F : \RR^4 → \EA[2]{\RR^4}$ is a function between fixed vector spaces.
-These assumptions are acceptable in special relativity, but in arbitrary regions of spacetime in the presence of gravity, the presence of curvature prevents spacetime from admitting a meaningful vector space structure.
-Consideration of curvature leads to differential geometry, and comprises \cref{part:2}.
-
-\begin{definition}
-	A \textdef{field} $F$ in a flat space $V$ is a differentiable function with domain $V$.
-\end{definition}
+These assumptions are acceptable in special relativity, but in arbitrary regions of spacetime and in the presence of gravity, curvature prevents spacetime from admitting a meaningful vector space structure.
+(Consideration of curvature leads to differential geometry, and comprises \cref{part:2}.)
 
 
 \todo{
@@ -27,6 +23,11 @@ Consideration of curvature leads to differential geometry, and comprises \cref{p
 
 \section{Differentiation}
 
+We reserve the word \textdef{field} to mean a map with a fixed vector space codomain.
+% \begin{definition}
+% 	A \textdef{vector field} is a mapping into a fixed vector space.
+% \end{definition}
+In particular, the value of a vector field $F : V → A$ at different points in spacetime can be added; $F(x) + F(y) ∈ A$.
 
 The directional derivative of a vector field $F : V → A$ in the direction $𝒖 ∈ V$ is
 \begin{align}
@@ -46,14 +47,15 @@ The directional derivative is linear in $𝒖$, since by a change of variables,
 
 Suppose $F : V → A$ is some algebra--valued field.
 It is useful to define a kind of ``total'' derivative $\DD F$ which does not depend on a direction of differentiation $𝒖$, but instead encompasses, in a sense, all derivatives in a single object $\DD F : V → A$.
-The motivation for this construction is that it includes the soon to be defined exterior derivative (of exterior algebra) and the vector derivative (of geometric algebra) as special cases.
-This derivative will be defined when there is a canonical inclusion $ι : V^* → A$ of dual vectors into the algebra $A$, which is certainly true if $A$ is a quotient of $\TA{(V^*)}$.
+The motivation for this construction is that it encompasses the soon-to-be-defined exterior derivative (of exterior algebra) and vector derivative (of geometric algebra) as special cases.
+This derivative will be defined when there is a canonical inclusion $ι : V^* → A$ of dual vectors into the algebra $A$, which is automatic if $A$ is a quotient of $\TA{(V^*)}$.
 
 \begin{definition}
 	\label{def:algder}
 	Let $F : V → A$ be a field with values in an algebra $A$ with product $⊛$, equipped with an inclusion $ι : V^* → A$.
 	The \textdef{algebraic derivative} of $F$ is
 	\begin{align}
+		\label{eqn:algder}
 		\DD F ≔ ι(\ve^a) ⊛ ∂_{\ve_a} F
 	\end{align}
 	where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases (summation over $a$).
@@ -61,9 +63,40 @@ This derivative will be defined when there is a canonical inclusion $ι : V^* �
 
 \subsection{The Exterior Derivative}
 
-An exterior form field $φ : V → \forms(V, U)$ is called an exterior \emph{differential} form ...
+Consider a vector field $F : V → \EA{V^*}$ in the (dual) exterior algebra.
+The algebraic derivative \eqref{eqn:algder} reduces to the \textdef{exterior derivative}
+\begin{align}
+	\dd F = \dx^a ∧ \pdv{F}{x^a}
+\end{align}
+where $\set{\dx^a} ⊂ V^*$ form a dual basis of $\EA{V^*}$.
+If $F : V → \EA[k]{V^*}$ is a $k$-vector field, then
+\begin{math}
+	\dd F = ∂_a F_{\etc{a_\i}{}k} \dx^a ∧ \etc{\dx^{a_\i}}∧k
+\end{math}
+is a $(k + 1)$-vector.
+
+Using the equivalence of $\EA{V^*}$ with the subspace of antisymmetric tensors (see \cref{sec:exterior-algebra-as-antisymmetric}), the exterior derivative is seen to be the totally anti-symmetrised partial derivative.
+In components,
+\begin{math}
+	(\dd F)_{\etc{a_\i}{}k} = ∂_{[a_1}F_{\etc[2]{a_\i}{}k]}
+.\end{math}
+
+The treatment of exterior forms is identical.
+An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \textdef{exterior differential $k$-form}, with exterior derivative defined by its action on vectors
+\begin{align}
+	(\dd φ)(𝒖, \etc{𝒖_\i},{k})
+	&= (\dx^a ∧ ∂_a φ)(𝒖, \etc{𝒖_\i},k)
+% \\	&= \sum_{σ ∈ S_{k + 1}} (-1)^σ ∂_{𝒖_{σ(0)}} φ(\etc{𝒖_{σ(\i)}}{}k)
+\\	&= \sum_{i = 0}^k (-1)^i ∂_{𝒖_{i}} φ(𝒖_0, ..., \widehat{𝒖_i}, ..., 𝒖_k)
+\end{align}
+in the Spivak convention (see \cref{sec:exterior-forms}).
+Note that the partial derivative acts on the position dependence on $φ$ only --- the vectors $𝒖_i ∈ V$ are fixed input vectors.
+This changes when differential forms are generalised from simple vector fields of alternating maps $V → \forms(V, U)$ to objects defined on \emph{manifolds} $\forms(ℳ, U)$, where correction terms are needed for the input vectors' partial derivatives (see \cref{part:2}).
+
+% (dF)(u, v, ...) = (dx^a ∧ ∂_a F)(u, v, ...)
 
 \subsection{The Vector Derivative}
+
 \subsection{Case Study: Maxwell's Equations}
 
 
