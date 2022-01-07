@@ -118,11 +118,15 @@
 % "fat dot" product
 % https://tex.stackexchange.com/a/235120/105570
 \makeatletter
-\newcommand*\fatdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\fatdot{\mathpalette\bigcdot@{.8}}
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 \makeatother
 
 \newcommand{\wedot}{\mathrel{\ooalign{\hfil$∧$\hfil\cr\hfil$.$\hfil}}}
+
+% left and right contractions
+\newcommand{\lcontr}{\mathrel{\rfloor}}
+\newcommand{\rcontr}{\mathrel{\lfloor}}
 
 
 
@@ -161,3 +165,4 @@
 
 % derivatives
 \DeclareMathOperator{\DD}{D}
+\newcommand{\vd}{\symbf{∂}}

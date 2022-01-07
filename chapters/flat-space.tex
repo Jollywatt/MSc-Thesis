@@ -58,17 +58,29 @@ This derivative will be defined when there is a canonical inclusion $ι : V^* �
 		\label{eqn:algder}
 		\DD F ≔ ι(\ve^a) ⊛ ∂_{\ve_a} F
 	\end{align}
-	where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases (summation over $a$).
+	(summation on $a$) where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases.
 \end{definition}
+
+To understand this definition, consider the simple case of the free tensor algebra $F : V → \TA{(V^*)}$.
+We leave the inclusion $ι : V^* → \TA{(V^*)}$ implicit.
+Given a basis $\set{\ve^a} ⊂ V^*$, the algebraic derivative is
+\begin{math}
+	\DD F = \ve^a ⊗ ∂_a F
+\end{math}
+simply encodes the partial derivatives of a $k$-vector $F$ in a $(k + 1)$-grade object.
+In component language,
+\begin{math}
+	(\DD F)_{a\etc{a_\i}{}k} = ∂_aF_{\etc{a_\i}{}k}
+.\end{math}
 
 \subsection{The Exterior Derivative}
 
-Consider a vector field $F : V → \EA{V^*}$ in the (dual) exterior algebra.
-The algebraic derivative \eqref{eqn:algder} reduces to the \textdef{exterior derivative}
+Consider a vector field $F : V → \EA{V^*}$ with values in the (dual) exterior algebra.
+In this case the algebraic derivative \eqref{eqn:algder} reduces to the \textdef{exterior derivative}
 \begin{align}
 	\dd F = \dx^a ∧ \pdv{F}{x^a}
 \end{align}
-where $\set{\dx^a} ⊂ V^*$ form a dual basis of $\EA{V^*}$.
+where $\set{\dx^a} ⊂ V^*$ also form a dual basis of $\EA{V^*}$.
 If $F : V → \EA[k]{V^*}$ is a $k$-vector field, then
 \begin{math}
 	\dd F = ∂_a F_{\etc{a_\i}{}k} \dx^a ∧ \etc{\dx^{a_\i}}∧k
@@ -82,7 +94,7 @@ In components,
 .\end{math}
 
 The treatment of exterior forms is identical.
-An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \textdef{exterior differential $k$-form}, with exterior derivative defined by its action on vectors
+An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \textdef{exterior differential $k$-form}, with exterior derivative defined via its action on vectors
 \begin{align}
 	(\dd φ)(𝒖, \etc{𝒖_\i},{k})
 	&= (\dx^a ∧ ∂_a φ)(𝒖, \etc{𝒖_\i},k)
@@ -90,12 +102,54 @@ An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \text
 \\	&= \sum_{i = 0}^k (-1)^i ∂_{𝒖_{i}} φ(𝒖_0, ..., \widehat{𝒖_i}, ..., 𝒖_k)
 \end{align}
 in the Spivak convention (see \cref{sec:exterior-forms}).
-Note that the partial derivative acts on the position dependence on $φ$ only --- the vectors $𝒖_i ∈ V$ are fixed input vectors.
-This changes when differential forms are generalised from simple vector fields of alternating maps $V → \forms(V, U)$ to objects defined on \emph{manifolds} $\forms(ℳ, U)$, where correction terms are needed for the input vectors' partial derivatives (see \cref{part:2}).
+Note that the partial derivative acts on the position dependence of $φ$ only --- the vectors $𝒖_i ∈ V$ are fixed input vectors.
+This changes when generalising from vector fields of alternating maps $V → \forms(V, U)$ to objects defined on a \emph{manifold} $\forms(ℳ, U)$, where correction terms are needed to account for partial derivatives of input vector sections (discussed in \cref{part:2}).
 
-% (dF)(u, v, ...) = (dx^a ∧ ∂_a F)(u, v, ...)
 
 \subsection{The Vector Derivative}
+
+The algebraic derivative in the tensor and exterior algebras are somewhat uninteresting, because they are easily expressible in component form (as $∂_aF_{\etc{a_\i}{}k}$ or $∂_{[a}F_{\etc{a_\i}{}k]}$).
+This is not possible in the geometric algebra, however, because $\GA(V, η)$ is not $\ZZ$-graded, and we face the problem of notating inhomogeneous objects with a variable number of indices.
+
+In $\GA(V, η)$, the algebraic derivative is called the \textdef{vector derivative}, denoted $\vd$.
+Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then we take \cref{eqn:algder} with the geometric product and the inclusion\sidenote{
+	We could just as well consider fields $V → \GA(V^*, η)$, avoiding the need for the isomorphism $\sharp : V^* → V$.
+	But the metric is already defined, so we prefer multivectors $\GA(V, η)$ to `dual-multivectors'.
+}
+\begin{align}
+	V^* ∋ 𝒖 \mapsto ι(𝒖^\sharp) ∈ \GA(V, η)
+.\end{align}
+Here, we use the metric to relate $V^* → V$ and the canonical inclusion $ι : V ≡ \GA[1](V, η) → \GA(V, η)$.
+The vector derivative is then
+\begin{align}
+	\vd F = \ve^a \, ∂_{\ve_a} F
+\end{align}
+(summation on $a$) where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V$ are dual bases, and juxtaposition denotes the geometric product.
+If $F$ is a homogeneous $k$-vector, then we may write its components as
+\begin{math}
+	F = F_{\etc{a_\i}{}k} \etc{\ve^{a_\i}}∧k
+\end{math}
+and hence
+\begin{align}
+	\vd F = ∂_{\ve_a}F_{\etc{a_\i}{}k} \, \ve^a(\etc{\ve^{a_\i}}∧k)
+.\end{align}
+Note that these terms are not $(k + 1)$-blades, but geometric products of vectors $\ve^a$ with $k$-blades --- in general, $(k ± 1)$-multivectors.
+
+We may regard the vector derivative itself as an operator-valued vector,
+\begin{align}
+	\vd = \ve^a ∂_a
+,\end{align}
+reflecting the fact that $\vd$ behaves algebraically like a vector.
+For instance, the derivative of a vector $𝒖$ has scalar and bivector parts,
+\begin{math}
+	\vd 𝒖 = \vd \fatdot 𝒖 + \vd ∧ 𝒖
+,\end{math}
+just like the geometric product of two vectors, $𝒖𝒗 = 𝒖 \fatdot 𝒗 + 𝒖 ∧ 𝒗$.
+For a general multivector $F$, then, we have
+\begin{align}
+	\vd F = \vd \lcontr F + \vd ∧ F
+.\end{align}
+
 
 \subsection{Case Study: Maxwell's Equations}
 
