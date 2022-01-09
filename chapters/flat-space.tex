@@ -1,33 +1,23 @@
 \chapter{Calculus in Flat Geometries}
 
 So far, we have been concerned with special relativity at a single point in spacetime.
-The next step is a description of \emph{fields}, which are quantities extending across regions of spacetime.
-The simplest step in this direction is the calculus of \emph{flat spacetime}.
-In a flat geometry, we assume that
+We move now toward the description of \emph{fields} --- quantities extending across regions of spacetime.
+The first step in this direction is the calculus of \emph{flat spacetime}.
+In a flat geometry, we may assume that
 \begin{itemize}
 	\item points in spacetime are elements of a vector space, with differences of points being physically meaningful; and that
 	\item fields are parametric functions of a single vector argument representing a location in spacetime.
 \end{itemize}
-For instance, the electromagnetic bivector in flat space $F : \RR^4 → \EA[2]{\RR^4}$ is a function between fixed vector spaces.
-These assumptions are acceptable in special relativity, but in arbitrary regions of spacetime and in the presence of gravity, curvature prevents spacetime from admitting a meaningful vector space structure.
-(Consideration of curvature leads to differential geometry, and comprises \cref{part:2}.)
+We reserve the word \textdef{field} to mean a map with a fixed vector space codomain.
+For instance, the electromagnetic bivector field in flat space $F : \RR^4 → \EA[2]{\RR^4}$ is a function between fixed vector spaces.
+In particular, the value of a vector field $F : V → A$ at different points in spacetime can be added; $F(x) + F(y) ∈ A$.
 
+These assumptions are acceptable in special relativity, but in arbitrary regions of spacetime and in the presence of gravity, curvature prevents spacetime from admitting a meaningful vector space structure, and it becomes unphysical to compare field values at different points.
+(Consideration of curvature leads to differential geometry and comprises \cref{part:2}.)
 
-\todo{
-	\begin{enumerate}
-		\item Exterior derivative and vector derivative
-		\item Stokes' theorem and the GA equivalent
-		\item Maxwell's equations
-	\end{enumerate}
-}
 
 \section{Differentiation}
 
-We reserve the word \textdef{field} to mean a map with a fixed vector space codomain.
-% \begin{definition}
-% 	A \textdef{vector field} is a mapping into a fixed vector space.
-% \end{definition}
-In particular, the value of a vector field $F : V → A$ at different points in spacetime can be added; $F(x) + F(y) ∈ A$.
 
 The directional derivative of a vector field $F : V → A$ in the direction $𝒖 ∈ V$ is
 \begin{align}
@@ -108,17 +98,18 @@ This changes when generalising from vector fields of alternating maps $V → \fo
 
 \subsection{The Vector Derivative}
 
-The algebraic derivative in the tensor and exterior algebras are somewhat uninteresting, because they are easily expressible in component form (as $∂_aF_{\etc{a_\i}{}k}$ or $∂_{[a}F_{\etc{a_\i}{}k]}$).
-This is not possible in the geometric algebra, however, because $\GA(V, η)$ is not $\ZZ$-graded, and we face the problem of notating inhomogeneous objects with a variable number of indices.
+The algebraic derivative in the tensor and exterior algebras are somewhat uninteresting, because they are easily expressible in component form (e.g., $∂_aF_{\etc{a_\i}{}k}$ or $∂_{[a}F_{\etc{a_\i}{}k]}$).
+This is not possible in the geometric algebra, however, because $\GA(V, η)$ is not $\ZZ$-graded, and we would face the problem of notating inhomogeneous objects with a variable number of indices.
+The algebraic derivative is, however, still geometrically significant and useful in this case.
 
-In $\GA(V, η)$, the algebraic derivative is called the \textdef{vector derivative}, denoted $\vd$.
-Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then we take \cref{eqn:algder} with the geometric product and the inclusion\sidenote{
+In $\GA(V, η)$, the algebraic derivative is called the \textdef{vector derivative}, which we denote $\vd$.
+Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then in \cref{eqn:algder} we take $⊛$ to be with the geometric product and take the inclusion to be\sidenote{
 	We could just as well consider fields $V → \GA(V^*, η)$, avoiding the need for the isomorphism $\sharp : V^* → V$.
 	But the metric is already defined, so we prefer multivectors $\GA(V, η)$ to `dual-multivectors'.
 }
-\begin{align}
-	V^* ∋ 𝒖 \mapsto ι(𝒖^\sharp) ∈ \GA(V, η)
-.\end{align}
+\begin{math}
+	V^* ∋ 𝒖 ↦ ι(𝒖^\sharp) ∈ \GA(V, η)
+.\end{math}
 Here, we use the metric to relate $V^* → V$ and the canonical inclusion $ι : V ≡ \GA[1](V, η) → \GA(V, η)$.
 The vector derivative is then
 \begin{align}

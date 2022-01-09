@@ -180,7 +180,7 @@ Linear functions with this property are called algebra automorphisms or antiauto
 The geometric algebra possesses this \paren{anti}automorphism operations.
 
 Isometries of $(V, η)$ are linear functions $f : V → V$ which preserve the metric, so that $\ip{f(𝒖), f(𝒗)} = \ip{𝒖, 𝒗}$ for any $𝒖, 𝒗 ∈ V$.
-Vector spaces always possess the involution isometry $ι(𝒖) = -𝒖$, as well as the trivial isometry.
+Vector spaces always possess the involution isometry $𝒖 ↦ -𝒖$, as well as the trivial isometry.
 An isometry extends uniquely to an algebra \paren{anti}automorphism by defining $f(AB) = f(A)f(B)$ or $f(AB) = f(B)f(A)$.
 Thus, by extending the two fundamental isometries of $(V, η)$ in the two possible ways, we obtain four fundamental \paren{anti}automorphisms of $\GA(V, η)$.
 
@@ -189,7 +189,7 @@ Thus, by extending the two fundamental isometries of $(V, η)$ in the two possib
 	\begin{itemize}
 		\item \textdef{Reversion $\dagger$} is the identity map on vectors $\rev{𝒖} = 𝒖$ extended to general multivectors by the rule $\rev{(AB)} = \rev{B}\rev{A}$.
 		
-		\item \textdef{Grade involution $ι$} is the extension of the involution $ι(𝒖) = -𝒖$ to general multivectors by the rule $ι(AB) = ι(A)ι(B)$.
+		\item \textdef{Grade involution $\star$} is the extension of the involution $\invol{𝒖} = -𝒖$ to general multivectors by the rule $\invol{(AB)} = \invol{A}\invol{B}$.
 	\end{itemize}
 \end{definition}
 If $A ∈ \GA[k](V, η)$ is a $k$-vector, then $ι(A) = (-1)^k A$ and $\rev{A} = \revsign{k}A$ where
@@ -203,10 +203,10 @@ Reversion and grade involution together generate the four fundamental automorphi
 \begin{center}
 	\renewcommand{\arraystretch}{1.2}
 	\begin{tabular}{c|cl}
-	$\op{id}$ & $ι$ & automorphisms \\
+	$\op{id}$ & $\star$ & automorphisms \\
 	\cline{1-2}
-	\marginnote{$ι\circ\dagger$ is sometimes referred to as the \textdef{Clifford conjugate}}
-	$\dagger$ & $ι\circ\dagger$ & anti-automorphisms
+	\marginnote{$\star\circ\dagger$ is sometimes referred to as the \textdef{Clifford conjugate}}
+	$\dagger$ & $\star\circ\dagger$ & anti-automorphisms
 	\end{tabular}
 \end{center}
 which form a group isomorphic to $\ZZ_2^2$ under composition.
@@ -221,7 +221,7 @@ In particular, the following result follows easily from reasoning about grades.
 \end{lemma}
 \begin{proof}
 	The multivector $A^2$ is its own reverse, since $\rev{(A^2)} = (\rev{A})^2 = (±A)^2 = A^2$, and hence has parts of grade $\set{4n, 4n + 1 | n ∈ \NN}$.
-	Similarly, $A^2$ is self-involutive, since $ι(A^2) = ι(A)^2 = (±A)^2 = A^2$.
+	Similarly, $A^2$ is self-involutive, since $\invol{(A^2)} = (\invol A)^2 = (±A)^2 = A^2$.
 	It is thus of even grade, leaving the possible grades $\set{0, 4, 8, ...}$.
 \end{proof}
 
@@ -702,5 +702,215 @@ In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with so
 On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors share no common direction, existing in orthogonal planes (a scenario requiring at least four dimensions).
 
 
+
+
+\section{More Graded Products}
+
+All operations in the geometric algebra can be expressed in terms of the fundamental geometric product along with grade projection operators $\grade[k]{\phantom{A}}$.
+For example, we have seen that the wedge and inner products ($∧$ and $\fatdot$ of \cref{def:wedge-and-fat-dot-for-multivectors}) are merely combinations of multiplication and projection.
+
+There are other similar constructions which are useful enough warrant their own definitions, inclusing left and right \emph{contractions}.
+\begin{definition}
+	% For any multivectors $A$ and $B$, define the
+	\begin{align}
+		&\text{\textdef{left contraction}}
+	&	A \lcontr B &= \sum_{p,q}\grade[q - p]{\grade[p]{A}\grade[q]{B}}
+	\\	&\text{\textdef{right contraction}}
+	&	A \rcontr B &= \sum_{p,q}\grade[p - q]{\grade[p]{A}\grade[q]{B}}
+	\end{align}
+	% products.
+\end{definition}
+Observe that $\rev{(A\lcontr B)} = \rev{A}\rcontr\rev{B}$, so these are in essentially the same operation --- only one is viewed in a mirror.\sidenote{
+	I.e., every statement involving $\lcontr$ produces, under reversion, an equivalent statement involving $\rcontr$.
+}
+
+The fat dot product reduces to a contraction on homogeneous multivectors, depending on which multivector has the higher grade.
+If $A$ is a $p$-vector and $B$ a $q$-vector, then
+\begin{align}
+	A \fatdot B =
+	\begin{cases}
+		A \lcontr B & p ≤ q
+	\\	A \rcontr B & q ≥ p
+	\end{cases}
+,\end{align}
+with $A \fatdot B = A \lcontr B = A \rcontr B = \grade{AB}$ when $p = q$.
+While in some expressions the grades of multivectors are obvious so that it is clear how the fat dot product acts, the contractions are arguably better behaved algebraically: the conditional comparison of grades is reincorporated into the products themselves, allowing for more useful identities to be written with fewer grade-based exceptions \cite{dorst2002inner-products}.\sidenote{
+	E.g., $𝒖 A = 𝒖 \fatdot A + 𝒖 ∧ A$ holds if $A$ has zero scalar part, but $𝒖 A = 𝒖 \lcontr A + 𝒖 ∧ A$ holds for \emph{any} $A$.
+}
+
+
+\begin{lemma}
+	For any vector $𝒖$ and multivector $A$,
+	\begin{align}
+		𝒖 \lcontr A &= \frac12\qty(𝒖A - \invol{A}𝒖)
+	,&	𝒖 ∧ A &= \frac12\qty(𝒖A + \invol{A}𝒖)
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	Begin by assuming $A$ is of grade $k$.
+	The geometric product contains two grades,
+	\begin{align}
+		𝒖A = \grade[k - 1]{𝒖A} + \grade[k + 1]{𝒖A}
+		≡ 𝒖 \lcontr A + 𝒖 ∧ A
+	.\end{align}
+	Now consider the reversed product, and rearrange terms using the fact that $\rev{a} = \revsign{p}a$ if $a$ is a $p$-vector.
+	\begin{align}
+		A𝒖 &= A \rcontr 𝒖 + A ∧ 𝒖
+	\\	&= \revsign{k - 1}\; \rev{𝒖} \lcontr \rev{A}
+		+ \revsign{k + 1}\; \rev{𝒖} ∧ \rev{A}
+	\\	&= \revsign{k - 1}\revsign{k}\; 𝒖 \lcontr A
+		+ \revsign{k + 1}\revsign{k}\; 𝒖 ∧ A
+	\end{align}
+	With reference to \cref{eqn:reversion-sign}, notice that $\revsign{k ± 1}\revsign{k} = ±(-1)^k$.
+	Thus,
+	\begin{align}
+		\invol{A}𝒖 = (-1)^kA𝒖 = -𝒖 \lcontr A + 𝒖 ∧ A
+	.\end{align}
+	Taking the sum and difference of $𝒖A$ and $\invol{A}𝒖$ as above yields the two results, respectively --- at least for homogeneous $A$.
+	Since the expressions are linear in $A$, and are written without reference to $k$, they extend by linearity to general multivectors.
+\end{proof}
+
+
+
+
+
+\begin{lemma}
+	For a bivector $σ$ and multivector $A$,
+	\begin{align}
+		σA = σ \lcontr A + σ × A + σ ∧ A
+	,\end{align}
+	where $a×b = \frac12(ab - ba)$ is the commutator product.
+\end{lemma}
+\begin{proof}
+	Suppose $A$ is a $k$-vector.
+	The geometric product with a bivector then contains three grades,
+	\begin{align}
+		σA &= \grade[k - 2]{σA} + \grade[k]{σA} + \grade[k + 2]{σA}
+		&≡ σ \lcontr A + \grade[k]{σA} + σ ∧ A
+	.\end{align}
+	Consider the reverse product,
+	\begin{align}
+		Aσ &= A \rcontr σ + \grade[k]{Aσ} + A ∧ σ
+	\intertext{reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
+		% &= \revsign{k - 2}\; \rev{σ} \lcontr \rev{A} + \revsign{k}\; \grade[k]{\rev{σ}\rev{A}} + \revsign{k + 2}\; \rev{σ} ∧ \rev{A}
+		&= -\revsign{k}\qty(\revsign{k - 2}\; σ \lcontr A + \revsign{k}\; \grade[k]{σA} + \revsign{k + 2}\; σ ∧ A)
+	\intertext{and simplify with $\revsign{k}\revsign{k ± 2} = -1$.}
+		&= σ \lcontr A - \grade[k]{σA} + σ ∧ A
+	\end{align}
+	Thus,
+	\begin{math}
+		\grade[k]{σA} = \frac12(σA - Aσ) ≡ σ × A
+	,\end{math}
+	and so the result holds for homogeneous multivectors, and by linearity for general multivectors.
+\end{proof}
+
+% \notebefore{
+\begin{lemma}
+	\label{lem:triangular-range-cyclicity}
+	For $i,j,k ≥ 0$, the following conditions are equivalent.
+	\begin{align}
+		|i - j| &≤ k ≤ i + j
+	,&	|k - i| &≤ j ≤ k + i
+	,&	|j - k| &≤ i ≤ j + k
+	.\end{align}
+\end{lemma}
+% }{
+\begin{proof}%[Proof of \cref{lem:triangular-range-cyclicity}]
+	It is easy to see that there exists a triangle in the Euclidean plane with side lengths $i, j, k$ if and only if $|i - j| ≤ k ≤ i + j$.
+	By relabelling the sides, it follows that the other relations are equivalent.
+\end{proof}
+% }
+
+
+
+% \notebefore{
+\begin{lemma}
+	\label{lem:graded-product-triangular-range}
+	The three terms
+	\begin{align}
+		&\grade[k]{\grade[p]{A}\grade[q]{B}}
+	,&	&\grade[q]{\grade[k]{A}\grade[p]{B}}
+	,&	&\grade[p]{\grade[q]{A}\grade[k]{B}}
+	\end{align}
+	all vanish unless $|p - q| ≤ k ≤ p + q$.
+\end{lemma}
+% }{
+\begin{proof}%[Proof of \cref{lem:graded-product-triangular-range}]
+	From \cref{eqn:possible-grades} it follows that 
+	\begin{math}
+		\grade[k]{\grade[p]{A}\grade[q]{B}} ≠ 0
+	\end{math}
+	implies
+	\begin{math}
+		|p - q| ≤ k ≤ p + q
+	.\end{math}
+	By lemma \ref{lem:triangular-range-cyclicity}, it also holds under permutations of the grade projections.
+\end{proof}
+% }
+
+
+
+\begin{lemma}
+	For any multivectors $A, B, C$,
+	\begin{align}
+		(A \rcontr B) \rcontr C &= A \rcontr (B ∧ C)
+	,&	A \lcontr (B \lcontr C) &= (A ∧ B) \lcontr C
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	It suffices to derive the identities for homogeneous multivectors; they extend by linearity to general multivectors.
+	Thus, let $(A, B, C)$ be multivectors of grade $(a, b, c)$, respectively.
+
+
+	Consider 
+	\begin{math}
+		\grade[a - b - c]{\grade[k]{AB}C}
+	\end{math}
+	and assume it to be non-zero.
+	By lemma \ref{lem:graded-product-triangular-range}, this is zero unless $k ≤ c + (a - b - c) = a - b$.
+	However, $\grade[k]{AB}$ is zero unless $|a - b| ≤ k$, hence $k = a - b$.
+	Therefore,
+	\begin{align}
+		\grade[a - b - c]{(AB)C}
+		= \grade[a - b - c]{\grade[a - b]{AB}C}
+	,\end{align}
+	since the only non-zero contribution from the product $AB$ is the part of grade $a - b$.
+
+	Similarly, assume that
+	\begin{math}
+		\grade[a - b - c]{A\grade[k]{BC}}
+	\end{math}
+	is non-zero.
+	Again by lemma~\ref{lem:graded-product-triangular-range} we have $|a - (a - b - c)| ≤ k$ implying $b + c ≤ k$.
+	Since $\grade[k]{BC}$ is zero unless $k ≤ b + c$, we have $k = b + c$ exactly and
+	\begin{align}
+		\grade[a - b - c]{A(BC)}
+		= \grade[a - b - c]{A\grade[b + c]{BC}}
+	.\end{align}
+
+	By associativity of the geometric product, we have shown
+	\begin{align}
+		\grade[(a - b) - c]{\grade[a - b]{AB}C}
+		= \grade[a - (b + c)]{A\grade[b + c]{BC}}
+	,\end{align}
+	which is definitionally equivalent to
+	\begin{align}
+		(A \rcontr B) \rcontr C = A \rcontr (B ∧ C)
+	.\end{align}
+	Reversion yields the corresponding identity for left contraction.
+\end{proof}
+
+
+To summarise these results, for \emph{any} multivectors $(A, B, C)$, we have
+\begin{align}
+	(A \rcontr B) \rcontr C &= A \rcontr (B ∧ C)
+,&	A \lcontr (B \lcontr C) &= (A ∧ B) \lcontr C
+,\\	(A \lcontr B) \rcontr C &= A \lcontr (B \rcontr C)
+,&	𝒖 \bullet (B \bullet 𝒗) &= (𝒖 \bullet B) \bullet 𝒗
+.\end{align}
+The last equation is a specialisation of the upper right, which in particular means that parentheses are unnecessary in defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
+\begin{math}
+	F_{ij} = \ve_i \bullet F \bullet \ve_j
+.\end{math}
 
 
