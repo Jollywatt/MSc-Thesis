@@ -37,7 +37,7 @@ The directional derivative is linear in $𝒖$, since by a change of variables,
 
 Suppose $F : V → A$ is some algebra--valued field.
 It is useful to define a kind of ``total'' derivative $\DD F$ which does not depend on a direction of differentiation $𝒖$, but instead encompasses, in a sense, all derivatives in a single object $\DD F : V → A$.
-The motivation for this construction is that it encompasses the soon-to-be-defined exterior derivative (of exterior algebra) and vector derivative (of geometric algebra) as special cases.
+The motivation for this is that it encompasses as special cases the soon-to-be-defined exterior derivative (of exterior algebra) and vector derivative (of geometric algebra).
 This derivative will be defined when there is a canonical inclusion $ι : V^* → A$ of dual vectors into the algebra $A$, which is automatic if $A$ is a quotient of $\TA{(V^*)}$.
 
 \begin{definition}
@@ -52,12 +52,12 @@ This derivative will be defined when there is a canonical inclusion $ι : V^* �
 \end{definition}
 
 To understand this definition, consider the simple case of the free tensor algebra $F : V → \TA{(V^*)}$.
-We leave the inclusion $ι : V^* → \TA{(V^*)}$ implicit.
+We leave the canonical inclusion $ι : V^* → \TA{(V^*)}$ implicit.
 Given a basis $\set{\ve^a} ⊂ V^*$, the algebraic derivative is
 \begin{math}
 	\DD F = \ve^a ⊗ ∂_a F
-\end{math}
-simply encodes the partial derivatives of a $k$-vector $F$ in a $(k + 1)$-grade object.
+,\end{math}
+which simply encodes the partial derivatives of a $k$-vector $F$ in a $(k + 1)$-grade object.
 In component language,
 \begin{math}
 	(\DD F)_{a\etc{a_\i}{}k} = ∂_aF_{\etc{a_\i}{}k}
@@ -66,7 +66,7 @@ In component language,
 \subsection{The Exterior Derivative}
 
 Consider a vector field $F : V → \EA{V^*}$ with values in the (dual) exterior algebra.
-In this case the algebraic derivative \eqref{eqn:algder} reduces to the \textdef{exterior derivative}
+In this case \cref{eqn:algder} is the \textdef{exterior derivative}
 \begin{align}
 	\dd F = \dx^a ∧ \pdv{F}{x^a}
 \end{align}
@@ -93,7 +93,7 @@ An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \text
 \end{align}
 in the Spivak convention (see \cref{sec:exterior-forms}).
 Note that the partial derivative acts on the position dependence of $φ$ only --- the vectors $𝒖_i ∈ V$ are fixed input vectors.
-This changes when generalising from vector fields of alternating maps $V → \forms(V, U)$ to objects defined on a \emph{manifold} $\forms(ℳ, U)$, where correction terms are needed to account for partial derivatives of input vector sections (discussed in \cref{part:2}).
+This changes when generalising from vector fields of alternating maps to forms defined on a \emph{manifold}, where correction terms are needed to account for partial derivatives of input vectors (discussed in \cref{part:2}).
 
 
 \subsection{The Vector Derivative}
@@ -144,6 +144,95 @@ For a general multivector $F$, then, we have
 
 \subsection{Case Study: Maxwell's Equations}
 
+
+Expressed in the standard vector calculus of $\RR^3$, Maxwell's equations for the electric $\vb E$ and magnetic $\vb B$ fields in the presence of a source are
+\begin{align}
+	∇ \cdot \vb E &= \frac{ρ}{ε_0} &&\text{(Gauß' law)}
+\\	∇ \cdot \vb B &= 0 &&\text{(Absence of magnetic monopoles)}
+\\[1ex]	∇ × \vb E &= -∂_t \vb B &&\text{(Faraday's law)}
+\\[1ex]	∇ × \vb B &= μ_0(\vb J + ε_0∂_t \vb E) &&\text{(Ampère's law)}
+\end{align}
+where $ρ$ is the scalar charge density and $\vb J$ the current density.
+The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, respectively, related to the speed of light $c$ by $ε_0μ_0c^2 = 1$.
+
+
+
+\begin{margintable}
+	\footnotesize
+	\begin{tabular}{cl}
+		\\
+		\multicolumn{2}{c}{\emph{Non-relativistic}} \\
+		quantity & dimension \\
+		$\vb E$ & $MQ^{-1}LT^{-2}$ \\
+		$\vb B$ & $MQ^{-1}T^{-1}$ \\
+		$ρ$ & $QL^{-3}$ \\
+		$\vb J$ & $QT^{-1}L^{-2}$ \\
+		$μ_0$ & $MQ^{-2}L$ \\
+		$ε_0$ & $M^{-1}Q^2L^{-3}T^2$ \\
+		$∇$, $∂_t$ & $L^{-1}$, $T^{-1}$ \\
+		$c$ & $LT^{-1}$ \\
+		\\
+		\multicolumn{2}{c}{\emph{Relativistic}} \\
+		quantity & dimension \\
+		$F$ & $MQ^{-1}S^{-1}$ \\
+		$J$ & $QS^{-3}$ \\
+		$μ_0$, $ε_0^{-1}$ & $MQ^{-2}S$ \\
+		$∂$ & $S^{-1}$ \\
+		$c$ & $1$ \\
+	\end{tabular}
+	\caption{
+		Dimensions of physical quantities in Maxwell's equations.
+		$M$ is mass, $Q$ is electric charge, $T$ is duration and $L$ is length.
+		In the relativistic formulation, $T$ and $L$ are unified and replaced by \emph{spacetime interval} $S$.
+	}
+\end{margintable}
+
+These can be expressed relativistically as eight scalar equations,
+\begin{align}
+	\label{eqn:maxwells-tensor-form}
+	∂_μF^{μν} &= μ_0J^ν
+,&	∂_μG^{μν} &= 0
+\end{align}
+where $F^{μν} = -F^{νμ}$ is the Faraday tensor and $G^{μν}$ its Hodge dual, both encoding the electric and magnetic fields via
+\begin{align}
+	\label{eqn:components-of-electromagnetic-tensor}
+	F^{i0} &= \frac{E^i}{c}
+,&	F^{ij} &= -ε^{ijk}B_k
+,&	G^{μν} &= \frac12 ε^{μν}{}_{ρσ} F^{ρσ}
+% ,&	G^{μν} &= \frac12 η^{μρ}η^{νσ}ε_{ρσλυ} F^{λυ}
+,\end{align}
+and where $J^μ$ encodes both the static charge density $J^0 = cρ$ and current density $J^i = \vb J$.
+The left of eqs.~\eqref{eqn:maxwells-tensor-form} is the \emph{source equation}, while the right is the \emph{second Bianchi identity}.
+
+
+
+\begin{proof}
+	We show how the relativistic equations \eqref{eqn:maxwells-tensor-form} reduce to the non-relativistic vector calculus equivalents.
+	The $0$-component of the source equation is
+	$∂_μ F^{μ0} = ∂_iE^i/c = μ_0J^0 = μ_0cρ$ implying $∇ · \vb E = μ_0c^2ρ = ρ/ε_0$ (Gauß' law).
+	The $i$-components are
+	\begin{align}
+		∂_0F^{0i} + ∂_jF^{ji} &= \frac1c∂_t\qty(-\frac{E^i}{c}) - ∂_jε^{jik}B_k = μ_0 J^i
+\\		\qqtext{or} ∂_jε^{ijk}B_k &= μ_0 J^i + μ_0ε_0∂_tE^i
+	,\end{align}
+	which is equivalent to Ampère's law.
+	The $0$-component of the Bianchi identity $∂_μG^{μ0} = 0$ is
+	\begin{align}
+		% \frac12 ε^{i0}{}_{μν}∂_iF^{μν}
+		\frac12 ε^i{}_{jk}∂_iF^{jk}
+		= -\frac12 ε^i{}_{jk}ε^{jkl}∂_iB_l
+		= -∂_iB^i = 0
+	,\end{align}
+	which using the identity $ε_{ijk}ε^{jkl} = 2δ^l_i$ is $∇ · \vb B = 0$.
+	Finally, the $i$-component gives
+	\begin{align}
+		0 = ∂_μG^{μi} &= \frac12ε^{μi}{}_{ρσ}∂_μF^{ρσ}
+		= \frac12ε^{0i}{}_{jk}∂_0F^{jk} + ε^{ji}{}_{k0}∂_jF^{k0}
+	\\	&= -\frac14ε^i{}_{jk}ε^{jkl}∂_0B_l - \frac1{2c} ε^{ijk}∂_jE_k
+		= -\frac1{2c}\qty(∂_tB^i  + ε^{ijk}∂_jE_k)
+	\end{align}
+	yielding Faraday's law $∇ × \vb E = -∂_t \vb B$.
+\end{proof}
 
 \section{Integration}
 
