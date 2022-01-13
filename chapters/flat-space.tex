@@ -188,11 +188,12 @@ The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, re
 \end{margintable}
 
 These can be expressed relativistically as eight scalar equations,
-\begin{align}
+\setlength{\fboxsep}{1.4ex}
+\begin{empheq}[box=\fbox]{align}
 	\label{eqn:maxwells-tensor-form}
 	∂_μF^{μν} &= μ_0J^ν
 ,&	∂_μG^{μν} &= 0
-\end{align}
+\end{empheq}
 where $F^{μν} = -F^{νμ}$ is the Faraday tensor and $G^{μν}$ its Hodge dual, both encoding the electric and magnetic fields via
 \begin{align}
 	\label{eqn:components-of-electromagnetic-tensor}
@@ -238,15 +239,144 @@ The left of eqs.~\eqref{eqn:maxwells-tensor-form} is the \emph{source equation},
 
 \subsection{With exterior calculus}
 
-It is easy to translate from the language of exterior calculus to the tensor calculus, and hence vice versa, by identifying the former as the subalgebra of totally antisymmetric tensors, as in \cref{sec:exterior-algebra-as-antisymmetric}.
-We will employ the Spivak convention, which in particular makes the identification
+It is easy to translate from the language of exterior calculus to tensor calculus, and vice versa, by identifying the former as the subalgebra of totally antisymmetric tensors (as in \cref{sec:exterior-algebra-as-antisymmetric}).
+We will employ the Spivak convention, which in particular identifies $2$-forms via
 \begin{align}
 	\ve^μ ∧ \ve^ν ≡ \ve^μ ⊗ \ve^ν - \ve^ν ⊗ \ve^μ
 \end{align}
-where $\ve^μ$ are spacetime basis vectors.
+where $\ve^μ$ are spacetime basis vectors with dimension $S$.
+We then define the electromagnetic bivector as
+\begin{math}
+	\mathcal{F} = \frac12 F_{μν} \ve^μ ∧ \ve^ν
+.\end{math}
+
+
+Since the charge density $J \sim QS^{-3}$ has dimensions of charge per spacetime $3$-volume, it is natural to interpret it as a trivector
+\begin{align}
+	\mathcal{J} = J^{μνλ} \, \ve_μ ∧ \ve_ν ∧ \ve_λ ≔ J^μ \star \ve_μ = \frac1{3!}ε_{μνλα}J^α \ve^μ ∧ \ve^ν ∧ \ve^λ
+\end{align}
+so that the coefficients $J^{μνλ} \sim Q$ simply have dimensions of charge.\sidenote{
+	Note that dual vectors $\ve_μ$ have dimension $S^{-1}$.
+}
+
+The relativistic Maxwell equations are then
+\begin{empheq}[box=\fbox]{align}
+	\dd \star \mathcal{F} &= μ_0 \mathcal{J}
+,&	\dd \mathcal{F} &= 0
+.\end{empheq}
+\begin{proof}
+	The first equation written in component form is
+	\begin{align}
+		\frac14 ε_{μνρσ}∂_λF^{ρσ} &= \frac1{3!}ε_{λμνα}μ_0J^α
+	,\end{align}
+	which, by contracting with $ε^{μνλβ}$ and using the identities
+	\begin{math}
+		ε^{μνλβ}ε_{μνρσ} = 2(δ^λ_ρδ^β_σ - δ^λ_σδ^β_ρ)
+		\text{ and }
+		ε^{μνλβ}ε_{λμνα} = 3!δ^β_σ
+	,\end{math}
+	reduces to
+	\begin{align}
+		\frac12(∂_λF^{λβ} - ∂_λF^{βλ}) &= μ_0J^β
+	\end{align}
+	or $∂_μF^{μν} = μ_0J^ν$, the source equation.
+	The BianFchi identity can be rewritten as
+	\begin{align}
+		∂_μG^{μν}
+		= \frac12ε^{μν}{}_{ρσ}∂_μF^{ρσ}
+		= -\frac12ε^{ν[μρσ]}∂_μF_{ρσ}
+		= -\frac12ε^{νμρσ}∂_{[μ}F_{ρσ]}
+		= 0
+	,\end{align}
+	implying $\dd \mathcal{F} = 0$.
+\end{proof}
+
+
+\subsection{With geometric calculus}
+
+Using the spacetime algebra $\GA(1,3)$ with vector basis $\set{\vg_μ}$ as introduced in \cref{cha:sta}, the electromagnetic bivector is
+\begin{align}
+	\label{eqn:ga-em-bivector}
+	F = F^{μν} \vg_μ\vg_ν
+\end{align}
+and the current density is
+\begin{align}
+	\vb J = J^μ \vg_μ
+.\end{align}
+Maxwell's equations are equivalent to the \emph{single} multivector equation
+\begin{empheq}[box=\fbox]{align}
+	\label{eqn:maxwell-sta}
+	\vd F = μ_0\vb J
+.\end{empheq}
+\begin{proof}
+	The multivector equation $\vd F = μ_0J$ separates into vector 
+	\begin{math}
+		{\vd \cdot F} = μ_0\vb J
+	\end{math}
+	and trivector
+	\begin{math}
+		\vd ∧ F = 0
+	\end{math}
+	parts.
+	The vector part is
+	\begin{align}
+		\vd \cdot F = ∂_λF^{μν} \vg^λ \cdot (\vg_μ\vg_ν) = μ_0J^ν\vg_ν
+	.\end{align}
+	The only non-zero components are those for which $μ \ne ν$.
+	If $λ$, $μ$ and $ν$ are all distinct, then $\vg^λ \cdot (\vg_μ\vg_ν) = \grade[1]{\vg^λ\vg_μ\vg_ν} = 0$.
+	There are then two cases, $λ = μ$ and $λ = ν$, which respectively simplify
+	\begin{align}
+		\vg^μ \cdot (\vg_μ\vg_ν) &= \grade[1]{\vg^μ\vg_μ\vg_ν} = \vg_ν
+	,\\	\vg^ν \cdot (\vg_μ\vg_ν) &= \grade[1]{\vg^ν\vg_μ\vg_ν} = -\vg_μ
+	,\end{align}
+	so that
+	\begin{align}
+		\vd \cdot F = \qty(∂_μF^{μν}\vg_ν - ∂_νF^{μν}\vg_μ) = ∂_μF^{μν}\vg_ν
+	.\end{align}
+	This recovers the source equation $2∂_μF^{μν} = μ_0J^ν$.
+
+	It is clear that the trivector part
+	\begin{align}
+		\vd ∧ F = ∂_λF^{μν} \vg^λ ∧ (\vg_μ\vg_ν) = ∂_λF_{μν} \vg^λ ∧ \vg^μ ∧ \vg^ν = 0
+	\end{align}
+	is equivalent to the exterior algebraic Bianchi identity $\dd \mathcal{F} = 0$.
+\end{proof}
+
+
+\subsubsection{In terms of electric and magnetic fields}
 
 
 
+It is worth pointing out how the relativistic Maxwell equation \eqref{eqn:maxwell-sta} splits into a frame-dependent description, in the geometric algebra.
+As in \cref{sec:spacetime-split}, we use the notation $\vec u$ to indicate relative vectors; i.e., timelike bivectors
+of the spacetime algebra $\GA(1,3)$ which are simultaneously grade-$1$ vectors in the observer's algebra $\GA(3)$.
+
+In the inertial frame with velocity $\vg_0$, the electromagnetic bivector is\sidenote{
+	This can be easily shown from \cref{eqn:ga-em-bivector} and \cref{eqn:components-of-electromagnetic-tensor} using the identity 
+	\begin{math}
+		\frac12 ε^{ijk} \vg_i\vg_j = \vol \vg^0\vg^k = \vol \vg_k\vg_0
+	.\end{math}
+}
+\begin{align}
+	\label{eqn:F-is-E-iB}
+	F = \frac1c \vec E + \vol \vec B
+,\end{align}
+where
+\begin{math}
+	\vec E = E^i\vs_i = E^i \vg_i\vg_0
+\end{math}
+and
+\begin{math}
+	\vol\vec B = \frac12 B_i ε^{ijk}\vs_j\vs_k
+	= \frac12 B_i ε^{ijk}\vg_j\vg_k
+.\end{math}
+\Cref{eqn:F-is-E-iB} should be compared with the Riemann-Silberstein vector \cite{silberstein} which has the form $\vec F_\CC = \vec E + ic\vec B$.
+
+Similarly, the current density spacetime vector $J$ may be viewed under the space/time split by \paren{left}multiplication by the frame velocity $\vg_0$,
+\begin{align}
+	\vg_0 J = -ct + \vec J
+.\end{align}
+Right-multiplicatin yields $J \vg_0 = -ct - \vec J$
 
 
 

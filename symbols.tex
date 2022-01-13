@@ -98,6 +98,11 @@
 	{\def\i{#4} #2}
 }
 
+\makeatletter
+\newcommand{\sig}[1]{(\@tfor\elem:=#1\do{{\elem}})}
+\makeatother
+
+
 
 
 % geometric algebra

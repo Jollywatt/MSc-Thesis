@@ -82,6 +82,7 @@
 	warnings-off={mathtools-colon,mathtools-overbracket},
 ]{unicode-math}
 \usepackage{physics}
+\usepackage{empheq}
 
 
 \input{symbols}
@@ -162,7 +163,8 @@
 }
 
 \usepackage{array}
-\newcolumntype{C}{>{$}c<{$}} % math-mode version of "l" column type
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "c" column type
 
 
 % REFERENCING
