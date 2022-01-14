@@ -204,16 +204,17 @@ where $F^{μν} = -F^{νμ}$ is the Faraday tensor and $G^{μν}$ its Hodge dual
 ,\end{align}
 and where $J^μ$ encodes both the static charge density $J^0 = cρ$ and current density $J^i = \vb J$.
 The left of eqs.~\eqref{eqn:maxwells-tensor-form} is the \emph{source equation}, while the right is the \emph{second Bianchi identity}.
+These equations assume the metric signature $\sig{+---}$, where the equivalent equations under $\sig{-+++}$ are obtained by a change of sign $F^{μν} \mapsto -F^{μν}$.
 
 
 
 \begin{proof}
 	We show how the relativistic equations \eqref{eqn:maxwells-tensor-form} reduce to the non-relativistic vector calculus equivalents.
 	The $0$-component of the source equation is
-	$∂_μ F^{μ0} = ∂_iE^i/c = μ_0J^0 = μ_0cρ$ implying $∇ · \vb E = μ_0c^2ρ = ρ/ε_0$ (Gauß' law).
+	$∂_μ F^{μ0} = ∂_iE^i/c = μ_0J^0 = μ_0cρ$ implying $∇ · \vb E = ρ/ε_0$ (Gauß' law).
 	The $i$-components are
 	\begin{align}
-		∂_0F^{0i} + ∂_jF^{ji} &= \frac1c∂_t\qty(-\frac{E^i}{c}) - ∂_jε^{jik}B_k = μ_0 J^i
+		∂_0F^{0i} + ∂_jF^{ji} &= \frac1c ∂_t \qty(-\frac{E^i}{c}) - ∂_j ε^{jik} B_k = μ_0 J^i
 \\		\qqtext{or} ∂_jε^{ijk}B_k &= μ_0 J^i + μ_0ε_0∂_tE^i
 	,\end{align}
 	which is equivalent to Ampère's law.
@@ -239,23 +240,24 @@ The left of eqs.~\eqref{eqn:maxwells-tensor-form} is the \emph{source equation},
 
 \subsection{With exterior calculus}
 
-It is easy to translate from the language of exterior calculus to tensor calculus, and vice versa, by identifying the former as the subalgebra of totally antisymmetric tensors (as in \cref{sec:exterior-algebra-as-antisymmetric}).
+It is easy to translate from the language of exterior calculus to tensor calculus, and hence vice versa, by identifying the former as the subalgebra of totally antisymmetric tensors (as in \cref{sec:exterior-algebra-as-antisymmetric}).
 We will employ the Spivak convention, which in particular identifies $2$-forms via
 \begin{align}
 	\ve^μ ∧ \ve^ν ≡ \ve^μ ⊗ \ve^ν - \ve^ν ⊗ \ve^μ
 \end{align}
-where $\ve^μ$ are spacetime basis vectors with dimension $S$.
-We then define the electromagnetic bivector as
+where $\ve^μ$ are spacetime basis vectors (having physical dimensions of spacetime interval, $S$).
+We then the electromagnetic bivector as
 \begin{math}
 	\mathcal{F} = \frac12 F_{μν} \ve^μ ∧ \ve^ν
-.\end{math}
+\end{math}
+(omitting the $\frac12$ in the Kobayashi–Nomizu convention).
 
 
-Since the charge density $J \sim QS^{-3}$ has dimensions of charge per spacetime $3$-volume, it is natural to interpret it as a trivector
+Since the charge density $J \sim QS^{-3}$ has dimensions of charge per spacetime $3$-volume, it is natural to interpret it as a \emph{trivector}
 \begin{align}
 	\mathcal{J} = J^{μνλ} \, \ve_μ ∧ \ve_ν ∧ \ve_λ ≔ J^μ \star \ve_μ = \frac1{3!}ε_{μνλα}J^α \ve^μ ∧ \ve^ν ∧ \ve^λ
 \end{align}
-so that the coefficients $J^{μνλ} \sim Q$ simply have dimensions of charge.\sidenote{
+so that the coefficients $J^{μνλ} \sim Q$ have dimensions of charge.\sidenote{
 	Note that dual vectors $\ve_μ$ have dimension $S^{-1}$.
 }
 
@@ -280,7 +282,7 @@ The relativistic Maxwell equations are then
 		\frac12(∂_λF^{λβ} - ∂_λF^{βλ}) &= μ_0J^β
 	\end{align}
 	or $∂_μF^{μν} = μ_0J^ν$, the source equation.
-	The BianFchi identity can be rewritten as
+	The Bianchi identity can be rewritten as
 	\begin{align}
 		∂_μG^{μν}
 		= \frac12ε^{μν}{}_{ρσ}∂_μF^{ρσ}
@@ -294,7 +296,9 @@ The relativistic Maxwell equations are then
 
 \subsection{With geometric calculus}
 
-Using the spacetime algebra $\GA(1,3)$ with vector basis $\set{\vg_μ}$ as introduced in \cref{cha:sta}, the electromagnetic bivector is
+Using the spacetime algebra $\GA(1,3)$ with vector basis $\set{\vg_μ}$ as introduced in \cref{cha:sta}, the electromagnetic bivector is\sidenote{
+	This coincides with the electromagnetic bivector $2$-form $\mathcal{F}$ in the Kobayashi–Nomizu convention, because the wedge product in geometric algebra is naturally normalised (see \cref{tbl:wedge-conventions}).
+}
 \begin{align}
 	\label{eqn:ga-em-bivector}
 	F = F^{μν} \vg_μ\vg_ν
@@ -309,16 +313,15 @@ Maxwell's equations are equivalent to the \emph{single} multivector equation
 	\vd F = μ_0\vb J
 .\end{empheq}
 \begin{proof}
-	The multivector equation $\vd F = μ_0J$ separates into vector 
+	The multivector equation $\vd F = μ_0\vb J$ separates into a vector part 
 	\begin{math}
 		{\vd \cdot F} = μ_0\vb J
 	\end{math}
-	and trivector
+	and a trivector part
 	\begin{math}
 		\vd ∧ F = 0
-	\end{math}
-	parts.
-	The vector part is
+	.\end{math}
+	In terms of components, the vector part is
 	\begin{align}
 		\vd \cdot F = ∂_λF^{μν} \vg^λ \cdot (\vg_μ\vg_ν) = μ_0J^ν\vg_ν
 	.\end{align}
@@ -351,11 +354,8 @@ It is worth pointing out how the relativistic Maxwell equation \eqref{eqn:maxwel
 As in \cref{sec:spacetime-split}, we use the notation $\vec u$ to indicate relative vectors; i.e., timelike bivectors
 of the spacetime algebra $\GA(1,3)$ which are simultaneously grade-$1$ vectors in the observer's algebra $\GA(3)$.
 
-In the inertial frame with velocity $\vg_0$, the electromagnetic bivector is\sidenote{
-	This can be easily shown from \cref{eqn:ga-em-bivector} and \cref{eqn:components-of-electromagnetic-tensor} using the identity 
-	\begin{math}
-		\frac12 ε^{ijk} \vg_i\vg_j = \vol \vg^0\vg^k = \vol \vg_k\vg_0
-	.\end{math}
+From \cref{eqn:ga-em-bivector,eqn:components-of-electromagnetic-tensor}, the electromagnetic bivector is expressed in the $\vg_0$-frame as\sidenote{
+	We assume $\sig{+---}$ for concreteness; for $\sig{-+++}$ replace $F \mapsto -F$.
 }
 \begin{align}
 	\label{eqn:F-is-E-iB}
@@ -366,19 +366,49 @@ where
 	\vec E = E^i\vs_i = E^i \vg_i\vg_0
 \end{math}
 and
-\begin{math}
-	\vol\vec B = \frac12 B_i ε^{ijk}\vs_j\vs_k
+\begin{align}
+	\vol\vec B = B_i \vol \vs^i = \frac12 B_i ε^{ijk}\vs_j\vs_k
 	= \frac12 B_i ε^{ijk}\vg_j\vg_k
-.\end{math}
+.\end{align}
 \Cref{eqn:F-is-E-iB} should be compared with the Riemann-Silberstein vector \cite{silberstein} which has the form $\vec F_\CC = \vec E + ic\vec B$.
 
-Similarly, the current density spacetime vector $J$ may be viewed under the space/time split by \paren{left}multiplication by the frame velocity $\vg_0$,
+Similarly, the current density spacetime vector $J$ may be viewed under the space/time split by (left) multiplying by the frame velocity $\vg_0$,
 \begin{align}
-	\vg_0 J = -ct + \vec J
+	\vg_0 \vb J = cρ - \vec J
+,\end{align}
+where $J^0 = cρ$ and $\vec J = J^i \vs_i$.
+Similarly for the vector derivative, we have
+\begin{align}
+	\vg_0 \, \vd = \frac1c \pdv{t} + \vec ∇
+\end{align}
+in either signature.
+
+Putting these together, we split \cref{eqn:maxwell-sta} within the $\vg_0$-frame by left-multiplying by $\vg_0$;
+\begin{align}
+	\vg_0 \, \vd F &= \vg_0 μ_0 \vb J
+\\=	\qty(\frac1c \pdv{t} + \vec ∇)\qty(\frac1c \vec E + \vol \vec B) &= μ_0\qty(cρ - \vec J)
 .\end{align}
-Right-multiplicatin yields $J \vg_0 = -ct - \vec J$
+By expanding and equating grades, we obtain four equations,
+\begin{align}
+	\frac1c \vec ∇ · \vec E &= μ_0 cρ
+&	&\text{(scalar)}
+\\	\frac1{c^2} \pdv{\vec E}{t} + \vol (\vec ∇ ∧ \vec B) &= -μ_0 \vec J
+&	&\text{(vector)}
+\\	\frac1c \vec ∇ ∧ \vec E + \frac\vol c \pdv{\vec B}{t} &= 0
+&	&\text{(bivector)}
+\\	\vol (\vec ∇ · \vec B) &= 0
+&	&\text{(pseudoscalar)}
+\end{align}
+Note that the cross product relates to the bivector curl in $\GA(3)$ by
+\begin{align}
+	𝒖 ∧ 𝒗 = \vol(𝒖 × 𝒗)
+	\qqtext{so that}
+	∇ × 𝑿 = -\vol(\vec ∇ ∧ \vec X)
+.\end{align}
+Hence, by adjusting by factors of $c$ and $\vol$ (and using $μ_0ε_0c^2 = 1$), the above equations reduce immediately to Gauß's law, Ampère's law, Faraday's law and the magnetic monopole equation, respectively.
 
-
+This was done assuming $η = \op{diag}\sig(+---)$.
+In the $\sig{-+++}$ signature, we have $\vg_0 \vb J = -cρ + \vec J$ differ by an overall sign, complementing $F \mapsto -F$.
 
 
 \section{Integration}

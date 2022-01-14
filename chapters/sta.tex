@@ -103,18 +103,18 @@ where $\vb ξ = ξ^i\vs_i ∈ \GA[1](3)$ is a rapidity vector and $\vol \vb θ �
 \subsection{The choice of metric signature}
 
 Both metric signatures $η = \op{diag}\sig{-+++}$ and $η = \op{diag}\sig{+---}$ are appropriate for relativistic physics, and both are used in the literature.
-While the overall physics is invariant, expressions written in the STA are generally not independent of this choice of signature.
+While the overall physics is invariant, expressions written in the STA are generally not independent of this choice of sign.
 It is a helpful reference to describe what changes and what is common to both choices.
 
 One of the most important properties of the space/time split is the union of the $\GA(3)$ and $\GA[+](1, 3)$ volume elements, $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$.
-If this equality is to hold, then switching the metric signature must be corrected by a switch in sign of the relative vectors, $\vg_i ↦ -\vg_i$. 
-Another common difference is in the space/time split of a position vector $𝑿 ∈ \GA[1](1, 3)$ into components $𝑿^0 = ct$ and $(𝑿^i) = \vec x$, achieved by multiplication with the frame velocity $\vg_0$.
+If this equality is to hold, then switching the metric signature is concomitant with a switch in sign of the relative vectors, $\vs_i ↦ -\vs_i$. 
+Another noticable difference is in the space/time split of a position vector $𝑿 ∈ \GA[1](1, 3)$ into components $𝑿^0 = ct$ and $(𝑿^i) = \vec x$, achieved by multiplication with the frame velocity $\vg_0$.
 For example, the equations
 \begin{align}
 	𝑿 \vg_0 &= ct + \vec x
 ,&	\vg_0 𝑿 &= ct - \vec x
 \end{align}
-which are valid in the $\sig{+---}$ signature, both change by an overall factor of $-1$ in the $\sig{-+++}$ signature.
+are valid in the $\sig{+---}$ signature, but both change by an overall sign in the $\sig{-+++}$ signature.
 (In all cases, reversion $𝑿 \vg_0 ↦ \rev{(𝑿 \vg_0)} = \vg_0 𝑿$ negates the spacetime bivector part, $\vec x → -\vec x$.)
 These facts are summarised in \cref{tbl:sig-choice}.
 
@@ -126,7 +126,7 @@ These facts are summarised in \cref{tbl:sig-choice}.
 			& \vg_0 𝑿 & 𝑿 \vg_0
 	\\ \hline
 		\sig{+---} & \vs_i ≔ \vg_i\vg_0
-		& +ct - \vec x & \phantom{+}ct + \vec x
+		& \phantom{+}ct - \vec x & \phantom{+}ct + \vec x
 
 	\\	\sig{-+++} & \vs_i ≔ \vg_0\vg_i
 		& -ct + \vec x & -ct - \vec x
@@ -138,8 +138,22 @@ These facts are summarised in \cref{tbl:sig-choice}.
 	\label{tbl:sig-choice}
 \end{table}
 
-
-
+The choice of metric signature sign may be rendered irrelevant by using sign-agnostic definitions and expressions.
+An invariant definition of relative vectors and their duals in the $\vg_0$-frame is
+\begin{align}
+	\vs_i &≔ \vg_i\vg^0
+,&	\vs^i &= \vg_0\vg^i
+.\end{align}
+These satisfy $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$ and
+$\vol^{-1} = \vs^1\vs^2\vs^3 = \vg^0\vg^1\vg^2\vg^3$ in either signature.
+In particular, the following expressions hold in either signature, and are useful when performing space/time splits.
+\begin{align}
+	\vg^0 𝑿 &= ct - \vec x
+&	𝑿 \vg^0 &= ct + \vec x
+\\	\vg_0 \, \vd &= \frac1c \pdv{t} + \vec ∇
+&	\vd \, \vg_0 &= \frac1c \pdv{t} - \vec ∇
+\end{align}
+The spacetime vector derivative $\vd = \vg^μ ∂_μ$ decomposes into a scalar time derivative and the spatial derivative $\vec ∇ = \vs^i ∂_i$.
 
 
 \section{The Invariant Bivector Decomposition}
