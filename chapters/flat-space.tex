@@ -510,19 +510,19 @@ In the $\sig{-+++}$ signature, $\vg_0 \vb J = -cρ + \vec J$ differs by an overa
 	\begin{align}
 		\vd f(𝒙) = \lim_{|ℛ| → 0} \frac1{|ℛ|\vol} \oint_{∂ℛ} \bd S f
 	,\end{align}
-	where $ℛ$ is a volume containing $𝒙$ with smooth boundary $∂ℛ$ and volume $|ℛ| = \int_ℛ \bd V$.
+	where $ℛ$ is a volume containing $𝒙$ with boundary $∂ℛ$ and volume $|ℛ| = \int_ℛ \bd V$.
 	The limit is taken as the volume $ℛ$ shrinks to the point $𝒙$.
 \end{theorem}
 Note that the integrand $\bd S f$ is the geometric product between the hypersurface element and the field.
 \begin{proof}
-	It will suffice to prove the case where $ℛ$ is a box shape.
-	\todo{…cubes aren't smooth…}
+	It will suffice to prove the case where $ℛ$ is a box shape; arbitrary regions can be approximated via tessellation in the limit of vanishing voxel size.
 
 	Let $B_ε = \set{x^i\ve_i | x^i ∈ [-ε, +ε]}$ denote the $n$-dimensional cube of diameter $2ε$ centred at the origin.
-	If the surface $∂B_ε$ is oriented outward, then the face in the $+\ve^k$ direction has the orientation defined by the $(n-1)$-blade $\vol \ve^k$.
-	Upon this face an infinitesimal surface element is
+	If the surface $∂B_ε$ is oriented outward, then the face in the $+\ve^k$ direction is orientated like the $(n-1)$-blade $\vol \ve^k = (-1)^{n-k}\etcskip{\ve_\i}∧kn$.
+	Upon this face the infinitesimal surface element is
 	\begin{align}
-		\bd^{(k)}x = \vol \ve^k dx^1\cdots\widehat{dx^k}\cdots dx^n
+		% \bd^{(k)}x = \vol \ve^k dx^1\cdots\widehat{dx^k}\cdots dx^n
+		\bd^{(k)}x = \vol \ve^k \etcskip{dx^\i}{}{k}{n}
 	,\end{align}
 	while the opposing face has surface element $-\bd^{(k)}x$.
 
@@ -557,6 +557,30 @@ Note that the integrand $\bd S f$ is the geometric product between the hypersurf
 	,\end{align}
 	to order $𝒪(ε^2)$, which becomes exact in the limit,
 	\begin{align}
+		\label{eqn:vd-int-form}
 		\vd f(0) = \lim_{ε → 0} \frac1{|B_ε|\vol} \oint_{∂B_ε} \bd S f
 	.\end{align}
+
+	By translation, $f(𝒙) ↦ f'(𝒙) = f(𝒙 - 𝒖)$, we obtain the integral form of $\vd f(𝒖)$ evaluated at an arbitrary position $𝒖$.
+\end{proof}
+
+\begin{theorem}
+	For an $n$-dimensional region $ℛ$ with boundary $∂ℛ$, and a multivector field $f(𝒙)$,
+	\begin{align}
+		\int_ℛ \bd V \, \vd f = \oint_{∂ℛ} \bd S f
+	,\end{align}
+	where $\bd V$ denotes an $n$-blade volume element, and $\bd S$ an $(n - 1)$-blade surface element, and where juxtoposition is the geometric product. 
+\end{theorem}
+\begin{proof}
+	An arbitray volume $ℛ$ with boundary $∂ℛ$ can be approximated as tessellated boxes of arbitrily small size.\sidenote{
+		It is not neccesary that the surface area of the approximation converge to $|∂ℛ|$.
+	}
+	Suppose $ℛ$ is approximated by a regular lattice of $N$ boxes of radius $ε$.
+	Consider the sum of $\vd f$ over the lattice points, weighted by volume.
+	From \cref{eqn:vd-int-form} this can be written in terms a sum of surface integrals,
+	\begin{align}
+		\sum_{i=1}^N |B_i|\vol \, \vd f(𝒙_i) = \sum_{i=1}^N \oint_{∂B_i} \bd S f
+	.\end{align}
+	Note that interior faces of the boxes come in oppositely-oriented pairs, so that surface integrals over interior faces cancel.
+	Therefore, the result is obtained in the continuous limit $N → ∞$.
 \end{proof}

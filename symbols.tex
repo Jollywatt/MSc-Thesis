@@ -97,6 +97,13 @@
 	#3 \if,#3 \dots \else \cdots \fi #3
 	{\def\i{#4} #2}
 }
+\newcommand{\etcskip}[5][1]{
+	{\def\i{#1} #2}
+	#3 \if,#3 \dots \else \cdots \fi #3
+	{\def\i{#4} \widehat{#2}}
+	#3 \if,#3 \dots \else \cdots \fi #3
+	{\def\i{#5} #2}
+}
 
 \makeatletter
 \newcommand{\sig}[1]{(\@tfor\elem:=#1\do{{\elem}})}
