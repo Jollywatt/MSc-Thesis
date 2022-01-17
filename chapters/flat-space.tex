@@ -19,20 +19,25 @@ These assumptions are acceptable in special relativity, but in arbitrary regions
 \section{Differentiation}
 
 
-The directional derivative of a vector field $F : V → A$ in the direction $𝒖 ∈ V$ is
+The directional derivative of a vector field $F : V → A$ in the direction $𝒖 ∈ V$ and evaluated at the point $𝒙 ∈ V$ is
 \begin{align}
 	% ∂_𝒖 F(x) = \lim_{ε → 0}\frac{F(x + ε𝒖) - F(x)}{ε}
-	∂_𝒖 F(x) = \dv{ε} \eval{F(x + ε𝒖)}_{ε = 0}
-	= \lim_{ε → 0}\frac{F(x + ε𝒖) - F(x)}{ε}
-\end{align}
-where the point $x ∈ V$ is also a vector.
+	∂_𝒖 F(𝒙) = \dv{ε} \eval{F(𝒙 + ε𝒖)}_{ε = 0}
+	= \lim_{ε → 0}\frac{F(𝒙 + ε𝒖) - F(𝒙)}{ε}
+.\end{align}
 The directional derivative is linear in $𝒖$, since by a change of variables,
 \begin{math}
-	∂_{u^a\ve_a}
-	= \sum_a \dv{ε} \eval{F(x + εu^a\ve_a)}_{ε = 0}
-	= \sum_a u^a \dv{ε'} \eval{F(x + ε'\ve_a)}_{ε' = 0}
-	= u^a ∂_{\ve^a}
+	∂_{u_a\ve^a}
+	= \sum_a \dv{ε} \eval{F(x + εu_a\ve^a)}_{ε = 0}
+	= \sum_a u_a \dv{\bar ε} \eval{F(x + \bar ε\ve^a)}_{\bar ε = 0}
+	= \sum_a u_a ∂_{\ve^a}
 .\end{math}
+In the presence of a dual basis $\set{\ve^a} \subset V^*$, we use the notation $∂_a ≔ ∂_{\ve^a}$ for brevity, so long as it is understood that this is not a partial derivative with respect to a scalar coordinate, $\pdv{x^a}$.
+Of course, it may be viewed as such by setting $f(\etc{x^\i},n) = f(x^i\ve_i)$ so that
+\begin{align}
+	∂_{\ve^a}f(x^i\ve_i) = \pdv{x^a}f(\etc{x^\i},n)
+,\end{align}
+though this is a basis-dependent definition.
 
 
 Suppose $F : V → A$ is some algebra--valued field.
@@ -63,14 +68,14 @@ In component language,
 	(\DD F)_{a\etc{a_\i}{}k} = ∂_aF_{\etc{a_\i}{}k}
 .\end{math}
 
-\subsection{The Exterior Derivative}
+\subsection{The exterior derivative}
 
 Consider a vector field $F : V → \EA{V^*}$ with values in the (dual) exterior algebra.
 In this case \cref{eqn:algder} is the \textdef{exterior derivative}
 \begin{align}
 	\dd F = \dx^a ∧ \pdv{F}{x^a}
 \end{align}
-where $\set{\dx^a} ⊂ V^*$ also form a dual basis of $\EA{V^*}$.
+where $\set{\dx^a} ⊂ V^*$ form a basis of $\EA{V^*}$.
 If $F : V → \EA[k]{V^*}$ is a $k$-vector field, then
 \begin{math}
 	\dd F = ∂_a F_{\etc{a_\i}{}k} \dx^a ∧ \etc{\dx^{a_\i}}∧k
@@ -96,7 +101,7 @@ Note that the partial derivative acts on the position dependence of $φ$ only --
 This changes when generalising from vector fields of alternating maps to forms defined on a \emph{manifold}, where correction terms are needed to account for partial derivatives of input vectors (discussed in \cref{part:2}).
 
 
-\subsection{The Vector Derivative}
+\subsection{The vector derivative}
 
 The algebraic derivative in the tensor and exterior algebras are somewhat uninteresting, because they are easily expressible in component form (e.g., $∂_aF_{\etc{a_\i}{}k}$ or $∂_{[a}F_{\etc{a_\i}{}k]}$).
 This is not possible in the geometric algebra, however, because $\GA(V, η)$ is not $\ZZ$-graded, and we would face the problem of notating inhomogeneous objects with a variable number of indices.
@@ -142,7 +147,7 @@ For a general multivector $F$, then, we have
 .\end{align}
 
 
-\subsection{Case Study: Maxwell's Equations}
+\section{Case Study: Maxwell's Equations}
 
 
 Expressed in the standard vector calculus of $\RR^3$, Maxwell's equations for the electric $\vb E$ and magnetic $\vb B$ fields in the presence of a source are
@@ -186,6 +191,8 @@ The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, re
 		In the relativistic formulation, $T$ and $L$ are unified and replaced by \emph{spacetime interval} $S$.
 	}
 \end{margintable}
+
+\subsection{With tensor calculus}
 
 These can be expressed relativistically as eight scalar equations,
 \setlength{\fboxsep}{1.4ex}
@@ -414,7 +421,7 @@ In the $\sig{-+++}$ signature, $\vg_0 \vb J = -cρ + \vec J$ differs by an overa
 \section{Integration}
 
 
-\subsection{Stokes' Theorem for Exterior Calculus}
+\subsection{Stokes' theorem for exterior calculus}
 
 \begin{theorem}[Stokes' theorem in $\RR^n$]
 	\label{thm:flat-stokes}
@@ -502,7 +509,7 @@ In the $\sig{-+++}$ signature, $\vg_0 \vb J = -cρ + \vec J$ differs by an overa
 	by linearity.
 \end{proof}
 
-\subsection{Fundamental Theorem of Geometric Calculus}
+\subsection{Fundamental theorem of geometric calculus}
 
 \begin{theorem}
 	Let $f(𝒙)$ be a multivector field.

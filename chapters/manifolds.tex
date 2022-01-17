@@ -5,8 +5,8 @@
 The investigations of \cref{part:1} were restricted to \emph{flat geometries}.
 In particular, special relativity models spacetime as a homogeneous, isotropic Minkowski vector space.
 However, the general theory of relativity incorporates gravity as the curvature of space itself.
-Thus, spacetime no longer has an assumed vector space structure.
-This calls for \emph{manifold geometry}.
+Thus, spacetime no longer has an intrinsic vector space structure where the `difference between points' has physical meaning.
+The mathematical demands of curvature call for the \emph{differential geometry} of manifolds.
 
 
 
@@ -27,14 +27,16 @@ Here we only give a pragmatic definition of a manifold as a space which locally 
 \end{definition}
 
 
-Essentially, \cref{def:manifold} is designed to guarantee that well-behaved local coordinates always exist.
+Essentially, \cref{def:manifold} is designed to guarantee that well-behaved local coordinates (corresponding to elements of $U$) always exist.
 % Spherical surfaces, closed curves and spaces such as $\SO(n)$ are smooth manifolds, but cubes 
 \begin{definition}
 	\label{def:coord-chart}
 	Let $\manif M$ be an $n$-dimensional manifold.
 	A \textdef{(global) coordinate chart $\set{x^i} ≡ \set{\etc{x^\i},n}$} of $ℳ$ is a set of scalar fields $x^i : \manif M → \RR$ such that each point in $ℳ$ is specified uniquely by the coordinate values $(x^1, ..., x^n) ∈ \RR^n$.
+
 	A \textdef{local coordinate chart} about a point $x ∈ \manif M$ is a coordinate chart of a neighbourhood of $x$.
 \end{definition}
+In other words, the coordinate functions $\set{x^i}$ specify a homeomorphism $ℳ → \RR^n$, or a diffeomorphism in the case of a smooth chart.
 We will often call a point $x ∈ \manif M$ by the same symbol as the local coordinates $x^i : \manif M → \RR$ without the index --- but these objects are not interchangeable.
 
 A structure-preserving map between manifolds is a continuous function; and between smooth manifolds, a differentiable function.
@@ -62,7 +64,7 @@ However, being locally Euclidean means there is a real vector space naturally as
 		\TT\manif M = \set{(x, 𝒖) | x ∈ \manif M, 𝒖 ∈ \TT_x\manif M}
 	\end{align}
 	equipped with an appropriate manifold topology.\sidenote{
-		More formally, it is a fibre bundle (see \cref{cha:fibre-bundles}).
+		Specifically, the topology of a fibre bundle (see \cref{cha:fibre-bundles}).
 	}
 \end{definition}
 
@@ -71,7 +73,7 @@ Given a smooth manifold, its tangent bundle comes for free: its construction is 
 Similarly, given a smooth function $f$ between manifolds, its derivative $\dd f$ (i.e., its `tangent') also comes for free.
 
 In the same way that the tangent bundle consists of `directional derivatives of points' in the manifold (i.e., tangent vectors), the differential $\dd f$ encodes the derivative of $f$ at each point in all directions.\sidenote{
-	There is a precise parallel: $\dd$ and $\TT$ form a functor in category of smooth manifolds, sending
+	This parallel is precise: $\dd$ and $\TT$ form a functor in category of smooth manifolds, sending
 	\begin{math}
 		f: ℳ → 𝒩
 	\end{math}
@@ -198,7 +200,7 @@ where we have identified the one-dimensional vector space $\TT_{x^i}\RR$ with $\
 In flat geometries, fields were modelled as functions into a fixed vector space.
 For example, in flat spacetime $ℳ = \RR^{1+3}$, the electromagnetic bivector $F : ℳ → \EA[2]{\RR^4}$ makes no distinction between the vector space $\EA[2]{\RR^4}$ evaluated at one point in spacetime over another.
 This would suggest that all values of a field are directly comparable, making expressions like $F(x) + F(y) ∈ \EA[2]{\RR^4}$ geometrically meaningful for different points $x,y ∈ ℳ$.
-However, these kinds of expressions become ill-defined for general smooth manifolds $ℳ$.
+However, these kinds of expressions are ill-defined for general smooth manifolds $ℳ$, since they depend on the way tangent spaces are chosen.
 Instead, it is beneficial to distinguish between codomains \emph{at each point in the domain}, and treat $F(x)$ and $F(y)$ as belonging to different spaces.
 
 \begin{marginfigure}
@@ -212,7 +214,7 @@ Instead, it is beneficial to distinguish between codomains \emph{at each point i
 
 This can be motivated with the simple example of a fluid flowing on a sphere.
 The instantaneous fluid velocity at a point is a vector lying in the sphere's tangent plane at that point.
-If the fluid flow is given as a field $f : \Sphere^2 → \RR^2$, then any two velocity vectors exist in the ``same'' space, even when \emph{geometrically} they do not (\cref{fig:ball}).
+If the fluid flow is given as a map $f : \Sphere^2 → \RR^2$, then any two velocity vectors exist in the ``same'' space, even when \emph{geometrically} they do not (\cref{fig:ball}).
 This is more than a purely philosophical point: the fluid flow's representation as a field $f : \Sphere^2 → \RR^2$ is \emph{dependent on the choice of basis}.
 That is, $f$ depends on the way in which the single codomain $\RR^2$ is identified with each tangent plane on the sphere, and there is no such canonical choice for the sphere.
 We would do better with a more geometrical representation of the vector field which is independent of any choice of basis.
@@ -220,6 +222,8 @@ This requires viewing the fluid velocities at different points as existing in di
 
 From this we construct the tangent \emph{bundle} $\TT \Sphere^2$, where all the tangent planes of $\Sphere^2$ are collected in a disjoint union forming a \emph{bulk}.
 The vector field on the sphere now becomes a \emph{section} of $\TT \Sphere^2$, which is a map $f : \Sphere^2 → \TT \Sphere^2$ such that $f(x)$ belongs to the tangent space rooted at $x$.
+No longer is the expression $f(x) + f(y)$ well-defined.
+
 The tangent bundle is a special case of a \emph{fibre bundle}, which is a manifold consisting of disjoint copies of a space (called the \emph{fibre}) taken at every point in a base manifold.
 
 \begin{marginfigure}
@@ -248,7 +252,13 @@ The tangent bundle is a special case of a \emph{fibre bundle}, which is a manifo
 \Cref{def:fibre-bundle} takes place in the category of manifolds, so the projection $π : ℱ → ℳ$ is continuous.
 In a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.
 
-
+Many different kinds of fibre bundle may be considered by giving $F$ more structure.
+For example,
+\begin{itemize}
+	\item a \textdef{vector bundle} is one where the fibre is a vector space;
+	\item a \textdef{principle bundle} is one where the fibre is a group (usually a Lie group); and
+	\item an \textdef{algebra bundle} is a vector bundle where each fibre is equipped with a (smoothly varying) algebraic product; and so on.
+\end{itemize}
 
 
 \subsubsection{Trivialisations and coordinates}
@@ -263,13 +273,13 @@ This splitting is known as a \emph{trivialisation} of the bundle.
 		\op{pr}_1 ∘ φ = π
 	.\end{math}
 \end{definition}
-It is not always possible to find a trivialisation of a fibre bundle, and if it is, the bundle is called a \textdef{trivial fibre bundle} and there may be different possible trivialisations.\sidenote{
+It is not always possible to find a global trivialisation of a fibre bundle, and if it is, the bundle is called a \textdef{trivial fibre bundle} and there may be different possible trivialisations.\sidenote{
 	A simple non-trivial fibre bundle is the Möbius strip, viewed as a bundle over the circle $\Sphere^1$ with fibre $[0, 1]$.
 	The trivial bundle $\Sphere^1 × [0, 1]$ describes a strip without a twist.
 }
 
 However, it is always possible trivialise \emph{locally}.
-That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a trivialisation.
+That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a (global) trivialisation.
 Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}$ to the bulk of a fibre bundle, where $x^μ$ are coordinates on the base and $x^a$ are coordinates on the fibres, such that $x^μ$ do not vary along the fibres.
 
 
@@ -282,7 +292,7 @@ Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}
 \subsubsection{Sections of fibre bundles}
 
 
-In the language of fibre bundles, a field $f : ℳ → F$ becomes a \emph{section}, which is a ``vertical'' map $f : ℳ → ℱ$ into the bulk $ℱ$ such that $f(x) ∈ F_x$.
+In the language of fibre bundles, a field $f : ℳ → F$ is replaced by a \emph{section}, which is a ``vertical'' map $f : ℳ → ℱ$ into the bulk $ℱ$ such that $f(x) ∈ F_x$.
 \begin{definition}
 	A \textdef{section} $f$ of a fibre bundle $\fibrebundle[π] F ℱ ℳ$ is a right-inverse of $π$.
 	The space of sections is denoted
@@ -294,6 +304,29 @@ In the language of fibre bundles, a field $f : ℳ → F$ becomes a \emph{sectio
 
 
 For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is a section $𝒖 ∈ \secs(\TT\Sphere^2)$ of the tangent bundle, with a single vector at $x ∈ \Sphere^2$ is denoted $𝒖|_x ∈ \TT_x\Sphere^2$.
+
+
+
+
+
+
+
+\subsubsection{Integral manifolds}
+
+It is also useful to have a higher-dimensional analogue to a section of the tangent bundle; i.e., an object which associates a subspace of $\TT_x ℳ$ to each point $x ∈ ℳ$.
+\begin{definition}
+	A $k$-dimensional \textdef{tangent subbundle} $𝒟 ⊆ \TTℳ$ is a vector bundle $\fibrebundle[π_S] {ℝ^k} 𝒟 ℳ$ where each fibre $𝒟|_x ≅ ℝ^k$ is a $k$-dimensional subspace of $\,\TT_xℳ$.
+\end{definition}
+A smooth vector field $𝒖 ∈ \secs(\TTℳ)$ may be viewed as a $1$-dimensional tangent subbundle.
+\begin{definition}
+	A submanifold $ℐ ⊆ ℳ$ is called an \textdef{integral manifold} of a tangent subbundle $𝒟$ if $\,\TT_xℐ \subseteq 𝒟|_x$ for all $x ∈ ℐ$.
+	The subbundle $𝒟$ is called \textdef{integrable} if there exist integral manifolds through each point.
+\end{definition}
+An integral manifold is \textdef{maximal} if $\TT_xℐ = 𝒟|_x$, meaning the manifold dimension of $ℐ$ is the dimension of $𝒟$.
+
+An integral curve of a vector field $𝒖$ through a point $x$ may be viewed as the $1$-dimensional integral manifold of the $1$-dimensional tangent subbundle described by $𝒖$.
+Indeed, any $1$-dimensional tangent subbundle is integrable, but higher-dimensional subbundles are not integrable in general.
+
 
 
 
@@ -314,12 +347,12 @@ To accomplish this, the additional structure of a \emph{connection} on the fibre
 
 A trivial example of a connection is the one associated with (the tangent bundle of) Euclidean space.
 In this case, tangent vectors at a base point may be \emph{parallel transported} (i.e., translated irrotationally) to any other base point in a well-defined, path-independent way.\sidenote{
-	Any tangent vectors $𝒗_p ∈ \TT \RR^n ≅ \RR^n ⊕ \RR^n$ are compared by translating them to the origin (or discarding the base point) $𝒗_p ≡ (p, 𝒖) ↦ 𝒖 ∈ \RR^n$.
+	Any tangent vectors $𝒖_p ∈ \TT \RR^n ≅ \RR^n ⊕ \RR^n$ are compared by translating them to the origin (or discarding the base point) $𝒖_p ≡ (p, 𝒖) ↦ 𝒖 ∈ \RR^n$.
 }
 This defines an isomorphism between every tangent space and tangent space at the origin, which is a connection on $\TT \RR^n$.
 
 We may try to define connections on general fibre bundles in this way, by choosing an isomorphism from every fibre to a single `reference' fibre.
-This is the same as choosing a trivialisation $ℱ → ℳ × F$, which identifies every fibre with the reference fibre $F$ (this is equivalent to prescribing global coordinates on the bundle).
+This is the same as choosing a trivialisation $ℱ → ℳ × F$, which identifies every fibre with the reference fibre $F$ (equivalent to prescribing global coordinates on the bundle).
 However, defining a connection by a trivialisation like this is a needlessly strict requirement, and is of course impossible to do globally on non-trivial bundles.
 
 For example, the tangent bundle of the sphere $\TT \Sphere^2$ is non-trivial, so it is impossible to give a globally smooth identification of tangent spaces.\sidenote{
@@ -337,10 +370,9 @@ This generalises to all smooth manifolds: To define a connection, it is only nec
 \section{Connections on General Fibre Bundles}
 
 
-The most general kind of smooth bundle is one where the fibres are diffeomorphic to a manifold $F$ and have no further structure assumed.
-The tangent bundle is a special case where the fibre is a vector space, but we will start in generality.
-
-A point $p ∈ ℱ$ in a fibre bundle represents a value in the fibre $F_{π(p)}$, whose root has base point $π(p) ∈ ℳ$.
+The most general kind of smooth bundle is one where the fibres are diffeomorphic to a manifold $F$ and have no further assumed structure.
+% The tangent bundle is a special kind of vector bundle, but here we start in generality.
+A point $p ∈ ℱ$ in a fibre bundle represents a value in that fibre $F_{π(p)}$ which is rooted at the base point $π(p) ∈ ℳ$.
 If the point $p$ is moved within its fibre, the base point remains fixed and the motion is said to be ``vertical''.
 The tangent space $\TT_p F_{π(p)}$ of the fibre (in isolation from the bulk) consists of those displacement vectors which define vertical motion.
 \begin{definition}
@@ -353,7 +385,7 @@ The tangent space $\TT_p F_{π(p)}$ of the fibre (in isolation from the bulk) co
 In other words, the tangent bundles of all the fibres taken together form the vertical bundle.
 
 
-On the other hand, a \emph{connection} specifies how the value $p ∈ ℱ$ changes when the base point $π(p) ∈ ℳ$ moves if $p$ is undergoing parallel transport --- i.e., it defines ``horizontal'' motion between fibres.
+On the other hand, a \emph{connection} specifies how the value $p ∈ ℱ$ changes when the base point $π(p) ∈ ℳ$ moves, if $p$ is to be considered to move ``horizontally'', i.e., if $p$ is to undergo parallel transport.
 \begin{definition}
 	A \textdef{horizontal bundle} or \textdef{(Ehresmann) connection} $H$ on a smooth fibre bundle $\fibrebundle F ℱ ℳ$ is a smooth $(\dim ℳ)$-dimensional tangent subbundle $H ⊆ \TT ℱ$ which is complementary to the vertical bundle $V ⊆ \TT ℱ$, in the sense that
 	\begin{align}
@@ -386,13 +418,13 @@ which acts to ``lift'' tangent vectors from the base into the horizontal subbund
 This proves to be a useful construction:
 \begin{definition}
 	\label{def:connection-map}
-	Let there be a fibre bundle $\fibrebundle[π] F ℱ ℳ$ with a connection $H ⊆ \TT ℱ$.
-	The \textdef{connection map} $Γ : \TTℳ → H$ is the linear map defined by
+	Let $\fibrebundle[π] F ℱ ℳ$ be a fibre bundle with a connection $H ⊆ \TT ℱ$.
+	The \textdef{connection map} $Γ|_p : \TT_{π(p)}ℳ → H_p$ is the linear map defined by
 	\begin{align}
 		Γ|_p ≔ -\dd π|_{H_p}^{-1} : \TT_{π(p)}ℳ → H_p
 	\end{align}
 	at every $p ∈ ℱ$.
-	If $f ∈ \secs(ℱ)$ is a section, also define $Γ_f$ by
+	If $f ∈ \secs(ℱ)$ is a section, also define $Γ_f : \TT_xℳ → H_{f(x)}$ by
 	\begin{align}
 		Γ_f\big|_x ≔ Γ|_{f(x)} = -\dd π|_{H_{f(x)}}^{-1}
 	\end{align}
@@ -407,7 +439,7 @@ With a connection defined on a bundle, a value $p_0 ∈ ℱ$ can be \textdef{par
 
 Thus, a path $γ : [0, 1] → ℳ$ representing the motion of a value $p_0 ∈ ℱ$ from $γ(0) = π(p_0)$ can be \textdef{lifted} to a horizontal path $p_0 : [0, 1] → ℱ$ in the bulk.
 This path is `above' $γ$ in the sense that $π(p_γ(λ)) = γ(λ)$, and `horizontal' in the sense that $\dd p_γ(λ) ∈ H_{p_γ(λ)}$, for all $λ ∈ [0, 1]$ (see \cref{fig:lifted-path})
-In other words, $p_γ$ is a one-dimensional integral manifold of the connection $H$, restricted to the `wall' $π^{-1}(γ) ⊂ ℱ$.
+In other words, $p_γ$ is a one-dimensional integral manifold of the connection $H$ restricted to the `wall' $π^{-1}(γ) ⊂ ℱ$.
 
 \begin{marginfigure}
 	\centering
@@ -485,13 +517,9 @@ As we will see in \cref{sec:specialised-bundles}, for a vector bundle, the compo
 
 \subsection{Covariant differentiation}
 
-We have seen that a connection determines which tangent vectors in the bulk of a bundle are taken as ``horizontal''.
-This also defines the coordinate free \textdef{covaraint derivative} as the rate of change of a section with respect to the connection's horizontal.
+We have seen that a choice of connection determines which tangent vectors in the bulk of a bundle are ``horizontal''.
+This also defines the \textdef{covaraint derivative} as the rate of change of a section with respect to the connection's horizontal, in a coordinate free way.
 
-
-We expect a submanifold $f$ of $ℱ$ (e.g., a curve or section) to have vanishing covariant derivative if the tangent space is horizontal (i.e., $\dd f$ everywhere lies in $H$).
-In other words, $f$ is covariantly constant if it is an integral manifold of the connection $H ⊆ \TTℱ$.
-The covariant derivative then measures the failure of $f$ to be covariantly constant; i.e., the rate of change in $f$ relative to the connection's horizontal.
 
 To decompose vectors into horizontal and vertical components according to $H$, we define the linear \textdef{projection} and \textdef{rejection} maps
 \begin{align}
@@ -503,28 +531,34 @@ To decompose vectors into horizontal and vertical components according to $H$, w
 satisfying $\op{proj}_{H_p} 𝒖 + \op{rej}_{H_p} 𝒖 = 𝒖 ∈ \TT_pℱ$.
 
 
+We expect a submanifold $f$ of $ℱ$ (e.g., a curve or section) to have vanishing covariant derivative if the tangent space is horizontal (i.e., $\dd f$ everywhere lies in $H$).
+In other words, $f$ is covariantly constant if it is an integral manifold of the connection $H ⊆ \TTℱ$.
+The covariant derivative then measures the failure of $f$ to be covariantly constant; i.e., the rate of change in $f$ relative to the connection's horizontal.
+
 \begin{definition}
 	\label{def:covariant-derivative-on-fibre-bundle}
 	The \textdef{covariant derivative} $∇f : \TT_x ℳ → \VV_{f(x)} ℱ$ of a section $f ∈ \secs(ℱ)$ is defined by
 	\begin{align}
 		% ∇f &: \TT_p ℳ → \VV_{f(p)} ℱ
+		\label{eqn:covder}
 		∇f &= \op{rej}_H{} ∘ \dd f
 	.\end{align}
 \end{definition}
+\Cref{eqn:covder} is written as a vertical-valued $1$-form.
 Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads
 \begin{align}
-	∇f(𝒖) = \op{rej}_{H_{f(x)}} \dd f(𝒖) ∈ \VV_{f(x)} ℱ
+	∇_𝒖f ≔ ∇f(𝒖) = \op{rej}_{H_{f(x)}} \dd f(𝒖) ∈ \VV_{f(x)} ℱ
 .\end{align}
 This can be interpreted intuitively as follows.
 The true gradient vector $\dd f(𝒖) ∈ \TT_{f(x)}ℱ$ of the section $f$ lies outside the fibre's tangent space $\VV_{f(x)}ℱ ⊆ \TT_{f(x)}ℱ$.
 However, we do not want to measure horizontal motion --- just the \emph{effective} vertical change of $f(x)$ within the fibre induced by moving $x$ in the direction of $𝒖$.
-Thus, the covariant derivative $∇f(𝒖) ∈ \VV_{f(x)}ℱ$ is the vertical projection of $\dd f(𝒖)$ obtained by discarding its horizontal component, where `horizontal' is of course specified by the connection  (see \cref{fig:covariant-derivative}).
+Thus, the covariant derivative $∇_𝒖f ∈ \VV_{f(x)}ℱ$ is the vertical projection of $\dd f(𝒖)$ obtained by discarding its horizontal component, where `horizontal' is of course specified by the connection  (see \cref{fig:covariant-derivative}).
 
 \begin{marginfigure}
 	\includefigure{covariant-derivative}
 	\caption{
 		Covariant derivative of $f$ at $x ∈ ℳ$ along $𝒖 ∈ \TT_x ℳ$.
-		The vector $-Γ_f(𝒖) = \dd π|_{H_p}^{-1}(𝒖)$ indicates horizontal motion under the connection $H$, and $∇f(𝒖)$ is the derivative relative to this horizontal.
+		The vector $-Γ_f(𝒖) = \dd π|_{H_p}^{-1}(𝒖)$ indicates horizontal motion under the connection $H$, and $∇_𝒖f$ is the derivative relative to this horizontal.
 	}
 	\label{fig:covariant-derivative}
 \end{marginfigure}
@@ -541,7 +575,7 @@ Thus, the covariant derivative $∇f(𝒖) ∈ \VV_{f(x)}ℱ$ is the vertical pr
 	,\end{align}
 	where $Γ_f$ is the connection map as in \cref{def:connection-map}.
 \end{lemma}
-Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads $∇f(𝒖) = \dd f(𝒖) + Γ_f(𝒖) = \dd f(𝒖) - \dd π|_{H_{f(x)}}^{-1}(𝒖)$.
+Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads $∇_𝒖 f = \dd f(𝒖) + Γ_f(𝒖) = 𝒖(f) - \dd π|_{H_{f(x)}}^{-1}(𝒖)$.
 \begin{proof}
 	By the defining property of the projection and rejection \eqref{eqn:proj-rej},
 	\begin{align}
@@ -564,13 +598,13 @@ Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads $∇f(𝒖) = \dd f(𝒖) + 
 	by the chain rule (\cref{lem:differential-chain-rule}).
 	Thus, acting on a base vector $𝒖 ∈ \TT_x ℳ$,
 	\begin{align}
-		∇f(𝒖)
+		∇_𝒖f
 			&= \dd f(𝒖) - \dd π|_{H_{f(x)}}^{-1} ∘ \dd π ∘ \dd f (𝒖)
 		\\	&= \dd f(𝒖) - \dd π|_{H_{f(x)}}^{-1} (𝒖)
 	,\end{align}
 	which by \cref{def:connection-map} is
 	\begin{math}
-		∇f(𝒖) = \dd f(𝒖) + Γ_f(𝒖)
+		∇_𝒖f = \dd f(𝒖) + Γ_f(𝒖)
 	.\end{math}
 \end{proof}
 
@@ -584,36 +618,44 @@ Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads $∇f(𝒖) = \dd f(𝒖) + 
 
 \subsubsection{Coordinate representation}
 
-At this point, we can find a coordinate representation of the covariant derivative.
+At this point, we can find a coordinate representation of the covariant derivative in a general fibre bundle.
 Suppose there is a local trivialisation where $\set{x^μ}$ are local coordinates on $ℳ$ and $\set{x^a}$ local coordinates of the fibres.
 Let capital Latin indices $\set{x^A} = \set{x^μ, x^a}$ run over all coordinates.
 A point $p ∈ ℱ$ in the bulk then has coordinates $(p^A) = (x^μ, x^a)$.
 Vertical motion fixes $π(p)$ and hence leaves the base coordinates $x^μ$ unchanged.
 (However, the fibre coordinates $x^a$ are \emph{not} required to be constant under horizontal motion.)
-The associated coordinate basis of $\TT ℱ$ is $(∂_A) = (∂_μ, ∂_a)$.
 
-The covariant derivative in \cref{lem:covariant-derivative-rewritten} acting on a section $f : ℳ → ℱ$ in the direction $𝒖 ∈ \TT_x ℳ$ has the full form
-\begin{align}
-	∇_𝒖f ≔ ∇f(𝒖) = \dd f(𝒖) + Γ_f(𝒖)
-.\end{align}
-The connection map $Γ_f : \TTℳ → H ⊆ \TT ℱ$ is linear in $𝒖$, so it is a a $\TT ℱ$-valued $1$-form which we may write as a bitensor (matrix--valued) section $Γ_f : ℳ → \TT^*ℳ ⊗ \TT ℱ$.
-Without reference to $f$, we have $Γ : ℱ → \TT^*ℳ ⊗ \TT ℱ$ with $Γ_f(x) ≡ Γ(f(x))$.
-% The horizontal projection $\dd π|_{H_{f(x)}}^{-1} : \TT_xℳ → H_{f(x)} ⊆ \TT ℱ$ is a linear operator at each point in $ℱ$, so we may write it as a $\TT ℱ$-valued $1$-form.
-Define the components $Γ^A{}_μ : ℱ → ℝ$ of $Γ$ by
+% The covariant derivative in \cref{lem:covariant-derivative-rewritten} acting on a section $f : ℳ → ℱ$ in the direction $𝒖 ∈ \TT_x ℳ$ has the full form
+% \begin{align}
+% 	∇_𝒖f = \dd f(𝒖) + Γ_f(𝒖)
+% .\end{align}
+% The connection map $Γ_f : \TTℳ → H ⊆ \TT ℱ$ is linear, so it is a $\TT ℱ$-valued $1$-form which we may write as a bitensor (i.e., matrix--valued) section $Γ_f : ℳ → \TT^*ℳ ⊗ \TT ℱ$.
+% Without reference to $f$, we have $Γ : ℱ → \TT^*ℳ ⊗ \TT ℱ$ with $Γ_f(x) ≡ Γ(f(x))$.
+% % The horizontal projection $\dd π|_{H_{f(x)}}^{-1} : \TT_xℳ → H_{f(x)} ⊆ \TT ℱ$ is a linear operator at each point in $ℱ$, so we may write it as a $\TT ℱ$-valued $1$-form.
+The associated coordinate basis of $\TT ℱ$ is $(\∂_A) = (\∂_μ, \∂_a)$.
+Recall that the connection map is a bulk-valued $1$-form $Γ|_p : \TT_{π(p)} → H_p$.
+Thus, $Γ|_p(𝒖)$ is linear in $𝒖$, and we may define the components
 \begin{align}
 	\label{eqn:covariant-derivative-coords.1}
-	Γ_p = Γ^A{}_μ(p) \, ∂_A ⊗ \dd x^μ
-,\end{align}
-noting that these are functions on the bulk (not just on the base).
+	Γ_μ|_p ≔ Γ|_p(\∂_μ) ∈ \TT ℱ
+.\end{align}
+We may define a $2$-index form $Γ_μ{}^A$ of the component functions by
+\begin{align}
+	Γ_μ|_p = Γ_μ{}^A|_p \, \∂_A ∈ \TT ℱ
+.\end{align}
+Note that this has both fibre and base components;
+\begin{align}
+	Γ_μ{}^A|_p \, \∂_A = Γ_μ{}^ν|_p \, \∂_ν + Γ_μ{}^a|_p \, \∂_a
+.\end{align}
 Thus, in the coordinate basis, the covariant derivative of $f$ in the direction $𝒖 ∈ \TT_xℳ$ is
 \begin{align}
 	\label{eqn:covariant-derivative-coords.3}
-	∇f(𝒖) ≡ ∇_μf^A(x)u^μ \∂_A = \qty(∂_μ f^A(x) + Γ^A{}_μ(f
-	(x))) u^μ \∂_A
+	∇_𝒖 f|_x ≡ u^μ ∇_μf^A|_x \∂_A = u^μ \qty(∂_μ f^A|_x + Γ_μ{}^a|_{f
+	(x)}) \∂_A
 .\end{align}
 Note that this is a sum over coordinate vectors both in the fibre, $\∂_a$, and in the base $\∂_μ$.
-However, since $∇f(𝒖) ∈ \VVℱ$ is vertical, we expect its horizontal components $∇_μ f^ν$ to vanish, leaving only vertical components.
-To verify that $∇_μf^A \∂_A = ∇_μf^a \∂_a$, note that
+However, since $∇_𝒖f ∈ \VVℱ$ is vertical, we expect its horizontal components $∇_𝒖 f^μ$ to vanish, leaving only vertical components.
+To do this, note that
 \begin{align}
 	\label{eqn:covariant-derivative-coords.2}
 	\dd π (\dd f (𝒖)) = 𝒖
@@ -625,23 +667,22 @@ In effect, $\dd π$ projects onto components of the base,
 \begin{align}
 	\dd π(∂_μ f^A \∂_A) = ∂_μ f^ν \∂_ν
 ,\end{align}
-and so \cref{eqn:covariant-derivative-coords.2} implies $∂_μ f^ν = -Γ^ν{}_μ$.
+and so \cref{eqn:covariant-derivative-coords.2} implies $∂_μ f^ν = -Γ_μ{}^ν$.
 Hence, the base components of the two terms in \cref{eqn:covariant-derivative-coords.3} cancel, leaving only the fibre components,
 \begin{align}
-	% ∇f(𝒖) ≡ ∇_μf^a u^μ \∂_a = \qty(∂_μ f^a\big|_x + Γ^a{}_μ\big|_{f\smol{x}}) u^μ \∂_a
-	% ∇f(𝒖) ≡ ∇_μf^a u^μ \∂_a = \qty(∂_μ f^a + Γ^a{}_μ∘f) u^μ \∂_a
-	∇f ≡ ∇_μf^a \; \∂_a ⊗ \dd x^μ = \qty(∂_μ f^a + Γ^a{}_μ∘f) \, \∂_a ⊗ \dd x^μ
+	∇_μf|_x ≡ ∇_μf^a|_x \; \∂_a = \qty(∂_μ f^a|_x + Γ^a{}_μ|_{f(x)}) \, \∂_a
 .\end{align}
 
 This calculation is performed from the point of view that $f : ℳ → ℱ$ is a section, in which case $\dd f = \dd f^μ \∂_μ + \dd f^a \∂_a$ is a $1$-form with values in the bulk tangent space $\TTℱ = \TTℳ ⊕ \VVℱ$.
-In practice, it is usual to have a (local) trivialisation where $f : ℳ → F$ is presented as a field, in which case $\dd f = \dd f^a \∂_a ∈ \VVℱ$ instead.
-In this case, the equivalent expression of \cref{lem:covariant-derivative-rewritten} is
+In practice, it is usual to have a (local) trivialisation where $f : ℳ → F$ is no longer given as a section, but as a map into a fixed space $F$.
+Under such a trivialisation, the derivative $\dd f = \dd f^a \∂_a$ no longer has no bulk components.
+Thus, in the presence of a trivialisation, \cref{lem:covariant-derivative-rewritten} should be written
 \begin{align}
 	\label{eqn:covder-of-trivialised-field}
-	∇f = \dd f + (Γ_f)^a\∂_a
+	∇f = \dd f + Γ^a|_f\∂_a
 ,\end{align}
-where only the fibre components of $Γ_f$ (as specific to the trivialisation) are kept, ensuring the resulting derivative $∇f(𝒖) ∈ \VVℱ$ is vertical.
-This is usually how computations are performed --- but to reiterate, the expression \eqref{eqn:covder-of-trivialised-field} with $f : ℳ → F$ depends on a (local) trivialisation, whereas the previous sense of covariant derivative of a section $f : ℳ → ℱ$ is purely geometrical.
+suppressing bulk components of $Γ_f$.
+% Computations are usually performed after a choice of (local) trivialisation --- but to reiterate, the expression \eqref{eqn:covder-of-trivialised-field} where $f : ℳ → F$ is not independent of trivialisation, whereas the previous sense of covariant derivative of a section $f : ℳ → ℱ$ is purely geometrical.
 
 
 
@@ -650,9 +691,9 @@ This is usually how computations are performed --- but to reiterate, the express
 \section{Structure Preserving Connections}
 
 So far, we have treated connections in the setting of a general fibre bundle, in which fibres have the minimal structure of a smooth manifold.
-We now consider connections and their associated covariant derivatives on vector bundles with less or more structure.
+We now consider connections and their associated covariant derivatives on vector bundles with more or less structure.
 
-The transport operator over a path in a general fibre bundle is some invertible map between the two fibres terminating the path.
+The transport operator over a path in a general fibre bundle is some invertible map between the two fibres rooted at the path's endpoints.
 For a vector bundle, we require the transport operator to be a linear map.
 Linearity allows the covariant derivative to be expressed as the limit of a difference, similar to the usual analytical definition of the derivative of a real function.
 \begin{lemma}
@@ -660,7 +701,8 @@ Linearity allows the covariant derivative to be expressed as the limit of a diff
 	If $γ : [0, 1] → ℳ$ is a path and $𝒖 ∈ \secs_γ(𝒱)$ is a smooth section of vectors defined on $γ$, then
 	\begin{align}
 		∇_{\dot{γ}(0)} 𝒖|_{γ(0)}
-		= \dv{λ}\eval{\qty(𝒖|_{γ(λ)} - \trans_{γ(λ ← 0)}𝒖|_{γ(0)})}_{λ=0}
+		&= \lim_{ε → 0} \frac{𝒖|_{γ(ε)} - \trans_{γ(ε ← 0)}𝒖|_{γ(0)}}{ε}
+	\\	&= \dv{λ}\eval{\qty(𝒖|_{γ(λ)} - \trans_{γ(λ ← 0)}𝒖|_{γ(0)})}_{λ=0}
 	.\end{align}
 \end{lemma}
 \begin{proof}
@@ -672,11 +714,17 @@ Linearity allows the covariant derivative to be expressed as the limit of a diff
 	since transport over a trivial path is the identity.
 \end{proof}
 
+For a linear connection, the components $Γ_μ{}^a|_p$ are linear with respect to the point $p ∈ 𝒱$, allowing the definition of a $3$-index component object
+\begin{align}
+	Γ_μ{}^a{}_b ≔ Γ_μ{}^a|_{\ve_b}
+\end{align}
+where $\set{\ve_a}$ form a basis of the fibre vector space.
+
 As well as linearity, vector bundles may be equipped with further structure, placing further constraints on the connection.
 For example, equipped with a metric, and we may require the connection to be \emph{metric-compatible}.
 Given an associative product, we may require parallel transport to respect multiplication, etcetera.
 These requirements are all instances of \emph{functorality} of the transport operator.
-In general, if $ϕ$ is a $k$-ary multilinear operator (e.g., an inner product, an associative product, etc) then the transport operator \emph{respects} $ϕ$ if
+In general, if $ϕ$ is a $k$-ary multilinear operator (e.g., an inner product, an associative product, etc.) then the transport operator \emph{preserves} $ϕ$ if
 \begin{align}
 	\label{eqn:functorality-of-trans}
 	\trans_γ ϕ(\etc{a_\i},k) = ϕ(\trans_γ a_1, ..., \trans_γ a_k)
@@ -686,7 +734,7 @@ How does this requirement for structure-preservation translate to the associated
 \begin{lemma}
 	\label{lem:covder-of-anything}
 	Let $ϕ$ be a multilinear $k$-ary operator on a vector bundle.
-	If the transport operator respects $ϕ$, then
+	If the transport operator preserves $ϕ$, then
 	\begin{align}
 		∇ ϕ(\etc{a_\i},k) = \dd ϕ(\etc{a_\i},k) + \sum_{i=1}^k ϕ(a_1, ..., Γ_{a_i}, ..., a_k)
 	.\end{align}
@@ -711,3 +759,52 @@ Taking $ϕ : A × A → A$ to be the associative product of the algebra bundle $
 	.\end{align}
 \end{corollary}
 This corollary implies that a connection respecting an associative product is determined completely determined by the connection on the subbundle of grade-$1$ vectors $𝒱 ⊆ 𝒜$.
+
+
+For instance, given a connection on a vector bundle $𝒱$, we have the familiar formula
+\begin{align}
+	% ∇(𝒖⊗𝒗) &= \dd(𝒖⊗𝒗) + Γ_𝒖⊗𝒗 + 𝒖⊗Γ_𝒗
+	∇_μu^av^b &= ∂_μ(u^a v^b) + Γ_μ{}^a{}_c u^c v^b + u^a Γ_μ{}^b{}_c v^c
+.\end{align}
+Given a metric which is used to raise and lower indices, the covariant derivative on $𝒱$ extends to general type-$(p, q)$ tensors,
+\begin{samepage}
+\begin{fullwidth}
+\begin{align}
+	∇_μT^{a_1\cdots a_p}{}_{b_1\cdots b_q}
+	= ∂_μT^{a_1\cdots a_p}{}_{b_1\cdots b_q}
+	+ \sum_{i = 1}^p Γ_μ{}^{a_i}{}_c T^{a_1\cdots c\cdots a_p}{}_{b_1\cdots b_q}
+	- \sum_{j = 1}^q Γ_μ{}^c{}_{b_j} T^{a_1\cdots a_p}{}_{b_1\cdots c\cdots b_q}
+.\end{align}
+\end{fullwidth}
+\end{samepage}
+
+
+
+
+\begin{corollary}
+	\label{col:metric-compat-Γ-antisym}
+	% If a linear connection preserves an inner product $η_{ab} = \ip{\ve_a, \ve_b}$, then
+	If a linear connection preserves an inner product $\ip{\phantom{𝒖}, \phantom{𝒗}}$, then
+	\begin{align}
+		\label{eqn:covder-of-ip}
+		∇\ip{𝒖, 𝒗} = \dd\ip{𝒖, 𝒗} + \ip{Γ_𝒖, 𝒗} + \ip{𝒖, Γ_𝒗}
+	.\end{align}
+	Furthermore, this implies $Γ_{μab} = -Γ_{μba}$, where $Γ_{μab} ≔ η_{ac}Γ_μ{}^c{}_b$ and $η_{ab} = \ip{\ve_a, \ve_b}$.
+\end{corollary}
+\begin{proof}
+	\Cref{eqn:covder-of-ip} follows from \Cref{lem:covder-of-anything} in the case $φ(𝒖, 𝒗) = \ip{𝒖, 𝒗}$.
+	Since $\ip{𝒖, 𝒗}$ is a scalar, we simultaneously have $∇\ip{𝒖, 𝒗} = \dd\ip{𝒖, 𝒗}$, and hence
+	\begin{align}
+		% \label{eqn:Γ-inner-prod-symmetry}
+		\ip{Γ_𝒖, 𝒗} = -\ip{𝒖, Γ_𝒗}
+	.\end{align}
+	Writing this in components, we have
+	\begin{align}
+		η_{cb} Γ_μ{}^c{}_a u^a v^b &= -η_{ac} u^a Γ_μ{}^c{}_b v^b
+	&	&\implies
+	&	η_{bc} Γ_μ{}^c{}_a &= -η_{ac} Γ_μ{}^c{}_b
+	,\end{align}
+	implying $Γ_{μba} = -Γ_{μab}$ where the metric $η_{ab}$ is used to lower indices.
+\end{proof}
+
+

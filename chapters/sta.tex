@@ -76,7 +76,7 @@ For example a spacetime bivector $F = F^{μν}\vg_μ\vg_ν$ may be separated int
 \begin{align}
 	\label{eqn:sta-bivector-split}
 	F = F^{i0}\vg_i\vg_0 + F^{ij}\vg_i\vg_j
-	= E^i\vs_i + B^i\vol\vs_i = \vb{E} + \vol \vb{B}
+	= E^i\vs_i + B^i\vol\vs_i = \vec E + \vol \vec B
 ,\end{align}
 where we use
 \begin{math}
@@ -100,11 +100,11 @@ This bivector $σ$ can be represented in the $K$ frame as
 where $\vb ξ = ξ^i\vs_i ∈ \GA[1](3)$ is a rapidity vector and $\vol \vb θ ∈ \GA[2](3)$ is a rotation bivector.
 
 
-\subsection{The choice of metric signature}
+\subsection{On the choice of metric signature}
 
 Both metric signatures $η = \op{diag}\sig{-+++}$ and $η = \op{diag}\sig{+---}$ are appropriate for relativistic physics, and both are used in the literature.
-While the overall physics is invariant, expressions written in the STA are generally not independent of this choice of sign.
-It is a helpful reference to describe what changes and what is common to both choices.
+While the overall physics is agnostic, expressions written in the STA are generally not independent of the choice of sign.
+It is a helpful reference to note what changes and what is common to both choices.
 
 One of the most important properties of the space/time split is the union of the $\GA(3)$ and $\GA[+](1, 3)$ volume elements, $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$.
 If this equality is to hold, then switching the metric signature is concomitant with a switch in sign of the relative vectors, $\vs_i ↦ -\vs_i$. 
@@ -114,9 +114,10 @@ For example, the equations
 	𝑿 \vg_0 &= ct + \vec x
 ,&	\vg_0 𝑿 &= ct - \vec x
 \end{align}
-are valid in the $\sig{+---}$ signature, but both change by an overall sign in the $\sig{-+++}$ signature.
-(In all cases, reversion $𝑿 \vg_0 ↦ \rev{(𝑿 \vg_0)} = \vg_0 𝑿$ negates the spacetime bivector part, $\vec x → -\vec x$.)
-These facts are summarised in \cref{tbl:sig-choice}.
+hold in the $\sig{+---}$ signature, but both change by an overall sign in the $\sig{-+++}$ signature.\sidenote{
+	In all cases, reversion $𝑿 \vg_0 ↦ \rev{(𝑿 \vg_0)} = \vg_0 𝑿$ simply negates the spacetime bivector part, $\vec x → -\vec x$.
+}
+Both these points are summarised in \cref{tbl:sig-choice}.
 
 \begin{table}[h]
 	\centering
@@ -138,7 +139,7 @@ These facts are summarised in \cref{tbl:sig-choice}.
 	\label{tbl:sig-choice}
 \end{table}
 
-The choice of metric signature sign may be rendered irrelevant by using sign-agnostic definitions and expressions.
+The choice of metric sign may be rendered irrelevant by using sign-agnostic expressions.
 An invariant definition of relative vectors and their duals in the $\vg_0$-frame is
 \begin{align}
 	\vs_i &≔ \vg_i\vg^0
@@ -153,14 +154,15 @@ In particular, the following expressions hold in either signature, and are usefu
 \\	\vg_0 \, \vd &= \frac1c \pdv{t} + \vec ∇
 &	\vd \, \vg_0 &= \frac1c \pdv{t} - \vec ∇
 \end{align}
-The spacetime vector derivative $\vd = \vg^μ ∂_μ$ decomposes into a scalar time derivative and the spatial derivative $\vec ∇ = \vs^i ∂_i$.
+Here, the spacetime vector derivative $\vd = \vg^μ ∂_μ$ decomposes into a scalar time derivative $∂_0 = c^{-1}∂_t$ and the spatial derivative $\vec ∇ = \vs^i ∂_i$.
 
 
 \section{The Invariant Bivector Decomposition}
 \label{sec:invariant-bivector-decomposition}
 
 There is a clear analogy between the space/time split of a bivector \eqref{eqn:sta-bivector-split}, with its spacelike and timelike components, and the Cartesian form of a complex number, $x + iy$, with its real and imaginary parts.
-This similarity can be made more precise: just as we may express complex numbers in polar form $re^{iϕ} = x + iy$, we may use the invariant bivector decomposition to write $ρe^{\vol σ} = \vb E + \vol \vb B$.
+This similarity can be made more precise: just as we may express complex numbers in polar form $re^{iϕ} = x + iy$, we may use the invariant bivector decomposition to write $ρe^{\vol σ} = E + \vol B$.
+This is distinct from the space/time split, in that it is frame \emph{independent}, and the bivector $E$ is not necessarily timelike, and so need not correspond to any relative vector $\vec E ∈ \GA[1](3)$.
 
 
 Non-null spacetime bivectors $σ \in \GA[2](1,3)$ may be \emph{normalised}, in the sense that there always exists some $N_σ \in \GA[0,4](1,3)$ such that
