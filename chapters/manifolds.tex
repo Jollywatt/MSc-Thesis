@@ -32,7 +32,7 @@ Essentially, \cref{def:manifold} is designed to guarantee that well-behaved loca
 \begin{definition}
 	\label{def:coord-chart}
 	Let $\manif M$ be an $n$-dimensional manifold.
-	A \textdef{(global) coordinate chart $\set{x^i} ≡ \set{\etc{x^\i},n}$} of $ℳ$ is a set of scalar fields $x^i : \manif M → \RR$ such that each point in $ℳ$ is specified uniquely by the coordinate values $(x^1, ..., x^n) ∈ \RR^n$.
+	A \textdef{(global) coordinate chart $\set{x^i} ≡ \set{\etc{x^\i},n}$} of $ℳ$ is a set of scalar fields $x^i : \manif M → \RR$ such that each point in $ℳ$ is specified uniquely by the coordinate values $(\etc{x^\i},n) ∈ \RR^n$.
 
 	A \textdef{local coordinate chart} about a point $x ∈ \manif M$ is a coordinate chart of a neighbourhood of $x$.
 \end{definition}
@@ -44,6 +44,8 @@ For brevity, we assume the definitions that follow take place in the category of
 Furthermore, if the qualifier ``smooth'' is present, we operate in the category of smooth manifolds and such maps are assumed differentiable.
 Thus, the coordinate scalars $x^i$ of \cref{def:coord-chart} are continuous functions, and are differentiable if the manifold is smooth.
 
+
+\todo{Define $\forms(ℳ)$.}
 
 \section{Derivatives of Smooth Maps}
 \label{sec:differential}
@@ -322,11 +324,12 @@ A smooth vector field $𝒖 ∈ \secs(\TTℳ)$ may be viewed as a $1$-dimensiona
 	A submanifold $ℐ ⊆ ℳ$ is called an \textdef{integral manifold} of a tangent subbundle $𝒟$ if $\,\TT_xℐ \subseteq 𝒟|_x$ for all $x ∈ ℐ$.
 	The subbundle $𝒟$ is called \textdef{integrable} if there exist integral manifolds through each point.
 \end{definition}
-An integral manifold is \textdef{maximal} if $\TT_xℐ = 𝒟|_x$, meaning the manifold dimension of $ℐ$ is the dimension of $𝒟$.
 
 An integral curve of a vector field $𝒖$ through a point $x$ may be viewed as the $1$-dimensional integral manifold of the $1$-dimensional tangent subbundle described by $𝒖$.
 Indeed, any $1$-dimensional tangent subbundle is integrable, but higher-dimensional subbundles are not integrable in general.
 
+An integral manifold is \textdef{maximal} if $\TT_xℐ = 𝒟|_x$, meaning the manifold dimension of $ℐ$ is the dimension of $𝒟$.
+The integrability condition for maximal integral manifolds to exist is given by Frobenius' theorem, discussed in \cref{sec:Frobenius}.
 
 
 
@@ -633,7 +636,7 @@ Vertical motion fixes $π(p)$ and hence leaves the base coordinates $x^μ$ uncha
 % Without reference to $f$, we have $Γ : ℱ → \TT^*ℳ ⊗ \TT ℱ$ with $Γ_f(x) ≡ Γ(f(x))$.
 % % The horizontal projection $\dd π|_{H_{f(x)}}^{-1} : \TT_xℳ → H_{f(x)} ⊆ \TT ℱ$ is a linear operator at each point in $ℱ$, so we may write it as a $\TT ℱ$-valued $1$-form.
 The associated coordinate basis of $\TT ℱ$ is $(\∂_A) = (\∂_μ, \∂_a)$.
-Recall that the connection map is a bulk-valued $1$-form $Γ|_p : \TT_{π(p)} → H_p$.
+Recall that the connection map is a $\TT ℱ$-valued $1$-form $Γ|_p : \TT_{π(p)} → H_p$.
 Thus, $Γ|_p(𝒖)$ is linear in $𝒖$, and we may define the components
 \begin{align}
 	\label{eqn:covariant-derivative-coords.1}
@@ -655,7 +658,7 @@ Thus, in the coordinate basis, the covariant derivative of $f$ in the direction 
 .\end{align}
 Note that this is a sum over coordinate vectors both in the fibre, $\∂_a$, and in the base $\∂_μ$.
 However, since $∇_𝒖f ∈ \VVℱ$ is vertical, we expect its horizontal components $∇_𝒖 f^μ$ to vanish, leaving only vertical components.
-To do this, note that
+This is verified by noting that
 \begin{align}
 	\label{eqn:covariant-derivative-coords.2}
 	\dd π (\dd f (𝒖)) = 𝒖
@@ -673,15 +676,20 @@ Hence, the base components of the two terms in \cref{eqn:covariant-derivative-co
 	∇_μf|_x ≡ ∇_μf^a|_x \; \∂_a = \qty(∂_μ f^a|_x + Γ^a{}_μ|_{f(x)}) \, \∂_a
 .\end{align}
 
-This calculation is performed from the point of view that $f : ℳ → ℱ$ is a section, in which case $\dd f = \dd f^μ \∂_μ + \dd f^a \∂_a$ is a $1$-form with values in the bulk tangent space $\TTℱ = \TTℳ ⊕ \VVℱ$.
-In practice, it is usual to have a (local) trivialisation where $f : ℳ → F$ is no longer given as a section, but as a map into a fixed space $F$.
-Under such a trivialisation, the derivative $\dd f = \dd f^a \∂_a$ no longer has no bulk components.
-Thus, in the presence of a trivialisation, \cref{lem:covariant-derivative-rewritten} should be written
+
+Therefore, when expressing the covariant derivative in coordinates with respect to some trivialisation of $ℱ$, the base components of $\dd f$ and $Γ_f$ can be suppressed, so that the upper indices run only over fibre components:
 \begin{align}
-	\label{eqn:covder-of-trivialised-field}
-	∇f = \dd f + Γ^a|_f\∂_a
-,\end{align}
-suppressing bulk components of $Γ_f$.
+	(∇_μ f)^a|_x = ∂_μ f^a|_x + Γ_μ{}^a |_{f(x)}
+.\end{align}
+% This calculation is performed from the point of view that $f : ℳ → ℱ$ is a section, in which case $\dd f = \dd f^μ \∂_μ + \dd f^a \∂_a$ is a $1$-form with values in the bulk tangent space $\TTℱ = \TTℳ ⊕ \VVℱ$.
+% In practice, it is usual to have a (local) trivialisation where $f : ℳ → F$ is no longer given as a section, but as a map into a fixed space $F$.
+% Under such a trivialisation, the derivative $\dd f = \dd f^a \∂_a$ no longer has no bulk components.
+% Thus, in the presence of a trivialisation, \cref{lem:covariant-derivative-rewritten} should be written
+% \begin{align}
+% 	\label{eqn:covder-of-trivialised-field}
+% 	∇f = \dd f + Γ^a|_f\∂_a
+% ,\end{align}
+% suppressing bulk components of $Γ_f$.
 % Computations are usually performed after a choice of (local) trivialisation --- but to reiterate, the expression \eqref{eqn:covder-of-trivialised-field} where $f : ℳ → F$ is not independent of trivialisation, whereas the previous sense of covariant derivative of a section $f : ℳ → ℱ$ is purely geometrical.
 
 
@@ -714,7 +722,7 @@ Linearity allows the covariant derivative to be expressed as the limit of a diff
 	since transport over a trivial path is the identity.
 \end{proof}
 
-For a linear connection, the components $Γ_μ{}^a|_p$ are linear with respect to the point $p ∈ 𝒱$, allowing the definition of a $3$-index component object
+For a linear connection, the components $Γ_μ{}^a|_p$ are linear with respect to the bulk vector $p ∈ 𝒱$, allowing the definition of the $3$-index components
 \begin{align}
 	Γ_μ{}^a{}_b ≔ Γ_μ{}^a|_{\ve_b}
 \end{align}

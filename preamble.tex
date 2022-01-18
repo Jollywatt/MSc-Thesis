@@ -8,7 +8,7 @@
 ]{scrbook}
 
 
-\newcommand{\notewidth}{4cm}
+\newcommand{\notewidth}{4.2cm}
 \newcommand{\notesep}{5mm}
 \usepackage[
 	\ifdebug showframe,\fi
@@ -59,6 +59,8 @@
 		{\marginnote{#2}[#1]}%
 	}
 	\makeatother
+
+
 
 
 
@@ -146,8 +148,21 @@
 
 
 \usepackage{caption}
+
 \setcapindent{0pt} % remove indentation for multiline (table) captions
-\captionsetup{font=footnotesize}
+\captionsetup{
+	font=footnotesize,
+}
+
+\DeclareCaptionJustification{raggedauto}{\Ifthispageodd{\raggedright}{\raggedleft}}% <- changed
+\DeclareCaptionStyle{marginfigure}{
+	font=footnotesize,
+	justification=raggedauto,
+}
+
+
+% \captionsetup{labelfont={bf}, font={it,footnotesize}, justification=raggedauto, singlelinecheck=false, position=above}
+
 
 \usepackage{enumitem}
 

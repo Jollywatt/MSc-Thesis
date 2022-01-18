@@ -17,11 +17,9 @@
 \usepackage{xparse}
 \usepackage{ifthen}
 \DeclarePairedDelimiterX{\setdelim}[1]{\{}{\}}{\setargs{#1}}
-\DeclarePairedDelimiterX{\dblsetdelim}[1]{\{\!\{}{\}\!\}}{\setargs{#1}}
 \NewDocumentCommand{\setargs}{>{\SplitArgument{1}{|}}m}{\setargsaux#1}
 \NewDocumentCommand{\setargsaux}{mm}{\IfNoValueTF{#2}{#1}{#1\nonscript\:\delimsize\vert\allowbreak\nonscript\:\mathopen{}#2}}%
 \newcommand{\set}[2][*]{\ifthenelse{\equal{\detokenize{#1}}{*}}{\setdelim*{#2}}{\setdelim[#1]{#2}}}
-\newcommand{\dblset}[2][*]{\ifthenelse{\equal{\detokenize{#1}}{*}}{\dblsetdelim*{#2}}{\setdelim[#1]{#2}}}
 
 
 % quaternions
@@ -72,7 +70,7 @@
 }
 
 % generator
-\newcommand{\gen}{\dblset}
+\newcommand{\gen}[1]{\set{\!\set{#1}\!}}
 
 % transpose superscript
 \newcommand{\transpose}{^{\mkern-1.5mu\mathsf{T}}}
