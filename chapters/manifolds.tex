@@ -313,31 +313,6 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 
 
 
-\subsubsection{Integral manifolds}
-
-It is also useful to have a higher-dimensional analogue to a section of the tangent bundle; i.e., an object which associates a subspace of $\TT_x ℳ$ to each point $x ∈ ℳ$.
-\begin{definition}
-	A $k$-dimensional \textdef{tangent subbundle} $𝒟 ⊆ \TTℳ$ is a vector bundle $\fibrebundle[π_S] {ℝ^k} 𝒟 ℳ$ where each fibre $𝒟|_x ≅ ℝ^k$ is a $k$-dimensional subspace of $\,\TT_xℳ$.
-\end{definition}
-A smooth vector field $𝒖 ∈ \secs(\TTℳ)$ may be viewed as a $1$-dimensional tangent subbundle.
-\begin{definition}
-	A submanifold $ℐ ⊆ ℳ$ is called an \textdef{integral manifold} of a tangent subbundle $𝒟$ if $\,\TT_xℐ \subseteq 𝒟|_x$ for all $x ∈ ℐ$.
-	The subbundle $𝒟$ is called \textdef{integrable} if there exist integral manifolds through each point.
-\end{definition}
-
-An integral curve of a vector field $𝒖$ through a point $x$ may be viewed as the $1$-dimensional integral manifold of the $1$-dimensional tangent subbundle described by $𝒖$.
-Indeed, any $1$-dimensional tangent subbundle is integrable, but higher-dimensional subbundles are not integrable in general.
-
-An integral manifold is \textdef{maximal} if $\TT_xℐ = 𝒟|_x$, meaning the manifold dimension of $ℐ$ is the dimension of $𝒟$.
-The integrability condition for maximal integral manifolds to exist is given by Frobenius' theorem, discussed in \cref{sec:Frobenius}.
-
-
-
-
-
-
-
-
 
 
 
@@ -774,7 +749,7 @@ For instance, given a connection on a vector bundle $𝒱$, we have the familiar
 	% ∇(𝒖⊗𝒗) &= \dd(𝒖⊗𝒗) + Γ_𝒖⊗𝒗 + 𝒖⊗Γ_𝒗
 	∇_μu^av^b &= ∂_μ(u^a v^b) + Γ_μ{}^a{}_c u^c v^b + u^a Γ_μ{}^b{}_c v^c
 .\end{align}
-Given a metric which is used to raise and lower indices, the covariant derivative on $𝒱$ extends to general type-$(p, q)$ tensors,
+Given a metric to raise and lower indices, a connection defined on $𝒱$ extends to general type-$(p, q)$ tensors,
 \begin{samepage}
 \begin{fullwidth}
 \begin{align}
