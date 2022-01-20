@@ -195,7 +195,200 @@ By direct calculation,
 where we substitute \cref{eqn:ideal-gens} on the second line.
 Therefore, $\dd\df Ω^a ∈ I$ if and only if the residual term, called the \textdef{connection $2$-form}
 \begin{align}
+	\label{eqn:curvature-2-form}
 	\df R^a{}_b ≔ \dd \df Γ^a{}_b + \df Γ^a{}_c ∧ \df Γ^c{}_b
 ,\end{align}
 vanishes.
 These $\df R^a{}_b$ measure the obstruction to integrability of the covariant derivative, and are identified as the primary object describing the connection's curvature.
+
+
+
+\section{Stokes' Theorem for Curved Connections}
+
+Another way of showing that parallel transport is path-independent if and only if the curvature \eqref{eqn:curvature-2-form} vanishes is by relating the holonomy of a loop to the curvature across a surface bounded by the loop.
+
+
+
+
+\subsection{Path-ordered exponentiation}
+
+An initial value problem of the form
+\begin{align}
+	\label{eqn:path-ordered-exp-ode}
+	\dv{U(t)}{t} = A(t)U(t)
+\end{align}
+with $U(0)$ given has the solution
+\begin{align}
+	U(t) = e^{\int_0^t dτ A(τ)} \, U(0)
+\end{align}
+provided that $A(t)$ commutes with itself at all other times, $[A(t), A(s)] = 0$.
+If $A(t)$ is not necessarily commutative, then the solution may still be written formally in the following way.
+
+By a first-order Taylor expansion, the value after an infinitesimal time-step $dt$ step is
+\begin{align}
+	U(dt) = U(0) + ∂_tU(0)dt = (1 + A(0)dt)U(0) = e^{A(0)dt} \, U(0)
+.\end{align}
+The value at a finite time $t$ is then recovered by composing steps as above, forming the \textdef{path-ordered exponential}
+\begin{align}
+	\label{eqn:path-ordrered-exp-solution}
+	U(t)U^{-1}(0) = \Pexpl[τ]\int_0^t dτ A(τ) ≔ \lim_{dt → 0} \prod_{t_i}^{t←0} e^{A(t_i)dt}
+,\end{align}
+where the product $\prod_{t_i}^{t←0}$ is over values $t ≥ t_i ≥ 0$ in steps of $dt$ where each exponential factor appears \emph{right-to-left} in order of increasing $t_i$.
+
+
+
+From the observation that $∂_t(U(t)U^{-1}(t)) = 0$ we obtain the `inverse' of the original differential equation,
+\begin{align}
+	\label{eqn:path-ordered-exp-ode-inv}
+	∂_tU(t)^{-1} = -U(t)^{-1}A(t)
+,\end{align}
+which is identical to \eqref{eqn:path-ordered-exp-ode} only transposed and substituting $U(t)^T \mapsto U(t)^{-1}$ and $A(t)^T \mapsto -A(t)$.
+Hence, \eqref{eqn:path-ordered-exp-ode-inv} has solution
+\begin{align}
+	U(t)^{-1} &= U(0)^{-1}\Pexpr[τ]\int_0^t dτ (-A(τ))
+\\	&= U(0)^{-1}\Pexpl[τ]\int_t^0 dτ A(τ)
+.\end{align}
+Hence, the left-to-right ordered exponential $\Pexpr$ is the same as a right-to-left $\Pexpl$ if the endpoints $0 ↔ t$ are swapped and the integrand $dτ \mapsto -dτ$ flips sign.
+
+\subsubsection{The transport operator as a path-ordered exponential}
+
+The transport operator may be solved explicitly in terms of a path-ordered exponential.
+If $γ : \RR → ℳ$ is a curve, then a vector $X|_{γ(0)}$ is parallel-transported along $γ$ if $∇_{\dot γ(s)} X^a|_{γ(s)} = 0$ for all $s$.
+This is equivalent to the partial differential system
+\begin{align}
+	% \pdv{X^a|_{γ(s)}}{s} = -Γ_μ{}^a{}_b|_{γ(s)} \dot γ^μ(s) X^b|_{γ(s)}
+	\pdv{X^a}{\dot γ^μ} = -Γ_μ{}^a{}_b \, X^a
+\end{align}
+restricted to the curve $γ(s)$.
+By the chain rule, multiplying by $\dot γ^μ(s)$ produces an ordinary differential equation in $s$,
+\begin{align}
+	\label{eqn:parallel-trans-ode}
+	\dv{X^a}{s} = -Γ_μ{}^a{}_b \dot γ^μ(s) X^a = -\df Γ^a{}_b(\vb{\dot γ}(s)) \, X^a
+\end{align}
+with both sides evaluated at $γ(s)$.
+\Cref{eqn:parallel-trans-ode} can be integrated from the initial data $X|_{γ(0)} = X_0$ to give
+\begin{align}
+	X^a|_{γ(s)} = \trans_{γ(s ← 0)}{}^a{}_b \, X_0^b
+\end{align}
+where $γ(b ← a)$ is the path along $γ$ from $γ(a)$ to $γ(b)$, and
+\begin{align}
+	\label{eqn:trans-pexp}
+	\trans_{γ(s ← 0)} = \Pexpl\int_γ (-\df Γ) = \Pexpr\int_s^0 ds \, \df Γ(\vb{\dot γ(s)})
+.\end{align}
+\Cref{eqn:trans-pexp} is the solution to \cref{eqn:transport-operator-derivative} along $γ$ with the initial data $\trans_{γ(0 ← 0)} = \op{id}$.
+
+
+
+\subsection{Surface-ordered exponentiation}
+
+
+
+
+\begin{theorem}[Stokes theorem for connection $1$-forms]
+	\label{thm:nast}
+	Let $γ : [0, 1] → ℳ$ be a contractable loop with start and end point $p$.
+	Let $h_λ$ be a contraction homotopy with $λ ∈ [0, 1]$ so that $h_0(x) = p$ and $h_1(x) = x$.
+	Define $ξ(λ, s) ≔ h_λ(γ(s))$ as the surface swept out by $γ$ under the contraction.
+	\begin{marginfigure}
+		\includefigure[1.15\columnwidth]{homotopy}
+		\caption{
+			The curve $γ$ and the surface of homotopy $ξ$.
+			The bold curve represents the portion of $h_λ \circ γ$ from parameter value $0$ to $s$.
+		}
+	\end{marginfigure}
+
+	Let $\df Γ$ be a connection $1$-form and let $U(λ, s) ≔ \trans_{ξ(λ, s ← 0)}$ be the group element resulting from parallel transport along the path $ξ(λ, s ← 0)$.
+	Then,
+	\begin{align}
+		\trans_{γ}
+		&= \Pexpl[s]\int_γ (-\df Γ )
+	\\	&= \Pexpr[λ]\int_0^1 dλ \int_0^1 ds \; U^{-1} \, \df R(∂_s ξ, ∂_λ ξ) \, U
+	,\end{align}
+	where $\df R = \dd\df Γ + \df Γ ∧ \df Γ$ is the curvature $2$-form.
+	Note that $U ≡ U(λ, s)$ and $ξ ≡ ξ(λ, s)$.
+
+	\toself{This awkwardly uses different path orderings. Bralić's is left-to-right.}
+\end{theorem}
+
+\begin{proof}
+	Define the abbreviations
+	\begin{align}
+		Γ_λ &≔ \df Γ(∂_λ ξ)
+	&	&\text{and}
+	&	Γ_s &≔ \df Γ(∂_s ξ)
+		\label{eqn:nast-working-shorthand}
+	,\end{align}
+	noting that $λ$ and $s$ are \emph{not} indices.
+	In full component form, these would be written, e.g.,
+	\begin{align}
+		(Γ_λ)^a{}_b \, |_{ξ(λ, s)} = Γ_μ{}^a{}_b \, |_{ξ(λ, s)} \pdv{ξ^μ(λ, s)}{λ}
+	.\end{align}
+	From \cref{lem:dtrans-is-Γ}, we have
+	\begin{align}
+		\eval{\pdv{U(λ, s)}{s}}_{s = 0} = \dv{s} \eval{\trans_{ξ(λ, s ← 0)}}_{s = 0} = - \df Γ(∂_s ξ)
+	\end{align}
+	where $ξ ≡ ξ(λ, s)$, which implies
+	\begin{align}
+		∂_s U &= -Γ_s \, U
+	&	&\text{and}
+	&	∂_s U^{-1} &= U^{-1}Γ_s
+	\end{align}
+	where $U ≡ U(λ, s)$.
+	From these two relations it follows easily that
+	\begin{align}
+		\label{eqn:nast-working.1}
+		∂_s\qty(U^{-1}∂_λ U)
+	&=	U^{-1}\qty(Γ_s ∂_λ U + ∂_λ∂_sU)
+	=	-U^{-1} (∂_λ Γ_s) \, U
+	\\\qqtext{and}	∂_s(U^{-1}Γ_λU)
+	&=	U^{-1}(Γ_sΓ_λ + ∂_sΓ_λ - Γ_λΓ_s)U
+	.\end{align}
+	The sum of the two equations above is
+	\begin{align}
+		∂_s(U^{-1}(∂_λ + Γ_λ)U) = U^{-1}(∂_s Γ_λ + Γ_s Γ_λ - (s ↔︎ λ)) \, U
+	.\end{align}
+	Note that
+	\begin{math}
+		∂_s Γ_λ = ∂_s(Γ_μ(∂_λ ξ)) = (∂_s Γ_μ) ∂_μ ξ^μ + Γ_μ \, ∂_s∂_λ ξ^μ
+	\end{math}
+	and similarly for $∂_λ Γ_s$, so that mixed partial derivatives cancel, leaving
+	\begin{align}
+		∂_s Γ_λ - ∂_λ Γ_s = (∂_s \df Γ)(∂_λ ξ) - (∂_λ \df Γ)(∂_s ξ)
+	.\end{align}
+	Putting this together, we have
+	\begin{align}
+		∂_s(U^{-1}(∂_λ + Γ_λ)U)
+		&= U^{-1} \qty((∂_s \df Γ)(∂_λ ξ) + \df Γ(∂_s ξ)\df Γ(∂_λ ξ) - (s ↔︎ λ)) \, U
+	\\	&= U^{-1} (\dd\df Γ + \df Γ ∧ \df Γ)(∂_s ξ, ∂_λ ξ) \, U
+	\\	&= U^{-1} \df R(∂_s ξ, ∂_λ ξ) \, U
+		\label{eqn:nast-working.2}
+	.\end{align}
+
+	Recall that $U$ and $U^{-1}$ are the group elements which parallel transport vectors along $ξ(λ, s ← 0)$ and back again, respectively.
+	Also, note that $\df R$ is a $\liealg{gl}(\manif V)$-valued $2$-form, which acts to infinitesimally transform vectors in $𝒱$.
+	With these in mind, it is clear that \cref{eqn:nast-working.2} is an infinitesimal linear map from the fibre $𝒱_p$ to itself.\sidenote{
+		Imagine the right-hand side of \cref{eqn:nast-working.2} acting on a vector $X$.
+		First, $X$ is transported by $U$ from $ξ(λ, 0) = p$ to $ξ(λ, s)$, then transformed infinitesimally by $\df R$, and finally transported back to the fibre at $p$ by $U^{-1}$.
+	}
+	Thus, it is well-defined to integrate \cref{eqn:nast-working.2} with respect to $s$, to obtain a finite linear transformation on $𝒱_p$.
+	% We will find that this is exactly the holonomy around $h_λ γ$.
+
+	Integrating the left-hand side of \cref{eqn:nast-working.2} yields
+	\begin{align}
+		\label{eqn:nast-working.3}
+		\int_0^1 ds \, U^{-1}(λ, 1)(∂_λ + Γ_λ)U(λ, 1)
+		= U^{-1}(λ, 1) ∂_λ U(λ, 1)
+	\end{align}
+	since $Γ_λ = \df Γ(∂_λ ξ(λ, s))$ vanishes at $s ∈ \set{0, 1}$ because $ξ(λ, 0) = ξ(λ, 1) = p$ is constant.
+	Thus, integrating both sides yields
+	\begin{align}
+		U^{-1}(λ, 1) ∂_λ U(λ, 1)
+		= \int_0^1 ds \, U^{-1} \df R(∂_s ξ, ∂_λ ξ) \, U
+	.\end{align}
+	This is an initial value problem of the form $∂_λ U(λ, 1) = U(λ, 1)A(λ)$, whose solution at $λ = 1$ may be given as the path-ordered exponential
+	\begin{align}
+		U(1, 1) = U(1, 0) \Pexpr\int_0^1 dλ \, A(λ)
+	\end{align}
+	where $A(λ)$ is the right-hand side of \cref{eqn:nast-working.3}.
+	Since $U(1, 1) = \trans_γ$ and $U(1, 0) = \op{id}$, this shows the right-hand side of the theorem.
+\end{proof}

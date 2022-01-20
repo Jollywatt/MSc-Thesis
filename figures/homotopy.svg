@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -39,14 +39,14 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:zoom="8"
-     inkscape:cx="255.12924"
-     inkscape:cy="263.18501"
+     inkscape:cx="290.12924"
+     inkscape:cy="168.18501"
      inkscape:window-width="1920"
      inkscape:window-height="1015"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g3221"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      inkscape:snap-object-midpoints="true"
      inkscape:snap-smooth-nodes="false"
@@ -429,14 +429,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="90.058884"
+       x="79.437172"
        y="125.33949"
        id="text5882-0-0"><tspan
          sodipodi:role="line"
          id="tspan5880-3-2"
          style="font-size:3.88056px;stroke-width:0.264583"
-         x="90.058884"
-         y="125.33949">$γ = ξ(1)$</tspan></text>
+         x="79.437172"
+         y="125.33949">$γ(s) = ξ(1, s)$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
