@@ -194,8 +194,6 @@ where we have identified the one-dimensional vector space $\TT_{x^i}\RR$ with $\
 
 
 
-
-
 \section{Fibre Bundles}
 \label{cha:fibre-bundles}
 
@@ -263,7 +261,7 @@ For example,
 \end{itemize}
 
 
-\subsubsection{Trivialisations and coordinates}
+\subsection{Trivialisations and coordinates}
 
 The bulk $ℱ$ of a fibre bundle $\fibrebundle F ℱ ℳ$ is itself a manifold (of dimension $\dim ℱ = \dim ℳ + \dim F$) so we may always prescribe local coordinates on $ℱ$.
 If we already have coordinates $\set{x^μ}$ on the base $ℳ$ and $\set{x^a}$ on a fibre $F$, then we often want to use the same coordinates $\set{x^μ, x^a}$ to describe the bulk $ℱ$.
@@ -291,7 +289,7 @@ Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}
 
 
 
-\subsubsection{Sections of fibre bundles}
+\subsection{Sections of fibre bundles}
 
 
 In the language of fibre bundles, a field $f : ℳ → F$ is replaced by a \emph{section}, which is a ``vertical'' map $f : ℳ → ℱ$ into the bulk $ℱ$ such that $f(x) ∈ F_x$.
@@ -310,6 +308,27 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 
 
 
+\subsection{Exterior differential forms}
+
+\Cref{sec:exterior-forms} defined exterior forms $\forms(V, A)$ as alternating multilinear maps from the fixed vector space $V$ into $A$.
+Similarly, the differential of a map $\dd f : \TT ℳ → \TT 𝒩$ is an object that takes a vector argument $𝒖 ∈ \TTℳ$, like an exterior $1$-form, except that the entire tangent bundle $\TT ℳ$ is not a vector space.
+
+Exterior forms, which are alternating maps from a fixed space $\TA{V}$, can be extended to exterior \emph{differential} forms, which exist on a manifold, defining alternating maps from $\TA{(\TT_x ℳ)}$ at each $x ∈ ℳ$.
+
+Although the entire bundle $\TT Μ$ is not a vector space, the space of vector sections $\secs(\TT Μ)$ is.
+Hence, when viewed as a map $\dd f : \secs(\TT ℳ) → \secs(\TT 𝒩)$ the differential $\dd f ∈ \forms[1](\secs(\TT ℳ), \secs(\TT 𝒩))$ is a $\secs(\TT 𝒩)$-valued exterior $1$-form in the sense of \cref{def:exterior-form}.
+This mouthful may be eased by defining the notation
+\begin{align}
+	\forms(ℳ, \manif E) ≔ \forms(\secs(\TT ℳ), \secs(\manif E))
+\end{align}
+for some vector bundle $\fibrebundle ℳ {\manif E} V$.
+As with exterior forms, the wedge product is defined as in \cref{eqn:wedge-of-forms}.
+
+An element of $\forms[k](ℳ, \manif E)$ is called an \textdef{$\manif E$-valued exterior differential $k$-form}, where `differential' distinguishes it as an object on a manifold.
+Scalar-valued exterior differential forms are elements of $\forms[k](ℳ) ≔ \forms[k](ℳ, ℳ × \RR)$, where $\fibrebundle[π] ℳ {ℳ × \RR} \RR$ is the trivial line bundle with projection $π(x, λ) = λ$.
+
+
+We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior differential form.
 
 
 
