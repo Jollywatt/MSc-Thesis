@@ -289,8 +289,9 @@ where $γ(b ← a)$ is the path along $γ$ from $γ(a)$ to $γ(b)$, and
 	Let $γ : [0, 1] → ℳ$ be a contractable loop with start and end point $p$.
 	Let $h_λ$ be a contraction homotopy with $λ ∈ [0, 1]$ so that $h_0(x) = p$ and $h_1(x) = x$.
 	Define $ξ(λ, s) ≔ h_λ(γ(s))$ as the surface swept out by $γ$ under the contraction.
+	
 	\begin{marginfigure}
-		\includefigure[1.15\columnwidth]{homotopy}
+		\includefigure[1.1\columnwidth]{homotopy}
 		\caption{
 			The curve $γ$ and the surface of homotopy $ξ$.
 			The bold curve represents the portion of $h_λ \circ γ$ from parameter value $0$ to $s$.
@@ -392,3 +393,16 @@ where $γ(b ← a)$ is the path along $γ$ from $γ(a)$ to $γ(b)$, and
 	where $A(λ)$ is the right-hand side of \cref{eqn:nast-working.3}.
 	Since $U(1, 1) = \trans_γ$ and $U(1, 0) = \op{id}$, this shows the right-hand side of the theorem.
 \end{proof}
+
+
+\begin{corollary}
+	Parallel transport is path-independent if and only if curvature vanishes.
+\end{corollary}
+\begin{proof}
+	If the curvature vanishes everywhere, then by \cref{thm:nast} the holonomy around any loop is trivial, implying the transport operator between two fixed points is path-independent.
+
+	Conversely, if parallel transport is path-independent, then the transport operator around any loop $γ$ is the identity.
+	By \cref{thm:nast}, this implies that the total curvature on a surface bounded by $γ$ is zero.
+	But since the surface and loop are arbitrary, the curvature must vanish everywhere.
+\end{proof}
+

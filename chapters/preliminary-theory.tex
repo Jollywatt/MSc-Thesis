@@ -526,6 +526,9 @@ With respect to a basis $\set{\ve_i}$ of $V$, the metric components
 \end{math}
 are defined.
 Non-degeneracy means that $\det η ≠ 0$ when viewing $η = [η_{ij}]$ as a matrix, and in this case the matrix inverse $η^{ij}$ is also defined and satisfies $η^{ik}η_{kj} = δ^i_j$.
+Throughout, we will not have need to consider degenerate metrics,\sidenote{
+	Degenerate signatures find use in computer graphics, especially \emph{projective geometric algebra} \cite{hestenes1991pga,vince2008ga-graphics}.
+} and so assume non-degeneracy.
 
 A vector space $V$ together with a metric $η$ is called an \textdef{inner product space} $(V, η)$.
 Alternatively, instead of a metric, an inner product space may be constructed with a quadratic form:
@@ -617,7 +620,6 @@ A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a
 	for any $k$-vectors $A, B ∈ \EA[k]{V}$.
 \end{definition}
 
-The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates each pair of fixed-grade subspaces of the same dimension.
-In particular, the scalars and pseudoscalars, $\star 1 = \vol$.
+The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates each pair of fixed-grade subspaces of the same dimension; in particular, scalars with pseudoscalars, $\star 1 = \vol$.
 
 \todo{Seems incomplete...}

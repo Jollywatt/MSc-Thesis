@@ -29,10 +29,10 @@ The last century has seen many other mathematical objects be applied to the stud
 Among these tools is the \emph{geometric algebra}, invented\sidenote{
 	Clifford algebra (an alias) was independently discovered by Rudolf Lipschitz two years later \cite{lipschitz1880clifford-alg}. 
 	Lipschitz was the first to use them to the study the orthogonal groups.
-} by William Clifford in 1878 \cite{clifford1878grassmann}, which constinute the main theme of this thesis.
+} by William Clifford in 1878 \cite{clifford1878grassmann} building upon the work of Hamilton and Grassmann, which constitute the main theme of this thesis.
 
 Geometric algebra remains largely unknown in the physics community, despite arguably being far superior for algebraic descriptions of rotations than traditional matrix techniques.
-To appreciate this, it is interesting to glean some of the history that led to this (perhaps unfortunate) circumstance.
+To appreciate this, it is interesting to glean some of the history that led to the relative obscurity of Clifford algebras.
 
 \subsubsection{The quest for an optimal formalism for rotations}
 
@@ -40,27 +40,35 @@ Mathematics has seen the invention of a variety of vector formalisms since the 1
 Complex numbers had been known for a long time\sidenote{
 	Since Wessel, Argand and Gauss in the 1700s \cite{chappell2016quat-history}.
 } to be useful descriptions of planar rotations.
-William Hamilton's efforts to extend the same ideas into three dimensions by inventing a ``multiplication of triples'' bore fruition in 1843, when the quaternion algebra
+William Hamilton's efforts to extend the same ideas into three dimensions by inventing a ``multiplication of triples'' bore fruition in 1843 when the quaternion algebra $\HH$, defined by
 \begin{align}
 	\ii^2 = \jj^2 = \kk^2 = \ii\jj\kk = -1
-\end{align}
-came to him in revelation.
+,\end{align}
+famously came to him in revelation.
 In following decades, William Gibbs developed the vector calculus of $\RR^3$ with the usual vector cross and dot products.
 The ensuing vector algebra ``war'' of 1890--1945 saw Hamilton's prized\sidenote{
-	Hamilton had dedicated following in the time that quaternions were in fasion: the \emph{Quaternion Society} existed from 1895 to 1913.
-} quaternion algebra $\HH$, hailed as the optimal tool for describing $3$d rotations, struggle for popularity against Gibbs' easier-to-visualise vector calculus.
-Gibbs' eventually won, and today quaternions are generally regarded as an old-fashioned mathematical curiosity.
+	Hamilton had a dedicated following in the time: the \emph{Quaternion Society} existed from 1895 to 1913.
+} quaternion algebra was pitted against Gibbs' easier\hyp to\hyp visualise vector calculus.
+Gibbs' calculus eventually dominated in pedagogy, and today quaternions are generally regarded as an old-fashioned mathematical curiosity.
 
-Despite this, various authors, in appreciating the elegant handling of $\RR^3$ rotations, have tried coercing quaternions into Minkowski space $\RR^{1,3}$ for application to special relativity \cite{silberstein1912quat-sr,deleo1996quat-sr,dirac1944quat-sr}.
-This has been done in various ways, but usually by complexifying $\HH$ into an eight-dimensional algebra $\CC\otimes\HH$ and then restricting the number of degrees of freedom as seen fit \cite{berry2020quat-sr,berry2021quat-sr}.
+Despite this, various authors, in appreciating quaternions' elegant handling of $\RR^3$ rotations, have tried coercing them into Minkowski space $\RR^{1,3}$ for application to special relativity \cite{silberstein1912quat-sr,deleo1996quat-sr,dirac1944quat-sr}.
+This has been done in various ways, usually by complexifying $\HH$ into an eight-dimensional algebra $\CC\otimes\HH$ and then restricting the number of degrees of freedom as seen fit \cite{berry2020quat-sr,berry2021quat-sr}.
 However, it is fair to say that quaternionic formulations of special relativity never gained notable traction.
+
 Today, relativists are most familiar with tensor calculus, differential forms and the Dirac $γ$-matrix formalism, and have relatively little to do with quaternions or derived algebras.\sidenote{
 	See \cite{chappell2016quat-history,altmann1989quat-history} for more historical discussion of quaternions and their adoption in physics.
-} 
-
-Arguably, this outcome of history is unfortunate: matrix descriptions of rotations cannot match the efficiency of quaternions, yet quaternions remain \emph{peculiar} and intrinsically tied to three dimensions.
-An answer to this discontented call is the geometric algebra.
-
-\todo{
-	Round intro off, outline material
 }
+Arguably, this outcome of history is unfortunate: matrix descriptions of rotations cannot match the efficiency of quaternions, yet quaternions remain `peculiar' to many and are intrinsically tied to three dimensions.
+
+In this respect, geometric algebra represents a perfect compromise.
+Its rotor formulation of rotations is algebraically efficient like the quaternions, but is not specific to $\RR^3$ --- indeed geometric algebra is general to $n$-dimensions spaces of arbitrary metric signature.
+Furthermore, objects like vectors, bivectors and $k$-vectors, familiar from exterior differential calculus, are first-class objects in the geometric algebra, and are even often invertible with respect to the algebra's geometric product.
+In quantum theory, Dirac's $γ$-matrix formalism is a matrix representation of a geometric algebra, and although some physicists come away with the impression that Clifford algebra is inherently quantum-mechanical, it is not; geometric algebra is applicable across vast areas of geometry and physics.\sidenote{
+	See \cite{doran2003ga} for discussion of diverse applications of geometric algebra.
+}
+
+\Cref{part:1} of this thesis introduces geometric algebra with emphasis on its relation to other common formalisms in physics.
+The principle focus is then on its applications to special relativity, where Lorentz transformations are described in the rotor formalism.
+In \cref{cha:bch}, this leads to a novel technique for composing Lorentz transformations in terms of rotor generators, also explicated in \cite{wilson2021ga-bch}.
+Later, the focus is on calculus and the extension of the ideas of \cref{part:1} to manifolds and general relativity in \cref{part:2}.
+\todo{Summarise \cref{part:2} better.}
