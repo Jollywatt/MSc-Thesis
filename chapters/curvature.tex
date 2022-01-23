@@ -207,7 +207,10 @@ These $\df R^a{}_b$ measure the obstruction to integrability of the covariant de
 
 Another way of showing that parallel transport is path-independent if and only if the curvature \eqref{eqn:curvature-2-form} vanishes is by relating the holonomy of a loop to the curvature across a surface bounded by the loop.
 
-
+% This is done by deriving a Stokes-like theorem for the special case of a connection $1$-form, using a
+% \begin{align}
+% 	\text{``} \int_Σ \df R = \oint_{∂Σ} \df Γ \text{''}
+% \end{align}
 
 
 \subsection{Path-ordered exponentiation}
@@ -275,7 +278,7 @@ where $γ(b ← a)$ is the path along $γ$ from $γ(a)$ to $γ(b)$, and
 	\label{eqn:trans-pexp}
 	\trans_{γ(s ← 0)} = \Pexpl\int_γ (-\df Γ) = \Pexpr\int_s^0 ds \, \df Γ(\vb{\dot γ(s)})
 .\end{align}
-\Cref{eqn:trans-pexp} is the solution to \cref{eqn:transport-operator-derivative} along $γ$ with the initial data $\trans_{γ(0 ← 0)} = \op{id}$.
+\Cref{eqn:trans-pexp} is the solution to \cref{eqn:trans-ode} along $γ$ with the initial data $\trans_{γ(0 ← 0)} = \op{id}$.
 
 
 

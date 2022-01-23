@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.0.2 (e86c870879, 2021-01-15), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'ehresmann-connection.pdf' (pdf, eps, ps)
+%% Accompanies image file 'connection-map.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{126.60945047bp}%
+    \setlength{\unitlength}{125.8582711bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.36140321)%
+  \begin{picture}(1,1.07282807)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{ehresmann-connection.pdf}}%
-    \put(0.11655727,0.2272944){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$ℳ$\end{tabular}}}}%
-    \put(0.32903992,0.16938429){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$π(p)$\end{tabular}}}}%
-    \put(0.27453506,0.7795318){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H_p$\end{tabular}}}}%
-    \put(0.1303969,1.19365987){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{π(p)}$\end{tabular}}}}%
-    \put(0.66754504,1.11750121){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$ℱ$\end{tabular}}}}%
-    \put(0.47215512,0.68513767){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p$\end{tabular}}}}%
-    \put(0.44762238,0.95555666){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V_p$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{connection-map.pdf}}%
+    \put(0.36575671,0.22467173){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{connection-map.pdf}}%
+    \put(0.27831133,0.67026581){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f(x)$\end{tabular}}}}%
+    \put(0.14208204,0.10371129){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$ℳ$\end{tabular}}}}%
+    \put(0.1453218,0.94248412){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H_{f(x)}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{connection-map.pdf}}%
+    \put(0.54695284,0.67972429){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-Γ_𝒖(f)$\end{tabular}}}}%
+    \put(0.6015074,0.16855109){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
