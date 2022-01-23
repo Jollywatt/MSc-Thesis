@@ -337,7 +337,7 @@ We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior dif
 
 We have seen that it is more natural to describe physical fields in the language of fibre bundles rather than simply as maps into a fixed codomain.
 However, with a field $f ∈ \secs(ℱ)$ now formulated as a section of a fibre bundle, it no longer makes sense to directly compare values $f|_x$ at different points $x ∈ ℳ$, since each value exists in its own fibre.
-But the ability to compare across fibres is desirable, particularly because a notion of derivative requires comparing values across `neighbouring' fibres.
+But the ability to compare across fibres is desirable, particularly because a notion of derivative requires comparing values across `infinitesimally neighbouring' fibres.
 To accomplish this, the additional structure of a \emph{connection} on the fibre bundle is required; this then defines the \emph{covariant derivative} of a section.
 
 A trivial example of a connection is the one associated with (the tangent bundle of) Euclidean space.
@@ -347,7 +347,7 @@ In this case, tangent vectors at a base point may be \emph{parallel transported}
 This defines an isomorphism between every tangent space and tangent space at the origin, which is a connection on $\TT \RR^n$.
 
 We may try to define connections on general fibre bundles in this way, by choosing an isomorphism from every fibre to a single `reference' fibre.
-This is the same as choosing a trivialisation $ℱ → ℳ × F$, which identifies every fibre with the reference fibre $F$ (equivalent to prescribing global coordinates on the bundle).
+This is the same as choosing a trivialisation $ℱ → ℳ × F$, which identifies every fibre with $F$ (equivalent to prescribing global coordinates on the bundle).
 However, defining a connection by a trivialisation like this is a needlessly strict requirement, and is of course impossible to do globally on non-trivial bundles.
 
 For example, the tangent bundle of the sphere $\TT \Sphere^2$ is non-trivial, so it is impossible to give a globally smooth identification of tangent spaces.\sidenote{
@@ -357,7 +357,7 @@ For example, the tangent bundle of the sphere $\TT \Sphere^2$ is non-trivial, so
 }
 However, it is always possible to define a connection \emph{locally} on the sphere, since local trivialisations always exist.
 In other words, tangent vectors on the sphere can be parallel transported over sufficiently short paths, since locally the sphere looks like the Euclidean plane.
-This generalises to all smooth manifolds: To define a connection, it is only necessary to specify how values are parallel-transported to `neighbouring' fibres.
+This generalises to all smooth manifolds: To define a connection, it is only necessary to specify how values are parallel-transported in an infinitesimal manner.
 
 
 
@@ -396,11 +396,12 @@ On the other hand, a \emph{connection} specifies how the value $p ∈ ℱ$ chang
 	}
 	\label{fig:ehresmann-connection}
 \end{marginfigure}
-Note that, while the tangent bundle $\TT ℱ$ and vertical bundle $\VV ℱ$ are canonical constructions, the choice of a horizontal bundle $H$ is not: there may be many distinct meanings of parallel transport on a given bundle.
+Note that, while the tangent bundle $\TT ℱ$ and vertical bundle $\VV ℱ$ are canonical constructions, the choice of a horizontal bundle $H$ is not: there may be many distinct meanings of parallel transport on a given bundle, and so many distinct horizontal bundles.
 
 
 
-The requirement that $H_p$ be complimentary to $\VV_p ℱ$ means that $H_p ∩ \VV_p ℱ = \set{\symbf 0}$, and hence the restriction of $\dd π : \TT_pℱ \biject \TT_{π(p)}ℳ$ to $H_p ⊆ \TT_pℱ$ is an isomorphism.\sidenote{
+The requirement that $H$ be complimentary to $\VV ℱ$ means that $H_p ∩ \VV_p ℱ = \set{\symbf 0}$ at each $p ∈ ℱ$.
+This means the restriction of $\dd π : \TT_pℱ \biject \TT_{π(p)}ℳ$ to $H_p ⊆ \TT_pℱ$ is an isomorphism.\sidenote{
 	Using the fact that $\ker \dd π = \VV ℱ$, implying $\ker \dd π|_{H_p} = {
 	\symbf 0}$.
 }
@@ -435,7 +436,7 @@ This proves to be a useful construction:
 		Γ(f)|_x &≔ -\dd π|_{H_{f(x)}}^{-1}
 	.\end{align}
 \end{definition}
-The horizontal lift of a section $f$ is a horizontal-valued $1$-form $Γ(f) ∈ \forms[1](ℳ, H)$, whose action on tangent vectors $𝒖$ we may write as $Γ_𝒖(f) ≔ Γ(f)(𝒖)$.
+The horizontal lift of a section $f$ is a horizontal-valued $1$-form $Γ(f) ∈ \forms[1](ℳ, H)$, whose action on tangent vectors $𝒖$ we may write as $Γ_𝒖(f) ≔ Γ(f)(𝒖)$, and similarly for a a point $p$.
 	
 % 	 takes sections to horizontal-valued $1$-forms defined by
 % 	\begin{align}
@@ -445,8 +446,8 @@ The horizontal lift of a section $f$ is a horizontal-valued $1$-form $Γ(f) ∈ 
 % Notationally, from this definition we may write both a $1$-form $Γ(f) ∈ \forms[1](ℳ, H)$ given a fibre section $f$, and a map $Γ_𝒖 : \secs(ℱ) → \secs(H)$ given a tangent section $𝒖$.
 
 The horizontal lift is designed so that tangent vectors $𝒖$ are `lifted' to horizontal bulk vectors $-Γ_𝒖(f)$ located on the section $f$ (see \cref{fig:connection-map}).
-`Lifted' means $-Γ_𝒖(f)$ is `above' its base projection $𝒖$, so that we have $-\dd π (Γ_𝒖(f)) = 𝒖$.
-The minus sign is present to later align with the convention that a plus sign is present in the covariant derivative of a vector section, e.g., $\df ∇ X = \dd X + \df Γ X$.
+`Lifted' means $-Γ_𝒖(f)$ projects onto $𝒖$, so that we have $-\dd π (Γ_𝒖(f)) = 𝒖$.
+The minus sign is present to later align with the convention that a plus sign is present in the covariant derivative of a vector section, e.g., `$∇_μ X^a = ∂_μ X^a + Γ_μ{}^a{}_b X^b$'.
 
 
 
@@ -455,7 +456,7 @@ The minus sign is present to later align with the convention that a plus sign is
 
 With a connection defined on a bundle, a value in the bulk can be \textdef{parallel transported} between fibres so that the motion is everywhere horizontal with respect to the connection.
 
-Thus, a path $γ : [0, 1] → ℳ$ representing the motion of a value $p_0 ∈ ℱ$ from $γ(0) = π(p_0)$ can be \textdef{lifted} to a horizontal path $p_0 : [0, 1] → ℱ$ in the bulk.
+More precisely, a path $γ : [0, 1] → ℳ$ representing the motion of a value $p_0 ∈ ℱ$ from $γ(0) = π(p_0)$ can be \textdef{lifted} to a horizontal path $p_0 : [0, 1] → ℱ$ in the bulk.
 This path is `above' $γ$ in the sense that $π(p_γ(λ)) = γ(λ)$, and `horizontal' in the sense that $\dd p_γ(λ) ∈ H_{p_γ(λ)}$, for all $λ ∈ [0, 1]$ (see \cref{fig:lifted-path})
 In other words, $p_γ$ is a one-dimensional integral manifold of the connection $H$ restricted to the `wall' $π^{-1}(γ) ⊂ ℱ$.
 
@@ -494,7 +495,7 @@ This makes the transport operator a homomorphism from the groupoid of directed p
 
 
 
-Parallel transport along infinitesimally short paths can be related to the horizontal lift.
+Parallel transport along infinitesimally short paths can be related to the horizontal lift:
 \begin{lemma}
 	\label{lem:trans-ode}
 	The transport operator along a path $γ$ satisfies the ordinary differential equation
@@ -535,38 +536,49 @@ Parallel transport along infinitesimally short paths can be related to the horiz
 
 As we will see in \cref{sec:specialised-bundles}, for a vector bundle, the composition in \cref{eqn:trans-ode} is just matrix multiplication, and the resulting linear differential equation can be solved explicitly.
 
-
+Evaluating \cref{lem:trans-ode} at $λ = 0$ yields the following useful result.
+\begin{corollary}
+	\label{lem:dtrans-is-hlift}
+	Let $γ : [0, 1] → ℳ$ be a path and let $p ∈ ℱ_{γ(0)}$.
+	\begin{align}
+		\dv{λ} \trans_{γ(λ ← 0)} p \, \bigg|_{λ = 0} = -Γ_{\vb{\dot γ}(0)}(p)
+	\end{align}
+\end{corollary}
 
 \subsection{Covariant differentiation}
 
-We have seen that a choice of connection determines which tangent vectors in the bulk of a bundle are ``horizontal''.
-This also defines the \textdef{covaraint derivative} as the rate of change of a section with respect to the connection's horizontal, in a coordinate free way.
+We have seen that a choice of connection $H ⊂ \TT ℱ$ determines which tangent vectors in the bulk of a bundle are horizontal.
+This in turn defines the coordinate-independent \textdef{covaraint derivative} as the rate of change of a section with respect to the connection's horizontal.
 
-
-To decompose vectors into horizontal and vertical components according to $H$, we define the linear \textdef{projection} and \textdef{rejection} maps
+To decompose vectors into horizontal and vertical components according to $H$, we employ the \textdef{projection} and \textdef{rejection} maps
 \begin{align}
 	\label{eqn:proj-rej}
 	\op{proj}_{H_p} : \TT_p ℱ → H_p
 	\qqtext{and}
 	\op{rej}_{H_p} : \TT_p ℱ → \VV_p ℱ
 \end{align}
-satisfying $\op{proj}_{H_p} 𝒖 + \op{rej}_{H_p} 𝒖 = 𝒖 ∈ \TT_pℱ$.
+defined by $\op{proj}_{H_p} 𝒖 + \op{rej}_{H_p} 𝒖 = 𝒖 ∈ \TT_p ℱ$ and idempotence.
 
 
-We expect a submanifold $f$ of $ℱ$ (e.g., a curve or section) to have vanishing covariant derivative if the tangent space is horizontal (i.e., $\dd f$ everywhere lies in $H$).
-In other words, $f$ is covariantly constant if it is an integral manifold of the connection $H ⊆ \TTℱ$.
-The covariant derivative then measures the failure of $f$ to be covariantly constant; i.e., the rate of change in $f$ relative to the connection's horizontal.
+% We expect a submanifold $f$ of $ℱ$ (e.g., a curve or section) to have vanishing covariant derivative if the tangent space is horizontal (i.e., $\dd f$ everywhere lies in $H$).
+% In other words, $f$ is covariantly constant if it is an integral manifold of the connection $H ⊆ \TT ℱ$.
+% The covariant derivative then measures the failure of $f$ to be covariantly constant; i.e., the rate of change in $f$ relative to the connection's horizontal.
 
 \begin{definition}
 	\label{def:covariant-derivative-on-fibre-bundle}
-	The \textdef{covariant derivative} $\df ∇f : \TT_x ℳ → \VV_{f(x)} ℱ$ of a section $f ∈ \secs(ℱ)$ is defined by
+	% The \textdef{covariant derivative} $\df ∇f : \TT_x ℳ → \VV_{f(x)} ℱ$ of a section $f ∈ \secs(ℱ)$ is defined by
+	The \textdef{covariant derivative} $\df ∇f ∈ \forms[1](ℳ, \VV ℱ) $ of a section $f ∈ \secs(ℱ)$ is defined by
 	\begin{align}
 		% ∇f &: \TT_p ℳ → \VV_{f(p)} ℱ
 		\label{eqn:covder}
 		\df ∇f &= \op{rej}_H{} ∘ \dd f
 	.\end{align}
 \end{definition}
-\Cref{eqn:covder} is written as a vertical-valued $1$-form.
+\Cref{eqn:covder} is a vertical-valued $1$-form, i.e., a linear map
+\begin{math}
+	\df ∇f|_x : \TT_x ℳ → \VV_{f(x)} ℱ
+\end{math}
+defined at each $x ∈ ℳ$.
 Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads
 \begin{align}
 	∇_𝒖f ≔ \df ∇f(𝒖) = \op{rej}_{H_{f(x)}} \dd f(𝒖) ∈ \VV_{f(x)} ℱ
@@ -583,7 +595,7 @@ Thus, the covariant derivative $∇_𝒖f ∈ \VV_{f(x)}ℱ$ is the vertical pro
 	\begin{align}
 		∇_𝒖 f = \dd f(𝒖) + Γ_𝒖(f) 
 	,\end{align}
-	where $\dd f$ is the push-forward of $f ∈ \secs(ℱ)$ and $Γ$ is the connection map as in \cref{def:connection-map}.
+	where $\dd f$ is the push-forward of $f ∈ \secs(ℱ)$ and $Γ$ is the horizontal lift as in \cref{def:connection-map}.
 \end{lemma}
 
 \begin{marginfigure}
@@ -611,7 +623,7 @@ Thus, the covariant derivative $∇_𝒖f ∈ \VV_{f(x)}ℱ$ is the vertical pro
 	\begin{align}
 		\op{proj}_{H_p} = \dd π|_{H_p}^{-1} ∘ \dd π
 	.\end{align}
-	Finally, because $f : ℳ → ℱ$ is a section, $π ∘ f = \op{id}$ and so
+	Finally, because $f$ is a section, $π ∘ f = \op{id}$ and so
 	\begin{math}
 		\dd π ∘ \dd f = \op{id}
 	\end{math}
@@ -696,10 +708,10 @@ with base components of $\dd f(𝒖)$ and $Γ_𝒖(f)$ suppressed.\sidenote{
 	In practice, one usually works with a (local) trivialisation in which $f : ℳ → F$ is given as a field.
 	Then, $\dd f = \dd f^a \, \∂_a$ has no base components anyway, so we take $Γ_μ(f) = Γ_μ{}^a(f) \, \∂_a$.
 }
-Note that $f ∈ \secs(ℱ)$ need not be a vector section of a linear bundle --- \cref{eqn:covder-comps-general-bundle} is general to smooth fibre bundles.
+Note that $f$ need not be a vector section of a linear bundle --- \cref{eqn:covder-comps-general-bundle} is general to smooth fibre bundles.
 
 
-\section{Structure Preserving Connections}
+\subsection{Structure--preserving connections}
 
 So far, we have treated connections in the setting of a general fibre bundle, in which fibres have the minimal structure of a smooth manifold.
 We now consider connections and their associated covariant derivatives on vector bundles with more or less structure, such as metrics or bilinear products.
@@ -708,24 +720,28 @@ We now consider connections and their associated covariant derivatives on vector
 
 The transport operator over a path in a general fibre bundle is some invertible map between the two fibres rooted at the path's endpoints.
 For a vector bundle, we require this to be a linear map.
-By \cref{thm:dtrans-ode}, this means the horizontal lift is also linear in its fibre argument,
+By \cref{lem:trans-ode}, this means the horizontal lift is also linear in its fibre argument,
 \begin{math}
-	Γ(λX) = λ Γ(X)
+	\df Γ(λX) = λ \df Γ(X)
 .\end{math}
+This means we may regard $Γ_𝒖$ as a matrix which acts on vectors by matrix multiplication, and $\df Γ$ as a matrix-valued $1$-form,
+\begin{align}
+	\df Γ X ≔ \df Γ(X)
+.\end{align}
 
 If $\set{\ve_a}$ is a basis for some vector bundle $\fibrebundle V 𝒱 ℳ$, then we may introduce the $3$-component \textdef{connection coefficients},
 \begin{align}
-	Γ_μ{}^a{}_b = Γ_μ{}^a(\ve_b)
+	Γ_μ{}^a{}_b ≔ Γ_μ{}^a \ve_b
 .\end{align}
-We may convert between basis-independent and component forms like so:
+We may convert between basis-free and component forms like so:
 \begin{align}
-	Γ_𝒖(X) = u^μ \, Γ_μ{}^a{}_b \, X^b \, \ve_a
+	Γ_𝒖 X = u^μ \, Γ_μ{}^a{}_b \, X^b \, \ve_a
 \end{align}
 
 Linearity also allows the covariant derivative to be expressed as the limit of a difference, similar to the usual analytical definition of the derivative of a real function.
 \begin{lemma}
 	\label{lem:trans-and-covariant-der}
-	If $γ : [0, 1] → ℳ$ is a path and $𝑿 ∈ \secs_γ(𝒱)$ is a smooth vector section defined on $γ$, then
+	If $γ : [0, 1] → ℳ$ is a path and $X ∈ \secs_γ(𝒱)$ is a smooth vector section defined on $γ$, then
 	\begin{align}
 		∇_{\vb{\dot γ}(0)} X|_{γ(0)}
 		&= \lim_{ε → 0} \frac{X|_{γ(ε)} - \trans_{γ(ε ← 0)}X|_{γ(0)}}{ε}
@@ -733,25 +749,59 @@ Linearity also allows the covariant derivative to be expressed as the limit of a
 	.\end{align}
 \end{lemma}
 \begin{proof}
-	Using \cref{lem:dtrans-is-Γ}, the right-hand side is equal to
+	Using \cref{lem:dtrans-is-hlift}, the right-hand side is equal to
 	\begin{align}
-		\df{\dd X}(\vb{\dot γ}(0)) + \df Γ(\vb{\dot γ}(0)) \trans_{γ(0←0)} X
-		= (\df{\dd X} + \df Γ X)(\vb{\dot γ}(0)) = ∇_{\vb{\dot γ}(0)} X
+		\dd X(\vb{\dot γ}(0)) + Γ_{\vb{\dot γ}(0)}X
 	,\end{align}
-	since transport over a trivial path is the identity.
+	which by \cref{lem:covariant-derivative-rewritten} is equal to $∇_{\vb{\dot γ}(0)} X|_{γ(0)}$.
 \end{proof}
 
-\todo{Corollary for dtrans at $λ = 0$}
-
-For a linear connection, the components $Γ_μ{}^a|_p$ are linear with respect to the bulk vector $p ∈ 𝒱$, allowing the definition of the $3$-index components
-\begin{align}
-	Γ_μ{}^a{}_b ≔ Γ_μ{}^a|_{\ve_b}
-\end{align}
-where $\set{\ve_a}$ form a basis of the fibre vector space.
 
 
 \subsubsection{Metric compatibility}
 
+A linear connection on a vector bundle $\fibrebundle V 𝒱 ℳ$ is called \textdef{metric compatible} if for any vectors $X, Y ∈ 𝒱$,
+\begin{align}
+	\ip{\trans X, \trans Y} = \ip{X, Y}
+\end{align}
+where the transport operators are over some common path. 
+\begin{lemma}
+	A metric compatible connection satisfies
+	\begin{align}
+		\ip{\df Γ X, Y} = -\ip{X, \df Γ Y}
+		\qqtext{or}
+		Γ_{μab} = -Γ_{μba}
+	\end{align}
+	where $Γ_{μab} = η_{ac}Γ_μ{}^c{}_b$.
+\end{lemma}
+\begin{proof}
+	Consider transport along a path $γ(λ ← 0)$, and abbreviate $T_λ ≔ \trans_{γ(λ ← 0)}$.
+	Since $\ip{T_λ X, T_λ Y} = \ip{X, Y}$ is constant with respect to $λ$, its $λ$-derivative vanishes.
+	But we also have
+	\begin{align}
+		0 = \dv{λ} \ip{T_λ X, T_λ Y} \bigg|_{λ = 0}
+		% &= \dv{λ} \ip{X, Y} \bigg|_{λ = 0} = 0
+		&= \ip{\dv{λ} T_λ X \, \big|_{λ = 0}, Y} + \ip{X, \dv{λ} T_λ Y \, \big|_{λ = 0}}
+	\\	&= -\ip{Γ_{\vb{\dot γ}(0)}X, Y} - \ip{X, Γ_{\vb{\dot γ}(0)}Y}
+	.\end{align}
+	Since $γ$ is arbitrary, we have
+	\begin{math}
+		\ip{Γ_𝒖 X, Y} + \ip{X, Γ_𝒖 Y} = 0
+	\end{math}
+	for all $𝒖 ∈ \TT ℳ$.
+
+	Writing this in component form,
+	\begin{align}
+		η_{ab} \, Γ_μ{}^a{}_c \, X^c \, Y^b
+		= -η_{ab} \, X^a \, Γ_μ{}^b{}_c \, Y^c
+	\end{align}
+	which implies
+	\begin{math}
+		η_{ab} \, Γ_μ{}^a{}_c
+		= -η_{ab} \, Γ_μ{}^b{}_c
+	\end{math}
+	since $X$ and $Y$ are arbitrary.
+\end{proof}
 
 
 
@@ -816,32 +866,5 @@ Given a metric to raise and lower indices, a connection defined on $𝒱$ extend
 \end{samepage}
 
 
-
-
-\begin{corollary}
-	\label{col:metric-compat-Γ-antisym}
-	% If a linear connection preserves an inner product $η_{ab} = \ip{\ve_a, \ve_b}$, then
-	If a linear connection preserves an inner product $\ip{\phantom{𝒖}, \phantom{𝒗}}$, then
-	\begin{align}
-		\label{eqn:covder-of-ip}
-		∇\ip{𝒖, 𝒗} = \dd\ip{𝒖, 𝒗} + \ip{Γ_𝒖, 𝒗} + \ip{𝒖, Γ_𝒗}
-	.\end{align}
-	Furthermore, this implies $Γ_{μab} = -Γ_{μba}$, where $Γ_{μab} ≔ η_{ac}Γ_μ{}^c{}_b$ and $η_{ab} = \ip{\ve_a, \ve_b}$.
-\end{corollary}
-\begin{proof}
-	\Cref{eqn:covder-of-ip} follows from \Cref{lem:covder-of-anything} in the case $φ(𝒖, 𝒗) = \ip{𝒖, 𝒗}$.
-	Since $\ip{𝒖, 𝒗}$ is a scalar, we simultaneously have $∇\ip{𝒖, 𝒗} = \dd\ip{𝒖, 𝒗}$, and hence
-	\begin{align}
-		% \label{eqn:Γ-inner-prod-symmetry}
-		\ip{Γ_𝒖, 𝒗} = -\ip{𝒖, Γ_𝒗}
-	.\end{align}
-	Writing this in components, we have
-	\begin{align}
-		η_{cb} Γ_μ{}^c{}_a u^a v^b &= -η_{ac} u^a Γ_μ{}^c{}_b v^b
-	&	&\implies
-	&	η_{bc} Γ_μ{}^c{}_a &= -η_{ac} Γ_μ{}^c{}_b
-	,\end{align}
-	implying $Γ_{μba} = -Γ_{μab}$ where the metric $η_{ab}$ is used to lower indices.
-\end{proof}
 
 
