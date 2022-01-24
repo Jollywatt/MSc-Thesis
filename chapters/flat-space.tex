@@ -19,7 +19,7 @@ These assumptions are acceptable in special relativity, but in arbitrary regions
 \section{Differentiation}
 
 
-The directional derivative of a vector field $F : V → A$ in the direction $𝒖 ∈ V$ and evaluated at the point $𝒙 ∈ V$ is
+The directional derivative of a vector field $F : V → A$ in the direction $𝒖 ∈ V$ at $𝒙 ∈ V$ may be defined in the usual way,
 \begin{align}
 	% ∂_𝒖 F(x) = \lim_{ε → 0}\frac{F(x + ε𝒖) - F(x)}{ε}
 	∂_𝒖 F(𝒙) = \dv{ε} \eval{F(𝒙 + ε𝒖)}_{ε = 0}
@@ -41,9 +41,9 @@ though this is a basis-dependent definition.
 
 
 Suppose $F : V → A$ is some algebra--valued field.
-It is useful to define a kind of ``total'' derivative $\DD F$ which does not depend on a direction of differentiation $𝒖$, but instead encompasses, in a sense, all derivatives in a single object $\DD F : V → A$.
-The motivation for this is that it encompasses as special cases the soon-to-be-defined exterior derivative (of exterior algebra) and vector derivative (of geometric algebra).
-This derivative will be defined when there is a canonical inclusion $ι : V^* → A$ of dual vectors into the algebra $A$, which is automatic if $A$ is a quotient of $\TA{(V^*)}$.
+It is useful to define a kind of ``total'' derivative $\DD F$ which does not depend on a direction $𝒖$, but instead encompasses, in a sense, all directional derivatives in a single object $\DD F : V → A$.
+The motivation for this is that the soon-to-be-defined exterior derivative (of exterior algebra) and vector derivative (of geometric algebra) are realised as special cases of such a construction.
+The derivative $\DD$ will be defined whenever there is a canonical inclusion $ι : V^* → A$ of dual vectors into the algebra, which is automatic if $A$ is a quotient of $\TA{(V^*)}$.
 
 \begin{definition}
 	\label{def:algder}
@@ -73,12 +73,12 @@ In component language,
 Consider a vector field $F : V → \EA{V^*}$ with values in the (dual) exterior algebra.
 In this case \cref{eqn:algder} is the \textdef{exterior derivative}
 \begin{align}
-	\dd F = \dx^a ∧ \pdv{F}{x^a}
-\end{align}
-where $\set{\dx^a} ⊂ V^*$ form a basis of $\EA{V^*}$.
+	\dd F = \ve^a ∧ ∂_a F
+,\end{align}
+where $\set{\ve^a} ⊂ V^*$ also form a basis of $\EA{V^*}$ (so $ι : V^* → \EA{V^*}$ may be omitted).
 If $F : V → \EA[k]{V^*}$ is a $k$-vector field, then
 \begin{math}
-	\dd F = ∂_a F_{\etc{a_\i}{}k} \dx^a ∧ \etc{\dx^{a_\i}}∧k
+	\dd F = ∂_a F_{\etc{a_\i}{}k} \ve^a ∧ \etc{\ve^{a_\i}}∧k
 \end{math}
 is a $(k + 1)$-vector.
 
@@ -89,15 +89,15 @@ In components,
 .\end{math}
 
 The treatment of exterior forms is identical.
-An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \textdef{exterior differential $k$-form}, with exterior derivative defined via its action on vectors
+An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \textdef{exterior differential $k$-form}, with exterior derivative formally defined by its action on vectors,
 \begin{align}
-	(\dd φ)(𝒖, \etc{𝒖_\i},{k})
-	&= (\dx^a ∧ ∂_a φ)(𝒖, \etc{𝒖_\i},k)
-% \\	&= \sum_{σ ∈ S_{k + 1}} (-1)^σ ∂_{𝒖_{σ(0)}} φ(\etc{𝒖_{σ(\i)}}{}k)
-\\	&= \sum_{i = 0}^k (-1)^i ∂_{𝒖_{i}} φ(𝒖_0, ..., \widehat{𝒖_i}, ..., 𝒖_k)
-\end{align}
-in the Spivak convention (see \cref{sec:exterior-forms}).
-Note that the partial derivative acts on the position dependence of $φ$ only --- the vectors $𝒖_i ∈ V$ are fixed input vectors.
+	(\dd φ)(𝒖_0, \etc{𝒖_\i},{k})
+	&= (\ve^a ∧ ∂_a φ)(𝒖_0, \etc{𝒖_\i},k)
+\\	&= \frac1{k!} \sum_{σ ∈ S_{k + 1}} (-1)^σ \ve^a(𝒖_{σ(0)}) \, ∂_a φ(\etc{𝒖_{σ(\i)}}{}k)
+\\	&= \sum_{i = 0}^k (-1)^i \, ∂_{𝒖_{i}} φ(𝒖_0, ..., \widehat{𝒖_i}, ..., 𝒖_k)
+,\end{align}
+under the Spivak convention (see \cref{sec:exterior-forms}).
+Note that the directional derivative acts on the position dependence of $φ$ only --- the vectors $𝒖_i ∈ V$ are \emph{fixed} input vectors.
 This changes when generalising from vector fields of alternating maps to forms defined on a \emph{manifold}, where correction terms are needed to account for partial derivatives of input vectors (discussed in \cref{part:2}).
 
 
