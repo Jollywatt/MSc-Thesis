@@ -711,7 +711,7 @@ with base components of $\dd f(𝒖)$ and $Γ_𝒖(f)$ suppressed.\sidenote{
 Note that $f$ need not be a vector section of a linear bundle --- \cref{eqn:covder-comps-general-bundle} is general to smooth fibre bundles.
 
 
-\subsection{Structure--preserving connections}
+\subsection{Structured connections}
 
 So far, we have treated connections in the setting of a general fibre bundle, in which fibres have the minimal structure of a smooth manifold.
 We now consider connections and their associated covariant derivatives on vector bundles with more or less structure, such as metrics or bilinear products.
@@ -723,8 +723,8 @@ For a vector bundle, we require this to be a linear map.
 By \cref{lem:trans-ode}, this means the horizontal lift is also linear in its fibre argument,
 \begin{math}
 	\df Γ(λX) = λ \df Γ(X)
-.\end{math}
-This means we may regard $Γ_𝒖$ as a matrix which acts on vectors by matrix multiplication, and $\df Γ$ as a matrix-valued $1$-form,
+,\end{math}
+so we may regard $Γ_𝒖$ as a matrix and $\df Γ$ as a matrix-valued $1$-form, acting on vectors $X$ by matrix multiplication,
 \begin{align}
 	\df Γ X ≔ \df Γ(X)
 .\end{align}
@@ -807,64 +807,63 @@ where the transport operators are over some common path.
 
 \subsubsection{Algebra bundles}
 
-As well as linearity, vector bundles may be equipped with further structure, placing further constraints on the connection.
-For example, equipped with a metric, and we may require the connection to be \emph{metric-compatible}.
-Given an associative product, we may require parallel transport to respect multiplication, etcetera.
-These requirements are all instances of \emph{functorality} of the transport operator.
-In general, if $ϕ$ is a $k$-ary multilinear operator (e.g., an inner product, an associative product, etc.) then the transport operator \emph{preserves} $ϕ$ if
+Vector bundles may be further equipped with an associative product, forming an algebra bundle.
+We require the product $⊛ : V_x × V_x → V_x$ to vary smoothy with $x ∈ ℳ$, so that $X ⊛ Y ∈ \secs(𝒱)$ is a smooth section whenever $X, Y ∈ \secs(𝒱)$ are.
+Requiring the transport operator to respect this product,
 \begin{align}
-	\label{eqn:functorality-of-trans}
-	\trans_γ ϕ(\etc{a_\i},k) = ϕ(\trans_γ a_1, ..., \trans_γ a_k)
-\end{align}
-for values $a_i$ from the fibre at the start of $γ$.
-How does this requirement for structure-preservation translate to the associated covariant derivative?
+	\label{eqn:trans-respect-prod}
+	(\trans X) ⊛ (\trans Y) = \trans (X ⊛ Y)
+,\end{align}
+places further constraints on the connection.
 \begin{lemma}
-	\label{lem:covder-of-anything}
-	Let $ϕ$ be a multilinear $k$-ary operator on a vector bundle.
-	If the transport operator preserves $ϕ$, then
+	\label{lem:covder-prod}
+	Let $⊛$ be a bilinear associative product on a vector bundle $𝒱$ which is respected by parallel transport as in \cref{eqn:trans-respect-prod}.
+	Then,
 	\begin{align}
-		∇ ϕ(\etc{a_\i},k) = \dd ϕ(\etc{a_\i},k) + \sum_{i=1}^k ϕ(a_1, ..., Γ_{a_i}, ..., a_k)
-	.\end{align}
+		\label{eqn:covder-prod}
+		\df ∇ (\etc{X_\i}⊛k) = \df\dd (\etc{X_\i}⊛k) + \sum_{i=1}^k \etcmid{X_\i}{\df Γ X_i}⊛k
+	\end{align}
+	for $X_i ∈ \secs(𝒱)$.
 \end{lemma}
 \begin{proof}
-	The covariant derivative along some curve $γ$, by \cref{lem:trans-and-covariant-der}, is
+	Let $T_λ ≔ \trans_{γ(λ ← 0)}$ for some path $γ$.
+	Using \cref{lem:trans-and-covariant-der}, we have
+	\begin{fullwidth}
 	\begin{align}
-		&\phantom{{}={}}∇_{\dot γ(0)} ϕ(\etc{a_\i},k)
-	% \\	&= \dv{λ} \eval{\qty( ϕ(\etc{a_\i},k)\big|_{γ(λ)} - \trans_{γ(λ ← 0)} ϕ(\etc{a_\i},k)|_{γ(0)})}_{λ=0}
-	\\	&= \dd (ϕ(\etc{a_\i},k))(\dot γ(0)) - \dv{λ} ϕ(\trans_{γ(λ ← 0)} a_1, ..., \trans_{γ(λ ← 0)} a_k)\Big|_{λ=0}
-	\\	&= \dd (ϕ(\etc{a_\i},k))(\dot γ(0)) - \sum_{i=1}^k ϕ\qty(a_1, ..., \dv{λ} \trans_{γ(λ ← 0)} a_i \Big|_{λ=0}, ..., a_k)
-	\\	&= \dd (ϕ(\etc{a_\i},k))(\dot γ(0)) + \sum_{i=1}^k ϕ(a_1, ..., Γ_{a_i}(\dot γ(0)), ..., a_k)
+		∇_{\vb{\dot γ}(0)} (\etc{X_\i}⊛k) = \df\dd(\etc{X_\i}⊛k)(\vb{\dot γ}(0)) - \dv{λ} \trans_{γ(λ ← 0)}(\etc{X_\i}⊛k) \bigg|_{λ = 0}
 	.\end{align}
-	Removing reference to the arbitrary direction of derivation $\dot γ(0)$ yields the result.
+	\end{fullwidth}
+	Since $⊛$ is respected by parallel transport and is bilinear and associative, the rightmost term is
+	\begin{align}
+		-\dv{λ} \etc{T_λ X_i}⊛k \, \bigg|_{λ=0} = -\sum_{i=1}^k \etcmid{X_\i}{\dv{λ} T_λ X_i \big|_{λ=0}}⊛k
+	,\end{align}
+	which by \cref{lem:dtrans-is-hlift} gives the result, removing reverence to the arbitrary vector $\vb{\dot γ}(0)$.
 \end{proof}
 
-Taking $ϕ : A × A → A$ to be the associative product of the algebra bundle $\fibrebundle A 𝒜 ℳ$, we recover the covariant product rule.
-\begin{corollary}
-	On an algebra bundle,
-	\begin{align}
-		∇_𝒖(a⊛b) = \dd(a⊛b)(𝒖) + Γ_a(𝒖)⊛b + a⊛Γ_b(𝒖)
-	.\end{align}
-\end{corollary}
-This corollary implies that a connection respecting an associative product is determined completely determined by the connection on the subbundle of grade-$1$ vectors $𝒱 ⊆ 𝒜$.
-
-
-For instance, given a connection on a vector bundle $𝒱$, we have the familiar formula
+A consequence of \cref{lem:covder-prod} is that a linear connection on a vector bundle $𝒱$ induces a unique $⊛$-respecting connection on the algebra bundle generated by $⊛$.
+In particular, such a connection obeys the product rule:
 \begin{align}
-	% ∇(𝒖⊗𝒗) &= \dd(𝒖⊗𝒗) + Γ_𝒖⊗𝒗 + 𝒖⊗Γ_𝒗
-	∇_μu^av^b &= ∂_μ(u^a v^b) + Γ_μ{}^a{}_c u^c v^b + u^a Γ_μ{}^b{}_c v^c
-.\end{align}
-Given a metric to raise and lower indices, a connection defined on $𝒱$ extends to general type-$(p, q)$ tensors,
-\begin{samepage}
+	\df ∇(X ⊛ Y)
+	&= \df\dd X ⊛ Y + X ⊛ \df\dd Y + \df Γ X ⊛ Y + X ⊛ \df Γ Y
+\\	&= \df ∇ X ⊛ Y + X ⊛ \df ∇ Y
+\end{align}
+For example, for the tensor bundle $\TA{𝒱}$, we obtain the product rule written in component form,
+\begin{align}
+	∇_μ X^a Y^b = ∂_μ(X^a Y^b) + Γ_μ{}^a{}_c X^c Y^b + X^a Γ_μ{}^b{}_c Y^c
+,\end{align}
+and if the connection is also compatible with a metric used to raise and lower indices, we derive the familiar formula for covariant differentiation of general type-$(p, q)$ tensors,
+% \begin{samepage}
 \begin{fullwidth}
 \begin{align}
+	\label{eqn:covder-general-tensor}
 	∇_μT^{a_1\cdots a_p}{}_{b_1\cdots b_q}
 	= ∂_μT^{a_1\cdots a_p}{}_{b_1\cdots b_q}
 	+ \sum_{i = 1}^p Γ_μ{}^{a_i}{}_c T^{a_1\cdots c\cdots a_p}{}_{b_1\cdots b_q}
 	- \sum_{j = 1}^q Γ_μ{}^c{}_{b_j} T^{a_1\cdots a_p}{}_{b_1\cdots c\cdots b_q}
 .\end{align}
 \end{fullwidth}
-\end{samepage}
-
+% \end{samepage}
+% Note that \cref{eqn:covder-general-tensor} is written only in terms of the connection coefficients $Γ_μ{}^a{}_b$ on $𝒱$.
 
 
 

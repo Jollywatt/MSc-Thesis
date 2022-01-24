@@ -107,6 +107,14 @@
 	#3 \if,#3 \dots \else \cdots \fi #3
 	{\def\i{#5} #2}
 }
+\newcommand{\etcmid}[5][1]{
+	{\def\i{#1} #2}
+	#4 \if,#4 \dots \else \cdots \fi #4
+	{#3}
+	#4 \if,#3 \dots \else \cdots \fi #4
+	{\def\i{#5} #2}
+}
+
 
 \makeatletter
 \newcommand{\sig}[1]{(\@tfor\elem:=#1\do{{\elem}})}
