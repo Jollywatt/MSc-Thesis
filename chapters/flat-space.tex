@@ -17,7 +17,7 @@ These assumptions are acceptable in special relativity, but in arbitrary regions
 
 
 \section{Differentiation}
-
+\label{sec:algder}
 
 The directional derivative of a vector field $F : V → A$ in the direction $𝒖 ∈ V$ at $𝒙 ∈ V$ may be defined in the usual way,
 \begin{align}
@@ -27,15 +27,16 @@ The directional derivative of a vector field $F : V → A$ in the direction $�
 .\end{align}
 The directional derivative is linear in $𝒖$, since by a change of variables,
 \begin{math}
-	∂_{u_a\ve^a}
-	= \sum_a \dv{ε} \eval{F(x + εu_a\ve^a)}_{ε = 0}
-	= \sum_a u_a \dv{\bar ε} \eval{F(x + \bar ε\ve^a)}_{\bar ε = 0}
-	= \sum_a u_a ∂_{\ve^a}
-.\end{math}
-In the presence of a dual basis $\set{\ve^a} \subset V^*$, we use the notation $∂_a ≔ ∂_{\ve^a}$ for brevity, so long as it is understood that this is not a partial derivative with respect to a scalar coordinate, $\pdv{x^a}$.
+	∂_{u^a\ve_a}
+	= \dv{ε} \eval{F(x + εu^a\ve_a)}_{ε = 0}
+	= u^a \dv{\bar ε} \eval{F(x + \bar ε\ve_a)}_{\bar ε = 0}
+	= u^a ∂_{\ve_a}
+\end{math}
+(summation on $a$).
+We define the notation $∂_a ≔ ∂_{\ve_a}$ for brevity, so long as it is understood that this is not a partial derivative with respect to a scalar coordinate, $\pdv{x^a}$.
 Of course, it may be viewed as such by setting $f(\etc{x^\i},n) = f(x^i\ve_i)$ so that
 \begin{align}
-	∂_{\ve^a}f(x^i\ve_i) = \pdv{x^a}f(\etc{x^\i},n)
+	∂_{\ve_a}f(x^i\ve_i) = \pdv{x^a}f(\etc{x^\i},n)
 ,\end{align}
 though this is a basis-dependent definition.
 
@@ -51,7 +52,7 @@ The derivative $\DD$ will be defined whenever there is a canonical inclusion $ι
 	The \textdef{algebraic derivative} of $F$ is
 	\begin{align}
 		\label{eqn:algder}
-		\DD F ≔ ι(\ve^a) ⊛ ∂_{\ve^a} F
+		\DD F ≔ ι(\ve^a) ⊛ ∂_{\ve_a} F
 	\end{align}
 	(summation on $a$) where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases.
 \end{definition}
@@ -118,9 +119,9 @@ Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then in \cref{eqn:
 Here, we use the metric to relate $V^* → V$ and the canonical inclusion $ι : V ≡ \GA[1](V, η) → \GA(V, η)$.
 The vector derivative is then
 \begin{align}
-	\vd F = \ve^a \, ∂_{\ve^a} F
+	\vd F = \ve^a \, ∂_{\ve_a} F
 \end{align}
-(summation on $a$) where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V$ are dual bases, and juxtaposition denotes the geometric product.
+(summation on $a$) where $\set{\ve_a} ⊂ V$ and $\set{\ve^a} ⊂ V^*$ are dual bases, and juxtaposition denotes the geometric product.
 If $F$ is a homogeneous $k$-vector, then we may write its components as
 \begin{math}
 	F = F_{\etc{a_\i}{}k} \etc{\ve^{a_\i}}∧k

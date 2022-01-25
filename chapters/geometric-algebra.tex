@@ -559,9 +559,28 @@ The multivector commutator product
 	\label{eqn:commutator-prod}
 	A × B ≔ \frac12(AB - BA)
 \end{align}
-forms a Lie bracket on the space of bivectors $\GA[2]$.
+enjoys several useful properties, particularly with bivectors.
+\begin{lemma}
+	\label{lem:commutator-derivation}
+	Commutation by a multivector $A$ is a derivation,
+	\begin{align}
+		A × (BC) = (A × B)C + B(A × C)
+	.\end{align}
+\end{lemma}
 \begin{proof}
-	The commutator product $A \mapsto A × σ$ with a bivector $σ$ is a grade-preserving operation.
+	By expanding both sides,
+	\begin{align}
+		\frac12(ABC - BCA) = \frac12(ABC - CAB + BAC - ACB)
+	.\end{align}
+\end{proof}
+\begin{lemma}
+	\label{lem:bivector-comm-grade-preserving}
+	Commutation by a bivector $σ$ is a grade-preserving operation; i.e.,
+	\begin{align}
+		σ × \grade[k]{A} = \grade[k]{σ × A}
+	.\end{align}
+\end{lemma}
+\begin{proof}
 	If $A = \grade[k]{A}$ then $Aσ$ and $σA$ are $\set{k - 2, k, k + 2}$-multivectors.
 	The $k ± 2$ parts are
 	\begin{align}
@@ -578,8 +597,9 @@ forms a Lie bracket on the space of bivectors $\GA[2]$.
 		.\end{math}
 	} satisfy $s_{k±2}s_k = -1$ for any $k$.
 	Hence, $\grade[k±2]{A×σ} = 0$, leaving only the grade $k$ part, $A × σ = \grade[k]{A × σ}$.
-	Clearly \cref{eqn:commutator-prod} is bilinear and satisfies the Jacobi identity, so $(\GA[2], ×)$ is closed and forms a Lie algebra.
 \end{proof}
+A corollary of \cref{lem:bivector-comm-grade-preserving} is that the commutator is closed on the space of bivectors, $\GA[2]$.
+Clearly \cref{eqn:commutator-prod} is bilinear and satisfies the Jacobi identity, so $\GA[2]$ in fact forms a Lie algebra with the bivector commutator $×$ as the Lie bracket.
 
 Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometric product, the exponential
 \begin{math}
