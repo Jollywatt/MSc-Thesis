@@ -949,6 +949,7 @@ For sake of basis-independent notation, we may define the \textdef{connection bi
 expressed in any basis.
 
 \begin{lemma}
+	\label{lem:covder-multivector}
 	The covariant derivative of any multivector $A ∈ \GA(ℳ, η)$ is
 	\begin{align}
 		\df ∇ A = \df\dd A + \df ω × A
@@ -969,3 +970,23 @@ expressed in any basis.
 \end{proof}
 
 
+A rapid alternative derivation of \cref{lem:covder-multivector} starts from the observation that parallel transport along a path may be written as
+\begin{align}
+	\trans_γ A = R A \rev{R}
+,\end{align}
+since any transformation continuously connected to the identity which preserves the geometric product belongs to the rotor group, $\op{Spin}^+$ (see \cref{sec:rotors}).
+Any such rotor is of the form $R = e^{σ/2}$ for a bivector $σ$, so we have
+\begin{align}
+	\dv{λ} \trans_{γ(λ ← 0)} A = \frac12 R (σ A - A σ) \rev{R}
+\end{align}
+where $σ = σ(λ)$ and hence $R$ are functions of the path parameter.
+At $λ = 0$, the rotor is trivial, so by \cref{lem:dtrans-is-hlift} we find
+\begin{align}
+	\dv{λ} \trans_{γ(λ ← 0)} A \, \bigg|_{λ=0} = -Γ_{\vb{\dot γ}(0)}(A) = σ(0) × A
+.\end{align}
+Thus, the horizontal lift is given by commutation with a specified bivector.
+Since this holds for arbitrary multivectors $A$, by \cref{lem:covariant-derivative-rewritten} we have the universally applicable formula for the covariant derivative of a multivector
+\begin{align}
+	∇_𝒖 A = ∂_𝒖 A + ω_𝒖 × A
+\end{align}
+where $ω_𝒖$ is the required bivector.
