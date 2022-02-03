@@ -325,6 +325,7 @@ The factor of $k!$ is due to the Spivak convention for exterior forms (replace $
 
 
 \subsubsection{Pseudoscalars and Hodge duality}
+\label{sec:ga-hodge-dual}
 
 Since the metric is built into the geometric algebra, so are the features of metrical exterior algebra of \cref{sec:metrical-exterior-alg}, including the Hodge dual.
 In geometric algebra, Hodge duality is achieved simply by multiplication by the volume element.
@@ -545,7 +546,9 @@ Finally, the additional requirement that $RR^† = 1$ defines the restricted spi
 \begin{align}
 	\op{Spin}^+(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = 1}
 \end{align}
-%
+The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$.
+Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
+
 \begin{marginfigure}
 \begin{tikzcd}[column sep=tiny, row sep=small]
 	\op{Spin}^+ & \op{Spin} & \op{Pin} \\
@@ -554,15 +557,12 @@ Finally, the additional requirement that $RR^† = 1$ defines the restricted spi
 	\arrow["⊂"{description}, draw=none, from=1-2, to=1-3]
 	\arrow["⊆"{description}, draw=none, from=2-1, to=2-2]
 	\arrow["⊂"{description}, draw=none, from=2-2, to=2-3]
-	\arrow[two heads, from=1-1, to=2-1]
-	\arrow[two heads, from=1-2, to=2-2]
-	\arrow[two heads, from=1-3, to=2-3]
+	\arrow[two heads, thin, from=1-1, to=2-1]
+	\arrow[two heads, thin, from=1-2, to=2-2]
+	\arrow[two heads, thin, from=1-3, to=2-3]
 \end{tikzcd}
-\caption{Relationships between Lie groups associated with a geometric algebra. An arrow $a \surject b$ signifies that $a$ is a double-cover of $b$.}
+\caption{Relationships between Lie groups associated with a geometric algebra. An arrow $A \surject B$ signifies that $A$ is a double-cover of $B$.}
 \end{marginfigure}
-%
-The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$.
-Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
 
 
 \subsection{The bivector subalgebra}
@@ -608,10 +608,10 @@ Thus, both the rotor groups and their Lie algebras are directly represented with
 	\begin{tikzcd}[column sep=small]
 		\op{Spin}^+(p, q) & \SO^+(p, q) \\
 		\GA[2](p, q) & \liealg{so}(p, q)
-		\arrow["\exp"{description}, from=2-1, to=1-1]
+		\arrow["\exp"{description}, thin, from=2-1, to=1-1]
 		\arrow["\cong"{description}, draw=none, from=2-1, to=2-2]
-		\arrow["\exp"{description}, from=2-2, to=1-2]
-		\arrow[two heads, from=1-1, to=1-2]
+		\arrow["\exp"{description}, thin, from=2-2, to=1-2]
+		\arrow[two heads, thin, from=1-1, to=1-2]
 	\end{tikzcd}
 	\caption{
 		The Lie algebras $\liealg{so}(p, q)$ and $\GA[2](p, q)$ under $×$ are isomorphic, and are associated respectively to $\SO^+(p, q)$ and its universal double cover $\op{Spin}^+(p, q)$.
@@ -832,8 +832,8 @@ While in some expressions the grades of multivectors are obvious so that it is c
 \end{lemma}
 % }{
 \begin{proof}%[Proof of \cref{lem:triangular-range-cyclicity}]
-	It is easy to see that there exists a triangle in the Euclidean plane with side lengths $i, j, k$ if and only if $|i - j| ≤ k ≤ i + j$.
-	By relabelling the sides, it follows that the other relations are equivalent.
+	There exists a triangle in the Euclidean plane with side lengths $i, j, k$ if and only if $|i - j| ≤ k ≤ i + j$.
+	By relabelling its sides, it follows that the other relations are equivalent.
 \end{proof}
 % }
 
