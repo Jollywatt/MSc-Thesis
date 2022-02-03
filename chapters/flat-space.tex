@@ -9,10 +9,11 @@ In a flat geometry, we may assume that
 	\item fields are parametric functions of a single vector argument representing a location in spacetime.
 \end{itemize}
 We reserve the word \textdef{field} to mean a map with a fixed vector space codomain.
-For instance, the electromagnetic bivector field in flat space $F : \RR^4 → \EA[2]{\RR^4}$ is a function between fixed vector spaces.
-In particular, the value of a vector field $F : V → A$ at different points in spacetime can be added; $F(x) + F(y) ∈ A$.
+For instance, the electromagnetic bivector \emph{field} in flat space $F : \RR^4 → \EA[2]{\RR^4}$ is a function between fixed vector spaces.
+In particular, the values of a vector field $F : V → A$ at different points in spacetime belong to the same space and, for example, their sum $F(x) + F(y) ∈ A$ is well-defined.
 
-These assumptions are acceptable in special relativity, but in arbitrary regions of spacetime and in the presence of gravity, curvature prevents spacetime from admitting a meaningful vector space structure, and it becomes unphysical to compare field values at different points.
+These assumptions are acceptable in special relativity, but in arbitrary regions of spacetime and in the presence of gravity, curvature prevents spacetime from admitting a meaningful vector space structure.
+It is then \emph{un-physical} to compare field values at different points in spacetime.
 (Consideration of curvature leads to differential geometry and comprises \cref{part:2}.)
 
 
@@ -98,25 +99,25 @@ An exterior form field $φ : V → \forms[k](V, U)$ is called a $U$-valued \text
 \\	&= \sum_{i = 0}^k (-1)^i \, ∂_{𝒖_{i}} φ(𝒖_0, ..., \widehat{𝒖_i}, ..., 𝒖_k)
 ,\end{align}
 under the Spivak convention (see \cref{sec:exterior-forms}).
-Note that the directional derivative acts on the position dependence of $φ$ only --- the vectors $𝒖_i ∈ V$ are \emph{fixed} input vectors.
-This changes when generalising from vector fields of alternating maps to forms defined on a \emph{manifold}, where correction terms are needed to account for partial derivatives of input vectors (discussed in \cref{part:2}).
+Note that the directional derivative acts on the position dependence of $φ$ only --- the vectors $𝒖_i ∈ V$ are \emph{fixed} input vectors to the field $\dd φ$.
+This changes when generalising to forms defined on a \emph{manifold}, where correction terms are needed to account for partial derivatives of input vectors (discussed in \cref{part:2}).
 
 
 \subsection{The vector derivative}
 
-The algebraic derivative in the tensor and exterior algebras are somewhat uninteresting, because they are easily expressible in component form (e.g., $∂_aF_{\etc{a_\i}{}k}$ or $∂_{[a}F_{\etc{a_\i}{}k]}$).
+The algebraic derivative in the tensor and exterior algebras are somewhat uninteresting because they are easily expressible in component form (e.g., $∂_aF_{\etc{a_\i}{}k}$ or $∂_{[a}F_{\etc{a_\i}{}k]}$).
 This is not possible in the geometric algebra, however, because $\GA(V, η)$ is not $\ZZ$-graded, and we would face the problem of notating inhomogeneous objects with a variable number of indices.
-The algebraic derivative is, however, still geometrically significant and useful in this case.
+The algebraic derivative is, however, still geometrically significant and extremely useful in geometric algebra.
 
-In $\GA(V, η)$, the algebraic derivative is called the \textdef{vector derivative}, which we denote $\vd$.
-Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then in \cref{eqn:algder} we take $⊛$ to be with the geometric product and take the inclusion to be\sidenote{
+In $\GA(V, η)$, the algebraic derivative is called the \textdef{vector derivative}, denoted $\vd$.
+Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then from \cref{eqn:algder} we take $⊛$ to be with the geometric product and take the inclusion to be\sidenote{
 	We could just as well consider fields $V → \GA(V^*, η)$, avoiding the need for the isomorphism $\sharp : V^* → V$.
-	But the metric is already defined, so we prefer multivectors $\GA(V, η)$ to `dual-multivectors'.
+	But the metric is already defined, and we prefer to think about multivectors over `dual multivectors'.
 }
 \begin{math}
 	V^* ∋ 𝒖 ↦ ι(𝒖^\sharp) ∈ \GA(V, η)
 .\end{math}
-Here, we use the metric to relate $V^* → V$ and the canonical inclusion $ι : V ≡ \GA[1](V, η) → \GA(V, η)$.
+Here, we use the canonical inclusion $ι : V ≡ \GA[1](V, η) → \GA(V, η)$ and the metric relating $V^* → V$.
 The vector derivative is then
 \begin{align}
 	\vd F = \ve^a \, ∂_{\ve_a} F

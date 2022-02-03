@@ -130,7 +130,9 @@ These can be extended by linearity to inhomogeneous elements.
 	\begin{align}
 		A∧B ≔ \sum_{p,q}\grade[p + q]{\grade[p]{A}\grade[q]{B}}
 	,\end{align}
-	and the \textdef{generalised inner product}, or ``fat dot'' product, is
+	and the \textdef{generalised inner product}, or ``fat dot'' product,\sidenote{
+		Various `inner products' have been proposed for geometric algebra, but the definition here is arguably the simplest and best behaved; see \cite{dorst2002inner-products} for closer discussion.
+	} is
 	\begin{align}
 		A \fatdot B ≔ \sum_{p,q}\grade[|p - q|]{\grade[p]{A}\grade[q]{B}}
 	.\end{align}
@@ -144,10 +146,12 @@ The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nice
 	\begin{align}
 		% (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧k) = (-1)^σ
 		(\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) = ε^i_j
+		\marginnote{
+			Note the reverse order of the $j$ indices.
+		}
 	\end{align}
 	where $ε^i_j = (-1)^σ$ is the sign of the permutation sending $σ(i_p) = j_p$ for $1 ≤ p ≤ k$ , or zero if there is no such permutation or if $i$ or $j$ contain repeated indices.
 \end{lemma}
-Note the reverse order of the $j$ indices.
 \begin{proof}
 	If $i$ or $j$ contain repeated indices, then the left-hand side vanishes by antisymmetry of the wedge product, and the right-hand side by definition.
 	If $i$ contains no repeated indices, and the $j$ indices are some permutation $j_p = σ(i_p)$, then $\etc{\ve^{i_\i}}∧k = \etc{\ve^{i_\i}}{}k$ by orthogonality.
@@ -280,11 +284,8 @@ This provides an impressively efficient algebraic method for transforming relati
 \subsection{Relation to exterior forms}
 
 The geometric algebra is a generalisation of the exterior algeba.
-If the inner product is completely degenerate (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then there is an algebra isomorphism $\GA(V, 0) \cong \EA{V}$.
+Indeed, in the special case of a completely degenerate metric (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then there is an algebra isomorphism $\GA(V, 0) \cong \EA{V}$.
 
-A qualitative difference between $\GA(V, η)$ and $\EA{V}$ is that while inhomogeneous multivectors find little use in exterior algebra,\sidenote{
-	In fact, some authors \cite{flanders1963differential} leave sums of terms of $\EA{V}$ of differing grade undefined.
-} these have a significant role in describing reflections and rotations in $\GA(V, η)$.
 
 \subsubsection{Exterior forms as multivectors}
 
@@ -324,14 +325,27 @@ The factor of $k!$ is due to the Spivak convention for exterior forms (replace $
 
 
 \subsubsection{Pseudoscalars and Hodge duality}
+\label{sec:ga-hodge-dual}
 
-\todo{Show equivalence of right-multiplication by $\vol$ with $\star$.}
+Since the metric is built into the geometric algebra, so are the features of metrical exterior algebra of \cref{sec:metrical-exterior-alg}, including the Hodge dual.
+In geometric algebra, Hodge duality is achieved simply by multiplication by the volume element.
 
+Consider two $k$-vectors $A$ and $B$.
+The object $B\vol$ is then a $(n - k)$-vector, and its wedge product with $A$ is a pseudoscalar.
+From associativity of the geometric product, we immediately have
+\begin{align}
+	A ∧ (B\vol) = \grade[n]{A(B\vol)} = \grade[n]{(AB)\vol} = \grade{AB}\vol
+.\end{align}
+This generalises the defining relation of the Hodge dual, \cref{eqn:hodge-dual}.
+The duality given by $A \mapsto A\vol$ is constructive and trivial to manipulate algebraically, compared to the implicitly-defined exterior algebraic equivalent (\cref{def:hodge-dual}).
 
 \subsection{Common algebra isomorphisms}
 \label{sec:common-alg-isos}
 
-Many familiar algebraic structures in relativistic or quantum physics are special cases of geometric algebra.
+While $\GA(V, η)$ encompasses the exterior algebra $\EA{V}$, one important difference between the two algebras is that while inhomogeneous multivectors find little use in exterior algebra,\sidenote{
+	In fact, some authors \cite{flanders1963differential} leave sums of terms of $\EA{V}$ of differing grade undefined.
+} they have a significant role in describing reflections and rotations in $\GA(V, η)$.
+Many familiar algebraic structures concerning rotations in relativistic or quantum physics are in fact special cases of geometric algebra.
 
 \begin{itemize}
 	\item\textbf{Complex numbers: $\GA[+](2) \cong \CC$}
@@ -532,7 +546,9 @@ Finally, the additional requirement that $RR^† = 1$ defines the restricted spi
 \begin{align}
 	\op{Spin}^+(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = 1}
 \end{align}
-%
+The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$.
+Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
+
 \begin{marginfigure}
 \begin{tikzcd}[column sep=tiny, row sep=small]
 	\op{Spin}^+ & \op{Spin} & \op{Pin} \\
@@ -541,15 +557,12 @@ Finally, the additional requirement that $RR^† = 1$ defines the restricted spi
 	\arrow["⊂"{description}, draw=none, from=1-2, to=1-3]
 	\arrow["⊆"{description}, draw=none, from=2-1, to=2-2]
 	\arrow["⊂"{description}, draw=none, from=2-2, to=2-3]
-	\arrow[two heads, from=1-1, to=2-1]
-	\arrow[two heads, from=1-2, to=2-2]
-	\arrow[two heads, from=1-3, to=2-3]
+	\arrow[two heads, thin, from=1-1, to=2-1]
+	\arrow[two heads, thin, from=1-2, to=2-2]
+	\arrow[two heads, thin, from=1-3, to=2-3]
 \end{tikzcd}
-\caption{Relationships between Lie groups associated with a geometric algebra. An arrow $a \surject b$ signifies that $a$ is a double-cover of $b$.}
+\caption{Relationships between Lie groups associated with a geometric algebra. An arrow $A \surject B$ signifies that $A$ is a double-cover of $B$.}
 \end{marginfigure}
-%
-The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$.
-Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
 
 
 \subsection{The bivector subalgebra}
@@ -615,10 +628,10 @@ Thus, both the rotor groups and their Lie algebras are directly represented with
 	\begin{tikzcd}[column sep=small]
 		\op{Spin}^+(p, q) & \SO^+(p, q) \\
 		\GA[2](p, q) & \liealg{so}(p, q)
-		\arrow["\exp"{description}, from=2-1, to=1-1]
+		\arrow["\exp"{description}, thin, from=2-1, to=1-1]
 		\arrow["\cong"{description}, draw=none, from=2-1, to=2-2]
-		\arrow["\exp"{description}, from=2-2, to=1-2]
-		\arrow[two heads, from=1-1, to=1-2]
+		\arrow["\exp"{description}, thin, from=2-2, to=1-2]
+		\arrow[two heads, thin, from=1-1, to=1-2]
 	\end{tikzcd}
 	\caption{
 		The Lie algebras $\liealg{so}(p, q)$ and $\GA[2](p, q)$ under $×$ are isomorphic, and are associated respectively to $\SO^+(p, q)$ and its universal double cover $\op{Spin}^+(p, q)$.
@@ -839,8 +852,8 @@ While in some expressions the grades of multivectors are obvious so that it is c
 \end{lemma}
 % }{
 \begin{proof}%[Proof of \cref{lem:triangular-range-cyclicity}]
-	It is easy to see that there exists a triangle in the Euclidean plane with side lengths $i, j, k$ if and only if $|i - j| ≤ k ≤ i + j$.
-	By relabelling the sides, it follows that the other relations are equivalent.
+	There exists a triangle in the Euclidean plane with side lengths $i, j, k$ if and only if $|i - j| ≤ k ≤ i + j$.
+	By relabelling its sides, it follows that the other relations are equivalent.
 \end{proof}
 % }
 

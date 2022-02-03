@@ -165,15 +165,17 @@ With the free tensor algebra and \cref{thm:first-iso} in hand, we are able to de
 	The \textdef{dimension} $\dim A$ of a quotient algebra $A = \quot {\TA{V}} I$ is its dimension as a vector space.
 	The \textdef{base dimension} of $A$ is the dimension of the underlying vector space $V$.
 \end{definition}
-Algebras may be infinite-dimensional, as is the case for the tensor algebra itself (which is a quotient by the trivial ideal).
+Algebras of finite base dimension may be infinite-dimensional, as is the case for the tensor algebra itself (which is a quotient by the trivial ideal).
 
 
 
 \subsection{Graded algebras}
 
 Associative algebras may possess another layer of useful structure: a grading.
-The grading of the tensor algebra has already been exhibited in \cref{eqn:tensor-algebra-graded-decomposition}.
-A grading is a generalisation of the degree or rank of tensors or forms, and of the notion of parity for objects functions or polynomials.
+An example grading for the tensor algebra has already been exhibited in \cref{eqn:tensor-algebra-graded-decomposition}.
+Gradings generalise the \emph{degree} or \emph{rank} of tensors or forms, and the notion of \emph{parity} (even/oddness) for functions or polynomials.
+
+Informally, an algebra's grading provides a labelling for some of its elements, such that labels are combined simply (usually by addition) under the algebra's multiplication.
 
 \begin{definition}
 	\label{def:grading}
@@ -183,8 +185,8 @@ A grading is a generalisation of the degree or rank of tensors or forms, and of 
 	\end{align}
 	such that $A_{i} ⊛ A_{j} ⊆ A_{i + j}$, i.e., $a ∈ A_{i}, b ∈ A_{j} ⟹ a ⊛ b ∈ A_{i + j}$.
 \end{definition}
-The monoid is usually taken to be $\NN$ or $\ZZ$ with addition, possibly modulo some integer.
-The tensor algebra $\TA{V}$ is $\NN$-graded, since if $a ∈ \TA[p]{V}$ and $b ∈ \TA[q]{V}$ then $a ⊗ b ∈ \TA[p + q]{V}$.
+The monoid is usually taken to additive over $\NN$ or $\ZZ$, possibly modulo some integer.
+For instance, the tensor algebra $\TA{V}$ is $\NN$-graded, since if $a ∈ \TA[p]{V}$ and $b ∈ \TA[q]{V}$ then $a ⊗ b ∈ \TA[p + q]{V}$.
 Indeed, $\TA{V}$ is also $\ZZ$-graded if for $k < 0$ we understand $\TA[k]{V} ≔ \qty{\mathbf{0}}$ to be the trivial vector space.
 The tensor algebra is also $\ZZ_p$-graded, where $\ZZ_p ≡ \quot \ZZ {p\ZZ}$ is addition modulo any $p > 0$, since the decomposition
 \begin{align}
@@ -196,16 +198,19 @@ The tensor algebra is also $\ZZ_p$-graded, where $\ZZ_p ≡ \quot \ZZ {p\ZZ}$ is
 satisfies $Z_i ⊗ Z_j \subseteq Z_k$ when $k ≡ i + j \mod p$.
 In particular, $\TA{V}$ is $\ZZ_2$-graded,\sidenote{
 	Algebras which are $\ZZ_2$-graded are sometimes called \emph{superalgebras}, with the prefix `super-' originating from supersymmetry theory.
-} its elements admit a notion of \emph{parity}: elements of $Z_0 = \FF ⊗ \TA[2]{V} ⊗ \cdots$ are even, while elements of $Z_1 = V ⊗ \TA[3]{V} ⊗ \cdots$ are odd, and parity is respected by $⊗$ as it is for integers.
+} and its elements admit a notion of \emph{parity}: elements of $Z_0 = \FF ⊗ \TA[2]{V} ⊗ \cdots$ are even, while elements of $Z_1 = V ⊗ \TA[3]{V} ⊗ \cdots$ are odd, with parity is respected by $⊗$ as it is for the integers.
 
-Importantly, just as not all functions $f : \RR → \RR$ are even or odd, not all elements of a $\ZZ_2$-graded algebra are even or odd; and more generally not all elements of a graded algebra belong to a single graded subspace.
+Importantly, just as not all functions $f : \RR → \RR$ are even or odd, not all elements of a $\ZZ_2$-graded algebra are even or odd.
+More generally not all elements of a graded algebra belong to a single graded subspace.
 \begin{definition}
 	\label{def:homogeneous-and-multivector}
-	If $A = \bigoplus_{k ∈ R} A_{k}$ is an $R$-graded algerba, then an element $a ∈ A$ is \textdef{homogeneous} if it belongs to some $A_k$, in which case it is said to be a \textdef{$k$-vector}.
+	If $A = \bigoplus_{k ∈ R} A_{k}$ is an $R$-graded algebra, then an element $a ∈ A$ is \textdef{homogeneous} if it belongs to some $A_k$, in which case it is said to be a \textdef{$k$-vector}.\sidenote{
+		We use the aliases \emph{bivector} for $2$-vector, \emph{trivector} for $3$-vector, \emph{scalar} for $0$-vector, etc.
+	}
 	If $a ∈ A_{k_1} ⊕ \cdots ⊕ A_{k_n}$ is inhomogeneous, we may call it a $\set{k_1, ..., k_n}$-multivector.
 \end{definition}
 
-All elements of a graded algebra are either inhomogeneous or a $k$-vector for some $k$; and each $k$-vector is either a \emph{$k$-blade }or a sum of $k$-blades.
+All elements of a graded algebra are either inhomogeneous or a $k$-vector for some $k$, and every non-zero $k$-vector is a sum of one or more irreducible terms, called \emph{blades}, in the following sense.
 
 \begin{definition}
 	\label{def:blade}
@@ -248,7 +253,7 @@ When reasoning about quotients of graded algebras, the following fact is useful.
 	Therefore, the assignment $Φ = [(a, b)] \mapsto ([a], [b])$ is well-defined.
 	Injectivity and surjectivity follow immediately.
 \end{proof}
-This motivates the following strengthening to the notion of an ideal:
+The general non-preservation of gradings motivates strengthening the notion of an ideal:
 \begin{definition}
 	An ideal $I$ of an $R$-graded algebra $A = \bigoplus_{k ∈ R} A_k$ is \textdef{homogeneous} if $I = \bigoplus_{k ∈ R}I_k$ where $I_k = I \cap A_k$.
 \end{definition}
@@ -256,7 +261,7 @@ Not all ideals are homogeneous.\sidenote{
 	For example, the ideal $I = \gen{\ve_1 + \ve_2 ⊗ \ve_3}$ is distinct from $\bigoplus_{k = 0}^∞ (I \cap \TA[k]{V}) = \gen{\ve_1, \ve_2 ⊗ \ve_3}$ because the former does not contain $\spanof{\ve_1}$, while the latter does.
 }
 The additional requirement that an ideal be homogeneous ensures that the associated equivalence relation, as well as respecting the basic algebraic relations of \cref{def:congruence}, also preserves the grading structure.
-And so, we have a graded analogue to \cref{thm:quotient-algebra-by-congruence}:
+And so, we have a `graded' analogue to \cref{thm:quotient-algebra-by-congruence}:
 \begin{theorem}
 	\label{thm:quotient-algebra-by-homogeneous-congruence}
 	If $A$ is an $R$-graded algebra and $I$ a homogeneous ideal, then the quotient $\quot A I$ is also $R$-graded.
@@ -275,14 +280,14 @@ And so, we have a graded analogue to \cref{thm:quotient-algebra-by-congruence}:
 
 \section{The Wedge Product: Multivectors}
 
-One of the simplest algebras to construct as a quotient of the tensor algebra, yet still one of the most useful, is the \emph{exterior algebra}, first introduced by Hermann Grassmann in 1844.
+One of the simplest algebras to construct as a quotient of the tensor algebra, yet still one of the most useful, is the \emph{exterior algebra}, first popularised by Hermann Grassmann in 1844.
 \begin{definition}
 	\label{def:exterior-algebra}
 	The \textdef{exterior algebra} over a vector space $V$ is
 	\begin{align}
 		\EA{V} ≔ \quot{\TA{V}}{ \gen{𝒖⊗𝒖}}
 	.\end{align}
-	The product in $\EA{V}$ is denoted $∧$ and called the \textdef{wedge product}.
+	The product in $\EA{V}$ is denoted `$∧$' and is called the \textdef{wedge product}.
 \end{definition}
 The ideal $\gen{𝒖 ⊗ 𝒖} ≡ \gen{𝒖 ⊗ 𝒖 | 𝒖 ∈ V}$ corresponds to the congruence defined by $𝒖 ⊗ 𝒖 \sim 0$ for any vectors $𝒖 ∈ V$.
 The wedge product is also called the \emph{exterior}, \emph{alternating} or \emph{antisymmetric} product.
@@ -329,7 +334,7 @@ Elements of the one-dimensional subspace $\EA[n]{V}$ are called \textdef{pseudos
 Blades have direct geometric interpretations.
 The bivector $𝒖 ∧ 𝒗$ is interpreted as the directed planar area spanned by the parallelogram with sides $𝒖$ and $𝒗$.
 (Note that blades have no `shape'; only directed magnitude.)
-Similarly, higher-grade elements represent directed volume elements spanned by parallelepipeds (see \cref{fig:bivector}).
+Similarly, higher-grade elements represent directed \paren{hyper}volume elements spanned by parallelepipeds (see \cref{fig:bivector}).
 \begin{marginfigure}
 	\includefigure[\columnwidth]{bivector}
 	\caption{
@@ -343,8 +348,8 @@ In fact, any $k$-blade may be viewed as a subspace of $V$ with an oriented scala
 	$\spanof b = \spanof{\etc{𝒖_\i},k}$.
 	Define the span of zero to be the trivial subspace.
 \end{definition}
-The definition does not depend on the particular decomposition of the blade as a wedge product of vector.
-(If $\etc{𝒖_\i}∧k = \etc{𝒗_\i}∧k$ are two such decompositions, then $\spanof{𝒖_i} = \spanof{𝒗_i}$.)
+Notably, the definition is independent on the particular decomposition of the blade as a wedge product of vector.
+(E.g., if $\etc{𝒖_\i}∧k = \etc{𝒗_\i}∧k$ are two such decompositions, then $\spanof{𝒖_i} = \spanof{𝒗_i}$.)
 
 
 \subsection{As antisymmetric tensors}
@@ -403,7 +408,7 @@ The factor of $\frac1{k!}$ present in \cref{eqn:(anti)symmetriser} is not necess
 \end{math}
 to hold.
 Indeed, some authors omit the normalisation factor, which has the effect of changing \cref{eqn:wedge-as-antisymm} to\sidenote{
-	Written with $\op{Sym}^-$ \emph{including} the factor $\frac1{k!}$, as in \eqref{eqn:(anti)symmetriser}.
+	Written here with $\op{Sym}^-$ \emph{including} the factor $\frac1{k!}$, as in \eqref{eqn:(anti)symmetriser}.
 }
 \begin{align}
 	A ∧ B = \frac{(p + q)!}{p!q!}\op{Sym}^-(A ⊗ B)
@@ -448,13 +453,13 @@ Using a basis $\set{\ve^i} ⊂ V^*$, any element $f ∈ \EA[k]{V^*}$ has the for
 \\	&= \frac1{k!}\det[\ve^{i_m}(𝒖_n)]_{mn}
 	\label{eqn:poor-mans-exterior-form}
 .\end{align}
-However, this differs from the standard definition of exterior forms in two important ways:
+However, this differs from the standard definition of exterior forms (as in \cite{spivak1975dg,misner1973gravitation}) in two important ways:
 \begin{enumerate}
 	\item In \cref{eqn:poor-mans-exterior-form}, the dual vectors $\ve^i ∈ V^*$ are permuted while the order of the arguments $𝒖_i$ are preserved; but for standard exterior forms, the opposite is true.
-	This forbids the proper extension of $\EA{V^*}$ to non-Abelian vector-valued forms, where the values $\ve^i(𝒖_j)$ may not commute.
+	This forbids the proper extension of $\EA{V^*}$ to \emph{non-Abelian vector-valued forms}, where the values $\ve^i(𝒖_j)$ may not commute.
 	\item More trivially, we insist on the Kobayashi---Nomizu convention of normalisation factor for $\EA{V^*}$; but the Spivak convention for exterior forms is much more common in physics.
 \end{enumerate}
-Thus, we will not define exterior forms in terms of the exterior algebra $\EA{V^*}$, to better agree with standard convention.
+For these reasons, we will not define exterior forms in terms of the exterior algebra $\EA{V^*}$, but separately, to better agree with convention.
 
 \begin{definition}
 	\label{def:exterior-form}
@@ -503,11 +508,9 @@ Note that this implies that $φ ∧ φ$ does not necessarily vanish for non-Abel
 \section{The Metric: Length and Angle}
 
 The tensor and exterior algebras considered so far are built from a vector space $V$ alone.
-Notions of length and angle are central to geometry, but are not intrinsic to a vector space --- this additional structure must be provided by a \emph{metric}.
+Notions of length and angle are central to geometry, but are not intrinsic to a vector space --- this additional structure may be provided by a \emph{metric}.
 \begin{definition}
-	A \textdef{metric}\,\sidenote{a.k.a. an \emph{inner product}, or \emph{symmetric bilinear form}} is a function $η : V × V \to \FF$, often written
-	$ η(𝒖, 𝒗) ≡ \ip{𝒖, 𝒗} $
-	which satisfies
+	A \textdef{metric}\,\sidenote{a.k.a. an \emph{inner product}, or \emph{symmetric bilinear form}} is a function $η : V × V \to \FF$, often written $\ip{𝒖, 𝒗} ≡ η(𝒖, 𝒗)$, which satisfies
 	\begin{itemize}
 		\item symmetry, $\ip{𝒖, 𝒗} = \ip{𝒗, 𝒖}$; and
 		\item linearity, $\ip{α𝒖 + β𝒗, 𝒘} = α\ip{𝒖, 𝒘} + β\ip{𝒗, 𝒘}$ for $α, β \in \FF$.
@@ -527,8 +530,8 @@ With respect to a basis $\set{\ve_i}$ of $V$, the metric components
 are defined.
 Non-degeneracy means that $\det η ≠ 0$ when viewing $η = [η_{ij}]$ as a matrix, and in this case the matrix inverse $η^{ij}$ is also defined and satisfies $η^{ik}η_{kj} = δ^i_j$.
 Throughout, we will not have need to consider degenerate metrics,\sidenote{
-	Degenerate signatures find use in computer graphics, especially \emph{projective geometric algebra} \cite{hestenes1991pga,vince2008ga-graphics}.
-} and so assume non-degeneracy.
+	Degenerate signatures do find use in computer graphics, especially via \emph{projective geometric algebra} \cite{hestenes1991pga,vince2008ga-graphics}.
+} so we assume non-degeneracy.
 
 A vector space $V$ together with a metric $η$ is called an \textdef{inner product space} $(V, η)$.
 Alternatively, instead of a metric, an inner product space may be constructed with a quadratic form:
@@ -557,7 +560,7 @@ The prescription of either $η$ or $q$ is therefore equivalent --- but the notio
 \subsubsection{Covectors and dual bases}
 
 The dual space $V^* ≔ \set{f : V → \FF | \text{$f$ linear}}$ of a vector space consists of \textdef{dual vectors} or \textdef{covectors}, which are linear maps from $V$ into its underlying field.
-Convention dictates that components of vectors be written superscript, $𝒖 = u^i\ve_i ∈ V$, and covectors subscript, $φ = φ_i\ve^i ∈ V^*$, for bases $\set{\ve_i} \subset V$ and $\set{\ve^i} \subset V^*$.
+Summation convention dictates that components of vectors be written superscript, $𝒖 = u^i\ve_i ∈ V$, and covectors subscript, $φ = φ_i\ve^i ∈ V^*$, for bases $\set{\ve_i} \subset V$ and $\set{\ve^i} \subset V^*$.
 
 A metric $η$ on $V$ defines an isomorphism between $V$ and its dual space.
 Collectively known as the \textdef{musical isomorphisms}, the map $\flat : V → V^*$ and its inverse $\sharp : V^* → V$ are defined by
@@ -573,7 +576,7 @@ The names become justified when working with a basis: the relations
 	\qqtext{and}
 	(φ^\sharp)^i = η^{ij}φ_j
 \end{align}
-show that $\flat$ lowers indices, while $\sharp$ raises them.
+show that $\flat$ \emph{lowers} indices, while $\sharp$ \emph{raises} them.
 
 Given a metric, a choice of basis $\set{\ve_i} ⊂ V$ also defines a \textdef{dual basis $\set{\ve^i} \subset V^*$ of $V$} via
 \begin{math}
@@ -602,7 +605,7 @@ In an exterior algebra $\EA{V}$ with a metric defined on $V$, there is an induce
 In particular, a metric on $\EA{V}$ defines a magnitude for pseudoscalars.
 \begin{definition}
 	Let $V$ be an $n$-dimensional vector space with a metric.
-	The \textdef{volume element} $\vol$ of the metrical exterior algebra $\EA{V}$ is the unique (up to sign) $n$-vector satisfying $\ip{\vol, \vol} = 1$.
+	The \textdef{volume element} $\vol ∈ \EA[n]{V}$ of the metrical exterior algebra $\EA{V}$ is the unique (up to sign) pseudoscalar satisfying $\ip{\vol, \vol} = 1$.
 \end{definition}
 A choice of sign for the volume element defines an \textdef{orientation}.
 Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$, the basis is called right-handed if $\etc{\ve_\i}∧n = \vol$ is the chosen volume element, and left-handed otherwise.
@@ -610,16 +613,58 @@ Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$,
 
 \subsubsection{Hodge duality}
 
-A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a metric, which relates the $k$- and $(n - k)$-grade subspaces.
+A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a metric and orientation, which relates the $k$- and $(n - k)$-grade subspaces.
 \begin{definition}
+	\label{def:hodge-dual}
 	Let $\EA{V}$ be a metrical exterior algebra with base dimension $n$ and volume element $\vol$.
 	The \textdef{Hodge dual} $\star$ is the unique linear operator satisfying
 	\begin{align}
+		\label{eqn:hodge-dual}
 		A ∧ \star B = \ip{A, B}\vol
 	\end{align}
 	for any $k$-vectors $A, B ∈ \EA[k]{V}$.
 \end{definition}
 
-The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates each pair of fixed-grade subspaces of the same dimension; in particular, scalars with pseudoscalars, $\star 1 = \vol$.
+The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates each pair of fixed-grade subspaces of the same dimension; in particular, scalars with pseudoscalars via $\star 1 = \vol$.
 
-\todo{Seems incomplete...}
+\begin{lemma}
+	The hodge dual of a $p$-vector $A = A_{i_1⋯i_p} \etc{\ve^{i_\i}}∧p$ in $n$ dimensions has components
+	\begin{align}
+		(\star A)_{j_1⋯j_q} = \frac1{p!} A^{i_1⋯i_p} ε_{i_1⋯i_p j_1⋯j_q}
+	\end{align}
+	where $q = n - p$ and $A^{i_1⋯i_p} = A_{k_1⋯k_p} \etc{η^{i_\i k_\i}}{}p$.
+\end{lemma}
+\begin{proof}
+	Begin by writing the left-hand side of \cref{eqn:hodge-dual} in component form,
+	\begin{align}
+		\label{eqn:hodge-dual-lem.1}
+		A ∧ \star B
+		&= A_{i_1⋯i_p} (\star B)_{j_1⋯j_p} \etc{\ve^{i_\i}}∧p ∧ \etc{\ve^{j_\i}}∧p
+	\\	&= A_{i_1⋯i_p} (\star B)_{j_1⋯j_p} ε^{i_1⋯i_p j_1⋯j_p} \vol
+	.\end{align}
+	If the multi-indices $i_k$ and $j_k = i_{σ(i)}$ are permutations of each other, then
+	\begin{align}
+		\det[η^{i_m j_n}]_{mn} = (-1)^σ \etc{η^{i_\i j_{σ(\i)}}}{}p
+	.\end{align}
+	Using this, the right-hand side of \cref{eqn:hodge-dual} is
+	\begin{align}antisymmetric
+		\label{eqn:hodge-dual-lem.2}
+		\ip{A,B} \vol
+		&= A_{i_1⋯i_p} B_{j_1⋯j_p} \det[ η^{i_m j_n}]_{mn} \vol
+	\\	&= A_{i_1⋯i_p} B_{j_1⋯j_p} (-1)^σ \etc{η^{i_\i j_{σ(\i)}}}{}p \vol
+	\\	&= A_{i_1⋯i_p} B^{\etc{i_{σ^{-1}(\i)}}{}p} (-1)^σ \vol
+		= A_{i_1⋯i_p} B^{i_1⋯i_p} \vol
+	\end{align}
+	where we absorb the factor $(-1)^σ$ by permuting indices of $B$.
+	Equating coefficients of the arbitrary $A_{i_1⋯i_p}$ components, \cref{eqn:hodge-dual-lem.1,eqn:hodge-dual-lem.2} gives
+	\begin{align}
+		(\star B)_{j_1⋯j_p} ε^{i_1⋯i_p j_1⋯j_p} = B^{i_1⋯i_p}
+	\end{align}
+	Contracting with $ε_{i_1⋯i_p k_1⋯k_p}$ gives
+	\begin{align}
+		(\star B)_{k_1⋯k_p} = \frac1{p!} B^{i_1⋯i_p} ε_{i_1⋯i_p k_1⋯k_p}
+	\end{align}
+	since $ε^{i_1⋯i_p j_1⋯j_p} ε_{i_1⋯i_p k_1⋯k_p} = (-1)^σ p!$ where $σ$ is the permutation sending $j_i \mapsto k_i$.
+	The factor of $(-1)^σ$ is absorbed since $(\star B)_{j_1⋯j_p} = (-1)^σ (\star B)_{k_1⋯k_p}$.
+	Finally, replacing $A \leftrightarrow B$ is the result.
+\end{proof}
