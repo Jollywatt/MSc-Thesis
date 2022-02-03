@@ -615,6 +615,7 @@ Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$,
 
 A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a metric and orientation, which relates the $k$- and $(n - k)$-grade subspaces.
 \begin{definition}
+	\label{def:hodge-dual}
 	Let $\EA{V}$ be a metrical exterior algebra with base dimension $n$ and volume element $\vol$.
 	The \textdef{Hodge dual} $\star$ is the unique linear operator satisfying
 	\begin{align}
@@ -646,7 +647,7 @@ The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ associates each pair of fix
 		\det[η^{i_m j_n}]_{mn} = (-1)^σ \etc{η^{i_\i j_{σ(\i)}}}{}p
 	.\end{align}
 	Using this, the right-hand side of \cref{eqn:hodge-dual} is
-	\begin{align}
+	\begin{align}antisymmetric
 		\label{eqn:hodge-dual-lem.2}
 		\ip{A,B} \vol
 		&= A_{i_1⋯i_p} B_{j_1⋯j_p} \det[ η^{i_m j_n}]_{mn} \vol
