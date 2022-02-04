@@ -572,7 +572,7 @@ The multivector commutator product
 	\label{eqn:commutator-prod}
 	A × B ≔ \frac12(AB - BA)
 \end{align}
-enjoys several useful properties, particularly with bivectors.
+enjoys several useful properties, particularly when acting on bivectors.
 \begin{lemma}
 	\label{lem:commutator-derivation}
 	Commutation by a multivector $A$ is a derivation,
@@ -619,7 +619,7 @@ Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometri
 	e^σ = 1 + σ + \frac12 σ^2 + \cdots
 \end{math}
 of a bivector is an even multivector.
-Furthermore, note that the reverse $\rev{(e^σ)} = e^{\rev{σ}} = e^{-σ}$ is the inverse, and also that $e^σ$ is continuously connected to the identity by the path $e^{λσ}$ for $λ ∈ [0, 1]$.
+Furthermore, note that the reverse $\rev{(e^σ)} = e^{(\rev{σ})} = e^{-σ}$ is the inverse, and also that $e^σ$ is continuously connected to the identity by the path $e^{λσ}$ for $λ ∈ [0, 1]$.
 Therefore, $e^σ ∈ \op{Spin}^+$ is a rotor, and we have a Lie algebra--Lie group correspondence shown in \cref{fig:bivector-liealg}.
 Thus, both the rotor groups and their Lie algebras are directly represented within the mother algebra $\GA(p, q)$.
 
@@ -692,7 +692,7 @@ An example of the first type can be pictured as two planes meeting at right-angl
 
 \begin{definition}
 	\label{def:Δ-orthogonal}
-	A $p$-blade $a$ and $q$-blade $b$ satisfying $ab = \grade[k]{ab}$ are called \textdef{$Δ$-orthogonal} where $Δ = k - |p - q| = n - m$.
+	A $p$-blade $a$ and $q$-blade $b$ satisfying $ab = \grade[k]{ab}$ are called \textdef{$Δ$-orthogonal} where $Δ = \frac12(k - |p - q|)$.
 \end{definition}
 
 Informally, $Δ$-orthogonality of $a$ and $b$ means that $ab$ is of the $Δ$th grade above the minimum possible grade $|p - q|$.
@@ -944,7 +944,7 @@ To summarise these results, for \emph{any} multivectors $(A, B, C)$, we have
 ,\\	(A \lcontr B) \rcontr C &= A \lcontr (B \rcontr C)
 ,&	𝒖 \bullet (B \bullet 𝒗) &= (𝒖 \bullet B) \bullet 𝒗
 .\end{align}
-The last equation is a specialisation of the upper right, which in particular means that parentheses are unnecessary in defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
+The last equation is a specialisation of the upper right, which in particular means that parentheses are unnecessary when defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
 \begin{math}
 	F_{ij} = \ve_i \bullet F \bullet \ve_j
 .\end{math}

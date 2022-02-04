@@ -150,6 +150,7 @@
 
 
 \usepackage{caption}
+\usepackage{subcaption}
 
 \setcapindent{0pt} % remove indentation for multiline (table) captions
 \captionsetup{
@@ -160,6 +161,9 @@
 \DeclareCaptionStyle{marginfigure}{
 	font=footnotesize,
 	justification=raggedauto,
+}
+\captionsetup[subfigure]{
+	justification=centering,
 }
 
 

@@ -380,14 +380,6 @@ The tangent space $\TT_p F_{π(p)}$ of the fibre (in isolation from the bulk) co
 In other words, the tangent bundles of all the fibres taken together form the vertical bundle.
 
 
-On the other hand, a \emph{connection} specifies how the value $p ∈ ℱ$ changes when the base point $π(p) ∈ ℳ$ moves, if $p$ is to be considered to move ``horizontally'', i.e., if $p$ is to undergo parallel transport.
-\begin{definition}
-	A \textdef{horizontal bundle} or \textdef{(Ehresmann) connection} $H$ on a smooth fibre bundle $\fibrebundle F ℱ ℳ$ is a smooth $(\dim ℳ)$-dimensional tangent subbundle $H ⊆ \TT ℱ$ which is complementary to the vertical bundle $V ⊆ \TT ℱ$, in the sense that
-	\begin{align}
-		\TT_p ℱ = \VV_p ℱ ⊕ H_p
-	\end{align}
-	for each point $p ∈ ℱ$.
-\end{definition}
 \begin{marginfigure}
 	\centering
 	\includefigure{ehresmann-connection}
@@ -396,6 +388,14 @@ On the other hand, a \emph{connection} specifies how the value $p ∈ ℱ$ chang
 	}
 	\label{fig:ehresmann-connection}
 \end{marginfigure}
+On the other hand, a \emph{connection} specifies how the value $p ∈ ℱ$ changes when the base point $π(p) ∈ ℳ$ moves, if $p$ is to be considered to move ``horizontally'', i.e., if $p$ is to undergo parallel transport.
+\begin{definition}
+	A \textdef{horizontal bundle} or \textdef{(Ehresmann) connection} $H$ on a smooth fibre bundle $\fibrebundle F ℱ ℳ$ is a smooth $(\dim ℳ)$-dimensional tangent subbundle $H ⊆ \TT ℱ$ which is complementary to the vertical bundle $V ⊆ \TT ℱ$, in the sense that
+	\begin{align}
+		\TT_p ℱ = \VV_p ℱ ⊕ H_p
+	\end{align}
+	for each point $p ∈ ℱ$.
+\end{definition}
 Note that, while the tangent bundle $\TT ℱ$ and vertical bundle $\VV ℱ$ are canonical constructions, the choice of a horizontal bundle $H$ is not: there may be many distinct meanings of parallel transport on a given bundle, and so many distinct horizontal bundles.
 
 
@@ -412,14 +412,6 @@ It therefore has an inverse,
 ,\end{align}
 which acts to ``lift'' tangent vectors from the base into the horizontal subbundle at $p$.
 This proves to be a useful construction:
-\begin{marginfigure}
-	\centering
-	\includefigure{connection-map}
-	\caption{
-		The tangent vector $𝒖$ at $x$ is lifted to the horizontal bulk vector $Γ_𝒖(f)$ at the point $f(x)$.
-	}
-	\label{fig:connection-map}
-\end{marginfigure}
 \begin{definition}
 	\label{def:connection-map}
 	Let $\fibrebundle[π] F ℱ ℳ$ be a fibre bundle with an Ehresmann connection $H ⊆ \TT ℱ$.
@@ -436,6 +428,14 @@ This proves to be a useful construction:
 		Γ(f)|_x &≔ -\dd π|_{H_{f(x)}}^{-1}
 	.\end{align}
 \end{definition}
+\begin{marginfigure}
+	\centering
+	\includefigure{connection-map}
+	\caption{
+		The tangent vector $𝒖$ at $x$ is lifted to the horizontal bulk vector $Γ_𝒖(f)$ at the point $f(x)$.
+	}
+	\label{fig:connection-map}
+\end{marginfigure}
 The horizontal lift of a section $f$ is a horizontal-valued $1$-form $Γ(f) ∈ \forms[1](ℳ, H)$, whose action on tangent vectors $𝒖$ we may write as $Γ_𝒖(f) ≔ Γ(f)(𝒖)$, and similarly for a a point $p$.
 	
 % 	 takes sections to horizontal-valued $1$-forms defined by
@@ -589,15 +589,6 @@ However, we do not want to measure horizontal motion --- just the \emph{effectiv
 Thus, the covariant derivative $∇_𝒖f ∈ \VV_{f(x)}ℱ$ is the vertical projection of $\dd f(𝒖)$ obtained by discarding its horizontal component, where `horizontal' is of course specified by the connection  (see \cref{fig:covariant-derivative}).
 
 
-\begin{lemma}
-	\label{lem:covariant-derivative-rewritten}
-	The covariant derivative as in \cref{def:covariant-derivative-on-fibre-bundle} is equivalent to
-	\begin{align}
-		∇_𝒖 f = \dd f(𝒖) + Γ_𝒖(f) 
-	,\end{align}
-	where $\dd f$ is the push-forward of $f ∈ \secs(ℱ)$ and $Γ$ is the horizontal lift as in \cref{def:connection-map}.
-\end{lemma}
-
 \begin{marginfigure}
 	\includefigure{covariant-derivative}
 	\caption{
@@ -607,6 +598,14 @@ Thus, the covariant derivative $∇_𝒖f ∈ \VV_{f(x)}ℱ$ is the vertical pro
 	\label{fig:covariant-derivative}
 \end{marginfigure}
 
+\begin{lemma}
+	\label{lem:covariant-derivative-rewritten}
+	The covariant derivative as in \cref{def:covariant-derivative-on-fibre-bundle} is equivalent to
+	\begin{align}
+		∇_𝒖 f = \dd f(𝒖) + Γ_𝒖(f) 
+	,\end{align}
+	where $\dd f$ is the push-forward of $f ∈ \secs(ℱ)$ and $Γ$ is the horizontal lift as in \cref{def:connection-map}.
+\end{lemma}
 
 \begin{proof}
 	By the defining property of the projection and rejection \eqref{eqn:proj-rej},
