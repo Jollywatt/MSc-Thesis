@@ -11,13 +11,37 @@
 \title{Geometric Algebra for Special and General Relativity}
 \author{Joseph Wilson}
 
+\makeatletter
+\renewcommand\maketitle{
+	\begin{center}
+		\null\vfill
+		{\LARGE\bfseries\sffamily \@title}
+		\vfill
+		by
+		\vfill
+		\@author
+		\vfill
+		A thesis \\
+		submitted to the Victoria University of Wellington \\
+		in fulfilment of the requirements for the degree of \\
+		Master of Science in Mathematics
+		\vfill
+		Victoria University of Wellington \\
+		\@date
+		\vfill
+	\end{center}
+}
+\makeatother
+
 \begin{document}
 
 
 % FRONT MATTER
+\frontmatter
 \newgeometry{margin=3.5cm} % begin front matter
 
 	\maketitle
+	\thispagestyle{empty}
 
 	\include{abstract.tex}
 	
@@ -29,7 +53,7 @@
 	\include{chapters/debug}
 \fi
 
-
+\mainmatter
 
 
 \part{Special Relativity and Geometric Algebra}
