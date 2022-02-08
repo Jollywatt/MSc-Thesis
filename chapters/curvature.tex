@@ -5,8 +5,7 @@ If the curve is a closed loop, then values are not necessarily mapped back onto 
 The action of parallel transport around a loop known as its \textdef{holonomy}, and its deviation from the identity operator measures the connection's \emph{curvature}.
 
 Curvature may be restated as the obstruction to the \emph{integrability} of the connection.
-Therefore, the curvature of a connection may be derived by finding the integrability condition of the parallel transport equations, which is most easily done via Frobenius' theorem.
-\todo{Cite.}
+Therefore, the curvature of a connection may be derived by finding the integrability condition of the parallel transport equations, which is most easily done via Frobenius' theorem \cite[§6]{spivak1975dg}.
 
 \section{Integrability and Frobenius' Theorem}
 \label{sec:Frobenius}
@@ -43,7 +42,7 @@ The importance of involutivity as the integrability condition for a tangent subb
 		\text{$𝒟$ is involutive}
 	.\end{align}
 \end{theorem}
-Frobenius’ theorem can be dualised into a statement ideals of exterior forms instead of vector subbundles, which can be more useful for calculation.
+Frobenius’ theorem can be dualised into a statement involving exterior forms instead of vector subbundles, which can be more useful for calculation.
 This stems from the observation that a vector subspace $U ⊆ V$ may be represented by the subspace $Ω$ of dual vectors with $U$ contained in their kernels,
 \begin{align}
 	Ω = \set{ω ∈ V^* | ω(𝒖) = 0, \forall 𝒖 ∈ U} ⊆ V^*
@@ -185,7 +184,7 @@ Since \cref{eqn:arbitrary-1-form-gen} is a general $1$-form of the ideal $I$, we
 ,\end{align}
 where we define the connection $1$-forms $\df Γ^a{}_b ≔ Γ_μ{}^a{}_b \, \df{\dd X}^μ$.
 
-The dual formulation of Frobenius’ theorem (\cref{thm:dual-involutive}) states that the tangent subbundle $H$ is involuted if and only if the ideal $I$ is closed.
+The dual formulation of Frobenius’ theorem (\cref{thm:dual-involutive}) states that the tangent subbundle $H$ is involutive if and only if the ideal $I$ is closed.
 This means that $\dd \df Ω^a ∈ \dd I$ for every generator, which is equivalent to the condition $\dd\df Ω^a = \df α_a ∧ \df Ω^a$ for arbitrary `component $1$-forms' $\df α_a$.
 By direct calculation,
 \begin{align}
@@ -327,7 +326,7 @@ where $γ(b ← a)$ is the path along $γ$ from $γ(a)$ to $γ(b)$, and
 	\begin{align}
 		(Γ_λ)^a{}_b \, |_{ξ(λ, s)} = Γ_μ{}^a{}_b \, |_{ξ(λ, s)} \pdv{ξ^μ(λ, s)}{λ}
 	.\end{align}
-	From \cref{lem:dtrans-is-Γ}, we have
+	From \cref{lem:dtrans-is-hlift}, we have
 	\begin{align}
 		\eval{\pdv{U(λ, s)}{s}}_{s = 0} = \dv{s} \eval{\trans_{ξ(λ, s ← 0)}}_{s = 0} = - \df Γ(∂_s ξ)
 	\end{align}
