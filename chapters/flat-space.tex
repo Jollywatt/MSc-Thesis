@@ -10,11 +10,15 @@ In a flat geometry, we may assume that
 \end{itemize}
 We reserve the word \textdef{field} to mean a map with a fixed vector space codomain.
 For instance, the electromagnetic bivector \emph{field} in flat space $F : \RR^4 → \EA[2]{\RR^4}$ is a function between fixed vector spaces.
-In particular, the values of a vector field $F : V → A$ at different points in spacetime belong to the same space and, for example, their sum $F(x) + F(y) ∈ A$ is well-defined.
+In particular, the values of such a vector field at different points in spacetime belong to the same space, and for example, their sum $F(x) + F(y) ∈ A$ is well-defined.
 
 These assumptions are acceptable in special relativity, but in arbitrary regions of spacetime and in the presence of gravity, curvature prevents spacetime from admitting a meaningful vector space structure.
 It is then \emph{un-physical} to compare field values at different points in spacetime.
 (Consideration of curvature leads to differential geometry and comprises \cref{part:2}.)
+
+This chapter introduces the \emph{exterior} and \emph{vector derivatives} as instances of the `algebraic derivative' in the exterior and geometric algebras, respectively.
+These devices combine derivative data with the geometrical structure inherent in the algebras.
+To demonstrate their utility, a case study of Maxwell's equations of electromagnetism are given in terms of these algebraic derivatives.
 
 
 \section{Differentiation}
@@ -147,7 +151,13 @@ For a general multivector $F$, then, we have
 \begin{align}
 	\vd F = \vd \lcontr F + \vd ∧ F
 .\end{align}
-
+The $(k + 1)$-grade part $\vd ∧ F$ is the \emph{curl} of $F$, and coincides with the exterior derivative $\dd F$.
+The $(k - 1)$-grade part involves the metric, and can be related to the `interior' derivative ${\star}{\dd}{\star} A$ via Hodge duality.\sidenote{
+	Observe that
+	\begin{math}
+		\vd \lcontr A = \grade[k - 1]{\vd \vol^{-1}\vol A} = ±\vol\grade[1 + n - k]{\vd (\vol A)} = ± (\vol \vd) ∧ (\vol A)
+	.\end{math}
+}
 
 \section{Case Study: Maxwell's Equations}
 
