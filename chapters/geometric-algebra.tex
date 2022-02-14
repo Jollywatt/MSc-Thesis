@@ -604,9 +604,9 @@ enjoys several useful properties, particularly when acting on bivectors.
 \begin{lemma}
 	\label{lem:bivector-comm-grade-preserving}
 	Commutation by a bivector $σ$ is a grade-preserving operation; i.e.,
-	\begin{align}
+	\begin{math}
 		σ × \grade[k]{A} = \grade[k]{σ × A}
-	.\end{align}
+	.\end{math}
 \end{lemma}
 \begin{proof}
 	If $A = \grade[k]{A}$ then $Aσ$ and $σA$ are $\set{k - 2, k, k + 2}$-multivectors.
@@ -749,7 +749,12 @@ Different cases are exemplified in \cref{tbl:blade-product-interpretations}.
 
 Familiarity with some special cases may aid intuition when considering general products of blades.
 For instance, if the product of two bivectors is $σ_1σ_2 = σ_1·σ_2 + σ_1×σ_2$, then it is understood that $σ_1$ has a component parallel to $σ_2$, and a component which meets $σ_2$ at right-angles along a line of intersection.
-In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them.
+\begin{marginfigure}
+	\includefigure{orthogonality}
+	\caption{Bivector planes $\set{ρ, ω}$ are $1$-orthogonal ($ρω = ρ×ω$) and $\set{σ, ρ}$ have both $0$- and $1$-orthogonal components ($σρ = σ \fatdot ρ + σ × ρ$).}
+	\label{fig:orthogonal}
+\end{marginfigure}
+In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them (see \cref{fig:orthogonal}).
 On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors share no common direction, existing in orthogonal planes (a scenario requiring at least four dimensions).
 
 
