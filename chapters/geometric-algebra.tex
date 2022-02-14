@@ -337,7 +337,22 @@ From associativity of the geometric product, we immediately have
 	A ∧ (B\vol) = \grade[n]{A(B\vol)} = \grade[n]{(AB)\vol} = \grade{AB}\vol
 .\end{align}
 This generalises the defining relation of the Hodge dual, \cref{eqn:hodge-dual}.
-The duality given by $A \mapsto A\vol$ is constructive and trivial to manipulate algebraically, compared to the implicitly-defined exterior algebraic equivalent (\cref{def:hodge-dual}).
+The duality given by $A \mapsto A\vol$ is trivial to manipulate algebraically, compared to the implicitly-defined exterior algebraic equivalent (\cref{def:hodge-dual}).
+
+Using the Hodge dual, the geometric product (of vectors) may be defined entirely within the exterior algebra as
+\begin{align}
+	\label{eqn:geoprod-in-ea}
+	𝒖𝒗 ≔ (-1)^s \star(𝒖 ∧ \star 𝒗) + 𝒖 ∧ 𝒗
+\end{align}
+where $s$ is the signature of the metric (so that $(-1)^s = \det η$).
+Indeed, \cref{eqn:geoprod-in-ea} reduces to the familiar formula
+\begin{align}
+	𝒖𝒗 = (-1)^s\ip{𝒖, 𝒗} \star \vol + 𝒖 ∧ 𝒗 = \ip{𝒖, 𝒗} + 𝒖 ∧ 𝒗
+\end{align}
+by \cref{eqn:hodge-dual} and $\star \vol = (-1)^s$.
+However, \cref{eqn:geoprod-in-ea} does not apply to general multivectors, and the equivalent formulae for higher-grade objects are more complex and tend to obscure the underlying simplicity of the geometric product.
+
+
 
 \subsection{Common algebra isomorphisms}
 \label{sec:common-alg-isos}
