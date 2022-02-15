@@ -1,0 +1,176 @@
+
+\chapter{Integral Theorems}
+
+
+\section{Stokes' theorem for exterior calculus}
+
+\begin{theorem}[Stokes' theorem in $\RR^n$]
+	\label{thm:flat-stokes}
+	If $R ⊆ \RR^n$ is a compact $k$-dimensional hypersurface with boundary $∂R$, then a smooth differential form $ω ∈ \forms[k - 1](R)$ satisfies
+	\begin{align}
+		\label{eqn:stokes}
+		\int_R \dd ω = \int_{∂R} ω
+	.\end{align}
+\end{theorem}
+\begin{proof}
+	Since $R$ is a $k$-dimensional region with boundary, every point $x ∈ R$ has a neighbourhood diffeomorphic to a neighbourhood of the origin in either $\RR^k$ or $H^k ≔ [0, ∞) ⊕ \RR^{k - 1}$, depending on whether $x$ is an interior point or a boundary point, respectively.
+
+	\begin{marginfigure}
+		\centering
+		\includefigure[\columnwidth]{stokes-theorem}
+		\caption{
+			Neighbourhoods in $R$ are diffeomorphic either to interior balls or boundary half-balls.
+		}
+		\label{fig:stokes-theorem}
+	\end{marginfigure}
+
+	Let $\set{U_i}$ be a cover of $R$ consisting of such neighbourhoods.
+	Since $R$ is compact, we may assume $\bigcup_{i=1}^N \set{U_i} = R$ to be a finite covering.
+	Thus, we have finitely maps $h_i : U_i → X$ where $X$ is either $\RR^k$ or the half-space $H^k$, where $U_i \cong h_i(U_i)$ are diffeomorphic (see \cref{fig:stokes-theorem}).
+
+	Finally, let $\set{ϕ_i : R → [0, 1]}$ be a partition of unity subordinate to $\set{U_i}$, so that $\set{x ∈ R | ϕ_i(x) > 0} ⊆ U_i$ and $ω = \sum_{i=1}^N ϕ_iω$.
+	We need only prove the equality \eqref{eqn:stokes} for each $ω_i ≔ ϕ_iω$, and the full result follows be linearity.
+	
+	The form $h_i^*ω_i ∈ \forms[k - 1](X)$ can be written with respect to canonical coordinates of $X$ as
+	\begin{align}
+		h_i^*ω_i = \sum_{j=1}^k f_j (-1)^{j - 1} \dd x^{1\cdots\hat{j}\cdots k}
+	\end{align}
+	using the multi-index notation $\dx^{\etc{i_\i}{}k} ≡ \etc{\dx^{i_\i}}∧k$, where the hat denotes an omitted term.
+	The factor of $(-1)^{j - 1}$ gives the $(k - 1)$-form the boundary orientation induced by the volume form $\dx^{\etc\i{}k}$ for convenience.
+	Since pullbacks commute with $\dd$,
+	\begin{align}
+		h^*\ddω_i = \dd(h_i^*ω_i) = \sum_{j=1}^k \pdv{f_j}{x^j} \dd x^{1\cdots n}
+	.\end{align}
+	There are then two cases to consider.
+	\begin{itemize}
+		\item \emph{Interior case.}
+		If $h_i : U_i → \RR^k$, then the right-hand side of \cref{eqn:stokes} vanishes because $ω_i$ is zero outside the neighbourhood $U_i ⊂ R$ which nowhere meets the boundary $∂R$.
+		\begin{align}
+			\int_{∂R} ω_i = \int_{∂U_i} ω_i = \int_∅ ω_i = 0
+		\end{align}
+		The left-hand side evaluates to
+		\begin{align}
+			\int_R \dd ω_i
+			&= \int_X \dd (h_i^*ω_i)
+			= \int_{\RR^k} \sum_{j=1}^k \pdv{f_j}{x^j} \dd x^{1\cdots n}
+		\\	&= \underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_k \sum_{j=1}^k \pdv{f_j}{x^j} \etc{dx^\i}{}{k}
+		\\	&= \underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_{k - 1} \sum_{j=1}^k \eval{f_j}_{x^j=-∞}^{+∞} (-1)^{j-1} dx^1\cdots\widehat{dx^j}\cdots dx^k
+			= 0
+		,\end{align}
+		which vanishes because $h_i^*ω_i$, and hence the $f_j$, vanish outside the neighbourhood $h_i(U_i) ⊂ \RR^k$.
+
+	\item \emph{Boundary case.}
+	If $h_i : U_i → H^k$, then the boundary $∂U_i ⊂ ∂R$ is mapped onto the hyperplane $∂H^k = \set{(0, \etc[2]{x^\i},k) | x^j ∈ \RR}$.
+	Thus, $dx^1 = 0$ on this boundary, and the right-hand side of \cref{eqn:stokes} becomes
+	\begin{align}
+		\int_{∂R}ω_i
+		&= \int_{∂U_i} h_i^*ω_i
+		= -\int_{\RR^{k - 1}} f_1 \etc[2]{dx^\i}{}k
+	\\	&= -\underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_{k - 1} f_1(0, \etc[2]{x^\i},k) \etc[2]{dx^\i}{}k
+	.\end{align}
+	The factor of $-1$ comes from the induced orientation of the boundary $∂H^k$, which is outward-facing, so in the \emph{negative} $x^1$ direction.
+	For the left-hand side of \cref{eqn:stokes},
+	\begin{align}
+		\int_R \dd ω_i
+		&= \int_{H^k} h_i^*\ddω_i
+		= \int_0^∞ \etc{\int_{-∞}^{+∞}}{}{} \sum_{j=1}^k \pdv{f_j}{x^j} \etc{dx^\i}{}k
+	\intertext{
+		All terms $\pdv{f_j}{x^j}dx^j$ in the sum for $j > 1$ integrate to boundary terms $x_j → ±∞$ where $f_j$ vanishes.
+		This leaves the single term from the integration of $dx^1$,
+	}
+		&= -\etc{\int_{-∞}^{+∞}}{}{} \eval{f_1}_{x^1=0}^∞ \etc[2]{dx^\i}k
+	.\end{align}
+
+	\end{itemize}
+
+	Thus, we have equality for all $ω_i$, so
+	\begin{align}
+		\int_R \dd ω = \sum_{i=1}^N \int_R \dd ω_i = \sum_{i=1}^N \int_{∂R} ω_i = \int_{∂R} ω
+	\end{align}
+	by linearity.
+\end{proof}
+
+\section{Fundamental theorem of geometric calculus}
+
+\begin{theorem}
+	Let $f(𝒙)$ be a multivector field.
+	The vector derivative is
+	\begin{align}
+		\vd f(𝒙) = \lim_{|ℛ| → 0} \frac1{|ℛ|\vol} \oint_{∂ℛ} \bd S f
+	,\end{align}
+	where $ℛ$ is a volume containing $𝒙$ with boundary $∂ℛ$ and volume $|ℛ| = \int_ℛ \bd V$.
+	The limit is taken as the volume $ℛ$ shrinks to the point $𝒙$.
+\end{theorem}
+Note that the integrand $\bd S f$ is the geometric product between the hypersurface element and the field.
+\begin{proof}
+	It will suffice to prove the case where $ℛ$ is a box shape; arbitrary regions can be approximated via tessellation in the limit of vanishing voxel size.
+
+	Let $B_ε = \set{x^i\ve_i | x^i ∈ [-ε, +ε]}$ denote the $n$-dimensional cube of diameter $2ε$ centred at the origin.
+	If the surface $∂B_ε$ is oriented outward, then the face in the $+\ve^k$ direction is orientated like the $(n-1)$-blade $\vol \ve^k = (-1)^{n-k}\etcskip{\ve_\i}∧kn$.
+	Upon this face the infinitesimal surface element is
+	\begin{align}
+		% \bd^{(k)}x = \vol \ve^k dx^1\cdots\widehat{dx^k}\cdots dx^n
+		\bd^{(k)}x = \vol \ve^k \etcskip{dx^\i}{}{k}{n}
+	,\end{align}
+	while the opposing face has surface element $-\bd^{(k)}x$.
+
+	Consider the integral of $f$ over the surface $∂B_ε$, split into a sum of $n$ surface integrals over each pair of opposing faces.
+	The $k$th pair are the surfaces $\set{x^i\ve_i ± ε\ve_k | x^i ∈ [-ε, +ε], i ≠ k}$ where $i$ sums over axes \emph{other} than $k$.
+	Hence, we have
+	\begin{align}
+		\oint_{∂B_ε} \bd S f = \sum_{k=1}^n \int_{[-ε, +ε]^{n-1}} \bd^{(k)}x \, \qty(f(x^i\ve_i + ε\ve_k) - f(x^i\ve_i - ε\ve_k))
+	,	\quad(i ≠ k)
+	.\end{align}
+	By series expanding $f$ in each $x^i$, and then in $ε$, obtain
+	\begin{align}
+		f(x^i\ve_i ± ε\ve_k) &= f(±ε\ve_k) + x^i ∂_{\ve^i} (f(0) ± ε∂_{\ve^k} f(0))
+	.\end{align}
+	Since $|x^i| ≤ ε$, the last term is $𝒪(ε^2)$, and difference in the integrand is hence
+	\begin{align}
+		f(x^i\ve_i + ε\ve_k) - f(x^i\ve_i - ε\ve_k)
+		&= f(ε\ve_k) - f(-ε\ve_k) + 𝒪(ε^2)
+	\\	&= 2ε∂_{\ve^k}f(0) + 𝒪(ε^2)
+	.\end{align}
+	Therefore, after pulling constants outside the integrals, we have
+	\begin{align}
+		\oint_{∂B_ε} \bd S f
+		&≈ \sum_{k=1}^n 2ε \, ∂_{\ve^k} f(0) \int_{[-ε, +ε]^{n-1}} \bd^{(k)}x
+	\end{align}
+	to order $𝒪(ε^2)$.
+	The integrands each evaluate to the area $(2ε)^{n-1}$, giving
+	\begin{align}
+		\oint_{∂B_ε} \bd S f
+		≈ (2ε)^n \vol\ve^k ∂_{\ve^k} f(0)
+		= |B_ε|\vol \, \vd f(0)
+	,\end{align}
+	to order $𝒪(ε^2)$, which becomes exact in the limit,
+	\begin{align}
+		\label{eqn:vd-int-form}
+		\vd f(0) = \lim_{ε → 0} \frac1{|B_ε|\vol} \oint_{∂B_ε} \bd S f
+	.\end{align}
+
+	By translation, $f(𝒙) ↦ f'(𝒙) = f(𝒙 - 𝒖)$, we obtain the integral form of $\vd f(𝒖)$ evaluated at an arbitrary position $𝒖$.
+\end{proof}
+
+\begin{theorem}
+	For an $n$-dimensional region $ℛ$ with boundary $∂ℛ$, and a multivector field $f(𝒙)$,
+	\begin{align}
+		\int_ℛ \bd V \, \vd f = \oint_{∂ℛ} \bd S f
+	,\end{align}
+	where $\bd V$ denotes an $n$-blade volume element, and $\bd S$ an $(n - 1)$-blade surface element, and where juxtoposition is the geometric product. 
+\end{theorem}
+\begin{proof}
+	An arbitray volume $ℛ$ with boundary $∂ℛ$ can be approximated as tessellated boxes of arbitrily small size.\sidenote{
+		It is not neccesary that the surface area of the approximation converge to $|∂ℛ|$.
+	}
+	Suppose $ℛ$ is approximated by a regular lattice of $N$ boxes of radius $ε$.
+	Consider the sum of $\vd f$ over the lattice points, weighted by volume.
+	From \cref{eqn:vd-int-form} this can be written in terms a sum of surface integrals,
+	\begin{align}
+		\sum_{i=1}^N |B_i|\vol \, \vd f(𝒙_i) = \sum_{i=1}^N \oint_{∂B_i} \bd S f
+	.\end{align}
+	Note that interior faces of the boxes come in oppositely-oriented pairs, so that surface integrals over interior faces cancel.
+	Therefore, the result is obtained in the continuous limit $N → ∞$.
+\end{proof}
+
+\todo{Comment on how this generalizes Stokes' theorem.}
