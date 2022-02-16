@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.0.2 (e86c870879, 2021-01-15), www.inkscape.org
+%% Creator: Inkscape 1.0.2 (e86c8708, 2021-01-15), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'bivector.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{125.8582711bp}%
+    \setlength{\unitlength}{126.32599023bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.36260191)%
+  \begin{picture}(1,1.24838681)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{bivector.pdf}}%
-    \put(0.3962291,1.07546508){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
-    \put(0.48958437,0.83782273){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖$\end{tabular}}}}%
-    \put(0.15381185,1.06395228){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒗$\end{tabular}}}}%
+    \put(0.3966133,0.96046187){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
+    \put(0.48962292,0.72369938){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖$\end{tabular}}}}%
+    \put(0.15509359,0.94899169){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒗$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{bivector.pdf}}%
-    \put(0.71586636,0.17624449){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
-    \put(0.05458803,0.32619376){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒘$\end{tabular}}}}%
-    \put(0.31464982,0.3810424){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗∧𝒘$\end{tabular}}}}%
+    \put(0.71506711,0.06457062){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗$\end{tabular}}}}%
+    \put(0.05623714,0.2139647){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒘$\end{tabular}}}}%
+    \put(0.31533607,0.26861027){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$𝒖∧𝒗∧𝒘$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

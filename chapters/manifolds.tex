@@ -260,7 +260,7 @@ For example,
 \end{itemize}
 
 
-\subsection{Trivialisations and coordinates}
+\subsubsection{Trivialisations and coordinates}
 
 The bulk $ℱ$ of a fibre bundle $\fibrebundle F ℱ ℳ$ is itself a manifold (of dimension $\dim ℱ = \dim ℳ + \dim F$) so we may always prescribe local coordinates on $ℱ$.
 If we already have coordinates $\set{x^μ}$ on the base $ℳ$ and $\set{x^a}$ on a fibre $F$, then we often want to use the same coordinates $\set{x^μ, x^a}$ to describe the bulk $ℱ$.
@@ -280,6 +280,7 @@ It is not always possible to find a global trivialisation of a fibre bundle, and
 However, it is always possible trivialise \emph{locally}.
 That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a (global) trivialisation.
 Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}$ to the bulk of a fibre bundle, where $x^μ$ are coordinates on the base and $x^a$ are coordinates on the fibres, such that $x^μ$ do not vary along the fibres.
+In other words, local trivialisations are equivalent to local coordinates.
 
 
 
@@ -287,8 +288,7 @@ Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}
 
 
 
-
-\subsection{Sections of fibre bundles}
+\subsubsection{Sections of fibre bundles}
 
 
 In the language of fibre bundles, a field $f : ℳ → F$ is replaced by a \emph{section}, which is a ``vertical'' map $f : ℳ → ℱ$ into the bulk $ℱ$ such that $f(x) ∈ F_x$.
@@ -307,7 +307,7 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 
 
 
-\subsection{Exterior differential forms}
+\subsection{Exterior differential forms on manifolds}
 
 \Cref{sec:exterior-forms} defined exterior forms $\forms(V, A)$ as alternating multilinear maps from the fixed vector space $V$ into $A$.
 Similarly, the differential of a map $\dd f : \TT ℳ → \TT 𝒩$ is an object that takes a vector argument $𝒖 ∈ \TTℳ$, like an exterior $1$-form, except that the entire tangent bundle $\TT ℳ$ is not a vector space.
