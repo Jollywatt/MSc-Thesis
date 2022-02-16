@@ -332,3 +332,110 @@ We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior dif
 
 
 \todo{Formula for exterior derivative.}
+
+
+\section{Tangent Bundles and Lie Derivatives}
+
+\todo{
+	Explain that objects built from the tangent bundle admit a notion of derivative independently of a connection --- via the Lie derivative.
+	Show the Lie derivative for tensors,
+	\begin{align}
+		\lie_𝒖 T^{μ_1...μ_p}{}_{ν_1...ν_q}
+		= u^λ ∂_λ T^{μ_1...μ_p}{}_{ν_1...ν_q}
+		+ \sum_{i=1}^p T^{μ_1...λ...μ_p}{}_{ν_1...ν_q} ∂_λ u^{μ_i}
+		+ \sum_{i=1}^q T^{μ_1...μ_p}{}_{ν_1...λ...ν_q} ∂_{ν_i} u^λ
+	\end{align}
+	and for differential forms via Cartan's magic formula
+	\begin{align}
+		\lie_𝒖 φ = 𝒖 \lcontr \dd φ + \dd(𝒖 \lcontr φ)
+	.\end{align}
+	The ``complexity'' of these formulae sets the stage for how amazingly simple everything becomes with geometric calculus...
+}
+
+\subsection{The geometric Lie bracket and derivative}
+
+\begin{definition}
+	\label{def:geometric-lie-bracket}
+	The \textdef{geometric Lie bracket} of two multivectors $A, B ∈ \GA(ℳ, η)$ is
+	\begin{align}
+		[A, B] ≔ (A \rcontr \vd) ∧ B - (B \rcontr \vd) ∧ A
+	.\end{align}
+\end{definition}
+
+\begin{theorem}
+	\label{thm:geometric-lie-derivative}
+	Let $A ∈ \GA(\TT ℳ, η)$ be a multivector and $𝒖 ∈ \TT ℳ$ a tangent vector.
+	The Lie derivative of $A$ along $𝒖$ is
+	\begin{align}
+		\label{eqn:geometric-lie-derivative}
+		\lie_𝒖 A = [𝒖, A]
+	.\end{align}
+\end{theorem}
+This is a remarkably elegant result: the multivector $A$ can be of any kind (e.g., a vector, $k$-blade, even an inhomogeneous rotor) and the Lie derivative has the same form.
+\todo{Contrast this to the Lie derivative of a general tensor, eq.~(?).}
+\begin{proof}
+	Since $\lie_𝒖$ is linear, it suffices to prove the case where $A = \etc{𝒂_\i}∧k$ is a $k$-blade.
+	Because $\lie_𝒖$ is a derivation, we must have the result that
+	\begin{align}
+		\label{eqn:geolieder.0}
+		\lie_𝒖 (\etc{𝒂_\i}∧k) = \sum_{i=1}^k \etcmid{𝒂_\i}{[𝒖, 𝒂_i]}∧k
+	\end{align}
+	since $\lie_𝒖 𝒂_i = [𝒖, 𝒂_i]$ is the vector Lie bracket.
+	Expanding the right-hand side of \cref{eqn:geometric-lie-derivative}, we have, by \cref{def:geometric-lie-bracket}
+	\begin{align}
+		[𝒖, A] = 𝒖 \fatdot \vd A - (A \rcontr \vd) ∧ 𝒖
+	.\end{align}
+	We will expand the two terms on the right-hand side.
+	The first is
+	\begin{align}
+		\label{eqn:geolieder.1}
+		𝒖 \fatdot \vd A = 𝒖 \fatdot \vd (\etc{𝒂_\i}∧k)
+		= \sum_{i=1}^k \etcmid{𝒂_\i}{𝒖 \fatdot \vd 𝒂_i}∧k
+	\end{align}
+	since $𝒖 \fatdot \vd \equiv ∂_𝒖$ is a scalar derivation.
+
+	The second is
+	\begin{math}
+		(A \rcontr \vd) ∧ 𝒖
+	.\end{math}
+	Recall that contraction by a vector is an anti-derivation \todo{show this}.
+	Thus, for some vector $𝒗$,
+	\begin{align}
+		𝒗 \lcontr A = 𝒗 \lcontr (\etc{𝒂_\i}∧k)
+		= \sum_{i=1}^k (-1)^{i-1} \etcmid{𝒂_\i}{𝒗 \fatdot 𝒂_i}∧k
+	.\end{align}
+	Wedging this with a vector $𝒖$ produces
+	\begin{align}
+		\label{eqn:geolieder.2}
+		𝒖 ∧ (𝒗 \lcontr A)
+		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒂_i \fatdot 𝒗)𝒖}∧k
+	,\end{align}
+	where the factor of $(-1)^{i-1}$ is cancelled by anticommuting $𝒖$ to the $i$th position.
+	Now, note that $A$, $𝒗 \lcontr A$ and $𝒖 ∧ (𝒗 \lcontr A)$ are of grades $k$, $k - 1$ and $k$, respectively, allowing us to exploit reversion to rewrite as
+	\begin{align}
+		\label{eqn:geolieder.3}
+		𝒖 ∧ (𝒗 \lcontr A)
+		= \revsign{k} \, \rev{(𝒗 \lcontr A)} ∧ \rev{𝒖}
+		= \revsign{k} \, (\rev{A} \rcontr \rev{𝒗}) ∧ 𝒖
+		= (A \rcontr 𝒗) ∧ 𝒖
+	.\end{align}
+	The notation on the right-hand side lends itself better to the case where $𝒗$ is instead the vector derivative $\vd$ acting on $𝒖$, since $𝒖$ is to its immediate right.
+	Thus, \cref{eqn:geolieder.2,eqn:geolieder.3} show that
+	\begin{align}
+		\label{eqn:geolieder.4}
+		(A \rcontr \vd) ∧ 𝒖
+		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒂_i \fatdot \vd)𝒖}∧k
+	.\end{align}
+	Combining \cref{eqn:geolieder.1,eqn:geolieder.4}, be obtain
+	\begin{samepage}
+	\begin{fullwidth}
+	\begin{align}
+		[𝒖, A] =
+		𝒖 \fatdot \vd A - (A \rcontr \vd) ∧ 𝒖
+		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒖 \fatdot \vd 𝒂_i - 𝒂_i \fatdot \vd 𝒖)}∧k
+	\end{align}
+	\end{fullwidth}
+	\end{samepage}
+	whose right-hand side is equal to \cref{eqn:geolieder.0}.
+\end{proof}
+\todo{Disambiguate $𝒖 \fatdot \vd A = (𝒖 \fatdot \vd) A$ from $𝒖 \fatdot (\vd A)$.}
