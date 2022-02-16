@@ -17,7 +17,7 @@ It is then \emph{un-physical} to compare field values at different points in spa
 (Consideration of curvature leads to differential geometry and comprises \cref{part:2}.)
 
 This chapter introduces the \emph{exterior} and \emph{vector derivatives} as instances of the `algebraic derivative' in the exterior and geometric algebras, respectively.
-These devices combine derivative data with the geometrical structure inherent in the algebras.
+These devices combine derivative information with the geometrical structure inherent in the respective algebras.
 To demonstrate their utility, a case study of Maxwell's equations of electromagnetism are given in terms of these algebraic derivatives.
 
 
@@ -30,14 +30,16 @@ The directional derivative of a vector field $F : V → A$ in the direction $�
 	∂_𝒖 F(𝒙) = \dv{ε} \eval{F(𝒙 + ε𝒖)}_{ε = 0}
 	= \lim_{ε → 0}\frac{F(𝒙 + ε𝒖) - F(𝒙)}{ε}
 .\end{align}
-The directional derivative is linear in $𝒖$, since by a change of variables,
-\begin{math}
-	∂_{u^a\ve_a}
-	= \dv{ε} \eval{F(x + εu^a\ve_a)}_{ε = 0}
-	= u^a \dv{\bar ε} \eval{F(x + \bar ε\ve_a)}_{\bar ε = 0}
-	= u^a ∂_{\ve_a}
-\end{math}
-(summation on $a$).
+The directional derivative is linear in both its argument and direction.\sidenote{
+	By a change of variables,
+	\begin{math}
+		∂_{u^a\ve_a}
+		= \dv{ε} \eval{F(x + εu^a\ve_a)}_{ε = 0}
+		= u^a \dv{\bar ε} \eval{F(x + \bar ε\ve_a)}_{\bar ε = 0}
+		= u^a ∂_{\ve_a}
+	\end{math}
+	(summation on $a$).
+}
 We define the notation $∂_a ≔ ∂_{\ve_a}$ for brevity, so long as it is understood that this is not a partial derivative with respect to a scalar coordinate, $\pdv{x^a}$.
 Of course, it may be viewed as such by setting $f(\etc{x^\i},n) = f(x^i\ve_i)$ so that
 \begin{align}
@@ -426,6 +428,6 @@ Note that the cross product relates to the bivector curl in $\GA(3)$ by
 .\end{align}
 Hence, by adjusting by factors of $c$ and $\vol$ (and using $μ_0ε_0c^2 = 1$), the above equations reduce immediately to Gauß's law, Ampère's law, Faraday's law and the magnetic monopole equation, respectively.
 
-This was done assuming $η = \op{diag}\sig{+---}$.
-In the $\sig{-+++}$ signature, $\vg_0 \vb J = -cρ + \vec J$ differs by an overall sign, complementing $F \mapsto -F$.
+The calculations in this section were performed assuming $η = \op{diag}\sig{+---}$.
+In the $\sig{-+++}$ signature, $\vg_0 \vb J = -cρ + \vec J$ differs by an overall sign, which is absorbed by $F \mapsto -F$.
 

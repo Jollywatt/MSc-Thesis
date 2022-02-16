@@ -310,12 +310,12 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 \subsection{Exterior differential forms on manifolds}
 
 \Cref{sec:exterior-forms} defined exterior forms $\forms(V, A)$ as alternating multilinear maps from the fixed vector space $V$ into $A$.
-Similarly, the differential of a map $\dd f : \TT ℳ → \TT 𝒩$ is an object that takes a vector argument $𝒖 ∈ \TTℳ$, like an exterior $1$-form, except that the entire tangent bundle $\TT ℳ$ is not a vector space.
+Similarly, the differential of a map $\dd f : \TT ℳ → \TT 𝒩$ is an object that takes a vector argument $𝒖 ∈ \TTℳ$ --- just like an exterior $1$-form, except that the entire tangent bundle $\TT ℳ$ is not itself a vector space.
 
-Exterior forms, which are alternating maps from a fixed space $\TA{V}$, can be extended to exterior \emph{differential} forms, which exist on a manifold, defining alternating maps from $\TA{(\TT_x ℳ)}$ at each $x ∈ ℳ$.
+Exterior forms, which are alternating maps from a fixed space $\TA{V}$, can be extended to exterior \emph{differential} forms, which exist on manifolds and define alternating maps from $\TA{(\TT_x ℳ)}$ at each $x ∈ ℳ$.
 
-Although the entire bundle $\TT Μ$ is not a vector space, the space of vector sections $\secs(\TT Μ)$ is.
-Hence, when viewed as a map $\dd f : \secs(\TT ℳ) → \secs(\TT 𝒩)$ the differential $\dd f ∈ \forms[1](\secs(\TT ℳ), \secs(\TT 𝒩))$ is a $\secs(\TT 𝒩)$-valued exterior $1$-form in the sense of \cref{def:exterior-form}.
+Although the entire bundle $\TT ℳ$ is not a vector space, the space of vector sections $\secs(\TT ℳ)$ is.
+Hence, when viewed as a map $\dd f : \secs(\TT ℳ) → \secs(\TT 𝒩)$ the differential $\dd f ∈ \forms[1](\secs(\TT ℳ), \secs(\TT 𝒩))$ is a $\secs(\TT 𝒩)$-valued exterior $1$-form (by \cref{def:exterior-form}).
 This mouthful may be eased by defining the notation
 \begin{align}
 	\forms(ℳ, \manif E) ≔ \forms(\secs(\TT ℳ), \secs(\manif E))
@@ -330,6 +330,8 @@ Scalar-valued exterior differential forms are elements of $\forms[k](ℳ) ≔ \f
 We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior differential form.
 \toself{Not necessary for differentials $\dd f$ since is clear.}
 
+
+\todo{Formula for exterior derivative.}
 
 
 
