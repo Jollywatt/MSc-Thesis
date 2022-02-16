@@ -271,7 +271,7 @@ The even subalgebras are also isomorphic to full geometric algebras of one dimen
 \end{proof}
 
 The special case $\GA[+](1,3) ≅ \GA(3)$ is of great relevance to special relativity, and is discussed in detail in \cref{sec:spacetime-split}.
-Here the isomorphism $Ψ_𝒖$ is called a \emph{space/time split} with respect to an observer of velocity $𝒖$.
+Here the isomorphism $Ψ_𝒖$ is called a \emph{space\slash time split} with respect to an observer of velocity $𝒖$.
 This provides an impressively efficient algebraic method for transforming relativistic quantities between inertial frames.
 
 
@@ -505,7 +505,7 @@ Immediate advantages to the rotor formalism are clear:
 	A quaternion `vector' $v = x\ii + y\jj + z\kk$ reflects through the origin as $v \mapsto -v$, but a quaternion `rotor' of the same value is invariant --- vectors and pseudovectors are confused with the same kind of object.
 	Not so in the geometric algebra: vectors are $1$-vectors, and $\RR^3$ pseudovectors are bivectors.
 
-	It turns out that this price of introducing more algebraic objects is hardly a cost but a benefit: the generalisation to arbitrary dimensions is immediate and elegant, and the geometric role of objects becomes clear.\sidenote{
+	The price of introducing more algebraic objects is hardly a cost but a benefit: the generalisation to arbitrary dimensions is immediate and elegant, and the geometric role of objects becomes clear.\sidenote{
 		See \cite{lasenby2016ga-unified-language,hestenes1986ga-unified-language,chappell2016quat-history} for similarly impassioned testaments to the elegance of geometric algebra.
 	}
 \end{itemize}
@@ -513,6 +513,10 @@ Immediate advantages to the rotor formalism are clear:
 
 
 \subsection{The rotor groups}
+
+\marginnote{
+	\emph{Rotors, spin groups:} \cite[§4.2]{doran2003ga} \cite{hestenes1986ga-unified-language,lie-groups-as-spin-groups}
+}[-4.1ex]
 
 We will now see more rigorously how the rotor formalism arises.
 An orthogonal transformation in $n$ dimensions may be achieved by the composition of at most $n$ reflections.\sidenote{This is the Cartan--Dieudonné theorem \cite{cartan-dieudonne-theorem}.}
@@ -751,11 +755,11 @@ Familiarity with some special cases may aid intuition when considering general p
 For instance, if the product of two bivectors is $σ_1σ_2 = σ_1·σ_2 + σ_1×σ_2$, then it is understood that $σ_1$ has a component parallel to $σ_2$, and a component which meets $σ_2$ at right-angles along a line of intersection.
 \begin{marginfigure}
 	\includefigure{orthogonality}
-	\caption{Bivector planes $\set{ρ, ω}$ are $1$-orthogonal ($ρω = ρ×ω$) and $\set{σ, ρ}$ have both $0$- and $1$-orthogonal components ($σρ = σ \fatdot ρ + σ × ρ$).}
+	\caption{$\set{ρ, ω}$ are $1$-orthogonal ($ρω = ρ×ω$) and $\set{σ, ρ}$ have both $0$- and $1$-orthogonal components ($σρ = σ \fatdot ρ + σ × ρ$).}
 	\label{fig:orthogonal}
 \end{marginfigure}
 In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them (see \cref{fig:orthogonal}).
-On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors share no common direction, existing in orthogonal planes (a scenario requiring at least four dimensions).
+On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orthogonal planes --- a scenario requiring at least four dimensions.
 
 
 
