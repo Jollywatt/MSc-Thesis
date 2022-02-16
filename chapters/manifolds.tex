@@ -339,11 +339,11 @@ We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior dif
 
 \todo{
 	Explain that objects built from the tangent bundle admit a notion of derivative independently of a connection --- via the Lie derivative.
-	Show the Lie derivative for tensors,
+	Show the Lie derivative for tensors
 	\begin{align}
 		\lie_𝒖 T^{μ_1...μ_p}{}_{ν_1...ν_q}
 		= u^λ ∂_λ T^{μ_1...μ_p}{}_{ν_1...ν_q}
-		+ \sum_{i=1}^p T^{μ_1...λ...μ_p}{}_{ν_1...ν_q} ∂_λ u^{μ_i}
+		- \sum_{i=1}^p T^{μ_1...λ...μ_p}{}_{ν_1...ν_q} ∂_λ u^{μ_i}
 		+ \sum_{i=1}^q T^{μ_1...μ_p}{}_{ν_1...λ...ν_q} ∂_{ν_i} u^λ
 	\end{align}
 	and for differential forms via Cartan's magic formula
@@ -360,8 +360,17 @@ We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior dif
 	The \textdef{geometric Lie bracket} of two multivectors $A, B ∈ \GA(ℳ, η)$ is
 	\begin{align}
 		[A, B] ≔ (A \rcontr \vd) ∧ B - (B \rcontr \vd) ∧ A
-	.\end{align}
+	,\end{align}
+	where $\vd$ acts on the multivector to its immediate right.
 \end{definition}
+When acting on vectors, \cref{def:geometric-lie-bracket} reduces to the standard vector Lie bracket,\sidenote{
+	$𝒖 \rcontr \vd = 𝒖 · \vd = ∂_𝒖$ are scalar operators, so the wedge product becomes scalar multiplication.
+}
+\begin{align}
+	(𝒖 \rcontr \vd) ∧ 𝒗 - (𝒗 \rcontr \vd) ∧ 𝒖 ≡ 𝒖 · \vd 𝒗 - 𝒗 · \vd 𝒖 = [𝒖, 𝒗]
+,\end{align}
+so the use of the same notation $[\phantom{𝒖}, \phantom{𝒖}]$ is appropriate.
+However, \cref{def:geometric-lie-bracket} is a significant generalisation of the vector Lie bracket, applicable to multivectors of arbitrary grade.
 
 \begin{theorem}
 	\label{thm:geometric-lie-derivative}
@@ -372,7 +381,7 @@ We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior dif
 		\lie_𝒖 A = [𝒖, A]
 	.\end{align}
 \end{theorem}
-This is a remarkably elegant result: the multivector $A$ can be of any kind (e.g., a vector, $k$-blade, even an inhomogeneous rotor) and the Lie derivative has the same form.
+This is a remarkably elegant result: it applies to multivectors of any kind (vectors, $k$-blades, even inhomogeneous rotors) and the Lie derivative has the same simple form.
 \todo{Contrast this to the Lie derivative of a general tensor, eq.~(?).}
 \begin{proof}
 	Since $\lie_𝒖$ is linear, it suffices to prove the case where $A = \etc{𝒂_\i}∧k$ is a $k$-blade.
@@ -387,7 +396,8 @@ This is a remarkably elegant result: the multivector $A$ can be of any kind (e.g
 		[𝒖, A] = 𝒖 \fatdot \vd A - (A \rcontr \vd) ∧ 𝒖
 	.\end{align}
 	We will expand the two terms on the right-hand side.
-	The first is
+
+	The first term  is
 	\begin{align}
 		\label{eqn:geolieder.1}
 		𝒖 \fatdot \vd A = 𝒖 \fatdot \vd (\etc{𝒂_\i}∧k)
@@ -395,7 +405,7 @@ This is a remarkably elegant result: the multivector $A$ can be of any kind (e.g
 	\end{align}
 	since $𝒖 \fatdot \vd \equiv ∂_𝒖$ is a scalar derivation.
 
-	The second is
+	The second term  is
 	\begin{math}
 		(A \rcontr \vd) ∧ 𝒖
 	.\end{math}
@@ -403,7 +413,7 @@ This is a remarkably elegant result: the multivector $A$ can be of any kind (e.g
 	Thus, for some vector $𝒗$,
 	\begin{align}
 		𝒗 \lcontr A = 𝒗 \lcontr (\etc{𝒂_\i}∧k)
-		= \sum_{i=1}^k (-1)^{i-1} \etcmid{𝒂_\i}{𝒗 \fatdot 𝒂_i}∧k
+		= \sum_{i=1}^k (-1)^{i-1} \etcmid{𝒂_\i}{(𝒗 \fatdot 𝒂_i)}∧k
 	.\end{align}
 	Wedging this with a vector $𝒖$ produces
 	\begin{align}
@@ -412,7 +422,7 @@ This is a remarkably elegant result: the multivector $A$ can be of any kind (e.g
 		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒂_i \fatdot 𝒗)𝒖}∧k
 	,\end{align}
 	where the factor of $(-1)^{i-1}$ is cancelled by anticommuting $𝒖$ to the $i$th position.
-	Now, note that $A$, $𝒗 \lcontr A$ and $𝒖 ∧ (𝒗 \lcontr A)$ are of grades $k$, $k - 1$ and $k$, respectively, allowing us to exploit reversion to rewrite as
+	Now, note that $A$, $𝒗 \lcontr A$ and $𝒖 ∧ (𝒗 \lcontr A)$ are of grades $k$, $k - 1$ and $k$, respectively, allowing us to exploit reversion to obtain
 	\begin{align}
 		\label{eqn:geolieder.3}
 		𝒖 ∧ (𝒗 \lcontr A)
@@ -420,14 +430,14 @@ This is a remarkably elegant result: the multivector $A$ can be of any kind (e.g
 		= \revsign{k} \, (\rev{A} \rcontr \rev{𝒗}) ∧ 𝒖
 		= (A \rcontr 𝒗) ∧ 𝒖
 	.\end{align}
-	The notation on the right-hand side lends itself better to the case where $𝒗$ is instead the vector derivative $\vd$ acting on $𝒖$, since $𝒖$ is to its immediate right.
-	Thus, \cref{eqn:geolieder.2,eqn:geolieder.3} show that
+	The notation on the right-hand side lends itself better to the case where $𝒗$ is instead the vector derivative $\vd$ acting on $𝒖$, since $𝒖$ is then to its immediate right.
+	Thus, with \cref{eqn:geolieder.2,eqn:geolieder.3} we have shown that
 	\begin{align}
 		\label{eqn:geolieder.4}
 		(A \rcontr \vd) ∧ 𝒖
-		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒂_i \fatdot \vd)𝒖}∧k
+		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒂_i \fatdot \vd 𝒖)}∧k
 	.\end{align}
-	Combining \cref{eqn:geolieder.1,eqn:geolieder.4}, be obtain
+	Combining \cref{eqn:geolieder.1,eqn:geolieder.4} yields
 	\begin{samepage}
 	\begin{fullwidth}
 	\begin{align}
