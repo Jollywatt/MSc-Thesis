@@ -3,16 +3,14 @@
 
 
 The investigations of \cref{part:1} were restricted to \emph{flat geometries}.
-In particular, special relativity models spacetime as a homogeneous, isotropic Minkowski vector space.
-However, the general theory of relativity incorporates gravity as the curvature of space itself.
-Thus, spacetime no longer has an intrinsic vector space structure where the `difference between points' has physical meaning.
-The mathematical demands of curvature call for the \emph{differential geometry} of manifolds.
+Special relativity models spacetime as a homogeneous, isotropic Minkowski vector space.
+However, in the general theory of relativity, spacetime no longer has an intrinsic vector space structure, instead exhibiting curvature to incorporate gravity.
+The mathematical demands of curvature call for the \emph{differential geometry of smooth manifolds}.
 
 
-
-
-Here we only give a pragmatic definition of a manifold as a space which locally looks like $\RR^n$ upon which one can do calculus.
-(A rigorous definition in terms of charts and atlases can be found in the first chapter of \cite{lee2012diffgeo}.)
+Here we give a pragmatic definition of a manifold as a space which locally looks like $\RR^n$ upon which one can do calculus.\sidenote{
+	See \cite[§1]{lee2012diffgeo} for rigorous definitions in terms of charts and atlases.
+}
 \begin{definition}
 	\label{def:manifold}
 	A \textdef{manifold $\manif M$ of dimension $n$} is a nice\sidenote{
@@ -27,7 +25,7 @@ Here we only give a pragmatic definition of a manifold as a space which locally 
 \end{definition}
 
 
-Essentially, \cref{def:manifold} is designed to guarantee that well-behaved local coordinates (corresponding to elements of $U$) always exist.
+Essentially, \cref{def:manifold} is designed to guarantee that well-behaved local coordinates (corresponding to vectors in $U$) always exist.
 % Spherical surfaces, closed curves and spaces such as $\SO(n)$ are smooth manifolds, but cubes 
 \begin{definition}
 	\label{def:coord-chart}
@@ -40,9 +38,9 @@ In other words, the coordinate functions $\set{x^i}$ specify a homeomorphism $�
 We will often call a point $x ∈ \manif M$ by the same symbol as the local coordinates $x^i : \manif M → \RR$ without the index --- but these objects are not interchangeable.
 
 A structure-preserving map between manifolds is a continuous function; and between smooth manifolds, a differentiable function.
-For brevity, we assume the definitions that follow take place in the category of manifolds, and \emph{take all maps between manifolds to be continuous.}
+For brevity, we assume the definitions that follow take place in the category of manifolds, and take \emph{all maps between manifolds to be continuous.}
 Furthermore, if the qualifier ``smooth'' is present, we operate in the category of smooth manifolds and such maps are assumed differentiable.
-Thus, the coordinate scalars $x^i$ of \cref{def:coord-chart} are continuous functions, and are differentiable if the manifold is smooth.
+Thus, the coordinate scalars $x^i$ of \cref{def:coord-chart} are continuous functions, and are differentiable if the manifold is smooth, etcetera.
 
 
 
@@ -73,7 +71,7 @@ However, being locally Euclidean means there is a real vector space naturally as
 Given a smooth manifold, its tangent bundle comes for free: its construction is canonical and requires no additional data.
 Similarly, given a smooth function $f$ between manifolds, its derivative $\dd f$ (i.e., its `tangent') also comes for free.
 
-In the same way that the tangent bundle consists of `directional derivatives of points' in the manifold (i.e., tangent vectors), the differential $\dd f$ encodes the derivative of $f$ at each point in all directions.\sidenote{
+In the same way that the tangent bundle consists of `directional derivatives of points' in the manifold (i.e., tangent vectors), the differential $\dd f$ encodes the directional derivatives of $f$ at all points in the domain.\sidenote{
 	This parallel is precise: $\dd$ and $\TT$ form a functor in category of smooth manifolds, sending
 	\begin{math}
 		f: ℳ → 𝒩
@@ -101,7 +99,7 @@ Intuitively, if $𝒖 ∈ \TT_x\manif M$ is a vector at a point $x ∈ \manif M$
 
 In the definition above, vectors act on scalar functions as derivations; hence $\dd f(𝒖)$ is defined by its action on an arbitrary scalar field.
 
-Note that $\dd f(𝒖)$ is not always defined everywhere.
+Note that $\dd f(𝒖)$ may not be defined everywhere on $𝒩$.
 If $𝒖|_x ∈ \TT_x\manif M$ is now a family of vectors defined everywhere over $x ∈ ℳ$, then $\dd f(𝒖)|_{f(x)} = \dd f(𝒖|_x)$ is defined only at each $f(x) ∈ \manif N$.
 This means that if $f$ fails to be surjective, then $\dd f(𝒖)$ is not defined at those points lying outside the image $f(\manif M) \subset \manif N$.
 Likewise, if $f$ fails to be injective at a point $y ∈ \manif N$, then $\dd f(𝒖)$ is \emph{multivalued} at $y$.
@@ -111,11 +109,11 @@ Only if $f$ is bijective does $\dd f(𝒖)|_y$ have a single value everywhere.
 
 The meaning of \cref{def:differential} may become clearer when expressed in coordinates.
 Suppose $\set{x^i}$ is a local chart of $\manif M$ containing a point $x ∈ \manif M$, and $\set{y^j}$ a chart of $\manif N$ containing $f(x)$.
-With the associated coordinate bases
+With associated coordinate bases
 \begin{math}
-	\TT_x\manif M = \spanof{\pdv{x^i}}
+	\TT_x\manif M = \spanof[\big]{\pdv{x^i}}
 	\text{ and }
-	\TT_{f(x)}\manif N = \spanof{\pdv{y^j}}
+	\TT_{f(x)}\manif N = \spanof[\big]{\pdv{y^j}}
 ,\end{math}
 \cref{eqn:differential} takes the full form:
 \begin{align}%autonum: was align*
@@ -128,13 +126,13 @@ Since $φ$ is an arbitrary smooth function, this holds as an equation of differe
 	\label{eqn:differntial-coordinate-form.step1}
 	\qty[\dd f\qty(u^i ∂_i)]^j\eval{∂_j}_{f(x)} = u^i \eval{\pdv{f^j}{x^i}}_x \eval{∂_j}_{f(x)}
 \end{align}
-We have reduced typographical complexity with $∂_i ≔ \pdv{x^i}$ and $∂_j ≔ \pdv{y^j}$, being aware that these are basis vectors of \emph{different} tangent spaces.
+We reduce typographical complexity with $∂_i ≔ \pdv{x^i}$ and $∂_j ≔ \pdv{y^j}$, being aware that these are basis vectors of \emph{different} tangent spaces.
 We also abbreviate $f^j ≔ y^j \circ  f$ so that $f^j(x)$ is the $j$th coordinate of the point $f(x)$ in the $y^j$ chart.
 Thus, the coordinate form of $\dd f$ is precisely the Jacobian matrix,
 \begin{align}
 	[\dd f(∂_i)]^j = \pdv{f^j}{x^i}
 .\end{align}
-The point $x$ being arbitrary, we have also suppressed the evaluation signs, with the understanding that the Jacobian maps vectors at $x$ to vectors at $f(x)$.
+% The point $x$ being arbitrary, we have also suppressed the evaluation signs, with the understanding that the Jacobian maps vectors at $x$ to vectors at $f(x)$.
 
 Turning back to \cref{eqn:differntial-coordinate-form.step1}, the partial derivatives $\pdv*{x^i}$ act on smooth functions $f^j : \manif M → \RR$ to produce smooth functions $\pdv*{f^j}{x^i} : \manif M → \RR$.
 However, since we have an intuitive picture of the directional derivative of the {point} $f(x)$ as $x$ is displaced, it is useful to formally extend the notation $\pdv*{x^i}$ so that we may write the partial derivative of a mapping of \emph{points} $f : \manif M → \manif N$.
@@ -147,8 +145,8 @@ However, since we have an intuitive picture of the directional derivative of the
 	}
 	\label{fig:derivative-of-point}
 \end{marginfigure}
-Semantically, we understand $\pdv{f}{x^i}\big|_x ∈ \TT_{f(x)}\manif N$ to be the infinitesimal displacement vector of the destination point $f(x) ∈ \manif N$ caused by an infinitesimal variation in the $i$th coordinate of the source point $x$.
-This is precisely the meaning of the last term in \cref{eqn:differntial-coordinate-form.step1}, so the desired shorthand is
+That is, $\pdv*{f}{x^i}\big|_x ∈ \TT_{f(x)}\manif N$ is the infinitesimal displacement vector of $f(x) ∈ \manif N$ caused by an infinitesimal variation in the $i$th coordinate of the source point $x$.
+This is the meaning of the last term in \cref{eqn:differntial-coordinate-form.step1}, so the desired shorthand is
 \begin{align}
 	\label{eqn:pdv-of-map-notation}
 	\pdv{f}{x^i} ≔ \pdv{f^j}{x^i}∂_j
@@ -160,8 +158,7 @@ With this, \cref{eqn:differntial-coordinate-form.step1} may be written as
 	\label{eqn:differential-succinct}
 	\dd f(𝒖) = u^i\pdv{f}{x^i}
 .\end{align}
-This condensed form is perhaps too implicit for some purposes, with the notation $\pdv*{f}{x^i}$ doing the work of \cref{eqn:pdv-of-map-notation}.
-However, it is nonetheless useful: take for instance the coordinate functions $x^i : \manif M → \RR$ regarded as maps between manifolds.
+This condensed notation is useful, despite being implicit: take for instance the coordinate functions $x^i : \manif M → \RR$ regarded as maps between manifolds.
 Then \cref{eqn:differential-succinct} yields the defining property of the coordinate dual basis,
 \begin{align}
 	\dd x^i(∂_j) = \pdv{x^i}{x^j} = δ^i_j
@@ -175,9 +172,9 @@ where we have identified the one-dimensional vector space $\TT_{x^i}\RR$ with $\
 \begin{lemma}[Chain rule]
 	\label{lem:differential-chain-rule}
 	If $f\circ g$ is a composition of maps between smooth manifolds, then
-	\begin{align}
+	\begin{math}
 		\dd (f \circ g) = \dd f \circ \dd g
-	.\end{align}
+	.\end{math}
 \end{lemma}
 \begin{proof}
 	Acting on a vector $𝒖$ and applying the forward-pushed vector to a scalar field $φ$, we obtain
@@ -196,6 +193,13 @@ where we have identified the one-dimensional vector space $\TT_{x^i}\RR$ with $\
 \section{Fibre Bundles}
 \label{cha:fibre-bundles}
 
+
+In flat geometries, fields were modelled as functions into a fixed vector space.
+For example, in flat spacetime $ℳ = \RR^{1+3}$, the electromagnetic bivector $F : ℳ → \EA[2]{\RR^4}$ makes no distinction between the vector space $\EA[2]{\RR^4}$ evaluated at one point in spacetime over another.
+This would suggest that all values of a field are directly comparable, making expressions like $F(x) + F(y) ∈ \EA[2]{\RR^4}$ geometrically meaningful for different points $x,y ∈ ℳ$.
+However, these kinds of expressions are ill-defined for general smooth manifolds $ℳ$, since they depend on the way tangent spaces are chosen.
+Instead, it is beneficial to distinguish between codomains \emph{at each point in the domain}, and treat $F(x)$ and $F(y)$ as belonging to different spaces.
+
 \begin{marginfigure}
 	\centering
 	\includefigure[0.8\columnwidth]{sphere}
@@ -205,22 +209,14 @@ where we have identified the one-dimensional vector space $\TT_{x^i}\RR$ with $\
 	\label{fig:ball}
 \end{marginfigure}
 
-In flat geometries, fields were modelled as functions into a fixed vector space.
-For example, in flat spacetime $ℳ = \RR^{1+3}$, the electromagnetic bivector $F : ℳ → \EA[2]{\RR^4}$ makes no distinction between the vector space $\EA[2]{\RR^4}$ evaluated at one point in spacetime over another.
-This would suggest that all values of a field are directly comparable, making expressions like $F(x) + F(y) ∈ \EA[2]{\RR^4}$ geometrically meaningful for different points $x,y ∈ ℳ$.
-However, these kinds of expressions are ill-defined for general smooth manifolds $ℳ$, since they depend on the way tangent spaces are chosen.
-Instead, it is beneficial to distinguish between codomains \emph{at each point in the domain}, and treat $F(x)$ and $F(y)$ as belonging to different spaces.
-
-This can be motivated with the simple example of a fluid flowing on a sphere.
+A motivating example is fluid flowing on a sphere:
 The instantaneous fluid velocity at a point is a vector lying in the sphere's tangent plane at that point.
-If the fluid flow is given as a map $f : \Sphere^2 → \RR^2$, then any two velocity vectors exist in the ``same'' space, even when \emph{geometrically} they do not (\cref{fig:ball}).
-This is more than a purely philosophical point: the fluid flow's representation as a field $f : \Sphere^2 → \RR^2$ is \emph{dependent on the choice of basis}.
-That is, $f$ depends on the way in which the single codomain $\RR^2$ is identified with each tangent plane on the sphere, and there is no such canonical choice for the sphere.
-We would do better with a more geometrical representation of the vector field which is independent of any choice of basis.
-This requires viewing the fluid velocities at different points as existing in different spaces.
+If the fluid flow is given as a map $f : \Sphere^2 → \RR^2$, then any two velocity vectors exist in the ``same'' space, though \emph{geometrically} they do not (\cref{fig:ball}).
+This also means the fluid flow's representation as a field $f : \Sphere^2 → \RR^2$ is \emph{dependent on the choice of basis} --- i.e., the way in which the single codomain $\RR^2$ is identified with each tangent plane on the sphere.
+A basis-independent representation of $f$ requires treating each tangent space as distinct.
 
-From this we construct the tangent \emph{bundle} $\TT \Sphere^2$, where all the tangent planes of $\Sphere^2$ are collected in a disjoint union forming a \emph{bulk}.
-The vector field on the sphere now becomes a \emph{section} of $\TT \Sphere^2$, which is a map $f : \Sphere^2 → \TT \Sphere^2$ such that $f(x)$ belongs to the tangent space rooted at $x$.
+Doing this, we are led to the tangent \emph{bundle} $\TT \Sphere^2$, where all the tangent planes of $\Sphere^2$ are collected in a disjoint union.
+The vector field on the sphere now becomes a \emph{section} of $\TT \Sphere^2$, which is a map $f : \Sphere^2 → \TT \Sphere^2$ such that $f(x)$ belongs to the tangent space at $x$.
 No longer is the expression $f(x) + f(y)$ well-defined.
 
 The tangent bundle is a special case of a \emph{fibre bundle}, which is a manifold consisting of disjoint copies of a space (called the \emph{fibre}) taken at every point in a base manifold.
@@ -335,23 +331,138 @@ We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior dif
 
 
 \clearpage
-\section{Tangent Bundles and Lie Derivatives}
+\section{Lie Derivatives}
 
-\todo{
-	Explain that objects built from the tangent bundle admit a notion of derivative independently of a connection --- via the Lie derivative.
-	Show the Lie derivative for tensors
+In general, the derivative of a section of a fibre bundle is not defined, because there is no way of comparing fibres without additional structure (such as a \emph{connection}; see \cref{cha:connections}).
+For some kinds of object, however, it is possible to define transport between fibres using the \emph{flow} of a tangent vector section.
+We call objects for which this is possible \textdef{flowable}.
+
+Thus, the value of a flowable object at a point $x$ to may be directly compared to its value at some other point $y$ by flowing the $y$-value back to the $x$-fibre.
+This enables the definition of a kind of derivative with respect to the flow --- a construction called the \emph{Lie derivative}.
+
+% However, tangent vectors can be transported by differentials of smooth maps.
+% In particular, a vector section $𝒗 ∈ \secs(\TT ℳ)$ can be transported along the \emph{flow} of another section $𝒖$.
+% Thus, the value of $𝒗$ at a point $x$ can be compared to its value at another point $y$ by ``flowing $𝒗|_y$ backwards'' to the original point $x$.
+% This construction is called the \emph{Lie derivative} of $𝒗$.
+
+\begin{definition}
+	\label{def:flow}
+	The \textdef{flow} of $𝒖$ is the map $\flow{𝒖}{t} : ℳ → ℳ$ satisfying
 	\begin{align}
-		\lie_𝒖 T^{μ_1...μ_p}{}_{ν_1...ν_q}
-		= u^λ ∂_λ T^{μ_1...μ_p}{}_{ν_1...ν_q}
-		- \sum_{i=1}^p T^{μ_1...λ...μ_p}{}_{ν_1...ν_q} ∂_λ u^{μ_i}
-		+ \sum_{i=1}^q T^{μ_1...μ_p}{}_{ν_1...λ...ν_q} ∂_{ν_i} u^λ
+		\dv{t}\eval{\flow{𝒖}{t}(x)}_y = 𝒖|_y
 	\end{align}
-	and for differential forms via Cartan's magic formula
+	for all values of $t$.
+\end{definition}
+\begin{definition}
+	\label{def:lieder}
+	The \textdef{Lie derivative} of a flowable object $A$ along a tangent section $𝒖 ∈ \secs(\TT ℳ)$ is
 	\begin{align}
-		\lie_𝒖 φ = 𝒖 \lcontr \dd φ + \dd(𝒖 \lcontr φ)
+		\lie_𝒖 A ≔ \dv{t} \eval{ \flow{𝒖}{-t} A }_{t = 0}
 	.\end{align}
-	The ``complexity'' of these formulae sets the stage for how amazingly simple everything becomes with geometric calculus...
+\end{definition}
+
+Scalar sections $f : ℳ → \RR$ are flowable by defining
+\begin{math}
+	\flow{𝒖}{t} f ≔ e^{-t𝒖} f
+.\end{math}
+For example, in one dimension, $\flow{∂_x}{t}f = e^{-t∂_x}f(x) = f(x - t)$ is the Taylor series of $f$ translated by $t$.
+Tangent vectors $𝒗 ∈ \secs(\TT ℳ)$ are also flowable, using the differential of a flow
+\begin{math}
+	\dd(\flow{𝒖}{t}) : \TT ℳ → \TT ℳ
+.\end{math}
+Thus, we also define
+\begin{align}
+	\flow{𝒖}{t} 𝒗 ≔ \dd(\flow{𝒖}{t})(𝒗)
+\end{align}
+in terms of the flow of points.\sidenote{
+	Risking overloaded notation, $\flow{𝒖}{t}$ on the left-hand side indicates the flow of vectors, while on the right-hand side the flow of points.
 }
+Other flowable objects include structures built from the tangent bundle, e.g., tangent tensors $\TA{(\TT ℳ)}$ or multivectors $\GA(\TT ℳ, η)$.
+\todo{This is the first appearance of $\GA(\TT ℳ, η)$...}
+
+% \begin{align}
+% 	e^{t 𝒖} f(x^μ) = \sum_{n=0}^∞ \frac{(t u^ν)^n}{n!} ∂_ν^n f(x^μ) = f(x^μ + t u^μ)
+% \end{align}
+% \begin{align}
+% 	\flow{𝒖}{t} f(x) = e^{-t𝒖} f
+% \end{align}
+
+
+
+\begin{lemma}
+	The Lie derivative on scalars is
+	\begin{math}
+		\lie_𝒖 f = 𝒖(f)
+	,\end{math}
+	and on tangent vectors is the Lie bracket,
+	\begin{math}
+		\lie_𝒖 𝒗 = [𝒖, 𝒗] ≔ 𝒖 ∘ 𝒗 - 𝒗 ∘ 𝒖
+	.\end{math}
+\end{lemma}
+\begin{proof}
+	For scalars, the result follows from
+	\begin{math}
+		\lie_𝒖 f = \dv{t}\eval{e^{-t𝒖} f \, }_{t=0} = 𝒖(f)
+	.\end{math}
+
+	For tangent vectors, unpacking \cref{def:lieder} for a vector argument, and then using \cref{def:differential} to rewrite the pushforward, we have
+	\begin{align}
+		(\lie_𝒖 𝒗)f|_x
+		&= \dv{t}\eval{\dd(\flow{𝒖}{-t})\qty(𝒗|_{\flow{𝒖}{t}(x)})f \, }_{t=0}
+		= \dv{t}\eval{𝒗(f ∘ \flow{𝒖}{-t})\big|_{\flow{𝒖}{t}(x)} \, }_{t=0}
+	.\end{align}
+	By the product rule over the two appearances of $t$, this is equal to
+	\begin{align}
+		\label{eqn:lieder-is-bracket.1}
+		\eval{𝒗\qty(\dv{t}\eval{f ∘ \flow{𝒖}{-t}}_{t=0})}_x + \dv{t}\eval{𝒗(f)\big|_{\flow{𝒖}{t}(x)} \, }_{t=0}
+	.\end{align}
+	Using the chain rule (\cref{lem:differential-chain-rule}) and \cref{def:flow}, we have
+	\begin{math}
+		\dv{t}\eval{g ∘ \flow{𝒖}{t} \, }_{t=0} = \dd g(𝒖) = 𝒖(g)
+	.\end{math}
+	Taking $g$ to be $f$ and $𝒗(f)$ for the left- and right-hand terms of \cref{eqn:lieder-is-bracket.1} respectively, we find
+	\begin{align}
+		(\lie_𝒖 𝒗)f = -𝒗(𝒖(f)) + 𝒖(𝒗(f))
+	\end{align}
+	which is the lie bracket acting on the arbitrary scalar section $f$.
+\end{proof}
+
+\subsection{On tensors and differential forms}
+
+By requiring $\lie_𝒖$ to be a derivation, we can deduce from
+\begin{math}
+	\lie_𝒖 \, φ(𝒗) = (\lie_𝒖 φ)(𝒗) + φ(\lie_𝒖 𝒗)	
+\end{math}
+the form of the Lie derivative on a covector $φ$.
+Continuing in this way, it follows that the Lie derivative of a general tensor $T = T^{μ_1...μ_p}{}_{ν_1...ν_q} \etc{\ve_{μ_\i}}⊗p ⊗ \etc{\ve^{ν_\i}}⊗q$ is
+\begin{samepage}
+\begin{fullwidth}
+\begin{align}
+	\lie_𝒖 T^{μ_1...μ_p}{}_{ν_1...ν_q}
+	= u^λ ∂_λ T^{μ_1...μ_p}{}_{ν_1...ν_q}
+	- \sum_{i=1}^p T^{μ_1...λ...μ_p}{}_{ν_1...ν_q} ∂_λ u^{μ_i}
+	+ \sum_{i=1}^q T^{μ_1...μ_p}{}_{ν_1...λ...ν_q} ∂_{ν_i} u^λ
+.\end{align}
+\end{fullwidth}
+\end{samepage}
+This sets the stage for how much simpler the form taken by the Lie derivative is on exterior differential forms and multivectors.
+
+On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula'',\sidenotemark
+\begin{align}
+	\lie_𝒖 \df φ = 𝒖 \lcontr \dd \df φ + \dd\big(𝒖 \lcontr \df φ)
+,\end{align}
+which employs the \textdef{interior} or \textdef{hook product} $𝒖 \lcontr : \forms[k](V) → \forms[k - 1](V)$ defined by
+\begin{math}
+	(𝒖 \lcontr \df φ)(\etc[2]{𝒖_\i}⊗k) = \df φ(𝒖 ⊗ \etc[2]{𝒖_\i}⊗k)
+.\end{math}
+
+\sidenotetext{
+	\emph{Sketch proof.}
+	$\dd$ and $𝒖 \lcontr$ are anti-derivations, so their anti-commutator is a derivation.
+	Derivations agreeing on scalars and exact $1$-forms (which generate the exterior algebra) are equal.
+	Indeed, $𝒖 \lcontr \dd f = 𝒖(f) = \lie_𝒖 f$ while $\dd(𝒖 \lcontr f) = 0$; and for exact $1$-forms, $𝒖 \lcontr \dd \df φ = 0$ while $\dd\big(𝒖 \lcontr \df φ) = \dd \df φ(𝒖) = \lie_𝒖 \df φ$.
+}
+
 
 \subsection{The geometric Lie bracket and derivative}
 
