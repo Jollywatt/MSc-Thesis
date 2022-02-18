@@ -447,14 +447,16 @@ Continuing in this way, it follows that the Lie derivative of a general tensor $
 \end{samepage}
 This sets the stage for how much simpler the form taken by the Lie derivative is on exterior differential forms and multivectors.
 
-On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula'',\sidenotemark
+On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula''\sidenotemark
 \begin{align}
+	\label{eqn:magic-formula}
 	\lie_𝒖 \df φ = 𝒖 \lcontr \dd \df φ + \dd\big(𝒖 \lcontr \df φ)
 ,\end{align}
-which employs the \textdef{interior} or \textdef{hook product} $𝒖 \lcontr : \forms[k](V) → \forms[k - 1](V)$ defined by
+which employs the \textdef{interior derivative} or \textdef{hook product} $𝒖 \lcontr : \forms[k](V) → \forms[k - 1](V)$ defined by
 \begin{math}
 	(𝒖 \lcontr \df φ)(\etc[2]{𝒖_\i}⊗k) = \df φ(𝒖 ⊗ \etc[2]{𝒖_\i}⊗k)
 .\end{math}
+Cartan's magic formula is the statement that the Lie derivative on forms is the anti-commutator of the exterior and interior derivatives.
 
 \sidenotetext{
 	\emph{Sketch proof.}
@@ -466,9 +468,12 @@ which employs the \textdef{interior} or \textdef{hook product} $𝒖 \lcontr : \
 
 \subsection{The geometric Lie bracket and derivative}
 
+Similar to Cartan's formula \cref{eqn:magic-formula} for exterior differential forms, the Lie derivative admits a simple form when applied to tangent multivectors, i.e., elements of the geometric algebra $\GA(\TT ℳ, η)$ over the tangent bundle.
+Insight begins with the generalisation of the vector Lie bracket $[𝒖, 𝒗] = 𝒖 ∘ 𝒗 - 𝒗 ∘ 𝒖$ to multivectors.
+
 \begin{definition}
 	\label{def:geometric-lie-bracket}
-	The \textdef{geometric Lie bracket} of two multivectors $A, B ∈ \GA(ℳ, η)$ is
+	The \textdef{geometric Lie bracket} of two multivectors $A, B ∈ \GA(\TT ℳ, η)$ is
 	\begin{align}
 		[A, B] ≔ (A \rcontr \vd) ∧ B - (B \rcontr \vd) ∧ A
 	,\end{align}

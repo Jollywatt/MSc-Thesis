@@ -2,16 +2,15 @@
 \label{cha:preliminary-theory}
 
 
-Many of the tools we will develop for the study of spacetime take place in various associative algebras.
+Many of the tools we will develop take place in various associative algebras.
 As well as the geometric algebra of spacetime, we will encounter tensors, exterior forms, quaternions, and other structures in this category.
-Instead of defining each algebra axiomatically as needed, it is easier to develop the general theory and then define each algebra succinctly as a particular quotient of the free algebra.
+Instead of defining each algebra axiomatically as needed, it is easier to develop the general theory of associative algebras and then define each special case.
 This enables the use of the same tools and the same terminology thoughout.
 
 Therefore, this section is an overview of the abstract theory of associative algebras, which more generally belongs to \emph{ring theory}.\sidenote{
-	A \textdef{ring} is a field without the requirement that multiplicative inverses exist nor that multiplication commutes.
-	%  a field is a commutative ring in which non-zero elements are invertible.
+	A \textdef{ring} is a field without the requiring commutativity nor existence of multiplicative inverses.
 }
-Algebras, quotients, gradings, homogeneous and inhomogeneous tensor and multivectors are defined, as well as standard operations on exterior forms.
+\emph{Algebras}, \emph{quotients} and \emph{gradings} are defined, as well as \emph{tensors}, \emph{multivectors} and \emph{exterior forms}.
 Most definitions in this chapter can be readily generalised by replacing the field $\FF$ with a ring.
 The excitable reader may skip this chapter and refer back as needed.
 
@@ -25,6 +24,14 @@ Throughout, $\FF$ denotes the underlying field of some vector space.
 	An \textdef{associative algebra} $A$ is a vector space equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
 \end{definition}
 Associativity means $(𝒖 ⊛ 𝒗) ⊛ 𝒘 = 𝒖 ⊛ (𝒗 ⊛ 𝒘)$, while bilinearity means the product is:
+\marginnote{
+	\emph{Examples.}
+	Any ring forms an associative algebra when considered as a one-dimensional vector space.
+	The complex numbers can be viewed as a real $2$-dimensional algebra by defining $⊛$ to be complex multiplication;
+	\begin{math}
+		(x_1, y_1)⊛(x_2, y_2) ≔ (x_1x_2 - y_1y_2, x_1y_2 + y_1x_2)
+	.\end{math}
+}
 \begin{itemize}
 	\item compatible with scalars: $(λ𝒖) ⊛ 𝒗 = 𝒖 ⊛ (λ𝒗) = λ(𝒖 ⊛ 𝒗)$ for $λ \in \FF$; and
 	\item distributive over addition: $(𝒖 + 𝒗) ⊛ 𝒘 = 𝒖 ⊛ 𝒘 + 𝒗 ⊛ 𝒘$, and similarly for $𝒖 ⊛ (𝒗 + 𝒘)$.
@@ -32,11 +39,6 @@ Associativity means $(𝒖 ⊛ 𝒗) ⊛ 𝒘 = 𝒖 ⊛ (𝒗 ⊛ 𝒘)$, while
 This definition can be generalised by relaxing associativity or by letting $\FF$ be a ring.
 However, we will use ``algebra'' exclusively to mean an associative algebra over a field (usually $\RR$).
 
-Any ring forms an associative algebra when considered as a one-dimensional vector space.
-The complex numbers can be viewed as a real $2$-dimensional algebra by defining $⊛$ to be complex multiplication;
-\begin{math}
-	(x_1, y_1)⊛(x_2, y_2) ≔ (x_1x_2 - y_1y_2, x_1y_2 + y_1x_2)
-.\end{math}
 
 
 
@@ -56,7 +58,7 @@ where each $\TA[k]{V}$ is the subspace of \textdef{tensors of grade $k$}.
 \subsection{Quotient algebras}
 
 Owing to the maximal generality of the free tensor algebra, any other associative algebras may be constructed as a \emph{quotient} of $\TA{V}$.
-In order for a quotient $\quot{\TA{V}}{\sim}$ by an equivalence relation $\sim$ to itself form an algebra, the relation must preserve the associative algebra structure:
+In order for a quotient $\quot{\TA{V}}{\sim}$ to itself form an algebra, the equivalence relation $\sim$ must preserve the associative algebra structure.
 \begin{definition}
 	\label{def:congruence}
 	A \textdef{congruence} on an algebra $A$ is an equivalence relation $\sim$ which is compatible with the algebraic relations, so that if $a \sim a'$ and $b \sim b'$ then $a + b \sim a' + b'$ and $a⊛b \sim a'⊛b'$.
