@@ -8,10 +8,10 @@
 
 
 In \cref{cha:preliminary-theory}, we defined the metric-independent exterior algebra of multivectors over a vector space $V$.
-While metrical operations can be achieved by introducing the Hodge dual (of \cref{sec:metrical-exterior-alg}), tacking it onto $\EA{V}$, the geometric algebra is a generalisation of $\EA{V}$ which has the metric (and concomitant notions of orientation and duality) built-in.
+While metrical operations can be achieved by tacking the Hodge dual onto $\EA{V}$, the geometric algebra is a generalisation of $\EA{V}$ which has the metric (and concomitant notions of orientation and duality) directly built-in.
 
 Geometric algebras are also known as real \emph{Clifford algebras} $Cl(V, q)$ after their first inventor \cite{clifford1878grassmann}.
-Especially in mathematics, Clifford algebras are defined in terms of a quadratic form $q$, and the vector space $V$ is usually complex.
+Especially in mathematics, Clifford algebras are defined in terms of a quadratic form $q$, and the vector space $V$ may be complex.
 However, in physics, where $V$ is taken to be real and a metric $η$ is usually supplied instead of $q$, the name ``geometric algebra'' is preferred.\sidenote{
 	The newer name was coined by David Hestenes in the 1970s, who popularised Clifford algebra for physics \cite{hestenes1986ga-unified-language,hestenes1968ga}.
 }
@@ -294,7 +294,7 @@ Note that the dual space $V^*$ does not make an appearance --- all elements belo
 \begin{lemma}
 	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
 	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i},k)
+		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i}⊗k)
 	.\end{align}
 \end{lemma}
 Note the reversed order of the wedge products on the left-hand side.
@@ -318,7 +318,7 @@ The factor of $k!$ is due to the Spivak convention for exterior forms (replace $
 	,\end{align}
 	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
 	\begin{align}
-		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}},k) = k! \, φ(\etc{𝒖_{σ(\i)}},k)
+		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}}⊗k) = k! \, φ(\etc{𝒖_{σ(\i)}}⊗k)
 	\end{align}
 	where all $k!$ terms are equal due to the alternating property of $φ$.
 \end{proof}

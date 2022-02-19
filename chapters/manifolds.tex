@@ -59,18 +59,16 @@ However, being locally Euclidean means there is a real vector space naturally as
 		\TT_x\manif M ≅ \spanof{\eval{\pdv{x^i}}_x}_{i=1}^n
 	.\end{align}
 	The \textdef{tangent bundle $\TT\manif M$} is the disjoint union of all tangent spaces
-	\begin{align}
+	\begin{math}
 		\TT\manif M = \set{(x, 𝒖) | x ∈ \manif M, 𝒖 ∈ \TT_x\manif M}
-	\end{align}
+	\end{math}
 	equipped with an appropriate manifold topology.\sidenote{
 		Specifically, the topology of a fibre bundle (see \cref{cha:fibre-bundles}).
 	}
 \end{definition}
 
-
-Given a smooth manifold, its tangent bundle comes for free: its construction is canonical and requires no additional data.
-Similarly, given a smooth function $f$ between manifolds, its derivative $\dd f$ (i.e., its `tangent') also comes for free.
-
+Given a smooth manifold, its tangent bundle comes for free: its construction is canonical.
+Similarly, given a smooth function $f$ between manifolds, there is a kind of `tangent' or derivative $\dd f$ which also comes for free.
 In the same way that the tangent bundle consists of `directional derivatives of points' in the manifold (i.e., tangent vectors), the differential $\dd f$ encodes the directional derivatives of $f$ at all points in the domain.\sidenote{
 	This parallel is precise: $\dd$ and $\TT$ form a functor in category of smooth manifolds, sending
 	\begin{math}
@@ -82,10 +80,6 @@ In the same way that the tangent bundle consists of `directional derivatives of 
 	.\end{math}
 	Some authors use the symbol $\TT$ for both.
 }
-Intuitively, if $𝒖 ∈ \TT_x\manif M$ is a vector at a point $x ∈ \manif M$, then the vector $\dd f(𝒖) ∈ \TT_{f(x)}\manif N$ is interpreted as the derivative of $f(x) ∈ \manif N$ in the direction $𝒖$.
-
-
-
 
 \begin{definition}
 	\label{def:differential}
@@ -98,6 +92,8 @@ Intuitively, if $𝒖 ∈ \TT_x\manif M$ is a vector at a point $x ∈ \manif M$
 \end{definition}
 
 In the definition above, vectors act on scalar functions as derivations; hence $\dd f(𝒖)$ is defined by its action on an arbitrary scalar field.
+Intuitively, if $𝒖 ∈ \TT_x\manif M$ is a vector at a point $x ∈ \manif M$, then the vector $\dd f(𝒖) ∈ \TT_{f(x)}\manif N$ is interpreted as the derivative of $f(x) ∈ \manif N$ in the direction $𝒖$.
+
 
 Note that $\dd f(𝒖)$ may not be defined everywhere on $𝒩$.
 If $𝒖|_x ∈ \TT_x\manif M$ is now a family of vectors defined everywhere over $x ∈ ℳ$, then $\dd f(𝒖)|_{f(x)} = \dd f(𝒖|_x)$ is defined only at each $f(x) ∈ \manif N$.
@@ -305,32 +301,50 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 
 \subsection{Exterior differential forms on manifolds}
 
-\Cref{sec:exterior-forms} defined exterior forms $\forms(V, A)$ as alternating multilinear maps from the fixed vector space $V$ into $A$.
-Similarly, the differential of a map $\dd f : \TT ℳ → \TT 𝒩$ is an object that takes a vector argument $𝒖 ∈ \TTℳ$ --- just like an exterior $1$-form, except that the entire tangent bundle $\TT ℳ$ is not itself a vector space.
-
-Exterior forms, which are alternating maps from a fixed space $\TA{V}$, can be extended to exterior \emph{differential} forms, which exist on manifolds and define alternating maps from $\TA{(\TT_x ℳ)}$ at each $x ∈ ℳ$.
+\Cref{sec:exterior-forms} defined exterior forms $\forms(V, A)$ as alternating multilinear maps from the fixed vector space $\TA{V}$ into $A$.
+% Similarly, the differential of a map $\dd f : \TT ℳ → \TT 𝒩$ is an object that takes a vector argument $𝒖 ∈ \TTℳ$ --- almost like an exterior $1$-form, except that the entire tangent bundle $\TT ℳ$ is not itself a vector space.
+Exterior forms can be extended to exterior \emph{differential} forms, existing on manifolds: at each point $x ∈ ℳ$ an alternating map from $\TA{(\TT_x ℳ)}$ is defined.
 
 Although the entire bundle $\TT ℳ$ is not a vector space, the space of vector sections $\secs(\TT ℳ)$ is.
-Hence, when viewed as a map $\dd f : \secs(\TT ℳ) → \secs(\TT 𝒩)$ the differential $\dd f ∈ \forms[1](\secs(\TT ℳ), \secs(\TT 𝒩))$ is a $\secs(\TT 𝒩)$-valued exterior $1$-form (by \cref{def:exterior-form}).
-This mouthful may be eased by defining the notation
+Hence, we may consider the space
 \begin{align}
 	\forms(ℳ, \manif E) ≔ \forms(\secs(\TT ℳ), \secs(\manif E))
 \end{align}
-for some vector bundle $\fibrebundle ℳ {\manif E} V$.
-As with exterior forms, the wedge product is defined as in \cref{eqn:wedge-of-forms}.
+of $\secs(ℰ)$-valued exterior forms, for some vector bundle $\fibrebundle ℳ {\manif E} V$.
+As with exterior forms, the wedge product is defined as in \cref{eqn:wedge-of-forms}, acting on sections pointwise.
 
 An element of $\forms[k](ℳ, \manif E)$ is called an \textdef{$\manif E$-valued exterior differential $k$-form}, where `differential' distinguishes it as an object on a manifold.
-Scalar-valued exterior differential forms are elements of $\forms[k](ℳ) ≔ \forms[k](ℳ, ℳ × \RR)$, where $\fibrebundle[π] ℳ {ℳ × \RR} \RR$ is the trivial line bundle with projection $π(x, λ) = λ$.
+Scalar-valued exterior differential forms are elements of $\forms[k](ℳ) ≔ \forms[k](ℳ, ℳ × \RR)$, where $\fibrebundle[π] ℳ {ℳ × \RR} \RR$ is the trivial line bundle.
 
 
 We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior differential form.
 \toself{Not necessary for differentials $\dd f$ since is clear.}
 
+\subsubsection{The exterior derivative on manifolds}
 
-\todo{Formula for exterior derivative.}
+For exterior \emph{differential} forms $\forms(ℳ, A)$, the exterior derivative is defined in the same way as in \cref{sec:exterior-derivative-forms} for exterior forms $\forms(V, A)$ --- except it must now be made explicit that only the form itself is differentiated, not its vector arguments.
+Indeed, the exterior derivative of a $k$-form $φ$ should be defined independently of any vector arguments.
+Thus, we may write
+\begin{samepage}
+\begin{fullwidth}
+\begin{align}
+	(\dd φ)(\etc[0]{𝒖_\i}⊗k)
+	&= \sum_{i=0}^k (-1)^k (𝒖_i(φ))(\etcskip[0]{𝒖_\i}⊗ik)
+	\label{eqn:exder.1}
+\\	&= \sum_{i=0}^k (-1)^k 𝒖_i(φ(\etcskip[0]{𝒖_\i}⊗ik))
+\\	&- \sum_{j < i} (-1)^{i + j} φ([𝒖_i, 𝒖_j] ⊗ 𝒖_0 ⊗ \cdots ⊗ \widehat{𝒖_i} ⊗ \cdots ⊗ \widehat{𝒖_j} ⊗ \cdots ⊗ 𝒖_k)
+	\label{eqn:exder.2}
+,\end{align}
+\end{fullwidth}
+\end{samepage}
+where $𝒖_i(φ)$ in \cref{eqn:exder.1} means that only $φ$ is differentiated, not other vector sections.
+This is the same as \cref{eqn:exder.2}, where the first term involves the $𝒖_i$-derivative of the scalar $φ(\etcskip[0]{𝒖_\i}⊗ik)$, and the second cancels out unwanted terms involving derivatives of $𝒖_j$.
+A useful special case is the exterior derivative of a $1$-form,
+\begin{align}
+	(\dd φ)(𝒖, 𝒗) = 𝒖(φ(𝒗)) - 𝒗(φ(𝒖)) - φ([𝒖, 𝒗])
+.\end{align}
 
 
-\clearpage
 \section{Lie Derivatives}
 
 In general, the derivative of a section of a fibre bundle is not defined, because there is no way of comparing fibres without additional structure (such as a \emph{connection}; see \cref{cha:connections}).
