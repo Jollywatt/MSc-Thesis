@@ -107,14 +107,14 @@ In particular, if $\set{\ve_i} ⊂ V$ is an orthonormal basis, then we have $\ve
 As with two vectors, the geometric product of two homogeneous multivectors is generally inhomogeneous.
 We can gain insight by separating geometric products into grades and studying each part.
 \begin{definition}
-	The \textdef{grade $k$ projection} of a multivector $A ∈ \GA(V, η)$ is
+	The linear \textdef{grade projection} operator is defined on blades by
 	\begin{align}
 		\grade[k]{A} =
 		\begin{cases}
-			A & \text{if $A ∈ \GA[k](V, η)$}
-		\\	0 & \text{otherwise.}
+			A & \text{if $A = \etc{𝒖_\i}∧k$}
+		\\	0 & \text{otherwise}
 		\end{cases}
-	\end{align}
+	.\end{align}
 \end{definition}
 We can generalise the definition of the wedge product of vectors $𝒖∧𝒗 = \grade[2]{𝒖𝒗}$ to arbitrary homogeneous multivectors by taking the highest-grade part of their product,
 \begin{align}
@@ -163,7 +163,7 @@ The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nice
 		}
 		= (-1)^σ
 	.\end{align}
-	Finally, if $i$ contains no repeated indices, but $j$ is not a permutation of $i$, then there is at least one pair of indices in the symmetric difference of $\set{i_p}$ and $\set{j_p}$, say $i_r$ and $j_s$.
+	Finally, if $i$ contains no repeated indices, but $j$ is not a permutation of $i$, then there is at least one pair of indices in the symmetric difference of $\set[\big]{i_p}$ and $\set[\big]{j_p}$, say $i_r$ and $j_s$.
 	Commuting this pair $\ve^{i_r}$ and $\ve_{j_s}$ together shows that the left-hand side vanishes, since $\ve^{i_r}\ve_{j_s} = 0$.
 \end{proof}
 
@@ -175,13 +175,13 @@ The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nice
 
 \section{Relations to Other Algebras}
 
-An efficient way to become familiar with the geometric algebra is to exemplify its relationships and isomorphisms with other algebras and with itself.
+An efficient way to become familiar with the geometric algebra is to exemplify its relationships with other algebras and with itself.
 
 \subsection{Fundamental algebra automorphisms}
 
 Operations such complex conjugation $\overline{AB} = \overline{A}\,\overline{B}$ or matrix transposition $(AB)\transpose = B\transpose A\transpose$ are useful because they preserve or reverse multiplication.
 Linear functions with this property are called algebra automorphisms or antiautomorphisms, respectively.
-The geometric algebra possesses this \paren{anti}automorphism operations.
+The geometric algebra possesses several important \paren{anti}automorphism operations.
 
 Isometries of $(V, η)$ are linear functions $f : V → V$ which preserve the metric, so that $\ip{f(𝒖), f(𝒗)} = \ip{𝒖, 𝒗}$ for any $𝒖, 𝒗 ∈ V$.
 Vector spaces always possess the involution isometry $𝒖 ↦ -𝒖$, as well as the trivial isometry.
@@ -196,7 +196,7 @@ Thus, by extending the two fundamental isometries of $(V, η)$ in the two possib
 		\item \textdef{Grade involution $\star$} is the extension of the involution $\invol{𝒖} = -𝒖$ to general multivectors by the rule $\invol{(AB)} = \invol{A}\invol{B}$.
 	\end{itemize}
 \end{definition}
-Note that if $A ∈ \GA[k](V, η)$ is a $k$-vector, then $ι(A) = (-1)^k A$ and $\rev{A} = \revsign{k}A$ where
+Note that if $A ∈ \GA[k](V, η)$ is a $k$-vector, then $\invol{A} = (-1)^k A$ and $\rev{A} = \revsign{k}A$ where
 \begin{align}
 	\label{eqn:reversion-sign}
 	\revsign{k} = (-1)^{\frac{(k - 1)k}2}
@@ -236,7 +236,6 @@ In particular, the following result follows easily from reasoning about grades.
 \subsection{Even subalgebra isomorphisms}
 
 As noted above, multivectors of even grade are closed under the geometric product, and form the even subalgebra $\GA[+](p, q)$.
-% Involution fixes even elements, since for $ι(A) = (-1)^{2k}A = A$ for a $2k$-vector, so ...
 There is an isomorphism $\GA[+](p, q) \cong \GA[+](q, p)$ given by $\bar{\ve_i} ≔ \ve_i$ with opposite signature $\bar{\ve_i}^2 ≔ -\ve_i^2$, since the factor of $-1$ occurs only an even number of times for even elements.
 
 The even subalgebras are also isomorphic to full geometric algebras of one dimension less:
@@ -263,7 +262,7 @@ The even subalgebras are also isomorphic to full geometric algebras of one dimen
 	Let $A ∈ \GA(p, q - 1)$ be a $k$-vector.
 	Note that $A∧𝒖 = A𝒖$ since $𝒖 \perp \GA(p, q - 1)$, and that $A$ commutes with $𝒖$ if $k$ is even and anticommutes if $k$ is odd.
 
-	To so $Ψ_𝒖$ is a homomorphism, suppose $A, B ∈ \GA(p, q - 1)$ are both even;
+	To show $Ψ_𝒖$ is a homomorphism, suppose $A, B ∈ \GA(p, q - 1)$ are both even;
 	then $Ψ_𝒖(AB) = AB = Ψ_𝒖(A)Ψ_𝒖(B)$.
 	If both are odd, then $AB$ is even and $Ψ_𝒖(AB) = AB = -AB𝒖^2 = A𝒖B𝒖 = Ψ_𝒖(A)Ψ_𝒖(B)$.
 	If $A$ is odd and $B$ even, then $Ψ_𝒖(AB) = AB𝒖 = A𝒖B = Ψ_𝒖(A)Ψ_𝒖(B)$ and similarly for $A$ even and $B$ odd.
@@ -357,15 +356,16 @@ However, \cref{eqn:geoprod-in-ea} does not apply to general multivectors, and th
 \subsection{Common algebra isomorphisms}
 \label{sec:common-alg-isos}
 
-While $\GA(V, η)$ encompasses the exterior algebra $\EA{V}$, one important difference between the two algebras is that while inhomogeneous multivectors find little use in exterior algebra,\sidenote{
+While $\GA(V, η)$ contains $\EA{V}$ as a subset, one significance difference between the two algebras is the role of inhomogeneous elements.
+While inhomogeneous multivectors find little use in exterior algebra,\sidenote{
 	In fact, some authors \cite{flanders1963differential} leave sums of terms of $\EA{V}$ of differing grade undefined.
-} they have a significant role in describing reflections and rotations in $\GA(V, η)$.
-Many familiar algebraic structures concerning rotations in relativistic or quantum physics are in fact special cases of geometric algebra.
+} they have the important role of describing reflections and rotations in $\GA(V, η)$.
+Many familiar algebraic structures relating to rotations in relativistic or quantum physics are in fact special cases of geometric algebra.
 
 \begin{itemize}
 	\item\textbf{Complex numbers: $\GA[+](2) \cong \CC$}
 	
-	The complex plane is contained within $\GA(2)$ as the even subalgebra, with the isomorphism
+	The complex plane $\CC ≅ \op{span}_\RR\set{1, \ve_1\ve_2}$ is embedded in $\GA(2)$ as the even subalgebra, with the isomorphism
 	\begin{align}
 	% 	\CC &≅ \GA[+](2)
 	% \\	x + iy &↔︎ x + y\ve_1\ve_2
@@ -376,9 +376,9 @@ Many familiar algebraic structures concerning rotations in relativistic or quant
 
 	\item\textbf{Quaternions: $\GA[+](3) \cong \HH$}
 
-	Similarly, the quaternions are the even subalgebra $\GA[+](3)$, with the isomorphism\sidenote{
+	Similarly, the quaternions are the even subalgebra $\GA[+](3)$, related by the isomorphism\sidenote{
 		Note the minus sign.
-		Viewed as rotations through their respective normal planes, $(\ii, \jj, \kk)$ form a \emph{left}-\-handed basis.
+		Viewed as rotations through their respective normal planes, $(\ii, \jj, \kk)$ form a \emph{left}\hyp handed basis.
 		This is because Hamilton chose $\ii\jj\kk = -1$, not $+1$.
 	}
 	\begin{align}
@@ -460,7 +460,7 @@ Many familiar algebraic structures concerning rotations in relativistic or quant
 
 
 
-There is a consistent pattern in the algebra isomorphisms listed in \cref{sec:common-alg-isos}.
+There is a consistent pattern to the algebra isomorphisms listed in \cref{sec:common-alg-isos}.
 Note how the complex numbers $\CC$ are fit for describing $\SO(2)$ rotations in the plane, and the quaternions $\HH$ describe $\SO(3)$ rotations in $\RR^3$.
 Common to both their respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is the identification of each ``imaginary unit'' in $\CC$ or $\HH$ with a \emph{unit bivector} in $\GA(n)$.
 \begin{itemize}
@@ -468,7 +468,7 @@ Common to both their respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is
 	\item In $3$d, there are $\dim \GA[2](3) = \binom{3}{2} = 3$ such bivectors, and so three imaginary units $\set{\ii, \jj, \kk}$ are needed.
 	\item In $(1+3)$d, we have $\dim \GA[2](1,3) = \binom{4}{2} = 6$, corresponding to three `spacelike' $\set{\ii, \jj, \kk}$ and three `timelike' $\set{i\ii, i\jj, i\kk}$ units of $\CC ⊗ \HH$.
 \end{itemize}
-The interpretation of a bivector is clear: it takes the role of an `imaginary unit`, generating a rotation through the oriented plane which it spans.
+The interpretation of a bivector is clear: it takes the role of an `imaginary unit', generating a rotation through the oriented plane which it spans.
 
 
 
@@ -483,12 +483,11 @@ while $\RR^3$ rotations are described in $\HH$ using a double-sided transformati
 ,\end{math}
 where $\vb{\hat n} ∈ \spanof{\ii, \jj, \kk}$ is a unit quaternion defining the plane of rotation.
 Due to the commutativity of $\CC$, the double-sided transformation law is actually general to both $\CC$ and $\HH$.
-
-Similarly, rotations in a geometric algebra are described as
+The same is true for rotations in a geometric algebra, where a multivector is rotated by
 \begin{align}
 	\label{eqn:rotor-application}
 	% u &↦ \rev{R}uR
-	u &↦ e^{θ\hat{b}/2}ue^{-θ\hat{b}/2}
+	A &↦ e^{θ\hat{b}/2} A e^{-θ\hat{b}/2}
 ,\end{align}
 where $\hat{b} ∈ \GA[2](V, η)$ is a unit bivector.
 Multivectors of the form $R = e^σ$ for $σ ∈ \GA[2](V, η)$ are called \emph{rotors}.
@@ -765,11 +764,12 @@ On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orth
 
 
 \section{More Graded Products}
+\label{sec:more-graded-prods}
 
 All operations in the geometric algebra can be expressed in terms of the fundamental geometric product along with grade projection operators $\grade[k]{\phantom{A}}$.
 For example, we have seen that the wedge and inner products ($∧$ and $\fatdot$ of \cref{def:wedge-and-fat-dot-for-multivectors}) are merely combinations of multiplication and projection.
 
-There are other similar constructions which are useful enough warrant their own definitions, inclusing left and right \emph{contractions}.
+There are other similar constructions which are useful enough warrant their own definitions, including the left and right \emph{contractions}.
 \begin{definition}
 	% For any multivectors $A$ and $B$, define the
 	\begin{align}
@@ -780,6 +780,8 @@ There are other similar constructions which are useful enough warrant their own 
 	\end{align}
 	% products.
 \end{definition}
+We declare the various products $·$, $∧$, $\lcontr$ and $\rcontr$ to have \emph{higher} precedence than the geometric product (aligning with \cite[§2.5]{doran2003ga}), so that we may write e.g., $A·B\,C = (A·B)C$ and $𝒖∧𝒗 \, \vol = (𝒖∧𝒗)\vol$ unambiguously.
+
 Observe that $\rev{(A\lcontr B)} = \rev{A}\rcontr\rev{B}$, so these are in essentially the same operation --- only one is viewed in a mirror.\sidenote{
 	I.e., every statement involving $\lcontr$ produces, under reversion, an equivalent statement involving $\rcontr$.
 }

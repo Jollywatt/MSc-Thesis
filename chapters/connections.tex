@@ -4,23 +4,18 @@
 We have seen that it is more natural to describe physical fields in the language of fibre bundles rather than simply as maps into a fixed codomain.
 However, with a field $f ∈ \secs(ℱ)$ now formulated as a section of a fibre bundle, it no longer makes sense to directly compare values $f|_x$ at different points $x ∈ ℳ$, since each value exists in its own fibre.
 But the ability to compare across fibres is desirable, particularly because a notion of derivative requires comparing values across `infinitesimally neighbouring' fibres.
-To accomplish this, the additional structure of a \emph{connection} on the fibre bundle is required; this then defines the \emph{covariant derivative} of a section.
+One way to accomplish this (at least for flowable objects) was the Lie derivative of \cref{def:lieder}.
+Another way is to introduce the additional structure of a \emph{connection}; this then defines the \emph{covariant derivative} of a section.
 
 A trivial example of a connection is the one associated with (the tangent bundle of) Euclidean space.
-In this case, tangent vectors at a base point may be \emph{parallel transported} (i.e., translated irrotationally) to any other base point in a well-defined, path-independent way.\sidenote{
-	Any tangent vectors $𝒖_p ∈ \TT \RR^n ≅ \RR^n ⊕ \RR^n$ are compared by translating them to the origin (or discarding the base point) $𝒖_p ≡ (p, 𝒖) ↦ 𝒖 ∈ \RR^n$.
-}
-This defines an isomorphism between every tangent space and tangent space at the origin, which is a connection on $\TT \RR^n$.
+In this case, tangent vectors at a base point may be \emph{parallel transported} (i.e., translated irrotationally) to any other base point in a well-defined, path-independent way.
+This defines an isomorphism between every tangent space and tangent space at the origin, forming a connection on $\TT \RR^n$.
 
 We may try to define connections on general fibre bundles in this way, by choosing an isomorphism from every fibre to a single `reference' fibre.
-This is the same as choosing a trivialisation $ℱ → ℳ × F$, which identifies every fibre with $F$ (equivalent to prescribing global coordinates on the bundle).
-
+This is the same as choosing a trivialisation $ℱ → ℳ × F$, identifying fibres with $F$ (also equivalent to prescribing global coordinates on the bundle).
 However, defining a connection by a trivialisation like this is a needlessly strict requirement, and is of course impossible to do globally on non-trivial bundles.
-For instance, the tangent bundle of the sphere $\TT \Sphere^2$ is non-trivial, so it is impossible to give a globally smooth identification of tangent spaces.\sidenote{
-	To see this, consider a point on the globe.
-	Given a trivialisation of $\TT \Sphere^2$, the northward vector is extended to a vector field on the sphere.
-	The hairy ball theorem implies the field vanishes at some point, at which the trivialisation fails.
-}
+
+For instance, the tangent bundle of the sphere $\TT \Sphere^2$ is non-trivial, so it is impossible to give a globally smooth identification of tangent spaces.
 However, it is always possible to define a connection \emph{locally} on the sphere, since local trivialisations always exist.
 In other words, tangent vectors on the sphere can be parallel transported over sufficiently short paths, since locally the sphere looks like the Euclidean plane.
 
@@ -33,8 +28,10 @@ This generalises to all smooth manifolds: To define a connection, it is only nec
 
 
 The most general kind of smooth bundle $ℱ$ is one where the fibres are each diffeomorphic to a manifold $F$ and have no further assumed structure.
+Yet this is sufficient to define a connection on $ℱ$.
+
 A point $p ∈ ℱ$ in the bundle belongs to the fibre $F_{π(p)}$ rooted at the base point $π(p) ∈ ℳ$.
-If the point $p$ is moved within its fibre, the base point remains fixed and the motion is said to be ``vertical''.
+If the point $p$ is moved \emph{within its fibre,} the base point remains fixed and the motion is said to be ``vertical''.
 The tangent space $\TT_p F_{π(p)}$ of the fibre (in isolation from the bulk) consists of those displacement vectors which define vertical motion.
 \begin{definition}
 	The \textdef{vertical bundle} of a smooth fibre bundle $\fibrebundle F ℱ ℳ$ is a smooth $(\dim F)$-dimensional tangent subbundle $\VV ℱ ⊆ \TT ℱ$ defined by
@@ -62,7 +59,7 @@ On the other hand, a \emph{connection} specifies how the value $p ∈ ℱ$ chang
 	\end{math}
 	for each point $p ∈ ℱ$.
 \end{definition}
-Note that while the tangent and vertical bundles $\TT ℱ$ and $\VV ℱ$ are canonical constructions, the choice of a horizontal bundle $H$ is not canonical: there may be many distinct horizontal bundles.
+Note that while the tangent and vertical bundles $\TT ℱ$ and $\VV ℱ$ are canonical constructions, the choice of a horizontal bundle $H$ is not canonical: there may be many distinct horizontal bundles, corresponding to different senses of ``parallel transport''.
 
 
 
@@ -102,7 +99,7 @@ This proves to be a useful construction:
 	}
 	\label{fig:connection-map}
 \end{marginfigure}
-The horizontal lift of a section $f$ is a horizontal-valued $1$-form $Γ(f) ∈ \forms[1](ℳ, H)$, whose action on tangent vectors $𝒖$ we may write as $Γ_𝒖(f) ≔ Γ(f)(𝒖)$.
+The horizontal lift of a section $f$ is a horizontal-valued $1$-form $Γ(f) ∈ \forms[1](ℳ, H)$ whose action on tangent vectors $𝒖$ we may write as $Γ_𝒖(f) ≔ Γ(f)(𝒖)$.
 This device is designed so that tangent vectors $𝒖$ are `lifted' to horizontal bulk vectors $-Γ_𝒖(f)$ located on the section $f$ (see \cref{fig:connection-map}).
 `Lifted' means $-Γ_𝒖(f)$ projects onto $𝒖$, so that we have $-\dd π (Γ_𝒖(f)) = 𝒖$.
 The minus sign is present to later align with the convention that a plus sign is present in the covariant derivative of a vector section.\sidenote{
@@ -114,7 +111,7 @@ The minus sign is present to later align with the convention that a plus sign is
 
 \subsection{Parallel transport}
 
-With a connection defined on a bundle, a value in the bulk may be moved between fibres so that the motion is always horizontal with respect to the connection.
+With a connection $H ⊆ \TT ℱ$ defined on a bundle, a value in the bulk may be moved between fibres so that the motion is always horizontal with respect to the connection.
 This is called \textdef{parallel transportation} of the value along a path.
 
 More precisely, a path $γ : [0, 1] → ℳ$ representing the motion of a value $p_0 ∈ ℱ$ from $γ(0) = π(p_0)$ can be \textdef{lifted} to a horizontal path $p_0 : [0, 1] → ℱ$ in the bulk.

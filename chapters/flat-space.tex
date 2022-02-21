@@ -18,7 +18,7 @@ It is then \emph{un-physical} to compare field values at different points in spa
 
 This chapter introduces the \emph{exterior} and \emph{vector derivatives} as instances of the `algebraic derivative' in the exterior and geometric algebras, respectively.
 These devices combine derivative information with the geometrical structure inherent in the respective algebras.
-To demonstrate their utility, a case study of Maxwell's equations of electromagnetism are given in terms of these algebraic derivatives.
+To demonstrate their utility, a case study of Maxwell's equations of electromagnetism is given in terms of these algebraic derivatives.
 
 
 \section{Differentiation}
@@ -173,7 +173,7 @@ Expressed in the standard vector calculus of $\RR^3$, Maxwell's equations for th
 \\[1ex]	∇ × \vb B &= μ_0(\vb J + ε_0∂_t \vb E) &&\text{(Ampère's law)}
 \end{align}
 where $ρ$ is the scalar charge density and $\vb J$ the current density.
-The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, respectively, related to the speed of light $c$ by $ε_0μ_0c^2 = 1$.
+The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, respectively, related to the speed of light by $ε_0μ_0c^2 = 1$.
 
 
 
@@ -209,7 +209,7 @@ The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, re
 
 \subsection{With tensor calculus}
 
-These can be expressed relativistically as eight scalar equations,
+The above can be expressed relativistically as eight scalar equations,
 \setlength{\fboxsep}{1.4ex}
 \begin{empheq}[box=\fbox]{align}
 	\label{eqn:maxwells-tensor-form}
@@ -262,13 +262,13 @@ These equations assume the metric signature $\sig{+---}$, where the equivalent e
 
 \subsection{With exterior calculus}
 
-It is easy to translate from the language of exterior calculus to tensor calculus, and hence vice versa, by identifying the former as the subalgebra of totally antisymmetric tensors (as in \cref{sec:exterior-algebra-as-antisymmetric}).
-We will employ the Spivak convention, which in particular identifies $2$-forms via
+It is easy to translate between exterior calculus and tensor calculus by identifying the former as the subalgebra of totally antisymmetric tensors (as in \cref{sec:exterior-algebra-as-antisymmetric}).
+We will employ the Spivak convention, which in particular identifies $2$-forms with dyadic tensors via
 \begin{align}
 	\ve^μ ∧ \ve^ν ≡ \ve^μ ⊗ \ve^ν - \ve^ν ⊗ \ve^μ
 \end{align}
 where $\ve^μ$ are spacetime basis vectors (having physical dimensions of spacetime interval, $S$).
-We then the electromagnetic bivector as
+We then identify the electromagnetic bivector as
 \begin{math}
 	\mathcal{F} = \frac12 F_{μν} \ve^μ ∧ \ve^ν
 \end{math}
@@ -343,13 +343,13 @@ Maxwell's equations are equivalent to the \emph{single} multivector equation
 	\begin{math}
 		\vd ∧ F = 0
 	.\end{math}
-	In terms of components, the vector part is
+	In terms of components, the left-hand side of the vector part is
 	\begin{align}
-		\vd \cdot F = ∂_λF^{μν} \vg^λ \cdot (\vg_μ\vg_ν) = μ_0J^ν\vg_ν
-	.\end{align}
-	The only non-zero components are those for which $μ \ne ν$.
+		\vd \cdot F = ∂_λF^{μν} \vg^λ \cdot (\vg_μ\vg_ν)
+	,\end{align}
+	whose only non-zero components are those for which $μ \ne ν$.
 	If $λ$, $μ$ and $ν$ are all distinct, then $\vg^λ \cdot (\vg_μ\vg_ν) = \grade[1]{\vg^λ\vg_μ\vg_ν} = 0$.
-	There are then two cases, $λ = μ$ and $λ = ν$, which respectively simplify
+	There are then two cases, $λ = μ$ and $λ = ν$, which respectively simplify to
 	\begin{align}
 		\vg^μ \cdot (\vg_μ\vg_ν) &= \grade[1]{\vg^μ\vg_μ\vg_ν} = \vg_ν
 	,\\	\vg^ν \cdot (\vg_μ\vg_ν) &= \grade[1]{\vg^ν\vg_μ\vg_ν} = -\vg_μ
@@ -358,7 +358,7 @@ Maxwell's equations are equivalent to the \emph{single} multivector equation
 	\begin{align}
 		\vd \cdot F = \qty(∂_μF^{μν}\vg_ν - ∂_νF^{μν}\vg_μ) = ∂_μF^{μν}\vg_ν
 	.\end{align}
-	This recovers the source equation $2∂_μF^{μν} = μ_0J^ν$.
+	Equality with the right-hand side $μ_0J^ν\vg_ν$ recovers the source equation.
 
 	It is clear that the trivector part
 	\begin{align}
@@ -405,12 +405,15 @@ Similarly for the vector derivative, we have
 \end{align}
 in either signature.
 
-Putting these together, we split \cref{eqn:maxwell-sta} within the $\vg_0$-frame by left-multiplying by $\vg_0$;
+Putting these together, the $\vg_0$-frame equation
+\begin{math}
+	\vg_0 \, \vd F =  μ_0 \vg_0 \vb J
+\end{math}
+is
 \begin{align}
-	\vg_0 \, \vd F &= \vg_0 μ_0 \vb J
-\\=	\qty(\frac1c \pdv{t} + \vec ∇)\qty(\frac1c \vec E + \vol \vec B) &= μ_0\qty(cρ - \vec J)
+	\qty(\frac1c \pdv{t} + \vec ∇)\qty(\frac1c \vec E + \vol \vec B) &= μ_0\qty(cρ - \vec J)
 .\end{align}
-By expanding and equating grades, we obtain four equations,
+By expanding and equating grades, we obtain four equations:
 \begin{align}
 	\frac1c \vec ∇ · \vec E &= μ_0 cρ
 &	&\text{(scalar)}

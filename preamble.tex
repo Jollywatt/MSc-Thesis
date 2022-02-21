@@ -159,8 +159,13 @@
 	font=footnotesize,
 }
 
+\newcommand{\ragged}{\Ifthispageodd{\raggedright}{\raggedleft}}
 \DeclareCaptionJustification{raggedauto}{\Ifthispageodd{\raggedright}{\raggedleft}}% <- changed
 \DeclareCaptionStyle{marginfigure}{
+	font=footnotesize,
+	justification=raggedauto,
+}
+\DeclareCaptionStyle{margintable}{
 	font=footnotesize,
 	justification=raggedauto,
 }

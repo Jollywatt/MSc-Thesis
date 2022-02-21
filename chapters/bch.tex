@@ -400,7 +400,7 @@ Explicitly, identifying
 		 0&-1\\
 	]
 \end{align}
-along with $1 \equiv I$ and $\vol \equiv iI$ where $I$ is the identity matrix, we obtain a representation of the multivector $A$ by a $2 × 2$ complex matrix:
+along with $1 \equiv I$ and $\vol \equiv iI$ where $I$ is the $2×2$ identity matrix, we obtain a representation of the multivector $A$ by a $2 × 2$ complex matrix:
 \begin{align}
 	\lin A \equiv \mqty[
 		q^0 + q^3 & q^1 - iq^2 \\
@@ -453,7 +453,7 @@ Given two generators $σ_i$ with matrix representations $\lin Σ_i$, the geometr
 ,\end{align}
 where $\lin T_i ≔ \tanh \lin Σ_i$.
 To efficiently compute $\lin T_i$, make use of the fact that $\lin Σ_i^2 = λ_i^2\lin I$ is a complex multiple of the identity matrix and evaluate $\lin T_i = (\tanh λ_i)λ_i^{-1}\lin Σ_i$.
-In the null case $\lin Σ_i^2 = λ = 0$, we have trivially $\tanh \lin Σ_i = \lin Σ_i = \tanh^{-1} \lin Σ_i$.
+In the null case $\lin Σ_i^2 = λ = 0$, the power series \eqref{eqn:trig-power-series} truncate and $\tanh \lin Σ_i = \tanh^{-1} \lin Σ_i = \lin Σ_i$ are equal.
 
 
 
