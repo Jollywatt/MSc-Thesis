@@ -277,7 +277,7 @@ It is not always possible to find a global trivialisation of a fibre bundle, and
 }
 
 However, it is always possible trivialise \emph{locally}.
-That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a (global) trivialisation.
+That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a trivialisation.
 Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}$ to the bulk of a fibre bundle, where $x^μ$ are coordinates on the base and $x^a$ are coordinates on the fibres, such that $x^μ$ do not vary along the fibres.
 In other words, local trivialisations are equivalent to local coordinates.
 
@@ -311,7 +311,7 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 \Cref{sec:exterior-forms} defined exterior forms $\forms(V, A)$ as alternating multilinear maps from the fixed vector space $\TA{V}$ into $A$.
 % Similarly, the differential of a map $\dd f : \TT ℳ → \TT 𝒩$ is an object that takes a vector argument $𝒖 ∈ \TTℳ$ --- almost like an exterior $1$-form, except that the entire tangent bundle $\TT ℳ$ is not itself a vector space.
 Exterior forms can be extended to exterior \emph{differential} forms, existing on manifolds.
-These define alternating maps from $\TA{(\TT_x ℳ)}$ for each point $x ∈ ℳ$ in a smooth way.
+Such objects define alternating maps from $\TA{(\TT_x ℳ)}$ for each point $x ∈ ℳ$ in a smooth way.
 
 Although the entire bundle $\TT ℳ$ is not a vector space, the space of vector sections $\secs(\TT ℳ)$ is.
 Hence, we may consider the space
@@ -319,41 +319,35 @@ Hence, we may consider the space
 	\forms(ℳ, ℰ) ≔ \forms(\secs(\TT ℳ), \secs(ℰ))
 \end{math}
 of $\secs(ℰ)$-valued exterior forms, for some vector bundle $\fibrebundle ℳ {ℰ} V$.
-As with exterior forms, the wedge product is defined as in \cref{eqn:wedge-of-forms}, acting on sections pointwise.
+As with exterior forms, the wedge product is defined as in \cref{eqn:wedge-of-forms}, only now acting pointwise on \emph{sections} of exterior forms.
 
 An element of $\forms[k](ℳ, ℰ)$ is called an \textdef{$ℰ$-valued exterior differential $k$-form}, where `differential' distinguishes it as an object on a manifold.
-Scalar-valued exterior differential forms are elements of $\forms(ℳ) ≔ \forms(ℳ, ℳ × \RR)$, where $\fibrebundle[π] ℳ {ℳ × \RR} \RR$ is the trivial line bundle.
-
-
+For scalar--valued exterior differential forms, we take $ℰ$ to be the trivial line bundle $ℳ × \RR$.
 We sometimes use the notation $\df α$ to emphasise that $α$ is an exterior differential form.
-\toself{Not necessary for differentials $\dd f$ since is clear.}
 
 
+\subsubsection{The exterior derivative revisited}
 
-\subsubsection{The exterior derivative on manifolds}
-
-For exterior \emph{differential} forms $\forms(ℳ, A)$, the exterior derivative is defined in the same way as in \cref{sec:exterior-derivative-forms} for exterior forms $\forms(V, A)$ --- except it must now be made explicit that only the form itself is differentiated, not its vector arguments.
-Indeed, the exterior derivative of a $k$-form $φ$ should be defined independently of any vector arguments.
-Thus, we may write
+For exterior \emph{differential} forms $\forms(ℳ, 𝒜)$, the exterior derivative is defined in the same way as in \cref{sec:exterior-derivative-forms} for exterior forms $\forms(V, A)$ --- except it must now be made explicit that only the form itself is differentiated, not its vector arguments.
+Indeed, since the exterior derivative of a $k$-form $φ$ is defined independently of vector arguments, it cannot depend on their derivatives.
+Informally, we may write
 \begin{align}
 	\label{eqn:exder.1}
 	(\dd φ)(\etc[0]{𝒖_\i}⊗k)
 	&= \sum_{i=0}^k (-1)^k (𝒖_i(φ))(\etcskip[0]{𝒖_\i}⊗ik)
 \end{align}
-where $𝒖_i(φ)$ informally means that only $φ$ is differentiated, not other vector sections.
-This is the same as
-\begin{samepage}
+where $𝒖_i(φ)$ means that only $φ$ is differentiated, not other vector sections.
+Formally, vectors may only act as derivatives on scalars and not forms, so this may be rewritten as
 \begin{fullwidth}
 \begin{align}
 	(\dd φ)(\etc[0]{𝒖_\i}⊗k)
 	&= \sum_{i=0}^k (-1)^k 𝒖_i(φ(\etcskip[0]{𝒖_\i}⊗ik))
 \\	&- \sum_{j < i} (-1)^{i + j} φ([𝒖_i, 𝒖_j] ⊗ 𝒖_0 ⊗ ⋯ ⊗ \widehat{𝒖_i} ⊗ ⋯ ⊗ \widehat{𝒖_j} ⊗ ⋯ ⊗ 𝒖_k)
 	\label{eqn:exder.2}
-,\end{align}
+.\end{align}
 \end{fullwidth}
-\end{samepage}
-where the first term involves scalar derivatives of $φ(\etcskip[0]{𝒖_\i}⊗ik)$, and the second cancels out unwanted terms involving derivatives of $𝒖_j$.
-A useful special case of \cref{eqn:exder.2} is the exterior derivative of a $1$-form,
+The first term involves scalar derivatives of $φ(\etcskip[0]{𝒖_\i}⊗ik)$, and the second cancels out unwanted terms involving derivatives of $𝒖_j$.
+A useful special case is the exterior derivative of a $1$-form, which reads
 \begin{align}
 	(\dd φ)(𝒖, 𝒗) = 𝒖(φ(𝒗)) - 𝒗(φ(𝒖)) - φ([𝒖, 𝒗])
 .\end{align}
@@ -463,7 +457,6 @@ By requiring $\lie_𝒖$ to be a derivation, we deduce from
 \end{math}
 the form of the Lie derivative on a covector $φ$.
 Continuing in this way, it follows that the Lie derivative of a general tensor $T = T^{μ_1...μ_p}{}_{ν_1...ν_q} \etc{\ve_{μ_\i}}⊗p ⊗ \etc{\ve^{ν_\i}}⊗q$ is
-\begin{samepage}
 \begin{fullwidth}
 \begin{align}
 	\lie_𝒖 T^{μ_1...μ_p}{}_{ν_1...ν_q}
@@ -472,7 +465,6 @@ Continuing in this way, it follows that the Lie derivative of a general tensor $
 	+ \sum_{i=1}^q T^{μ_1...μ_p}{}_{ν_1...λ...ν_q} ∂_{ν_i} u^λ
 .\end{align}
 \end{fullwidth}
-\end{samepage}
 This sets the stage for how much simpler Lie derivative formulae are on exterior differential forms and multivectors.
 
 On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula''\sidenotemark
@@ -589,7 +581,6 @@ This is a remarkably elegant result: it applies to multivectors of any kind (vec
 		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒂_i \fatdot \vd 𝒖)}∧k
 	.\end{align}
 	Combining \cref{eqn:geolieder.1,eqn:geolieder.4} yields
-	\begin{samepage}
 	\begin{fullwidth}
 	\begin{align}
 		[𝒖, A] =
@@ -597,6 +588,5 @@ This is a remarkably elegant result: it applies to multivectors of any kind (vec
 		= \sum_{i=1}^k \etcmid{𝒂_\i}{(𝒖 \fatdot \vd 𝒂_i - 𝒂_i \fatdot \vd 𝒖)}∧k
 	\end{align}
 	\end{fullwidth}
-	\end{samepage}
 	whose right-hand side is equal to \cref{eqn:geolieder.0}.
 \end{proof}

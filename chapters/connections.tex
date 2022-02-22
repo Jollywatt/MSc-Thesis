@@ -485,7 +485,6 @@ which places further constraints on the connection.
 \begin{proof}
 	Let $T_λ ≔ \trans_{γ(λ ← 0)}$ for some path $γ$.
 	Using \cref{lem:trans-and-covariant-der}, we have
-	\begin{samepage}
 	\begin{fullwidth}
 	\begin{align}
 		∇_{\vb{\dot γ}(0)} (\etc{X_\i}⊛k)
@@ -493,7 +492,6 @@ which places further constraints on the connection.
 		- \dv{λ} \trans_{γ(λ ← 0)}(\etc{X_\i}⊛k) \bigg|_{λ = 0}
 	.\end{align}
 	\end{fullwidth}
-	\end{samepage}
 	Since $⊛$ is respected by parallel transport, and by bilinearity and associativity, the rightmost term is
 	\begin{align}
 		-\dv{λ} \etc{T_λ X_i}⊛k \, \bigg|_{λ=0} = -\sum_{i=1}^k \etcmid{X_\i}{\dv{λ} T_λ X_i \big|_{λ=0}}⊛k
@@ -515,7 +513,6 @@ For example, for the tensor bundle $\TA{𝒱}$, we obtain the product rule writt
 	∇_μ X^a Y^b = ∂_μ(X^a Y^b) + Γ_μ{}^a{}_c X^c Y^b + X^a Γ_μ{}^b{}_c Y^c
 ,\end{align}
 and if the connection is also compatible with a metric used to raise and lower indices, we derive the familiar formula for covariant differentiation of general type-$(p, q)$ tensors,{}
-% \begin{samepage}
 \begin{fullwidth}
 \begin{align}
 	\label{eqn:covder-general-tensor}
@@ -525,7 +522,6 @@ and if the connection is also compatible with a metric used to raise and lower i
 	- \sum_{j = 1}^q Γ_μ{}^c{}_{b_j} T^{a_1\cdots a_p}{}_{b_1\cdots c\cdots b_q}
 .\end{align}
 \end{fullwidth}
-% \end{samepage}
 % Note that \cref{eqn:covder-general-tensor} is written only in terms of the connection coefficients $Γ_μ{}^a{}_b$ on $𝒱$.
 
 
