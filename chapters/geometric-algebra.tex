@@ -130,7 +130,7 @@ These can be extended by linearity to inhomogeneous elements.
 	\begin{align}
 		A∧B ≔ \sum_{p,q}\grade[p + q]{\grade[p]{A}\grade[q]{B}}
 	,\end{align}
-	and the \textdef{generalised inner product}, or ``fat dot'' product,\sidenote{
+	and the \textdef{generalised inner product}, or ``fat'' dot product,\sidenote{
 		Various `inner products' have been proposed for geometric algebra, but the definition here is arguably the simplest and best behaved; see \cite{dorst2002inner-products} for closer discussion.
 	} is
 	\begin{align}
@@ -139,33 +139,42 @@ These can be extended by linearity to inhomogeneous elements.
 \end{definition}
 
 With the wedge product defined on all of $\GA(V, η)$, we use language of multivectors as we did with the exterior algebra, so that $\etc{𝒖_\i}∧k ∈ \GA[k](V, η)$ is a $k$-blade, and a sum of $k$-blades is a $k$-multivector, etcetea.
-The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nicely, and extend the notion of a dual vector basis to a dual basis of blades.
-\begin{lemma}
-	\label{lem:dual-blades}
-	If $\set{\ve_i} ⊂ V$ is a basis with dual $\ve^i \fatdot \ve_j = δ^i_j$, then
-	\begin{align}
-		% (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧k) = (-1)^σ
-		(\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) = ε^i_j
-		\marginnote{
-			Note the reverse order of the $j$ indices.
-		}
-	\end{align}
-	where $ε^i_j = (-1)^σ$ is the sign of the permutation sending $σ(i_p) = j_p$ for $1 ≤ p ≤ k$ , or zero if there is no such permutation or if $i$ or $j$ contain repeated indices.
-\end{lemma}
-\begin{proof}
-	If $i$ or $j$ contain repeated indices, then the left-hand side vanishes by antisymmetry of the wedge product, and the right-hand side by definition.
-	If $i$ contains no repeated indices, and the $j$ indices are some permutation $j_p = σ(i_p)$, then $\etc{\ve^{i_\i}}∧k = \etc{\ve^{i_\i}}{}k$ by orthogonality.
-	Rewriting the left-hand side,
-	\begin{align}
-		\grade{\etc{\ve^{i_\i}}{}k \etc[k]{\ve_{j_\i}}{}1}
-		= (-1)^σ \angbr[\big]{
-			\ve^{i_1}\cdots\underbrace{\ve^{i_k}\ve_{i_k}}_1\cdots\ve_{i_1}
-		}
-		= (-1)^σ
-	.\end{align}
-	Finally, if $i$ contains no repeated indices, but $j$ is not a permutation of $i$, then there is at least one pair of indices in the symmetric difference of $\set[\big]{i_p}$ and $\set[\big]{j_p}$, say $i_r$ and $j_s$.
-	Commuting this pair $\ve^{i_r}$ and $\ve_{j_s}$ together shows that the left-hand side vanishes, since $\ve^{i_r}\ve_{j_s} = 0$.
-\end{proof}
+
+The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nicely; the induced metric on $k$-vectors introduced in \cref{sec:metrical-exterior-alg} is expressible in any of the following ways.
+\begin{align}
+	\label{eqn:induced-metric-ga}
+	\ip{A, B} = \revsign{k} \, \grade{AB}
+	= \grade{\rev{A}B} = \grade{A\rev{B}}
+	= \rev{A} \fatdot B = A \fatdot \rev{B}
+,\end{align}
+The reversion in necessary because the vectors in the product of two blades $(\etc{\ve_{i_\i}}{}k)(\etc{\ve_{j_\i}}{}k)$ are paired `inside first'.
+
+% \begin{lemma}
+% 	For $k$-vectors $A$ and $B$,
+% 	where $\ip{A, B}$ is the induced metric defined in \cref{sec:metrical-exterior-alg}.
+% \end{lemma}
+% \begin{proof}
+% 	All equalities after the first are simple variations of notation.
+% 	For the first equality, it suffices to show the case where $A = \etc{\ve_{i_\i}}{}k$ and $B = \etc{\ve_{j_\i}}{}k$ are basis blades with respect to some orthogonal basis $\set{\ve_i}$.
+
+% 	\begin{align}
+% 		\grade{A \rev{B}}
+% 		= \grade{\etc{\ve^{i_\i}}{}k \etc[k]{\ve_{j_\i}}{}1}
+% 	\end{align}
+
+% 	If $i$ or $j$ contain repeated indices, then the left-hand side vanishes by antisymmetry of the wedge product, and the right-hand side by definition.
+% 	If $i$ contains no repeated indices, and the $j$ indices are some permutation $j_p = σ(i_p)$, then $\etc{\ve^{i_\i}}∧k = \etc{\ve^{i_\i}}{}k$ by orthogonality.
+% 	Rewriting the left-hand side,
+% 	\begin{align}
+% 		\grade{\etc{\ve^{i_\i}}{}k \etc[k]{\ve_{j_\i}}{}1}
+% 		= (-1)^σ \angbr[\big]{
+% 			\ve^{i_1}\cdots\underbrace{\ve^{i_k}\ve_{i_k}}_1\cdots\ve_{i_1}
+% 		}
+% 		= (-1)^σ
+% 	.\end{align}
+% 	Finally, if $i$ contains no repeated indices, but $j$ is not a permutation of $i$, then there is at least one pair of indices in the symmetric difference of $\set[\big]{i_p}$ and $\set[\big]{j_p}$, say $i_r$ and $j_s$.
+% 	Commuting this pair $\ve^{i_r}$ and $\ve_{j_s}$ together shows that the left-hand side vanishes, since $\ve^{i_r}\ve_{j_s} = 0$.
+% \end{proof}
 
 
 
@@ -196,10 +205,20 @@ Thus, by extending the two fundamental isometries of $(V, η)$ in the two possib
 		\item \textdef{Grade involution $\star$} is the extension of the involution $\invol{𝒖} = -𝒖$ to general multivectors by the rule $\invol{(AB)} = \invol{A}\invol{B}$.
 	\end{itemize}
 \end{definition}
-Note that if $A ∈ \GA[k](V, η)$ is a $k$-vector, then $\invol{A} = (-1)^k A$ and $\rev{A} = \revsign{k}A$ where
+Note that if $A ∈ \GA[k](V, η)$ is a $k$-vector, then $\invol{A} = (-1)^k A$ and $\rev{A} = \revsign{k}A$ where the \textdef{reversion sign}
+\begin{margintable}
+	\centering
+	\begin{tabular}{C|C}
+		k \mod 4 & \revsign{k}
+	\\	0 & +
+	\\	1 & +
+	\\	2 & -
+	\\	3 & -
+	\end{tabular}
+\end{margintable}
 \begin{align}
 	\label{eqn:reversion-sign}
-	\revsign{k} = (-1)^{\frac{(k - 1)k}2}
+	\revsign{k} ≔ (-1)^{\frac{(k - 1)k}2}
 \end{align}
 is the sign of the reverse permutation on $k$ symbols.
 
@@ -282,41 +301,35 @@ This provides an impressively efficient algebraic method for transforming relati
 
 \subsection{Relation to exterior forms}
 
-The geometric algebra is a generalisation of the exterior algeba.
-Indeed, in the special case of a completely degenerate metric (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then the algebras are identical, $\GA(V, 0) \cong \EA{V}$.
-But even with a nontrivial metric, $\EA{V}$ is embedded in $\GA(V, η)$ by taking the wedge product of $\EA{V}$ to the wedge product (not the geometric product) of $\GA(V, η)$.
+The geometric algebra differs from the algebra of exterior forms in two orthogonal ways:
+Firstly, $\GA(V, η)$ is an associative algebra over $V$, while $\forms(V)$ is an algebra of alternating maps which \emph{act on} tensor powers of $V$.
+Secondly, the product in $\GA(V, η)$ is an intrinsically metrical generalisation of the product in $\EA{V}$.
+We will address these two aspects separately, to more clearly see how each is incorperated into the geometric algebra.
+
+% The geometric algebra is a generalisation of the exterior algeba.
+% Indeed, in the special case of a completely degenerate metric (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then the algebras are identical, $\GA(V, 0) \cong \EA{V}$.
+% But even with a nontrivial metric, $\EA{V}$ is embedded in $\GA(V, η)$ by identifying the wedge product of $\EA{V}$ to the wedge product (not the geometric product) of $\GA(V, η)$.
 
 
 \subsubsection{Exterior forms as multivectors}
 
-Exterior forms can be mimicked in the geometric algebra by making use of a reciprocal basis $V$, as in the following lemma.
-Note that the dual space $V^*$ does not make an appearance --- all elements belong to $\GA(V, η)$.
+Exterior forms can be mimicked in the geometric algebra by making use of a reciprocal basis, as in the following lemma.
 \begin{lemma}
 	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
 	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1) = k! \, φ(\etc{𝒖_\i}⊗k)
-	.\end{align}
+		\ip{A, \etc{𝒖_\i}∧k}
+		= k! \, φ(\etc{𝒖_\i}⊗k)
+	,\end{align}
+	where $\ip{A, B} = A \fatdot \rev{B}$ is the induced metric on $k$-vectors as in \cref{eqn:induced-metric-ga}.
 \end{lemma}
-Note the reversed order of the wedge products on the left-hand side.
 The factor of $k!$ is due to the Spivak convention for exterior forms (replace $k! \mapsto 1$ for the Kobayashi--Nomizu convention).
+Note that there is no space for a choice of normalisation convention within the geometric algebra.
 \begin{proof}
-	Fix an orthonormal basis $\set{\ve_i} ⊂ V$ and a dual basis $\ve^i \fatdot \ve_j = δ^i_j$.
-	Expanding the right-hand side,
+	Unpacking the left-hand side with \cref{eqn:induced-metric}, we have
 	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1)
-		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \, \etc[k]{u_\i^{j_\i}}{}1
-	.\end{align}
-	By \cref{lem:dual-blades}, the dot product of $k$-blades is $(-1)^σ$ is the sign of the permutation $σ(i_p) = j_p$, and zero for all non-permutation terms in the sum.
-	Thus, for each (non-zero) term in the sum we have
-	\begin{align}
-		\etc{u_\i^{j_\i}}{}k = \etc{u_\i^{σ^{-1}(j_\i)}}{}k = \etc{u_{σ(\i)}^{i_\i}}{}k
+		\ip{A, \etc{𝒖_\i}∧k} = \sum_{σ ∈ S_k} (-1)^σ A_{\etc{i_\i}{}k} \etc{u_{σ(\i)}^{i_\i}}{}k
 	,\end{align}
-	where the last equality is obtained by permuting the scalar components $u_{σ(p)}^{i_p}$ by $σ$.
-	Putting this together,
-	\begin{align}
-		A \fatdot (\etc[k]{𝒖_\i}∧1) = \sum_{σ ∈ S_k} (-1)^σ A_{\etc{i_\i}{}k} \etc{u_{σ(\i)}^{i_\i}}{}k
-	,\end{align}
-	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
+	which since $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
 	\begin{align}
 		\sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}}⊗k) = k! \, φ(\etc{𝒖_\i}⊗k)
 	\end{align}
@@ -327,24 +340,41 @@ The factor of $k!$ is due to the Spivak convention for exterior forms (replace $
 \subsubsection{Pseudoscalars and Hodge duality}
 \label{sec:ga-hodge-dual}
 
-Since the metric is built into the geometric algebra, so are the features of metrical exterior algebra of \cref{sec:metrical-exterior-alg}, including the Hodge dual.
-In geometric algebra, Hodge duality is achieved simply by multiplication by the volume element.
+Since the metric is built into the geometric algebra, so are the features of metrical exterior algebra from \cref{sec:metrical-exterior-alg}, including the Hodge dual.
+In geometric algebra, Hodge duality is identical to reversion composed with multiplication by the volume element, $\star A = \rev{A}\vol$.
 
 Consider two $k$-vectors $A$ and $B$.
-The object $B\vol$ is then a $(n - k)$-vector, and its wedge product with $A$ is a pseudoscalar.
+The object $\rev{B}\vol$ is thus a $(n - k)$-vector, and its wedge product with $A$ a pseudoscalar.
 From associativity of the geometric product, we immediately have
 \begin{align}
-	A ∧ (B\vol) = \grade[n]{A(B\vol)} = \grade[n]{(AB)\vol} = \grade{AB}\vol
-.\end{align}
-This generalises the defining relation of the Hodge dual, \cref{eqn:hodge-dual}.
-The duality given by $A \mapsto A\vol$ is trivial to manipulate algebraically, compared to the implicitly-defined exterior algebraic equivalent (\cref{def:hodge-dual}).
+	A ∧ (\rev{B}\vol) = \grade[n]{A(\rev{B}\vol)} = \grade[n]{(A\rev{B})\vol} = \grade{A\rev{B}}\vol = \ip{A, B}\vol
+,\end{align}
+which is the definition of the Hodge dual, \cref{eqn:hodge-dual}.
+The reversion is only necessary for exact agreement with $\star$, but simply right-multiplying by the volume element is an appropriate dual operation, differing from $\star$ on $k$-vectors only by an overall sign of $\revsign{k} = (-1)^{k(k-1)/2}$.
+
+The $\vol$-duality has the advantage of being trivial to manipulate algebraically,
+while also enjoying a simple scalar square
+\begin{align}
+	\vol^2 = (-1)^s \revsign{n} = (-1)^s (-1)^{n(n-1)/2}
+	\marginnote{
+		Here $s$ is the signature of the metric, so that $(-1)^s = \det η$.
+		% Recall that $(-1)^{n(n-1)/2} = \revsign{n}$ is the reversion sign for grade $n$.
+	}
+,\end{align}
+unlike the Hodge dual, whose square
+\begin{align}
+	\star^2 = (-1)^s (-1)^{k(n-k)}	
+\end{align}
+depends on the grade $k$ on which it acts.
+
+\subsubsection{Imitating the geometric product in the exterior algebra}
 
 Using the Hodge dual, the geometric product (of vectors) may be defined entirely within the exterior algebra as
 \begin{align}
 	\label{eqn:geoprod-in-ea}
 	𝒖𝒗 ≔ (-1)^s \star(𝒖 ∧ \star 𝒗) + 𝒖 ∧ 𝒗
 \end{align}
-where $s$ is the signature of the metric (so that $(-1)^s = \det η$).
+where $s$ is the signature of the metric.
 Indeed, \cref{eqn:geoprod-in-ea} reduces to the familiar formula
 \begin{align}
 	𝒖𝒗 = (-1)^s\ip{𝒖, 𝒗} \star \vol + 𝒖 ∧ 𝒗 = \ip{𝒖, 𝒗} + 𝒖 ∧ 𝒗
