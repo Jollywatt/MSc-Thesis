@@ -656,6 +656,7 @@ In an exterior algebra $\EA{V}$ with a metric defined on $V$, there is an induce
 	\ip{\etc{𝒖_\i}∧k, \etc{𝒗_\i}∧k}
 	&= \sum_{σ ∈ S_k} (-1)^σ \etc{\ip{𝒖_\i, 𝒗_{σ(\i)}}}{}k
 \\	&= \det [\ip{𝒖_m, 𝒖_n}]_{mn}
+	\label{eqn:induced-metric}
 .\end{align}
 In particular, a metric on $\EA{V}$ defines a magnitude for pseudoscalars.
 \begin{definition}
@@ -694,46 +695,37 @@ A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a
 The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ defines an isomorphism between pairs of fixed-grade subspaces of the same dimension; in particular, scalars with pseudoscalars via $\star 1 = \vol$.
 
 \begin{lemma}
-	The hodge dual of a $p$-vector $A = A^{i_1⋯i_p} \etc{\ve_{i_\i}}∧p$ in $n$ dimensions has components
+	The hodge dual of a $p$-vector $A = A^{i_1⋯i_p} \etc{\ve_{i_\i}}∧p$ has components
 	\begin{align}
 		(\star A)^{j_1⋯j_q} = \frac1{p!} A_{i_1⋯i_p} ε^{i_1⋯i_p j_1⋯j_q}
 		\marginnote{
-			The \textdef{Levi-Civita symbol} $ε^{i_1⋯i_k}$ is the sign of the permutation $(1, ..., k) ↦ (i_1, ..., i_k)$ if it exists, and zero otherwise.
+			The \textdef{Levi-Civita symbol} $ε_{i_1⋯i_n}$ is the unique totally\hyp antisymmetric tensor with $ε_{1⋯n} = 1$.
 		}
 	\end{align}
-	where $q = n - p$ and $A_{i_1⋯i_p} = A^{k_1⋯k_p} \etc{η_{i_\i k_\i}}{}p$.
+	where $A_{i_1⋯i_p} = \etc{η_{i_\i j_\i}}{}p \, A^{j_1⋯k_p}$ and $ε^{i_1⋯i_n} = \etc{η^{i_\i j_\i}}{}n \, ε_{j_1⋯j_n}$.
 \end{lemma}
 \begin{proof}
-	Begin by writing the left-hand side of \cref{eqn:hodge-dual} in component form,
+	We will show this by writing $A ∧ \star B = \ip{A, B}\vol$ in component form and rearranging for $\star B$.
+	The left-hand side is
 	\begin{align}
 		\label{eqn:hodge-dual-lem.1}
 		A ∧ \star B
-		&= A^{i_1⋯i_p} \, (\star B)^{j_1⋯j_p} \, \etc{\ve_{i_\i}}∧p ∧ \etc{\ve_{j_\i}}∧p
-	\\	&= A^{i_1⋯i_p} \, (\star B)^{j_1⋯j_p} \, ε_{i_1⋯i_p j_1⋯j_p} \vol
+		&= A^{i_1⋯i_p} \, (\star B)^{j_1⋯j_q} \, \etc{\ve_{i_\i}}∧p ∧ \etc{\ve_{j_\i}}∧q
+	\\	&= A^{i_1⋯i_p} \, (\star B)^{j_1⋯j_q} \, ε_{i_1⋯i_p j_1⋯j_q} \vol
+	,\end{align}
+	while the right-hand side is
+	\begin{math}
+		\ip{A, B} \vol = A^{i_1⋯i_p}B_{i_1⋯i_p} \vol
+	.\end{math}
+	Equating coefficients yields
+	\begin{align}
+		(\star B)^{j_1⋯j_q} ε_{i_1⋯i_p j_1⋯j_q} = B_{i_1⋯i_p}
 	.\end{align}
-	If the multi-indices $i_k$ and $j_k = i_{σ(i)}$ are permutations of each other, then
+	Finally, contracting with $ε^{i_1⋯i_p k_1⋯k_q}$ gives
 	\begin{align}
-		\det[η_{i_m j_n}]_{mn} = (-1)^σ \etc{η_{i_\i j_{σ(\i)}}}{}p
-	.\end{align}
-	Using this, the right-hand side of \cref{eqn:hodge-dual} is
-	\begin{align}
-		\label{eqn:hodge-dual-lem.2}
-		\ip{A,B} \vol
-		&= A^{i_1⋯i_p} B^{j_1⋯j_p} \det[ η_{i_m j_n}]_{mn} \vol
-	\\	&= A^{i_1⋯i_p} B^{j_1⋯j_p} (-1)^σ \etc{η_{i_\i j_{σ(\i)}}}{}p \vol
-	\\	&= A^{i_1⋯i_p} B_{\etc{i_{σ^{-1}(\i)}}{}p} (-1)^σ \vol
-		= A^{i_1⋯i_p} B_{i_1⋯i_p} \vol
+		(\star B)^{k_1⋯k_q} = \frac1{p!} B_{i_1⋯i_p} ε^{i_1⋯i_p k_1⋯k_q}
 	\end{align}
-	where we absorb the factor $(-1)^σ$ by permuting indices of $B$.
-	Equating coefficients of the arbitrary $A^{i_1⋯i_p}$ components, \cref{eqn:hodge-dual-lem.1,eqn:hodge-dual-lem.2} gives
-	\begin{align}
-		(\star B)^{j_1⋯j_p} ε_{i_1⋯i_p j_1⋯j_p} = B_{i_1⋯i_p}
-	\end{align}
-	Contracting with $ε_{i_1⋯i_p k_1⋯k_p}$ gives
-	\begin{align}
-		(\star B)^{k_1⋯k_p} = \frac1{p!} B_{i_1⋯i_p} ε^{i_1⋯i_p k_1⋯k_p}
-	\end{align}
-	since $ε_{i_1⋯i_p j_1⋯j_p} ε^{i_1⋯i_p k_1⋯k_p} = (-1)^σ p!$ where $σ$ is the permutation sending $j_i \mapsto k_i$.
-	The factor of $(-1)^σ$ is absorbed since $(\star B)^{j_1⋯j_p} = (-1)^σ (\star B)^{k_1⋯k_p}$.
-	Finally, replacing $A \leftrightarrow B$ is the result.
+	since $ε_{i_1⋯i_p j_1⋯j_q} ε^{i_1⋯i_p k_1⋯k_q} = (-1)^σ p!$ where $σ$ is the permutation sending $j_i \mapsto k_i$.
+	The factor of $(-1)^σ$ is absorbed since $(\star B)^{j_1⋯j_q} = (-1)^σ (\star B)^{k_1⋯k_q}$.
+	Replacing $B ↦ A$ is the result as written.
 \end{proof}
