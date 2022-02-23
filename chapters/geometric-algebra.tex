@@ -283,12 +283,13 @@ This provides an impressively efficient algebraic method for transforming relati
 \subsection{Relation to exterior forms}
 
 The geometric algebra is a generalisation of the exterior algeba.
-Indeed, in the special case of a completely degenerate metric (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then there is an algebra isomorphism $\GA(V, 0) \cong \EA{V}$.
+Indeed, in the special case of a completely degenerate metric (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then the algebras are identical, $\GA(V, 0) \cong \EA{V}$.
+But even with a nontrivial metric, $\EA{V}$ is embedded in $\GA(V, η)$ by taking the wedge product of $\EA{V}$ to the wedge product (not the geometric product) of $\GA(V, η)$.
 
 
 \subsubsection{Exterior forms as multivectors}
 
-Exterior forms can be mimicked in the geometric algebra by making use of a dual basis $V$, as in the following lemma.
+Exterior forms can be mimicked in the geometric algebra by making use of a reciprocal basis $V$, as in the following lemma.
 Note that the dual space $V^*$ does not make an appearance --- all elements belong to $\GA(V, η)$.
 \begin{lemma}
 	If $A ∈ \GA[k](V, η)$ is a $k$-vector and $φ ∈ \forms[k](V)$ is a $k$-form whose components coincide (i.e., $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ given a common basis of $V$) then
@@ -300,10 +301,10 @@ Note the reversed order of the wedge products on the left-hand side.
 The factor of $k!$ is due to the Spivak convention for exterior forms (replace $k! \mapsto 1$ for the Kobayashi--Nomizu convention).
 \begin{proof}
 	Fix an orthonormal basis $\set{\ve_i} ⊂ V$ and a dual basis $\ve^i \fatdot \ve_j = δ^i_j$.
-	Expanding the right-hand side with respect to his basis,
+	Expanding the right-hand side,
 	\begin{align}
 		A \fatdot (\etc[k]{𝒖_\i}∧1)
-		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \etc[k]{u_\i^{j_\i}}{}1
+		= A_{\etc{i_\i}{}k} (\etc{\ve^{i_\i}}∧k) \fatdot (\etc[k]{\ve_{j_\i}}∧1) \, \etc[k]{u_\i^{j_\i}}{}1
 	.\end{align}
 	By \cref{lem:dual-blades}, the dot product of $k$-blades is $(-1)^σ$ is the sign of the permutation $σ(i_p) = j_p$, and zero for all non-permutation terms in the sum.
 	Thus, for each (non-zero) term in the sum we have
@@ -317,7 +318,7 @@ The factor of $k!$ is due to the Spivak convention for exterior forms (replace $
 	,\end{align}
 	which by $A_{\etc{i_\i}{}k} = φ_{\etc{i_\i}{}k}$ is equal to
 	\begin{align}
-		\cdots = \sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}}⊗k) = k! \, φ(\etc{𝒖_{σ(\i)}}⊗k)
+		\sum_{σ ∈ S_k} (-1)^σ φ(\etc{𝒖_{σ(\i)}}⊗k) = k! \, φ(\etc{𝒖_\i}⊗k)
 	\end{align}
 	where all $k!$ terms are equal due to the alternating property of $φ$.
 \end{proof}
@@ -833,6 +834,7 @@ While in some expressions the grades of multivectors are obvious so that it is c
 \end{proof}
 
 
+\todo{Show that $𝒖 \lcontr$ is an anti-derivation.}
 
 
 

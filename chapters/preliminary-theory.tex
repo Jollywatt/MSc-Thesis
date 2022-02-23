@@ -23,7 +23,7 @@ Throughout, $\FF$ denotes the underlying field of some vector space.
 	\label{def:associative-algebra}
 	An \textdef{associative algebra} $A$ is a vector space equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
 \end{definition}
-Associativity means $(𝒖 ⊛ 𝒗) ⊛ 𝒘 = 𝒖 ⊛ (𝒗 ⊛ 𝒘)$, while bilinearity means the product is:
+Associativity means $(a ⊛ b) ⊛ c = a ⊛ (b ⊛ c)$ for $a,b,c ∈ A$, while bilinearity means the product is:
 \marginnote{
 	\emph{Examples.}
 	Any ring forms an associative algebra when considered as a one-dimensional vector space.
@@ -33,8 +33,8 @@ Associativity means $(𝒖 ⊛ 𝒗) ⊛ 𝒘 = 𝒖 ⊛ (𝒗 ⊛ 𝒘)$, while
 	.\end{math}
 }
 \begin{itemize}
-	\item compatible with scalars: $(λ𝒖) ⊛ 𝒗 = 𝒖 ⊛ (λ𝒗) = λ(𝒖 ⊛ 𝒗)$ for $λ \in \FF$; and
-	\item distributive over addition: $(𝒖 + 𝒗) ⊛ 𝒘 = 𝒖 ⊛ 𝒘 + 𝒗 ⊛ 𝒘$, and similarly for $𝒖 ⊛ (𝒗 + 𝒘)$.
+	\item compatible with scalars: $(λa) ⊛ b = a ⊛ (λb) = λ(a ⊛ b)$ for $λ \in \FF$; and
+	\item distributive over addition: $(a + b) ⊛ c = a ⊛ c + b ⊛ c$, and similarly for $a ⊛ (b + c)$.
 \end{itemize}
 This definition can be generalised by relaxing associativity or by letting $\FF$ be a ring.
 However, we will use ``algebra'' exclusively to mean an associative algebra over a field (usually $\RR$).
@@ -208,6 +208,48 @@ In particular, $\TA{V}$ is $\ZZ_2$-graded,\sidenote{
 
 Just as not all functions $f : \RR → \RR$ are even or odd, not all elements of a $\ZZ_2$-graded algebra are even or odd.
 More generally, not all elements of a graded algebra belong to a single graded subspace.
+
+
+\subsubsection{Graded derivations}
+
+Derivative-like operators which obey the product rule enjoy the algebraic properties of a \emph{derivation}.
+In graded algebras, operators can also obey a `graded product rule'.
+
+\begin{definition}
+	A \textdef{$d$-derivation} or \textdef{derivation of grade $d$} on a graded algebra $(A, ⊛)$ is a linear operator $\DD$ satisfying
+	\begin{align}
+		\label{eqn:graded-derivation}
+		\DD(a ⊛ b) = (\DD a) ⊛ b + (-1)^{dk} a ⊛ (\DD b)
+	\end{align}
+	for all $a ∈ A_k$ and $b ∈ A$.
+\end{definition}
+
+A \textdef{derivation} is short for a $0$-derivation, always obeying
+\begin{math}
+	\DD(a ⊛ b) = (\DD a) ⊛ b + a ⊛ (\DD b)
+;\end{math}
+and an \textdef{anti-derivation} is short for a $1$-derivation.
+
+\begin{lemma}
+	\label{lem:coms-of-derivations}
+	If $\DD_1$ and $\DD_2$ are derivations of degree $d_1$ and $d_2$, respectively, then the commutator $[\DD_1, \DD_2] = \DD_1\DD_2 - \DD_2\DD_1$ is a $(d_1 + d_2)$-derivation if and only if $a + b$ is even.
+	Similarly for the anti-commutator $\qty{\DD_1, \DD_2} = \DD_1\DD_2 + \DD_2\DD_1$, only instead when $d_1 + d_2$ is odd.
+\end{lemma}
+\begin{proof}
+	By unpacking $[\DD_1, \DD_2](a ⊛ b)$ and applying \cref{eqn:graded-derivation}, we see that the last unwanted term in
+	% \begin{fullwidth}
+	\begin{align}
+		[\DD_1, \DD_2](a ⊛ b)
+		&= ([\DD_1, \DD_2] a) ⊛ b
+		+ (-1)^{(a+b)k}a ⊛ ([\DD_1, \DD_2] b)
+	% \\	+ \qty((-1)^{bk} - (-1)^{ak})(\DD_1 a) ⊛ (\DD_2 b)
+		% + \qty((-1)^{ak} - (-1)^{bk})(\DD_2 a) ⊛ (\DD_1 b)
+	\\	&- \qty((-1)^{ak} - (-1)^{bk})\qty((\DD_1 a) ⊛ (\DD_2 b) - (\DD_2 a) ⊛ (\DD_1) b)
+	\end{align}
+	% \end{fullwidth}
+	vanishes when $(-1)^a - (-1)^b = 0$, or when $d_1 + d_2$ is even.
+	The computation for $\qty{\DD_1, \DD_2}$ is identical except that the unwanted term involves $(-1)^a + (-1)^b$ rather than a difference, vanishing when $d_1 + d_2$ is odd.
+\end{proof}
 
 
 \subsubsection{Graded quotient algebras}

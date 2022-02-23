@@ -50,7 +50,7 @@ Manifolds themselves do not have inherent vector space structure.
 However, being locally Euclidean means there is a real vector space naturally associated to each point:
 \begin{definition}
 	\label{def:tangent-space-bundle}
-	The \textdef{tangent space $\TT_xℳ$} of a manifold at a point $x ∈ ℳ$ is the vector space of derivations on smooth functions at that point.\sidenote{
+	The \textdef{tangent space $\TT_xℳ$} of a manifold at a point $x ∈ ℳ$ is the vector space of scalar derivatives at that point.\sidenote{
 		More precisely, each vector $𝒖 ∈ \TT_xℳ$ is an equivalence class of derivatives evaluated at the point $x$, where different derivations which agree at the point $x$ are identified.
 	}
 	In any local coordinate chart $\set{x^i}_{i=1}^n$ of $ℳ$ containing $x$, this is
@@ -305,6 +305,29 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 
 
 
+\subsection{Geometric Algebra Bundles}
+
+\todo{Define
+\begin{itemize}
+	\item Vector bundle
+	\item Algebra bundle
+	\item Geometric algebra bundle
+	\item …principal bundle?
+\end{itemize}
+}
+
+We require the product $⊛ : V_x × V_x → V_x$ to vary smoothy with $x ∈ ℳ$, so that $X ⊛ Y ∈ \secs(𝒱)$ is a smooth section whenever $X$ and $Y$ are.
+
+
+As for exterior differential forms, a geometric algebra $\GA(V, η)$ may be defined on a manifold by taking $V$ to be the vector space of \emph{sections} $\secs(𝒱)$ for some vector bundle $𝒱$.
+We write
+\begin{math}
+	\GA(ℰ, η) ≔ \GA(\secs(ℰ), η)
+\end{math}
+to indicate this construction.
+
+
+
 
 \subsection{Exterior differential forms on manifolds}
 
@@ -353,17 +376,9 @@ A useful special case is the exterior derivative of a $1$-form, which reads
 .\end{align}
 
 
-\subsection{Geometric Algebra Bundles}
-
-As for exterior differential forms, a geometric algebra $\GA(V, η)$ may be defined on a manifold by taking $V$ to be the vector space of \emph{sections} $\secs(𝒱)$ for some vector bundle $𝒱$.
-We write
-\begin{math}
-	\GA(ℰ, η) ≔ \GA(\secs(ℰ), η)
-\end{math}
-to indicate this construction.
-
 
 \section{Lie Differentiation}
+\label{sec:lieder}
 
 In general, the derivative of a section of a fibre bundle is not defined, because there is no way of comparing fibres without additional structure (such as a \emph{connection}; see \cref{cha:connections}).
 For some kinds of object, however, it is possible to define transport between fibres using the \emph{flow} of a tangent vector section.
@@ -478,12 +493,6 @@ Continuing in this way, it follows that the Lie derivative of a general tensor $
 This sets the stage for how much simpler Lie derivative formulae are on exterior differential forms and multivectors.
 
 On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula''\sidenotemark
-\sidenotetext{
-	\emph{Sketch proof.}
-	$\dd$ and $𝒖 \lcontr$ are anti-derivations, so their anti-commutator is a derivation.
-	Derivations agreeing on scalars and exact $1$-forms (which generate the exterior algebra) are equal.
-	Indeed, $𝒖 \lcontr \dd f = 𝒖(f) = \lie_𝒖 f$ while $\dd(𝒖 \lcontr f) = 0$; and for exact $1$-forms, $𝒖 \lcontr \dd \df φ = 0$ while $\dd\big(𝒖 \lcontr \df φ) = \dd \df φ(𝒖) = \lie_𝒖 \df φ$.
-}
 \begin{align}
 	\label{eqn:magic-formula}
 	\lie_𝒖 \df φ = 𝒖 \lcontr \dd \df φ + \dd\big(𝒖 \lcontr \df φ)
@@ -492,6 +501,12 @@ which employs the \textdef{interior derivative} or \textdef{hook product} $𝒖 
 \begin{math}
 	(𝒖 \lcontr \df φ)(\etc[2]{𝒖_\i}⊗k) = \df φ(𝒖 ⊗ \etc[2]{𝒖_\i}⊗k)
 .\end{math}
+\sidenotetext{
+	\emph{Sketch proof.}
+	$\dd$ and $𝒖 \lcontr$ are anti-derivations, so their anti-commutator is a derivation (\cref{lem:coms-of-derivations}).
+	Derivations agreeing on scalars and exact $1$-forms (which generate the exterior algebra) are equal.
+	Indeed, $𝒖 \lcontr \dd f = 𝒖(f) = \lie_𝒖 f$ while $\dd(𝒖 \lcontr f) = 0$; and for exact $1$-forms, $𝒖 \lcontr \dd \df φ = 0$ while $\dd\big(𝒖 \lcontr \df φ) = \dd \df φ(𝒖) = \lie_𝒖 \df φ$.
+}
 Cartan's magic formula is the statement that the Lie derivative on forms is the anti-commutator of the exterior and interior derivatives.
 
 
