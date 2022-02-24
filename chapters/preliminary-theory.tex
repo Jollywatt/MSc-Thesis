@@ -729,3 +729,33 @@ The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ defines an isomorphism betw
 	The factor of $(-1)^σ$ is absorbed since $(\star B)^{j_1⋯j_q} = (-1)^σ (\star B)^{k_1⋯k_q}$.
 	Replacing $B ↦ A$ is the result as written.
 \end{proof}
+
+\begin{lemma}
+	\label{lem:inv-hodge}
+	The inverse Hodge dual of a $k$-vector $A$ is
+	\begin{align}
+		\star^{-1} A = (-1)^s (-1)^{k(n - k)} \star A
+	\end{align}
+	where $s = \tr η$ is the signature of the metric.
+\end{lemma}
+\begin{proof}
+	It is much easier to work in the (yet to be defined) geometric algebra, referring forward to \cref{sec:ga-hodge-dual} for the relation $\star A = \rev{A}\vol$.
+	\marginnote{
+		$†$ is reversion; \cref{eqn:rev-notation}.
+		$\revsign{k} = ±1$ is the reversion sign; \cref{eqn:reversion-sign}.
+	}
+	Then, $\star^{-1} A = \rev{(A\vol^{-1})}$ since $\star^{-1}\star A = \rev{(\rev{A}\vol \vol^{-1})} = A$ and $\star \star^{-1} A = \rev{\rev{(A \vol^{-1})}{}} \vol = A$.
+	Translating this back into $\EA{V}$,
+	\begin{align}
+		\star^{-1} A
+		&= \rev{(A\vol^{-1})}
+	\\	&= \revsign{n - k} \, A \vol^{-1}
+	&	&\text{since $A\vol^{-1}$ is of grade $n - k$;}
+	\\	&= \revsign{k}\revsign{n - k} \, \rev{A} \vol^{-1}
+	&	&\text{since $A$ is of grade $k$;}
+	\\	&= (-1)^s \revsign{n} \revsign{k}\revsign{n - k} \, \rev{A} \vol
+	&	&\text{since $\vol^{-1} = (-1)^s \rev{\vol} = (-1)^s \revsign{n} \vol$;}
+	\\	&= (-1)^s (-1)^{k(n-k)} \star A
+	&	&\text{by simplifying with \cref{eqn:reversion-sign}}
+	.\end{align}
+\end{proof}

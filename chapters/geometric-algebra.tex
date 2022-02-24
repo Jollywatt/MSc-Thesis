@@ -302,9 +302,9 @@ This provides an impressively efficient algebraic method for transforming relati
 \subsection{Relation to exterior forms}
 
 The geometric algebra differs from the algebra of exterior forms in two orthogonal ways:
-Firstly, $\GA(V, η)$ is an associative algebra over $V$, while $\forms(V)$ is an algebra of alternating maps which \emph{act on} tensor powers of $V$.
+Firstly, $\GA(V, η)$ is an associative algebra \emph{over} $V$, while $\forms(V)$ is an algebra of alternating maps which act \emph{on} tensor powers of $V$.
 Secondly, the product in $\GA(V, η)$ is an intrinsically metrical generalisation of the product in $\EA{V}$.
-We will address these two aspects separately, to more clearly see how each is incorperated into the geometric algebra.
+We will address these two aspects separately, to more clearly see how each is translated between the two algebras.
 
 % The geometric algebra is a generalisation of the exterior algeba.
 % Indeed, in the special case of a completely degenerate metric (i.e., $\ip{𝒖, 𝒗}_0 = 0$ for all vectors), then the algebras are identical, $\GA(V, 0) \cong \EA{V}$.
@@ -350,7 +350,7 @@ From associativity of the geometric product, we immediately have
 	A ∧ (\rev{B}\vol) = \grade[n]{A(\rev{B}\vol)} = \grade[n]{(A\rev{B})\vol} = \grade{A\rev{B}}\vol = \ip{A, B}\vol
 ,\end{align}
 which is the definition of the Hodge dual, \cref{eqn:hodge-dual}.
-The reversion is only necessary for exact agreement with $\star$, but simply right-multiplying by the volume element is an appropriate dual operation, differing from $\star$ on $k$-vectors only by an overall sign of $\revsign{k} = (-1)^{k(k-1)/2}$.
+The reversion is only necessary for exact agreement with $\star$; simple multiplication by the volume element is an appropriate dual operation, differing from $\star$ only by an overall grade-dependent sign.
 
 The $\vol$-duality has the advantage of being trivial to manipulate algebraically,
 while also enjoying a simple scalar square
@@ -363,24 +363,56 @@ while also enjoying a simple scalar square
 ,\end{align}
 unlike the Hodge dual, whose square
 \begin{align}
-	\star^2 = (-1)^s (-1)^{k(n-k)}	
+	\star^2 A = (-1)^s (-1)^{k(n-k)} A
 \end{align}
-depends on the grade $k$ on which it acts.
+depends on the grade $k$ on which it acts.\sidenote{
+	This follows from \cref{lem:inv-hodge}.
+}
 
 \subsubsection{Imitating the geometric product in the exterior algebra}
 
 Using the Hodge dual, the geometric product (of vectors) may be defined entirely within the exterior algebra as
 \begin{align}
 	\label{eqn:geoprod-in-ea}
-	𝒖𝒗 ≔ (-1)^s \star(𝒖 ∧ \star 𝒗) + 𝒖 ∧ 𝒗
+	𝒖𝒗 ≔ \star^{-1} (𝒖 ∧ \star 𝒗) + 𝒖 ∧ 𝒗
 \end{align}
 where $s$ is the signature of the metric.
 Indeed, \cref{eqn:geoprod-in-ea} reduces to the familiar formula
 \begin{align}
-	𝒖𝒗 = (-1)^s\ip{𝒖, 𝒗} \star \vol + 𝒖 ∧ 𝒗 = \ip{𝒖, 𝒗} + 𝒖 ∧ 𝒗
+	𝒖𝒗 = \ip{𝒖, 𝒗} \star^{-1} \vol + 𝒖 ∧ 𝒗 = \ip{𝒖, 𝒗} + 𝒖 ∧ 𝒗
 \end{align}
-by \cref{eqn:hodge-dual} and $\star \vol = (-1)^s$.
+by \cref{eqn:hodge-dual}.
 However, \cref{eqn:geoprod-in-ea} does not apply to general multivectors, and the equivalent formulae for higher-grade objects are more complex and tend to obscure the underlying simplicity of the geometric product.
+
+The inner product $A \lcontr B$
+\begin{lemma}
+	Right contraction is expressible in terms of Hodge duality as
+	\begin{align}
+		B \rcontr \rev{A} = \star^{-1} (A ∧ \star B)
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	Begin by reversing the left-hand side and inserting $1 = \vol\vol^{-1}$,
+	\begin{align}
+		\label{eqn:intprod-duals.1}
+		B \rcontr \rev{A}
+		= \rev{\qty((A \lcontr \rev{B}) \vol \vol^{-1})}
+	.\end{align}
+	If $A$ and $B$ are of grades $a$ and $b$, respectively, we can dualise the contraction into a wedge product with
+	\begin{align}
+		(A \lcontr \rev{B})\vol
+		= \grade[b - a]{A\rev{B}}\vol
+		&= \grade[n - (b - a)]{A\rev{B}\vol}
+		= \grade[a + (n - b)]{A(\rev{B}\vol)}
+		= A ∧ (\rev{B}\vol)
+	.\end{align}
+	Therefore, \cref{eqn:intprod-duals.1} is equal to
+	\begin{align}
+		\rev{\qty((A ∧ (\rev{B} \vol)) \vol^{-1})}
+		= \star^{-1} (A ∧ \star B)
+	\end{align}
+	using $\star A = \rev{A}\vol$ and $\star^{-1} A = \rev{(A\vol^{-1})}$.
+\end{proof}
 
 
 
