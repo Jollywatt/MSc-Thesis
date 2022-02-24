@@ -254,30 +254,13 @@ Hence, the left-to-right ordered exponential $\Pexpr$ is the same as a right-to-
 
 \subsubsection{The transport operator as a path-ordered exponential}
 
-The transport operator may be solved explicitly in terms of a path-ordered exponential.
-If $γ : \RR → ℳ$ is a curve, then a vector $X|_{γ(0)}$ is parallel-transported along $γ$ if $∇_{\dot γ(s)} X^a|_{γ(s)} = 0$ for all $s$.
-This is equivalent to the partial differential system
-\begin{align}
-	% \pdv{X^a|_{γ(s)}}{s} = -Γ_μ{}^a{}_b|_{γ(s)} \dot γ^μ(s) X^b|_{γ(s)}
-	\pdv{X^a}{\dot γ^μ} = -Γ_μ{}^a{}_b \, X^a
-\end{align}
-restricted to the curve $γ(s)$.
-By the chain rule, multiplying by $\dot γ^μ(s)$ produces an ordinary differential equation in $s$,
-\begin{align}
-	\label{eqn:parallel-trans-ode}
-	\dv{X^a}{s} = -Γ_μ{}^a{}_b \dot γ^μ(s) X^a = -\df Γ^a{}_b(\vb{\dot γ}(s)) \, X^a
-\end{align}
-with both sides evaluated at $γ(s)$.
-\Cref{eqn:parallel-trans-ode} can be integrated from the initial data $X|_{γ(0)} = X_0$ to give
-\begin{align}
-	X^a|_{γ(s)} = \trans_{γ(s ← 0)}{}^a{}_b \, X_0^b
-\end{align}
-where $γ(b ← a)$ is the path along $γ$ from $γ(a)$ to $γ(b)$, and
+The transport operator satisfies the differential equation \eqref{eqn:trans-ode}, which for a linear connection is of the form \eqref{eqn:path-ordered-exp-ode}.
+Therefore, using the initial data $\trans_{γ(0 ← 0)} = \op{id}$, \cref{eqn:trans-ode} may be solved explicitly by
 \begin{align}
 	\label{eqn:trans-pexp}
-	\trans_{γ(s ← 0)} = \Pexpl\int_γ (-\df Γ) = \Pexpr\int_s^0 ds \, \df Γ(\vb{\dot γ(s)})
+	\trans_{γ(s ← 0)} = \Pexpl\int_γ (-\df Γ) = \Pexpr\int_s^0 ds \, \df Γ_{\vb{\dot γ(s)}}
 .\end{align}
-\Cref{eqn:trans-pexp} is the solution to \cref{eqn:trans-ode} along $γ$ with the initial data $\trans_{γ(0 ← 0)} = \op{id}$.
+% \Cref{eqn:trans-pexp} is the solution to \cref{eqn:trans-ode} along $γ$ with the initial data $\trans_{γ(0 ← 0)} = \op{id}$.
 
 
 
