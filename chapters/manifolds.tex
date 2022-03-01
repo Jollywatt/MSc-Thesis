@@ -512,14 +512,14 @@ Cartan's magic formula is the statement that the Lie derivative on forms is the 
 
 
 
-\subsection{The geometric Lie bracket and derivative}
+\subsection{The geometric bracket and Lie derivative}
 
 Similar to Cartan's formula \eqref{eqn:magic-formula}, the Lie derivative admits a simple form when applied to tangent multivectors, i.e., elements of the geometric algebra $\GA(\TT ℳ, η)$.
 This insight begins with the following generalisation of the vector Lie bracket $[𝒖, 𝒗] = 𝒖 ∘ 𝒗 - 𝒗 ∘ 𝒖$ to general multivectors.
 
 \begin{definition}
 	\label{def:geometric-lie-bracket}
-	The \textdef{geometric Lie bracket} of two tangent multivectors $A, B ∈ \GA(\TT ℳ, η)$ is
+	The \textdef{geometric bracket} of two tangent multivectors $A, B ∈ \GA(\TT ℳ, η)$ is
 	\begin{align}
 		[A, B] ≔ (A \rcontr \vd) ∧ B - (B \rcontr \vd) ∧ A
 		\marginnote{
@@ -551,7 +551,7 @@ However, \cref{def:geometric-lie-bracket} is a significant generalisation of the
 		\lie_𝒖 A = [𝒖, A]
 	.\end{align}
 \end{theorem}
-This is a remarkably elegant result: it applies to multivectors of any kind (vectors, $k$-blades, even inhomogeneous rotors) and the Lie derivative has the same simple form.
+This is an elegant result: it applies to multivectors of any kind (vectors, $k$-blades, even inhomogeneous rotors) and the Lie derivative has the same simple form.
 \begin{proof}
 	Since $\lie_𝒖$ is linear, it suffices to prove the case where $A = \etc{𝒂_\i}∧k$ is a $k$-blade.
 	Because $\lie_𝒖$ is a derivation, we must have the result that
@@ -578,7 +578,7 @@ This is a remarkably elegant result: it applies to multivectors of any kind (vec
 	\begin{math}
 		(A \rcontr \vd) ∧ 𝒖
 	.\end{math}
-	Recall that contraction by a vector is an anti-derivation \todo{show this}.
+	Recall that contraction by a vector is an anti-derivation (\cref{lem:lcontr-antideriv}).
 	Thus, for some vector $𝒗$,
 	\begin{align}
 		𝒗 \lcontr A = 𝒗 \lcontr (\etc{𝒂_\i}∧k)

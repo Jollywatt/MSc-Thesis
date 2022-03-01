@@ -865,6 +865,7 @@ While in some expressions the grades of multivectors are obvious so that it is c
 
 
 \begin{lemma}
+	\label{lem:contr-and-wedge-by-vector}
 	For any vector $𝒖$ and multivector $A$,
 	\begin{align}
 		𝒖 \lcontr A &= \frac12\qty(𝒖A - \invol{A}𝒖)
@@ -896,8 +897,23 @@ While in some expressions the grades of multivectors are obvious so that it is c
 \end{proof}
 
 
-\todo{Show that $𝒖 \lcontr$ is an anti-derivation.}
-
+\begin{corollary}
+	\label{lem:lcontr-antideriv}
+	Contraction by a vector is an anti-derivation;
+	\begin{align}
+		𝒖 \lcontr (AB) = (𝒖 \lcontr A)B + \invol{A}(𝒖 \lcontr B)
+	.\end{align}
+\end{corollary}
+\begin{proof}
+	By using \cref{lem:contr-and-wedge-by-vector} to rewrite the contraction, the result follows immediately.
+	\begin{align}
+		𝒖 \lcontr (AB)
+		&= \frac12(𝒖AB - \invol{(AB)} 𝒖)
+	\\	&= \frac12(𝒖AB - \invol{A} 𝒖B + \invol{A} 𝒖B - \invol{A} \invol{B} 𝒖)
+	\\	&= (𝒖 \lcontr A)B + \invol{A} (𝒖 \lcontr B)
+	\end{align}
+	This also implies that vector contraction is an anti-derivation with respect to the wedge product, i.e., $𝒖 \lcontr (A ∧ B) = (𝒖 \lcontr A) ∧ B + \invol{A} ∧ (𝒖 \lcontr B)$.
+\end{proof}
 
 
 \begin{lemma}
@@ -909,18 +925,18 @@ While in some expressions the grades of multivectors are obvious so that it is c
 \end{lemma}
 \begin{proof}
 	Suppose $A$ is a $k$-vector.
-	The geometric product with a bivector then contains three grades,
+	The geometric product with a bivector then contains non-zero parts of three grades,
 	\begin{align}
 		σA &= \grade[k - 2]{σA} + \grade[k]{σA} + \grade[k + 2]{σA}
-		&≡ σ \lcontr A + \grade[k]{σA} + σ ∧ A
+		≡ σ \lcontr A + \grade[k]{σA} + σ ∧ A
 	.\end{align}
 	Consider the reverse product,
 	\begin{align}
 		Aσ &= A \rcontr σ + \grade[k]{Aσ} + A ∧ σ
-	\intertext{reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
+	\intertext{and reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
 		% &= \revsign{k - 2}\; \rev{σ} \lcontr \rev{A} + \revsign{k}\; \grade[k]{\rev{σ}\rev{A}} + \revsign{k + 2}\; \rev{σ} ∧ \rev{A}
 		&= -\revsign{k}\qty(\revsign{k - 2}\; σ \lcontr A + \revsign{k}\; \grade[k]{σA} + \revsign{k + 2}\; σ ∧ A)
-	\intertext{and simplify with $\revsign{k}\revsign{k ± 2} = -1$.}
+	\intertext{simplifying with $\revsign{k}\revsign{k ± 2} = -1$.}
 		&= σ \lcontr A - \grade[k]{σA} + σ ∧ A
 	\end{align}
 	Thus,
@@ -1034,7 +1050,7 @@ To summarise these results, for \emph{any} multivectors $(A, B, C)$, we have
 ,\\	(A \lcontr B) \rcontr C &= A \lcontr (B \rcontr C)
 ,&	𝒖 \bullet (B \bullet 𝒗) &= (𝒖 \bullet B) \bullet 𝒗
 .\end{align}
-The last equation is a specialisation of the upper right, which in particular means that parentheses are unnecessary when defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
+The last equation is a specialisation of the lower left, which in particular means that parentheses are unnecessary when defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
 \begin{math}
 	F_{ij} = \ve_i \bullet F \bullet \ve_j
 .\end{math}
