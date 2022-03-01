@@ -131,7 +131,7 @@ These can be extended by linearity to inhomogeneous elements.
 		A∧B ≔ \sum_{p,q}\grade[p + q]{\grade[p]{A}\grade[q]{B}}
 	,\end{align}
 	and the \textdef{generalised inner product}, or ``fat'' dot product,\sidenote{
-		Various `inner products' have been proposed for geometric algebra, but the definition here is arguably the simplest and best behaved; see \cite{dorst2002inner-products} for closer discussion.
+		Various distinct `inner products' have been proposed, but the definitions here (and in \cref{sec:more-graded-prods}) are arguably the simplest and best behaved; see \cite{dorst2002inner-products} for detailed discussion.
 	} is
 	\begin{align}
 		A \fatdot B ≔ \sum_{p,q}\grade[|p - q|]{\grade[p]{A}\grade[q]{B}}
@@ -829,10 +829,10 @@ On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orth
 \section{More Graded Products}
 \label{sec:more-graded-prods}
 
-All operations in the geometric algebra can be expressed in terms of the fundamental geometric product along with grade projection operators $\grade[k]{\phantom{A}}$.
-For example, we have seen that the wedge and inner products ($∧$ and $\fatdot$ of \cref{def:wedge-and-fat-dot-for-multivectors}) are merely combinations of multiplication and projection.
+All operations in the geometric algebra can be expressed in terms of the fundamental geometric product along with grade projection $\grade[k]{\phantom{A}}$.
+For example, we have seen that the wedge and fat dot product (\cref{def:wedge-and-fat-dot-for-multivectors}) are merely combinations of multiplication and projection.
 
-There are other similar constructions which are useful enough warrant their own definitions, including the left and right \emph{contractions}.
+There are other similar constructions which are useful enough to warrant their own definitions, including the \emph{contraction} products.
 \begin{definition}
 	% For any multivectors $A$ and $B$, define the
 	\begin{align}
@@ -843,14 +843,14 @@ There are other similar constructions which are useful enough warrant their own 
 	\end{align}
 	% products.
 \end{definition}
-We declare the various products $·$, $∧$, $\lcontr$ and $\rcontr$ to have \emph{higher} precedence than the geometric product (aligning with \cite[§2.5]{doran2003ga}), so that we may write e.g., $A·B\,C = (A·B)C$ and $𝒖∧𝒗 \, \vol = (𝒖∧𝒗)\vol$ unambiguously.
-
 Observe that $\rev{(A\lcontr B)} = \rev{A}\rcontr\rev{B}$, so these are in essentially the same operation --- only one is viewed in a mirror.\sidenote{
 	I.e., every statement involving $\lcontr$ produces, under reversion, an equivalent statement involving $\rcontr$.
 }
 
+We declare the various products $\,\fatdot\,$, $\,∧\,$, $\lcontr$ and $\rcontr$ to have \emph{higher} precedence than the geometric product (aligning with \cite[§2.5]{doran2003ga}), so that we may write e.g., $A\fatdot B\,C = (A\fatdot B)C$ and $𝒖∧𝒗 \, \vol = (𝒖∧𝒗)\vol$ unambiguously.
+
 The fat dot product reduces to a contraction on homogeneous multivectors, depending on which multivector has the higher grade.
-If $A$ is a $p$-vector and $B$ a $q$-vector, then
+Specifically, if $A$ is a $p$-vector and $B$ a $q$-vector, then
 \begin{align}
 	A \fatdot B =
 	\begin{cases}
@@ -859,8 +859,8 @@ If $A$ is a $p$-vector and $B$ a $q$-vector, then
 	\end{cases}
 ,\end{align}
 with $A \fatdot B = A \lcontr B = A \rcontr B = \grade{AB}$ when $p = q$.
-While in some expressions the grades of multivectors are obvious so that it is clear how the fat dot product acts, the contractions are arguably better behaved algebraically: the conditional comparison of grades is reincorporated into the products themselves, allowing for more useful identities to be written with fewer grade-based exceptions \cite{dorst2002inner-products}.\sidenote{
-	E.g., $𝒖 A = 𝒖 \fatdot A + 𝒖 ∧ A$ holds if $A$ has zero scalar part, but $𝒖 A = 𝒖 \lcontr A + 𝒖 ∧ A$ holds for \emph{any} $A$.
+While in some expressions the grades of multivectors are clear so that the sense in which the fat dot product acts is obvious, the contractions are arguably better behaved algebraically: the conditional comparison of grades is reincorporated into the products themselves, allowing for more useful identities to be written with fewer grade-based exceptions \cite{dorst2002inner-products}.\sidenote{
+	E.g., $𝒖 A = 𝒖 \fatdot A + 𝒖 ∧ A$ holds only if $A$ has zero scalar part, but $𝒖 A = 𝒖 \lcontr A + 𝒖 ∧ A$ holds for \emph{any} $A$.
 }
 
 
@@ -916,35 +916,55 @@ While in some expressions the grades of multivectors are obvious so that it is c
 \end{proof}
 
 
-\begin{lemma}
-	For a bivector $σ$ and multivector $A$,
-	\begin{align}
-		σA = σ \lcontr A + σ × A + σ ∧ A
-	,\end{align}
-	where $a×b = \frac12(ab - ba)$ is the commutator product.
-\end{lemma}
-\begin{proof}
-	Suppose $A$ is a $k$-vector.
-	The geometric product with a bivector then contains non-zero parts of three grades,
-	\begin{align}
-		σA &= \grade[k - 2]{σA} + \grade[k]{σA} + \grade[k + 2]{σA}
-		≡ σ \lcontr A + \grade[k]{σA} + σ ∧ A
-	.\end{align}
-	Consider the reverse product,
-	\begin{align}
-		Aσ &= A \rcontr σ + \grade[k]{Aσ} + A ∧ σ
-	\intertext{and reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
-		% &= \revsign{k - 2}\; \rev{σ} \lcontr \rev{A} + \revsign{k}\; \grade[k]{\rev{σ}\rev{A}} + \revsign{k + 2}\; \rev{σ} ∧ \rev{A}
-		&= -\revsign{k}\qty(\revsign{k - 2}\; σ \lcontr A + \revsign{k}\; \grade[k]{σA} + \revsign{k + 2}\; σ ∧ A)
-	\intertext{simplifying with $\revsign{k}\revsign{k ± 2} = -1$.}
-		&= σ \lcontr A - \grade[k]{σA} + σ ∧ A
-	\end{align}
-	Thus,
-	\begin{math}
-		\grade[k]{σA} = \frac12(σA - Aσ) ≡ σ × A
-	,\end{math}
-	and so the result holds for homogeneous multivectors, and by linearity for general multivectors.
-\end{proof}
+
+\subsubsection{Interactions between graded products}
+
+
+The contractions and wedge products work together intimately, offering universally valid rewriting rules such as
+\begin{align}
+	(A \rcontr B) \rcontr C &= A \rcontr (B ∧ C)
+,&	(A \lcontr B) \rcontr C &= A \lcontr (B \rcontr C)
+,\\	A \lcontr (B \lcontr C) &= (A ∧ B) \lcontr C
+,&	𝒖 \bullet (B \bullet 𝒗) &= (𝒖 \bullet B) \bullet 𝒗
+,\end{align}
+as shown in this section.
+The last equation is a specialisation of the upper right for vectors, which in particular means that parentheses are unnecessary when defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
+\begin{math}
+	F_{ij} = \ve_i \bullet F \bullet \ve_j
+.\end{math}
+
+To prove these identities, it will help to establish the following two lemmas.
+
+
+% \begin{lemma}
+% 	For a bivector $σ$ and multivector $A$,
+% 	\begin{align}
+% 		σA = σ \lcontr A + σ × A + σ ∧ A
+% 	,\end{align}
+% 	where $a×b = \frac12(ab - ba)$ is the commutator product.
+% \end{lemma}
+% \begin{proof}
+% 	Suppose $A$ is a $k$-vector.
+% 	The geometric product with a bivector then contains non-zero parts of three grades,
+% 	\begin{align}
+% 		σA &= \grade[k - 2]{σA} + \grade[k]{σA} + \grade[k + 2]{σA}
+% 		≡ σ \lcontr A + \grade[k]{σA} + σ ∧ A
+% 	.\end{align}
+% 	Consider the reverse product,
+% 	\begin{align}
+% 		Aσ &= A \rcontr σ + \grade[k]{Aσ} + A ∧ σ
+% 	\intertext{and reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
+% 		% &= \revsign{k - 2}\; \rev{σ} \lcontr \rev{A} + \revsign{k}\; \grade[k]{\rev{σ}\rev{A}} + \revsign{k + 2}\; \rev{σ} ∧ \rev{A}
+% 		&= -\revsign{k}\qty(\revsign{k - 2}\; σ \lcontr A + \revsign{k}\; \grade[k]{σA} + \revsign{k + 2}\; σ ∧ A)
+% 	\intertext{simplifying with $\revsign{k}\revsign{k ± 2} = -1$.}
+% 		&= σ \lcontr A - \grade[k]{σA} + σ ∧ A
+% 	\end{align}
+% 	Thus,
+% 	\begin{math}
+% 		\grade[k]{σA} = \frac12(σA - Aσ) ≡ σ × A
+% 	,\end{math}
+% 	and so the result holds for homogeneous multivectors, and by linearity for general multivectors.
+% \end{proof}
 
 % \notebefore{
 \begin{lemma}
@@ -993,6 +1013,7 @@ While in some expressions the grades of multivectors are obvious so that it is c
 
 
 \begin{lemma}
+	\label{lem:contr-rewrites}
 	For any multivectors $A, B, C$,
 	\begin{align}
 		(A \rcontr B) \rcontr C &= A \rcontr (B ∧ C)
@@ -1042,17 +1063,31 @@ While in some expressions the grades of multivectors are obvious so that it is c
 	Reversion yields the corresponding identity for left contraction.
 \end{proof}
 
-
-To summarise these results, for \emph{any} multivectors $(A, B, C)$, we have
-\begin{align}
-	(A \rcontr B) \rcontr C &= A \rcontr (B ∧ C)
-,&	A \lcontr (B \lcontr C) &= (A ∧ B) \lcontr C
-,\\	(A \lcontr B) \rcontr C &= A \lcontr (B \rcontr C)
-,&	𝒖 \bullet (B \bullet 𝒗) &= (𝒖 \bullet B) \bullet 𝒗
-.\end{align}
-The last equation is a specialisation of the lower left, which in particular means that parentheses are unnecessary when defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
-\begin{math}
-	F_{ij} = \ve_i \bullet F \bullet \ve_j
-.\end{math}
-
-
+\begin{lemma}
+	For any multivectors $A, B, C$,
+	\begin{align}
+		(A \lcontr B) \rcontr C = A \lcontr (B \rcontr C )
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	In very similar vein to the proof of \cref{lem:contr-rewrites}, consider
+	\begin{math}
+		\grade[-a+b-c]{\grade[k]{AB}C}
+	\end{math}
+	and assume it to be non-zero.
+	By \cref{lem:graded-product-triangular-range}, we have $k ≤ b - a$, while also $|a - b| ≤ k$ if $\grade[k]{AB}$ is to remain non-zero, hence $k = b - a$.
+	\begin{align}
+		\grade[-a+b-c]{(AB)C}
+		= \grade[-a+b-c]{\grade[b - a]{AB}C} = (A \lcontr B) \rcontr C
+	\end{align}
+	Now consider
+	\begin{math}
+		\grade[-a+b-c]{A\grade[k]{BC}}
+	.\end{math}
+	Using the same argument but with $a ↔︎ c$ swapped, deduce
+	\begin{align}
+		\grade[-a+b-c]{A(BC)}
+		= \grade[-a+b-c]{A\grade[b - c]{BC}} = A \lcontr (B \rcontr C)
+	.\end{align}
+	By associativity, these are equal.
+\end{proof}
