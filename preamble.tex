@@ -180,6 +180,19 @@
 }
 
 
+% readjust captions to full width (text area and side margins) minus a given padding on each side
+\newcommand{\captionsetfullwidth}[1][0pt]{
+	\Ifthispageodd{
+		\captionsetup{
+			margin={#1, \dimexpr #1 - \marginparwidth - \marginparsep}
+		}
+	}{
+		\captionsetup{
+			margin={\dimexpr #1 - \marginparwidth - \marginparsep, #1}
+		}
+	}
+}
+
 % \captionsetup{labelfont={bf}, font={it,footnotesize}, justification=raggedauto, singlelinecheck=false, position=above}
 
 

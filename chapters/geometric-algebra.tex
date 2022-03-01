@@ -400,6 +400,7 @@ The inner product $A \lcontr B$
 	.\end{align}
 	If $A$ and $B$ are of grades $a$ and $b$, respectively, we can dualise the contraction into a wedge product with
 	\begin{align}
+		\label{eqn:intprod-duals.2}
 		(A \lcontr \rev{B})\vol
 		= \grade[b - a]{A\rev{B}}\vol
 		&= \grade[n - (b - a)]{A\rev{B}\vol}
@@ -667,6 +668,43 @@ enjoys several useful properties, particularly when acting on bivectors.
 		\frac12(ABC - BCA) = \frac12(ABC - CAB + BAC - ACB)
 	.\end{align}
 \end{proof}
+
+
+
+
+\begin{lemma}
+	For a bivector $σ$ and multivector $A$,
+	\begin{align}
+		σA = σ \lcontr A + σ × A + σ ∧ A
+	,\end{align}
+	where $a×b = \frac12(ab - ba)$ is the commutator product.
+\end{lemma}
+\begin{proof}
+	Suppose $A$ is a $k$-vector.
+	The geometric product with a bivector then contains non-zero parts of three grades,
+	\begin{align}
+		σA &= \grade[k - 2]{σA} + \grade[k]{σA} + \grade[k + 2]{σA}
+		≡ σ \lcontr A + \grade[k]{σA} + σ ∧ A
+	.\end{align}
+	Consider the reverse product,
+	\begin{align}
+		Aσ &= A \rcontr σ + \grade[k]{Aσ} + A ∧ σ
+	\intertext{and reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
+		% &= \revsign{k - 2}\; \rev{σ} \lcontr \rev{A} + \revsign{k}\; \grade[k]{\rev{σ}\rev{A}} + \revsign{k + 2}\; \rev{σ} ∧ \rev{A}
+		&= -\revsign{k}\qty(\revsign{k - 2}\; σ \lcontr A + \revsign{k}\; \grade[k]{σA} + \revsign{k + 2}\; σ ∧ A)
+	\intertext{simplifying with $\revsign{k}\revsign{k ± 2} = -1$.}
+		&= σ \lcontr A - \grade[k]{σA} + σ ∧ A
+	\end{align}
+	Thus,
+	\begin{math}
+		\grade[k]{σA} = \frac12(σA - Aσ) ≡ σ × A
+	,\end{math}
+	and so the result holds for homogeneous multivectors, and by linearity for general multivectors.
+\end{proof}
+
+
+
+
 \begin{lemma}
 	\label{lem:bivector-comm-grade-preserving}
 	Commutation by a bivector $σ$ is a grade-preserving operation; i.e.,
@@ -936,36 +974,6 @@ The last equation is a specialisation of the upper right for vectors, which in p
 To prove these identities, it will help to establish the following two lemmas.
 
 
-% \begin{lemma}
-% 	For a bivector $σ$ and multivector $A$,
-% 	\begin{align}
-% 		σA = σ \lcontr A + σ × A + σ ∧ A
-% 	,\end{align}
-% 	where $a×b = \frac12(ab - ba)$ is the commutator product.
-% \end{lemma}
-% \begin{proof}
-% 	Suppose $A$ is a $k$-vector.
-% 	The geometric product with a bivector then contains non-zero parts of three grades,
-% 	\begin{align}
-% 		σA &= \grade[k - 2]{σA} + \grade[k]{σA} + \grade[k + 2]{σA}
-% 		≡ σ \lcontr A + \grade[k]{σA} + σ ∧ A
-% 	.\end{align}
-% 	Consider the reverse product,
-% 	\begin{align}
-% 		Aσ &= A \rcontr σ + \grade[k]{Aσ} + A ∧ σ
-% 	\intertext{and reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
-% 		% &= \revsign{k - 2}\; \rev{σ} \lcontr \rev{A} + \revsign{k}\; \grade[k]{\rev{σ}\rev{A}} + \revsign{k + 2}\; \rev{σ} ∧ \rev{A}
-% 		&= -\revsign{k}\qty(\revsign{k - 2}\; σ \lcontr A + \revsign{k}\; \grade[k]{σA} + \revsign{k + 2}\; σ ∧ A)
-% 	\intertext{simplifying with $\revsign{k}\revsign{k ± 2} = -1$.}
-% 		&= σ \lcontr A - \grade[k]{σA} + σ ∧ A
-% 	\end{align}
-% 	Thus,
-% 	\begin{math}
-% 		\grade[k]{σA} = \frac12(σA - Aσ) ≡ σ × A
-% 	,\end{math}
-% 	and so the result holds for homogeneous multivectors, and by linearity for general multivectors.
-% \end{proof}
-
 % \notebefore{
 \begin{lemma}
 	\label{lem:triangular-range-cyclicity}
@@ -1091,3 +1099,44 @@ To prove these identities, it will help to establish the following two lemmas.
 	.\end{align}
 	By associativity, these are equal.
 \end{proof}
+
+
+
+
+\begin{table*}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{CCC}
+	\\	\multicolumn{2}{c}{\em\footnotesize Product decompositions}
+	\\	\multicolumn{2}{C}{𝒖𝒗 = \ip{𝒖, 𝒗} + 𝒖 ∧ 𝒗}
+	\\	𝒖A = 𝒖 \lcontr A + 𝒖 ∧ A
+	&	A𝒖 = A \rcontr 𝒖 + A ∧ 𝒖
+	\\	σA = σ \lcontr A + σ × A + σ ∧ A
+	&	Aσ = A \rcontr σ + A × σ + A ∧ σ
+	\\	\multicolumn{2}{c}{\em\footnotesize Associative identities}
+	\\	\multicolumn{2}{C}{ (A \lcontr B) \rcontr C = A \lcontr (B \rcontr C) }
+	\\	A \lcontr (B \lcontr C) = (A ∧ B) \lcontr C
+	&	(A \rcontr B) \rcontr C = A \rcontr (B ∧ C)
+	\\	\multicolumn{2}{c}{\em\footnotesize Derivations}
+	\\	𝒖 × (AB) = (𝒖 × A)B + A(𝒖 × B)
+	&	(AB) × 𝒖 = A(B × 𝒖) + (A × 𝒖)B
+	\\	\multicolumn{2}{c}{\em\footnotesize Anti-derivations}
+	\\	𝒖 \lcontr (AB) = (𝒖 \lcontr A)B + \invol{A}(𝒖 \lcontr B)
+	&	(AB) \rcontr 𝒖 = A(B \rcontr 𝒖) + (A \rcontr 𝒖)\invol{B}
+	\\	𝒖 \lcontr (A ∧ B) = (𝒖 \lcontr A) ∧ B + \invol{A} ∧ (𝒖 \lcontr B)
+	&	(A ∧ B) \rcontr 𝒖 = A ∧ (B \rcontr 𝒖) + (A \rcontr 𝒖) ∧ \invol{B}
+	\\	\multicolumn{2}{c}{\em\footnotesize Dualities}
+	\\	(A \lcontr B)\vol = A ∧ (B\vol)
+	&	\vol(A \rcontr B) = (\vol A) ∧ B
+	\\	\grade{A \, (B \lcontr C)} = \grade{(A ∧ B) \, C}
+	&	\grade{(A \rcontr B) \, C} = \grade{A \, (B ∧ C)}
+	\end{tabular}
+
+	\captionsetfullwidth[5em]
+	\captionsetup{skip=2em}
+
+	\caption{
+		Useful identities valid for all vectors $𝒖$ and $𝒗$, bivectors $σ$ and multivectors $A$, $B$ and $C$.
+		The first line of dualities follows from \cref{eqn:intprod-duals.1}, and the last line from the associative identities.
+	}
+\end{table*}
