@@ -220,7 +220,7 @@ Note that if $A ∈ \GA[k](V, η)$ is a $k$-vector, then $\invol{A} = (-1)^k A$ 
 \end{margintable}
 \begin{align}
 	\label{eqn:reversion-sign}
-	\revsign{k} ≔ (-1)^{\frac{(k - 1)k}2}
+	\revsign{k} ≔ (-1)^{\smqty(n\\2)} = (-1)^{\frac{(k - 1)k}2}
 \end{align}
 is the sign of the reverse permutation on $k$ symbols.
 
@@ -229,7 +229,7 @@ Reversion and grade involution together generate the four fundamental automorphi
 	\renewcommand{\arraystretch}{1.2}
 	\begin{tabular}{c|cl}
 	\marginnote{
-		$\star\circ\dagger$ is also called the \textdef{Clifford conjugate} \cite{vaz2016clifford}
+		$\star\circ\dagger$ is also called the \textdef{Clifford conjugate} \cite{lundholm2009clifford}
 	}
 	$\op{id}$ & $\star$ & automorphisms \\
 	\cline{1-2}
@@ -517,6 +517,24 @@ Many familiar algebraic structures relating to rotations in relativistic or quan
 	These form a complex representation of the \emph{algebra of spacetime}, $\GA(1,3)$, via $\ve_μ ⟷ γ_μ$.
 	Again, reversion corresponds to the adjoint, and $\vol ≔ \ve_0\ve_1\ve_2\ve_3 ⟷ γ_0γ_1γ_2γ_3 = -iγ_5$.
 
+	\item\textbf{Creation an annihilation operators}
+
+	In an interesting example fundamentally different to those above is the algebra of latter operators appearing in the quantum field theory of fermions.
+	Defined by the anticommutation relations
+	\begin{align}
+		\qty\big{a_i, a_j} &= 0
+	,&	\qty\big{a_i, a_j^*} &= δ_{ij}
+	,&	\qty\big{a_i^*, a_j^*} &= 0
+	,\end{align}
+	these operators are embedded in (complex) Clifford algebras as
+	\begin{align}
+		a_i^*(ψ) = \ve_i ∧ ψ
+		\qqtext{and}
+		a_i(ψ) = \ve_i \rcontr ψ
+		\marginnote{Right contraction $\rcontr$ is defined in \cref{sec:more-graded-prods}.}
+	\end{align}
+	where $\ve_i$ represents a fermion in state $i$, and $\ve_i ∧ \ve_j = -\ve_j ∧ \ve_i$ a two-fermion state \cite{lundholm2009clifford}.
+	Much more can be said about applications of geometric and Clifford algebras to quantum mechanics \cite[§8--9]{doran2003ga}, though that would divert us from the present subject.
 \end{itemize}
 
 
@@ -738,6 +756,22 @@ enjoys several useful properties, particularly when acting on bivectors.
 A corollary of \cref{lem:bivector-comm-grade-preserving} is that the commutator is closed on the space of bivectors, $\GA[2]$.
 Clearly \cref{eqn:commutator-prod} is bilinear and satisfies the Jacobi identity, so $\GA[2]$ in fact forms a Lie algebra with the bivector commutator $×$ as the Lie bracket.
 
+\begin{marginfigure}
+	\centering
+	\begin{tikzcd}[column sep=small]
+		\op{Spin}^+ & \SO^+ \\
+		\GA[2] & \liealg{so}
+		\arrow["\exp"{description}, thin, from=2-1, to=1-1]
+		\arrow["\cong"{description}, draw=none, from=2-1, to=2-2]
+		\arrow["\exp"{description}, thin, from=2-2, to=1-2]
+		\arrow[two heads, thin, from=1-1, to=1-2]
+	\end{tikzcd}
+	\caption{
+		The Lie algebras $\GA[2](p, q)$ and $\liealg{so}(p, q)$ are isomorphic, but $\op{Spin}^+(p, q)$ is the universal double cover  of $\SO^+(p, q)$.
+	}
+	\label{fig:bivector-liealg}
+\end{marginfigure}
+
 Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometric product, the exponential
 \begin{math}
 	e^σ = 1 + σ + \frac12 σ^2 + \cdots
@@ -747,21 +781,6 @@ Furthermore, note that the reverse $\rev{(e^σ)} = e^{(\rev{σ})} = e^{-σ}$ is 
 Therefore, $e^σ ∈ \op{Spin}^+$ is a rotor, and we have a Lie algebra--Lie group correspondence shown in \cref{fig:bivector-liealg}.
 Thus, both the rotor groups and their Lie algebras are directly represented within the mother algebra $\GA(p, q)$.
 
-\begin{figure}[h]
-	\centering
-	\begin{tikzcd}[column sep=small]
-		\op{Spin}^+(p, q) & \SO^+(p, q) \\
-		\GA[2](p, q) & \liealg{so}(p, q)
-		\arrow["\exp"{description}, thin, from=2-1, to=1-1]
-		\arrow["\cong"{description}, draw=none, from=2-1, to=2-2]
-		\arrow["\exp"{description}, thin, from=2-2, to=1-2]
-		\arrow[two heads, thin, from=1-1, to=1-2]
-	\end{tikzcd}
-	\caption{
-		The Lie algebras $\liealg{so}(p, q)$ and $\GA[2](p, q)$ under $×$ are isomorphic, and are associated respectively to $\SO^+(p, q)$ and its universal double cover $\op{Spin}^+(p, q)$.
-	}
-	\label{fig:bivector-liealg}
-\end{figure}
 
 
 
