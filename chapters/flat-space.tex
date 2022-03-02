@@ -138,7 +138,7 @@ and hence
 \begin{align}
 	\vd F = ∂_{\ve^a}F_{\etc{a_\i}{}k} \, \ve^a(\etc{\ve^{a_\i}}∧k)
 .\end{align}
-Note that these terms are not $(k + 1)$-blades, but geometric products of vectors $\ve^a$ with $k$-blades --- in general, $(k ± 1)$-multivectors.
+Note that these terms are not $(k + 1)$-blades, but geometric products of vectors $\ve^a$ with $k$-blades --- in general, $(k ± 1)$\hyp multivectors.
 
 We may regard the vector derivative itself as an operator-valued vector,
 \begin{align}
@@ -158,12 +158,13 @@ The $(k + 1)$-grade part $\vd ∧ F$ is the \emph{curl} of $F$, and coincides wi
 The $(k - 1)$-grade part involves the metric, and can be related to the `interior' derivative ${\star}{\dd}{\star} A$ via Hodge duality.\sidenote{
 	Observe that
 	\begin{math}
-		\vd \lcontr A = \grade[k - 1]{\vd \vol^{-1}\vol A} = ±\vol\grade[1 + n - k]{\vd (\vol A)} = ± (\vol \vd) ∧ (\vol A)
-	.\end{math}
+		\vd \lcontr A = \grade[k - 1]{\vd \vol^{-1}\vol A} = ±\vol\grade[1 + n - k]{\vd (\vol A)} = ± \vol \, \vd ∧ (\vol A)
+	;\end{math}
+	also see \cref{sec:geoprod-in-ea}.
 }
 Indeed, using \cref{eqn:geoprod-in-ea}, the vector derivative may be emulated in the exterior algebra by the combination
 \begin{align}
-	\vd F ≡ (-1)^s \star \dd \star F + \dd F
+	\vd F ≡ \star^{-1} \dd \star F + \dd F
 .\end{align}
 
 \section{Case Study: Maxwell's Equations}

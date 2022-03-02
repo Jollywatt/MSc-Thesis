@@ -8,6 +8,8 @@
 ]{scrbook}
 
 
+
+
 \newcommand{\notewidth}{4.2cm}
 \newcommand{\notesep}{5mm}
 \usepackage[
@@ -44,10 +46,10 @@
 	\makeatletter
 	\RenewDocumentCommand\sidenotetext{ o o +m }{%	  
 		\IfNoValueOrEmptyTF{#1}{%
-			\@sidenotes@placemarginal{#2}{\textsuperscript{\thesidenote}{}~\footnotesize#3}%
+			\@sidenotes@placemarginal{#2}{\normalsize\textsuperscript{\thesidenote}\footnotesize~\ignorespaces#3}%
 			\refstepcounter{sidenote}%
 		}{%
-			\@sidenotes@placemarginal{#2}{\textsuperscript{#1}~#3}%
+			\@sidenotes@placemarginal{#2}{\textsuperscript{#1}~jj#3}%
 		}%
 	}
 	\makeatother
@@ -233,7 +235,15 @@
 		citecolor={green!50!black},
 	}
 
+
+\setcounter{secnumdepth}{3}
+\renewcommand\thesubsubsection{\Roman{subsubsection}}
+\makeatletter
+\renewcommand\p@subsubsection{\thesubsection.}
+\makeatother
+
 \usepackage{cleveref}
+\crefname{subsubsection}{}{} 
 
 % AUTONUM HACKS %
 	% supress dumb warning

@@ -107,14 +107,15 @@ In particular, if $\set{\ve_i} ⊂ V$ is an orthonormal basis, then we have $\ve
 As with two vectors, the geometric product of two homogeneous multivectors is generally inhomogeneous.
 We can gain insight by separating geometric products into grades and studying each part.
 \begin{definition}
-	The linear \textdef{grade projection} operator is defined on blades by
+	The \textdef{grade projection} operator is defined on blades by
 	\begin{align}
 		\grade[k]{A} =
 		\begin{cases}
 			A & \text{if $A = \etc{𝒖_\i}∧k$}
 		\\	0 & \text{otherwise}
 		\end{cases}
-	.\end{align}
+	,\end{align}
+	and on general multivectors by linearity.
 \end{definition}
 We can generalise the definition of the wedge product of vectors $𝒖∧𝒗 = \grade[2]{𝒖𝒗}$ to arbitrary homogeneous multivectors by taking the highest-grade part of their product,
 \begin{align}
@@ -138,7 +139,7 @@ These can be extended by linearity to inhomogeneous elements.
 	.\end{align}
 \end{definition}
 
-With the wedge product defined on all of $\GA(V, η)$, we use language of multivectors as we did with the exterior algebra, so that $\etc{𝒖_\i}∧k ∈ \GA[k](V, η)$ is a $k$-blade, and a sum of $k$-blades is a $k$-multivector, etcetea.
+With the wedge product defined on all of $\GA(V, η)$, we use language of multivectors as we did with the exterior algebra, so that $\etc{𝒖_\i}∧k ∈ \GA[k](V, η)$ is a $k$-blade, and a sum of $k$-blades is a $k$\hyp multivector, etcetea.
 
 The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nicely; the induced metric on $k$-vectors introduced in \cref{sec:metrical-exterior-alg} is expressible in any of the following ways.
 \begin{align}
@@ -184,7 +185,7 @@ The reversion in necessary because the vectors in the product of two blades $(\e
 
 \section{Relations to Other Algebras}
 
-An efficient way to become familiar with the geometric algebra is to exemplify its relationships with other algebras and with itself.
+An efficient way to become familiar with the geometric algebra is to exemplify its relationships with itself and other common algebras.
 
 \subsection{Fundamental algebra automorphisms}
 
@@ -192,10 +193,11 @@ Operations such complex conjugation $\overline{AB} = \overline{A}\,\overline{B}$
 Linear functions with this property are called algebra automorphisms or antiautomorphisms, respectively.
 The geometric algebra possesses several important \paren{anti}automorphism operations.
 
-Isometries of $(V, η)$ are linear functions $f : V → V$ which preserve the metric, so that $\ip{f(𝒖), f(𝒗)} = \ip{𝒖, 𝒗}$ for any $𝒖, 𝒗 ∈ V$.
-Vector spaces always possess the involution isometry $𝒖 ↦ -𝒖$, as well as the trivial isometry.
-An isometry extends uniquely to an algebra \paren{anti}automorphism by defining $f(AB) = f(A)f(B)$ or $f(AB) = f(B)f(A)$.
-Thus, by extending the two fundamental isometries of $(V, η)$ in the two possible ways, we obtain four fundamental \paren{anti}automorphisms of $\GA(V, η)$.
+Isometries of an inner product space $(V, η)$ are linear functions which preserve the metric, so that $\ip{f(𝒖), f(𝒗)} = \ip{𝒖, 𝒗}$ for all $𝒖, 𝒗 ∈ V$.
+There is always the involution isometry $𝒖 ↦ -𝒖$, as well as the trivial isometry $𝒖 ↦ 𝒖$.
+
+An isometry $f$ extends uniquely to an algebra \paren{anti}automorphism by defining $f(AB) = f(A)f(B)$ or $f(AB) = f(B)f(A)$.
+Thus, by extending the two fundamental isometries of $(V, η)$ in the two possible ways, we obtain four fundamental \paren{anti}automorphisms on $\GA(V, η)$.
 
 \begin{definition}
 	Let $𝒖 ∈ \GA[1](V, η)$ be a vector and $A, B ∈ \GA(V, η)$ possubly inhomogeneous multivectors in a geometric algebra.
@@ -209,11 +211,11 @@ Note that if $A ∈ \GA[k](V, η)$ is a $k$-vector, then $\invol{A} = (-1)^k A$ 
 \begin{margintable}
 	\centering
 	\begin{tabular}{C|C}
-		k \mod 4 & \revsign{k}
-	\\	0 & +
-	\\	1 & +
-	\\	2 & -
-	\\	3 & -
+		k \;\op{mod}\; 4 & \revsign{k}
+	\\	0 & +1
+	\\	1 & +1
+	\\	2 & -1
+	\\	3 & -1
 	\end{tabular}
 \end{margintable}
 \begin{align}
@@ -226,14 +228,14 @@ Reversion and grade involution together generate the four fundamental automorphi
 \begin{center}
 	\renewcommand{\arraystretch}{1.2}
 	\begin{tabular}{c|cl}
+	\marginnote{
+		$\star\circ\dagger$ is also called the \textdef{Clifford conjugate} \cite{vaz2016clifford}
+	}
 	$\op{id}$ & $\star$ & automorphisms \\
 	\cline{1-2}
 	$\dagger$ & $\star\circ\dagger$ & anti-automorphisms
 	\end{tabular}
 \end{center}
-\marginnote{
-	$\star\circ\dagger$ is sometimes referred to as the \textdef{Clifford conjugate}
-}[-2\baselineskip]
 which form a group isomorphic to $\ZZ_2^2$ under composition.
 
 
@@ -242,7 +244,7 @@ These operations are very useful in practice.
 In particular, the following result follows easily from reasoning about grades.
 \begin{lemma}
 	\label{lem:grades-of-square}
-	If $A ∈ \GA[k](V, η)$ is a $k$-vector, then $A^2$ is a $4\NN$-multivector, i.e., a sum of blades of grade $\qty{0, 4, 8, \dots}$ only.
+	If $A ∈ \GA[k](V, η)$ is a $k$-vector, then $A^2$ is a $4\NN$\hyp multivector, i.e., a sum of blades of grade $\qty{0, 4, 8, \dots}$ only.
 \end{lemma}
 \begin{proof}
 	The multivector $A^2$ is its own reverse, since $\rev{(A^2)} = (\rev{A})^2 = (±A)^2 = A^2$, and hence has parts of grade $\set{4n, 4n + 1 | n ∈ \NN}$.
@@ -370,6 +372,7 @@ depends on the grade $k$ on which it acts.\sidenote{
 }
 
 \subsubsection{Imitating the geometric product in the exterior algebra}
+\label{sec:geoprod-in-ea}
 
 Using the Hodge dual, the geometric product (of vectors) may be defined entirely within the exterior algebra as
 \begin{align}
@@ -470,6 +473,7 @@ Many familiar algebraic structures relating to rotations in relativistic or quan
 
 	The \emph{algebra of physical space}, $\GA(3)$, admits a complex representation $\ve_i ⟷ σ_i$ via the Pauli spin matrices
 	\begin{align}
+		\label{eqn:pauli}
 		σ_1 &= \mqty(
 			 0 & +1 \\
 			+1 &  0 \\
@@ -568,7 +572,7 @@ Immediate advantages to the rotor formalism are clear:
 	A quaternion `vector' $v = x\ii + y\jj + z\kk$ reflects through the origin as $v \mapsto -v$, but a quaternion `rotor' of the same value is invariant --- vectors and pseudovectors are confused with the same kind of object.
 	Not so in the geometric algebra: vectors are $1$-vectors, and $\RR^3$ pseudovectors are bivectors.
 
-	The price of introducing more algebraic objects is hardly a cost but a benefit: the generalisation to arbitrary dimensions is immediate and elegant, and the geometric role of objects becomes clear.\sidenote{
+	The price of introducing more algebraic objects is hardly a cost but a benefit: the generalisation to arbitrary dimensions is immediate and elegant, and the geometric role of objects becomes clear.\sidenote[][-6ex]{
 		See \cite{lasenby2016ga-unified-language,hestenes1986ga-unified-language,chappell2016quat-history} for similarly impassioned testaments to the elegance of geometric algebra.
 	}
 \end{itemize}
@@ -578,8 +582,9 @@ Immediate advantages to the rotor formalism are clear:
 \subsection{The rotor groups}
 
 \marginnote{
-	\emph{Rotors, spin groups:} \cite[§4.2]{doran2003ga} \cite{hestenes1986ga-unified-language,lie-groups-as-spin-groups}
-}[-4.1ex]
+	\emph{Rotors:}
+	\cite[§4.2]{doran2003ga} \cite{hestenes1986ga-unified-language,lie-groups-as-spin-groups}
+}[-4.2ex]
 
 We will now see more rigorously how the rotor formalism arises.
 An orthogonal transformation in $n$ dimensions may be achieved by the composition of at most $n$ reflections.\sidenote{This is the Cartan--Dieudonné theorem \cite{cartan-dieudonne-theorem}.}
@@ -713,7 +718,7 @@ enjoys several useful properties, particularly when acting on bivectors.
 	.\end{math}
 \end{lemma}
 \begin{proof}
-	If $A = \grade[k]{A}$ then $Aσ$ and $σA$ are $\set{k - 2, k, k + 2}$-multivectors.
+	If $A = \grade[k]{A}$ then $Aσ$ and $σA$ are $\set{k - 2, k, k + 2}$\hyp multivectors.
 	The $k ± 2$ parts are
 	\begin{align}
 		\grade[k ± 2]{Α×σ} = \frac12\qty(\grade[k±2]{Aσ} - \grade[k±2]{σA})
@@ -804,6 +809,12 @@ We are used to the geometric meaning of two vectors being parallel or orthogonal
 In terms of vector spans, they imply that the intersection is one or zero dimensional, respectively.
 Similarly, blades of higher grade can be `parallel' or `orthogonal' to varying degrees, depending on the dimension of their intersection, $m$.
 
+\begin{marginfigure}
+	\includefigure{orthogonality}
+	\caption{$\set{ρ, ω}$ are $1$-orthogonal ($ρω = ρ×ω$) and $\set{σ, ρ}$ have both $0$- and $1$-orthogonal components ($σρ = σ \fatdot ρ + σ × ρ$).}
+	\label{fig:orthogonal}
+\end{marginfigure}
+
 For example, the intersection of two $2$-blades may be of dimension two, one or (in four or more dimensions) zero.
 The notion of parallel (i.e., being a scalar multiple) remains clear ($m = 2$), but there are now two different types of orthogonality for 2-blades ($m = 1$ and $m = 0$).
 An example of the first type can be pictured as two planes meeting at right-angles along a line; the second type requires at least four dimensions.
@@ -853,11 +864,6 @@ Different cases are exemplified in \cref{tbl:blade-product-interpretations}.
 
 Familiarity with some special cases may aid intuition when considering general products of blades.
 For instance, if the product of two bivectors is $σ_1σ_2 = σ_1·σ_2 + σ_1×σ_2$, then it is understood that $σ_1$ has a component parallel to $σ_2$, and a component which meets $σ_2$ at right-angles along a line of intersection.
-\begin{marginfigure}
-	\includefigure{orthogonality}
-	\caption{$\set{ρ, ω}$ are $1$-orthogonal ($ρω = ρ×ω$) and $\set{σ, ρ}$ have both $0$- and $1$-orthogonal components ($σρ = σ \fatdot ρ + σ × ρ$).}
-	\label{fig:orthogonal}
-\end{marginfigure}
 In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them (see \cref{fig:orthogonal}).
 On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orthogonal planes --- a scenario requiring at least four dimensions.
 
@@ -960,12 +966,13 @@ While in some expressions the grades of multivectors are clear so that the sense
 
 The contractions and wedge products work together intimately, offering universally valid rewriting rules such as
 \begin{align}
+	\marginnote{See \cref{table:identities} for a larger compilation of identities.}
 	(A \rcontr B) \rcontr C &= A \rcontr (B ∧ C)
 ,&	(A \lcontr B) \rcontr C &= A \lcontr (B \rcontr C)
 ,\\	A \lcontr (B \lcontr C) &= (A ∧ B) \lcontr C
 ,&	𝒖 \bullet (B \bullet 𝒗) &= (𝒖 \bullet B) \bullet 𝒗
 ,\end{align}
-as shown in this section.
+as will be shown.
 The last equation is a specialisation of the upper right for vectors, which in particular means that parentheses are unnecessary when defining the components of a bivector $F = F^{ij}\ve_i∧\ve_j$ with the expression
 \begin{math}
 	F_{ij} = \ve_i \bullet F \bullet \ve_j
@@ -1139,4 +1146,5 @@ To prove these identities, it will help to establish the following two lemmas.
 		Useful identities valid for all vectors $𝒖$ and $𝒗$, bivectors $σ$ and multivectors $A$, $B$ and $C$.
 		The first line of dualities follows from \cref{eqn:intprod-duals.1}, and the last line from the associative identities.
 	}
+	\label{table:identities}
 \end{table*}

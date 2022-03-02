@@ -10,30 +10,30 @@ Other introductory material on the STA can be found in \cite{hestenes2003sta,gul
 We denote the standard vector basis by $\qty{\vb γ_μ}$, where Greek indices run over $\qty{0,1,2,3}$.
 This is a deliberate allusion to the Dirac $γ$-matrices, whose algebra is isomorphic to the STA --- however, the $\vg_μ ∈ \RR^{1+3}$ of STA are real, genuine spacetime vectors.
 A basis for the entire $2^4$-dimensional STA is then
-\begin{fullwidth}
+% \begin{fullwidth}
 	\newcommand{\below}[2]{\underset{#1}{\vphantom{\int}#2}}
 	\begin{align}
 		\overset{\text{1 scalar}}{
 			\set[\big]{ \below{+}{\vb 1} }
 		}
 	∪	\overset{\text{4 vectors}}{
-			\set[\big]{ \below{+}{\vg_0}, \; \below{-}{\vg_i}}
+			\set[\big]{ \below{∓}{\vg_0}, \; \below{±}{\vg_i}}
 		}
 	∪	\overset{\text{6 bivectors}}{
 			\set[\big]{ \below{+}{\vg_0\vg_i}, \; \below{-}{\vg_j\vg_k}}
 		}
 	∪	\overset{\substack{\text{4 trivectors}}}{
-			\set[\big]{ \below{-}{\vg_0\vg_j\vg_k}, \; \below{+}{\vg_1\vg_2\vg_3}}
+			\set[\big]{ \below{±}{\vg_0\vg_j\vg_k}, \; \below{∓}{\vg_1\vg_2\vg_3}}
 		}
 	∪	\overset{\substack{\text{1 pseudoscalar}}}{
 			\set[\big]{ \vol ≔ \below{-}{\vg_0\vg_1\vg_2\vg_3}}
 		}
 	\end{align}
-\end{fullwidth}
+% \end{fullwidth}
 where lowercase Latin indices range over spacelike components, $\set{1,2,3}$.
 Blades shown on the left-hand side of $\set{\quad,\quad}$ are called \textdef{timelike}, and those in on right-hand side \textdef{spacelike}.
-The sign below each basis blade shows its signature (the sign of its scalar square).
-Multivectors of any kind which square to zero are called \textdef{null}.
+The sign below each basis blade shows the sign of its (scalar) square.
+Multivectors of any kind which square to zero are called \textdef{null} or \textdef{lightlike}.
 
 
 \subsubsection{The pseudoscalar and duality}
@@ -42,16 +42,15 @@ The right-handed unit pseudoscalar $\vol$ represents an oriented unit $4$-volume
 It anticommutes with odd elements of the STA (vectors and trivectors) and commutes with even elements (bivectors and \paren{pseudo}scalars).
 
 Since $\vol^2 = -1$, the scalar--pseudoscalar plane $\GA[0,4](1,3) = \op{span}_\RR\set{1, \vol}$ is isomorphic to the complex plane $\CC$.
-Thus, for the sake of computation, operations on $\set{0, 4}$-multivectors may be regarded as operations on complex numbers.
-In particular, we define the principal root $\sqrt{a}$ of a $\set{0,4}$-multivector $a ∈ \GA[0,4](1,3)$ in the same way as it is defined in $\CC$ with a branch cut at $θ = π$.
+Thus, for the sake of computation, operations on $\set{0, 4}$\hyp multivectors may be regarded as operations on complex numbers.
+In particular, we define the principal root $\sqrt{a}$ of a $\set{0,4}$\hyp multivector $a ∈ \GA[0,4](1,3)$ in the same way as it is defined in $\CC$ with a branch cut at $θ = π$.
 It is worth emphasising that there are many square roots of $-1$ in the spacetime algebra, each with distinct geometrical meanings.\sidenote{
 	E.g., the spacelike bivector $(\vg_i\vg_j)^2 = -1$ represents a directed spacelike plane.
 	% ; the timelike vector $\vg_0^2 = -1$ a particle's velocity.
 	% METRIC-SENSITIVE
 }
-We single to single out $\sqrt{-1} = \vol$ as `the' principal root as this proves to be useful notationally.\sidenote{
-	In electromagnetism, the imaginary unit $i$ often represents the volume element $\vol$.
-	E.g., in the Riemann--Silberstein vector \cite{silberstein}, both $i$ and $\vol$ play roles similar to the Hodge dual \cite{dressel2015sta}.
+We single out $\sqrt{-1} = \vol$ as `the' principal root as this proves to be useful.\sidenote{
+	In electromagnetism, the imaginary unit $i$ often plays the role of $\vol$, e.g., with Riemann--Silberstein vector \cite{silberstein}, where $i$ and $\vol$ are Hodge-like duals \cite{dressel2015sta}.
 }
 
 As in \cref{sec:ga-hodge-dual}, Hodge duality is accomplished by (right) multiplication by the volume element.
@@ -61,18 +60,18 @@ In particular, this establishes a duality between vectors and trivectors, and be
 \label{sec:spacetime-split}
 
 While we actually live in $\RR^{1,3}$ spacetime, to any particular observer it appears that space is $\RR^3$ with a separate scalar time parameter.
-This is reflected in the fact that $\GA[+](1,3)$ and $\GA(3)$ are isomorphic, from \cref{lem:even-subalg-isos}.
-In fact, there is a separate isomorphism associated to each timelike direction, corresponding to each inertial observer's personal spacetime split.
-Such a \textdef{space\slash time split} identifies \emph{even} multivectors in the spacetime algebra $\GA[+](1,3)$ with $\GA(3)$ multivectors, providing an efficient, purely algebraic method for switching between inertial frames \cite{hestenes2003sta}.
+This is reflected in the fact that $\GA[+](1,3)$ and $\GA(3)$ are isomorphic if one `flattens' the time dimension.
+In fact, from \cref{lem:even-subalg-isos}, there is a separate isomorphism associated to each timelike direction, corresponding to each inertial observer's experience of space and time.
+Such a \textdef{space\slash time split} identifies \emph{even} multivectors in the spacetime algebra $\GA[+](1,3)$ with $\GA(3)$ multivectors, and provides an efficient, purely algebraic method for switching between inertial frames \cite{hestenes2003sta}.
 
 
 Let $K$ be an inertial observer and for simplicity choose the standard basis $\qty{\vg_μ}$ so that $\vg_0$ is the instantaneous velocity of the $K$ frame.
 The three \textdef{relative vectors} $\vs_i ≔ \vg_i\vg_0$ form a vector basis for $\GA(3)$, since the $\vg_i\vg_0$ indeed satisfy $\vs_i^2 = -\vg_i^2\vg_0^2 = 1$ and $\vs_i\vs_j = -\vs_j\vs_i$ for $i ≠ j$.
-Because of the dependence on the frame's velocity vector $\vg_0$, the relative vectors $\vs_i$ are particular to the $K$ frame.
-With respect to the $K$ frame, we may view $\GA(3) ⊂ \GA(1,3)$ as embedded in the STA, allowing us to consider multivectors as belonging to both spaces.
-Note that the same volume element $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$ is shared by the algebras.
+Because of the dependence on $\vg_0$, the relative vectors $\vs_i$ are specific to the $K$ frame.
+Note that the same volume element $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$ is shared by both algebras and all frames.
+With respect to the $K$ frame, we may view $\GA(3) ⊂ \GA(1,3)$ as embedded in the STA, allowing us to consider multivectors as belonging to both spaces as convenient.
 
-For example a spacetime bivector $F = F^{μν}\vg_μ\vg_ν$ may be separated into timelike $F^{i0}$ and spacelike $F^{ij}$ components with respect to the $K$ frame and viewed as a $\qty{1,2}$-multivector in $\GA(3)$,
+For example a spacetime bivector $F = F^{μν}\vg_μ\vg_ν$ may be separated into timelike $F^{i0}$ and spacelike $F^{ij}$ components with respect to the $K$ frame and viewed as a $\qty{1,2}$\hyp multivector in $\GA(3)$,
 \begin{align}
 	\label{eqn:sta-bivector-split}
 	F = F^{i0}\vg_i\vg_0 + F^{ij}\vg_i\vg_j
@@ -85,11 +84,11 @@ where we use
 	= -\vs_i\vs_j
 	= -ε_{ijk}\vol\vs_k
 .\end{math}
-Note that the relativistic representation $F$ is \emph{equal} to the frame-dependent representation --- they are the same spacetime object.
-\Cref{eqn:sta-bivector-split} performs the frame-dependent decomposition of a spacetime bivector (or ``2-form'') into two $\RR^3$ vectors familiar from electromagnetic theory.
+This is the frame-dependent decomposition of a spacetime bivector (or ``2-form'') into two $\RR^3$ vectors familiar from electromagnetic theory.
+Note that the relativistic $F$ is \emph{equal} to the frame-dependent representation --- they are the same spacetime object, only expressed in relativistic and non-relativistic bases.
 
 
-Of particular interest are space\slash time splits on bivector generators associated to rotors.
+Of particular interest are space\slash time splits on the bivector generators of rotors.
 A proper orthochronous Lorentz transformation $\lin Λ ∈ \SO^+(1,3)$ acts as a `sandwich' product $\lin Λ(A) = e^σ A e^{-σ}$, where the rotor $e^σ \in \op{Spin}^+(1,3)$ is generated by a spacetime bivector $σ ∈ \GA[2](1,3)$.
 This bivector $σ$ can be represented in the $K$ frame as
 \begin{align}
@@ -102,12 +101,13 @@ where $\vb ξ = ξ^i\vs_i ∈ \GA[1](3)$ is a rapidity vector and $\vol \vb θ �
 
 \subsection{On the choice of metric signature}
 
-Both metric signatures $η = \op{diag}\sig{-+++}$ and $η = \op{diag}\sig{+---}$ are appropriate for relativistic physics, and both are used in the literature.
+Both metric signatures $\sig{-+++}$ and $\sig{+---}$ are appropriate for relativistic physics, and both are used in the literature.
 While the overall physics is agnostic to this choice, expressions written in the STA are generally not independent of the overall sign.
 It is a useful reference to note what changes and what is constant under both choices.
 
-One of the most important properties of the space\slash time split is the union of the $\GA(3)$ and $\GA[+](1, 3)$ volume elements, $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$.
-If this equality is to hold, then switching the metric signature is concomitant with a switch in sign of the relative vectors, $\vs_i ↦ -\vs_i$. 
+One of the most important properties of the space\slash time split is the agreement of $\GA(3)$ and $\GA[+](1, 3)$ volume elements, $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$.
+If this equality is to hold, then switching the metric signature is concomitant with a switch in sign of the relative vectors, $\vs_i ↦ -\vs_i$.
+
 Another noticable difference is in the space\slash time split of a position vector $𝑿 ∈ \GA[1](1, 3)$ into components $𝑿^0 = ct$ and $(𝑿^i) = \vec x$, achieved by multiplication with the frame velocity $\vg_0$.
 For example, the equations
 \begin{align}
@@ -173,7 +173,7 @@ Non-null spacetime bivectors $σ \in \GA[2](1,3)$ may be \emph{normalised}, in t
 	\hat{σ}^2 = 1
 .\end{align}
 In the null case $σ^2 = 0$, we let $\hat{σ}^2 = 0$ instead.
-This is possible because the square of a bivector is a $\set{0, 4}$-multivector (\cref{lem:grades-of-square}), which always has a principal square root (since $\GA[0,4](1,3) ≅ \CC$).
+This is possible because the square of a bivector is a $\set{0, 4}$\hyp multivector (\cref{lem:grades-of-square}), which always has a principal square root (since $\GA[0,4](1,3) ≅ \CC$).
 Explicitly, let $σ^2 = α + \vol β = ρ^2e^{2\vol ϕ}$ for scalars $α, β, ρ, ϕ$, so that
 \begin{align}
 	N_σ
@@ -243,9 +243,9 @@ With the STA, the kind of a Lorentz transformation (or its associated rotors) is
 		\item \textdef{elliptic} if $σ^2 < 0$ (i.e., if $σ$ is spacelike);
 		\item \textdef{parabolic} if $σ^2 = 0$ (i.e., if $σ ≠ 0$ is lightlike);
 		\item \textdef{hyperbolic} if $σ^2 > 0$ (i.e., if $σ$ is timelike); and
-		\item \textdef{loxodromic} if $σ^2 = α + \vol β$ is not a scalar but a $\set{0, 4}$-multivector.
+		\item \textdef{loxodromic} if $σ^2 = α + \vol β$ is not a scalar but a $\set{0, 4}$\hyp multivector.
 	\end{itemize}
-	% If $σ^2 = α + \vol β$ is not a scalar but a $\set{0, 4}$-multivector, then call $σ$ \textdef{loxodromic}.
+	% If $σ^2 = α + \vol β$ is not a scalar but a $\set{0, 4}$\hyp multivector, then call $σ$ \textdef{loxodromic}.
 \end{definition}
 
 \begin{lemma}
@@ -270,7 +270,7 @@ With the STA, the kind of a Lorentz transformation (or its associated rotors) is
 	\begin{align}
 		σ'^2 = (e^ρ σ e^{-ρ})^2 = e^ρ σ^2 e^{-ρ} = σ^2
 	\end{align}
-	since $e^{±ρ}$ commutes with the $\set{0, 4}$-multivector $σ^2$.
+	since $e^{±ρ}$ commutes with the $\set{0, 4}$\hyp multivector $σ^2$.
 \end{proof}
 
 \begin{corollary}

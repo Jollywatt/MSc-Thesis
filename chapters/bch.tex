@@ -62,7 +62,7 @@ Using the shorthand $\Co{i} ≔ \cosh σ_i$ and $\Si{i} ≔ \sinh σ_i$, the com
 	= (\Co1 + \Si1)(\Co2 + \Si2)
 	= \Co1\Co2 + \Si1\Co2 + \Co1\Si1 + \Si1\Si2
 .\end{align}
-For $p + q < 4$, any even function of a bivector (such as $\Co{i}$) is a scalar, and for $p + q = 4$, is a $\qty{0,4}$-multivector $α + β\vol$.
+For $p + q < 4$, any even function of a bivector (such as $\Co{i}$) is a scalar, and for $p + q = 4$, is a $\qty{0,4}$\hyp multivector $α + β\vol$.
 In either case, the $\Co{i}$ commute with even multivectors, so $[\Co{i}, \Co{j}] = [\Co{i}, \Si{j}] = 0$.
 Therefore, the self-reverse and anti-self-reverse parts are
 \begin{align}
@@ -91,7 +91,7 @@ Hence, from \cref{eqn:log-rotor} we obtain an explicit \x{BCH} formula.
 \end{theorem}
 
 We may wish to express \cref{eqn:geometric-BCH} in terms of geometrically significant products instead of \paren{anti}commutators.
-A bivector product is generally a $\qty{0,2,4}$-multivector
+A bivector product is generally a $\qty{0,2,4}$\hyp multivector
 \begin{align}
 	ab
 	&= \grade[0]{ab} + \grade[2]{ab} + \grade[4]{ab}
@@ -147,11 +147,12 @@ and thus
 
 
 Because $e^{σ_1}e^{σ_2}e^{σ_3} ∈ \GA[+](p, q)$ is an even multivector, the anti-self-reverse projection is exactly the bivector part,
+\sidenotetext{
+	Recall $\rev{A} = \revsign{k}A$ for a $k$-vector $A$ where $(\etc{\revsign{\i}}{}4) = ({+}\,{-}\,{-}\,{+})$.
+}
 \begin{math}
 	\arev{e^{σ_1}e^{σ_2}e^{σ_3}} = \grade[2]{e^{σ_1}e^{σ_2}e^{σ_3}}
-,\end{math} and the self-reverse projection is the $\set{0,4}$-multivector part.\sidenote{
-	Recall $\rev{A} = \revsign{k}A$ for a $k$-vector $A$ where $(\etc{\revsign{\i}}{}4) = (++--{})$.
-}
+,\end{math} and the self-reverse projection is the $\set{0,4}$\hyp multivector part.\sidenotemark\
 Decomposing $e^{σ_i} = \Co i + \Si i$, we find $2^3$ terms which separate into%
 \begin{fullwidth}
 	\begin{align}
@@ -171,9 +172,9 @@ Decomposing $e^{σ_i} = \Co i + \Si i$, we find $2^3$ terms which separate into%
 		\srev{\Si1\Si2\Si3}
 	.\end{align}
 \end{fullwidth}
-The $\set{0,4}$-multivectors $\Co i$ commute with the bivectors $\Si i$, and products of $\Co i$ and $\Si j$ are themselves bivectors.
-Therefore, terms containing one $\Si i$ factor are bivectors, and terms containing two $\Si i$ factors, such as $\Si1\Si2\Co3$, are products of bivectors, or $\set{0, 2, 4}$-multivectors.
-These terms are split into bivectors $(\Si1×\Si2)\Co3$ and $\set{0,4}$-multivectors $(\Si1\wedot\Si2)\Co3$.
+The $\set{0,4}$\hyp multivectors $\Co i$ commute with the bivectors $\Si i$, and products of $\Co i$ and $\Si j$ are themselves bivectors.
+Therefore, terms containing one $\Si i$ factor are bivectors, and terms containing two $\Si i$ factors, such as $\Si1\Si2\Co3$, are products of bivectors, or $\set{0, 2, 4}$\hyp multivectors.
+These terms are split into bivectors $(\Si1×\Si2)\Co3$ and $\set{0,4}$\hyp multivectors $(\Si1\wedot\Si2)\Co3$.
 
 
 Cancelling factors of $\Co1\Co2\Co3$, we then have
@@ -187,6 +188,8 @@ Cancelling factors of $\Co1\Co2\Co3$, we then have
 	}
 \end{align}
 where $\Ta i ≔ \tanh σ_i$.
+This fraction is well-defined since the $\set{0, 4}$\hyp multivector denominator commutes with the numerator.
+
 The next lemma is used to rewrite the rightmost terms with \paren{anti}commutator products \eqref{eqn:(anti)com-prods}.
 \begin{lemma}
 	For any bivectors $σ,ρ,ω ∈ \GA[2](p, q)$ where $p + q ≤ 4$,
@@ -196,12 +199,12 @@ The next lemma is used to rewrite the rightmost terms with \paren{anti}commutato
 	.\end{align}
 \end{lemma}
 \begin{proof}
-	Observe that $\arev{σρω} = \grade[2]{σρω}$ since $σρω$ is a $\set{0, 2, 4}$-multivector, of which only the bivector part is anti-self-reverse.
+	Observe that $\arev{σρω} = \grade[2]{σρω}$ since $σρω$ is a $\set{0, 2, 4}$\hyp multivector, of which only the bivector part is anti-self-reverse.
 	Using associativity and linearity,
 	\begin{align}
 		\grade[2]{σρω} = \grade[2]{(σ\wedotρ)ω} + \grade[2]{(σ×ρ)ω} = (σ\wedotρ)ω + (σ×ρ)×ω
 	.\end{align}
-	The product $(σ\wedotρ)ω = (σ\wedot ρ)\wedot ω$ is between a $\set{0,4}$-multivector and a bivector, which may only contain bivector components.
+	The product $(σ\wedotρ)ω = (σ\wedot ρ)\wedot ω$ is between a $\set{0,4}$\hyp multivector and a bivector, which may only contain bivector components.
 	The product $(σ×ρ)ω$ is between two bivectors, having bivector part $(σ×ρ)×ω$.
 
 	Similarly, note that
@@ -345,7 +348,7 @@ On the face of it, the \x{BCH} formula \eqref{eqn:geometric-BCH} in the four-dim
 In fewer dimensions, $σ^2$ is a scalar, and so these power series are as easy to compute as their real equivalents.\sidenote{
 	If $σ^2 = N_σ^2 ∈ \RR$, then we have simply $\tanh σ = (\tanh N_σ)N_σ^{-1}σ$.
 }
-But in four dimensions, $σ^2$ is in general a $\qty{0,4}$-multivector (by lemma~\ref{lem:grades-of-square}) and the power series \eqref{eqn:trig-power-series} are more complicated.
+But in four dimensions, $σ^2$ is in general a $\qty{0,4}$\hyp multivector (by lemma~\ref{lem:grades-of-square}) and the power series \eqref{eqn:trig-power-series} are more complicated.
 However, if $σ^2 \ne 0$ has a square root $N_σ = α + β\vol$ in the scalar--pseudoscalar plane, then one has $σ = N_σ\hat{σ} = \hat{σ}N_σ$ where $\hat{σ} \coloneqq σ/N_σ$ so that $\hat{σ}^2 = 1$.
 With a bivector $σ = N_σ\hat{σ}$ expressed in this form, the valuation of a formal power series $f(z) = \sum_{n=1}^\infty f_n z^n$ simplifies to
 \begin{align}
@@ -374,8 +377,8 @@ From now on, we focus on the special case of Minkowski spacetime, and consider p
 Because the geometric \x{BCH} formula is constructed from sums and products of bivectors, it involves only even spacetime multivectors.
 Therefore, in numerical applications, it is not necessary to represent the full STA, but only the even subalgebra $\GA[+](1,3) \cong \GA(3)$.
 
-The algebra of physical space $\GA(3)$ admits a faithful complex linear representation by the Pauli spin matrices \cite{baylis1989sta-pauli,lasenby2016ga-unified-language,hestenes2003sta}.
-The real dimension of both $\CC^{2×2}$ and $\GA(3)$ is eight, so there is no redundancy in the Pauli representation, so it is convenient for computer implementation.
+The algebra of physical space $\GA(3)$ admits a faithful complex linear representation by the Pauli spin matrices (see \cref{sec:common-alg-isos}).
+The real dimension of both $\CC^{2×2}$ and $\GA(3)$ is eight, so there is no redundancy in the Pauli representation, making it suitable for computer implementations.
 
 
 
@@ -414,8 +417,8 @@ along with $1 \equiv I$ and $\vol \equiv iI$ where $I$ is the $2×2$ identity ma
 
 
 
-A proper Lorentz transformation $\lin Λ ∈ \SO^+(1,3)$ is determined in the $K$ frame by a vector rapidity $\vb ξ ∈ \RR^3$ and axis-angle vector $\vb θ ∈ \RR^3$.
-The standard $4×4$ matrix representation of $\lin Λ$ is obtained as the exponential of the generator
+A proper Lorentz transformation $\lin Λ ∈ \SO^+(1,3)$ is determined in the $K$ frame by a vector rapidity $\vb ξ ∈ \RR^3$ and axis--angle vector $\vb θ ∈ \RR^3$.
+The standard $4×4$ matrix representation of $\lin Λ$ is then obtained as the exponential of the generator
 \begin{align}
 	\mqty[
 		 0 &  \vb ξ^T \\
@@ -440,7 +443,7 @@ In the spin representation, the transformation $\lin Λ$ corresponds to a rotor 
 ,\end{align}
 where $q^k \coloneqq \frac12(ξ^k + iθ^k) ∈ \CC$.
 % This represents the restriction of \eqref{eqn:multivector-as-matrix} to spacetime bivectors.
-Note that, since the square of a spacetime bivector is a $\qty{0,4}$-multivector, its representative matrix $\lin Σ$ squares to a complex scalar multiple of the identity.
+Note that, since the square of a spacetime bivector is a $\qty{0,4}$\hyp multivector, its representative matrix $\lin Σ$ squares to a complex scalar multiple of the identity matrix.
 
 
 
@@ -451,13 +454,11 @@ Given two generators $σ_i$ with matrix representations $\lin Σ_i$, the geometr
 	)
 	\label{eqn:matrix-BCH}
 ,\end{align}
-where $\lin T_i ≔ \tanh \lin Σ_i$.
+where $\lin A ≔ \frac12[\lin T_1, \lin T_2]$, $\lin S ≔ \frac12\qty{\lin T_1, \lin T_2}$ and $\lin T_i ≔ \tanh \lin Σ_i$.
+
 To efficiently compute $\lin T_i$, make use of the fact that $\lin Σ_i^2 = λ_i^2\lin I$ is a complex multiple of the identity matrix and evaluate $\lin T_i = (\tanh λ_i)λ_i^{-1}\lin Σ_i$.
 In the null case $\lin Σ_i^2 = λ = 0$, the power series \eqref{eqn:trig-power-series} truncate and $\tanh \lin Σ_i = \tanh^{-1} \lin Σ_i = \lin Σ_i$ are equal.
-
-
-
-The commutator $\lin A ≔ \frac12[\lin T_1, \lin T_2]$ and anti-commutator $\lin S ≔ \frac12\qty{\lin T_1, \lin T_2}$ terms may be efficiently computed by separating the single matrix product $\lin{ Π ≔ T_1T_2 = A + S }$ into off-diagonal and diagonal components, respectively; i.e.,
+The commutator and anti-commutator terms $\lin A$ and $\lin S$ may be efficiently computed by separating the single matrix product $\lin{ Π ≔ T_1T_2 = A + S }$ into off-diagonal and diagonal components, respectively; i.e.,
 \begin{align}
 	\lin A_{ij} = (1 - δ_{ij})\lin Π_{ij}
 	\qqtext{and}
@@ -550,6 +551,9 @@ where $ϕ$ is the angle between the two initial boosts (in the $K$ frame).
 The angle $θ$ is precisely the Wigner angle.
 Equating the vector parts determines the boost
 \begin{align}
+	\marginnote{
+	Note that $1 + 𝒘_1⋅𝒘_2 ∈ \RR$ commutes and may be written as a denominator, while $1 + ρ$ cannot.
+	}
 	𝒘 &= \frac{𝒘_1 + 𝒘_2}{1 + 𝒘_1⋅𝒘_2}(1 + ρ)^{-1}
 ,\end{align}
 noting that $𝒘_i$ and $ρ$ do not commute.
