@@ -7,19 +7,26 @@ But the ability to compare across fibres is desirable, particularly because a no
 One way to accomplish this (at least for flowable objects) was the Lie derivative of \cref{sec:lieder}.
 Another way which is applicable to any bundle is to introduce the additional structure of a \emph{connection}; this then defines the \emph{covariant derivative} of a section.
 
-A trivial example of a connection is the one associated with (the tangent bundle of) Euclidean space.
-In this case, tangent vectors at a base point may be \emph{parallel transported} (i.e., translated irrotationally) to any other base point in a well-defined, path-independent way.
+\begin{marginfigure}
+	\includefigure[0.8\columnwidth]{path-dependence}
+	\caption{Parallel transport of the northern vector depends on the path taken.}
+\end{marginfigure}
+
+
+A trivial example is the usual connection on (the tangent bundle of) Euclidean space.
+There, tangent vectors at a base point may be \emph{parallel transported} (i.e., translated irrotationally) to any other base point in a well-defined, path-independent way.
 This defines an isomorphism between every tangent space and tangent space at the origin, forming a connection on $\TT \RR^n$.
 
-We may try to define connections on general fibre bundles in this way, by choosing an isomorphism from every fibre to a single `reference' fibre.
-This is equivalent to choosing a trivialisation $ℱ → ℳ × F$, or to prescribing global coordinates on the bundle.
-However, defining a connection by a trivialisation like this is a needlessly strict requirement, and is of course impossible to do globally on non-trivial bundles.
+We may try to define connections on general fibre bundles in this way --- by choosing an isomorphism from every fibre to a single `reference' fibre.\sidenote{
+	This is equivalent to choosing a trivialisation $ℱ → ℳ × F$, or prescribing global coordinates on $ℱ$.
+}
+But defining a connection like this is needlessly strict, and is of course impossible for non-trivial bundles.
+(For example, $\TT \Sphere^2$ is non-trivial; there is no way of smoothly identifying its tangent spaces.)
 
-For instance, the tangent bundle of the sphere $\TT \Sphere^2$ is non-trivial, so it is impossible to give a globally smooth identification of tangent spaces.
-However, it is always possible to define a connection \emph{locally} on the sphere, since local trivialisations always exist.
-In other words, tangent vectors on the sphere can be parallel transported over sufficiently short paths, since locally the sphere looks like the Euclidean plane.
-
-This generalises to all smooth manifolds: To define a connection, it is only necessary to specify how values are parallel-transported in an infinitesimal manner.
+Instead, it is sufficient to identify fibres \emph{locally}.
+In other words, we need only prescribe how values can be compared over infinitesimal paths; from this we can compare any path-connected fibres.
+A connection obtained this way is much more general: it accomodates non-trivial bundles and curved connections, where parallel transport may be path-dependent.
+(For example, parallel transport on the sphere embedded in $\RR^3$ is path-dependent.)
 
 
 
@@ -45,7 +52,6 @@ Taken together, the vertical tangent spaces of all fibres form the \textdef{vert
 
 
 \begin{marginfigure}
-	\centering
 	\includefigure{ehresmann-connection}
 	\caption{
 		Illustration of an Ehresmann connection.
@@ -93,7 +99,6 @@ This proves to be a useful construction:
 	.\end{align}
 \end{definition}
 \begin{marginfigure}
-	\centering
 	\includefigure{connection-map}
 	\caption{
 		The tangent vector $𝒖$ at $x$ is lifted to the horizontal bulk vector $Γ_𝒖(f)$ at the point $f(x)$.
@@ -110,7 +115,7 @@ The minus sign is present to later align with the convention that a plus sign is
 
 
 
-\section{Parallel transportation}
+\section{Parallel Transportation}
 
 With a connection $H ⊆ \TT ℱ$ defined on a bundle, a bulk value may be moved between fibres so that the motion is always horizontal with respect to the connection.
 This is called \textdef{parallel transportation} of the value along a path.
@@ -119,15 +124,6 @@ More precisely, a path $γ : [0, 1] → ℳ$ representing the motion of a value 
 This path is `above' $γ$ in the sense that $π(p_γ(λ)) = γ(λ)$, and `horizontal' in the sense that $\dd p_γ(λ) ∈ H_{p_γ(λ)}$ (see \cref{fig:lifted-path}).
 % In other words, $p_γ$ is a one-dimensional integral manifold of the connection $H$ restricted to the `wall' $π^{-1}(γ) ⊂ ℱ$.
 In other words, $p_γ$ is an integral curve of the connection along $γ$ through $p_0$.
-
-\begin{marginfigure}
-	\centering
-	\includefigure{lifted-path}
-	\caption{
-		The point $p_0$ parallel transported along a path $γ$, giving the lifted path $p_λ$.
-	}
-	\label{fig:lifted-path}
-\end{marginfigure}
 
 It is useful to describe this path--lifting process as an operator, associating fibre-mappings to each path in $ℳ$.
 \begin{definition}
@@ -145,6 +141,15 @@ It is useful to describe this path--lifting process as an operator, associating 
 	\end{align}
 	for all $λ ∈ [0, 1]$.
 \end{definition}
+
+\begin{marginfigure}
+	\includefigure{lifted-path}
+	\caption{
+		The point $p_0$ parallel transported along a path $γ$, giving the lifted path $p_λ$.
+	}
+	\label{fig:lifted-path}
+\end{marginfigure}
+
 The transport operator is invariant under path reparametrisation, since any path $γ'(λ) = γ(f(λ))$ where $f : [0, 1] → [0, 1]$ is smooth also satisfies \cref{eqn:transport-operator-path-conds} if $γ$ does.
 Furthermore, the transport operator respects path concatenation $γ_2 * γ_1$ and inversion,
 \begin{align}
@@ -203,10 +208,10 @@ Evaluating \cref{lem:trans-ode} at $λ = 0$ yields the following useful result.
 	\end{align}
 \end{corollary}
 An important consequence of this derivative relationship is that, since $\trans_γ ∈ G$ is an element of the group of fibre endomorphisms,\sidenote{
-	Technically, $\trans_γ$ can only be called a group element \emph{after} a bundle trivialisation, giving a well-defined identity map between fibres.
+	Technically, $\trans_γ$ can only be called a group element \emph{after} a bundle trivialisation (giving a well-defined identity map between fibres).
 } the horizontal lift is Lie algebra--valued, $Γ_𝒖 ∈ \liealg g ≡ T_\op{id} G$.
 
-\section{Covariant differentiation}
+\section{Covariant Differentiation}
 
 We have seen that a choice of connection $H ⊂ \TT ℱ$ determines which tangent vectors in the bulk of a bundle are horizontal.
 This in turn defines the parallel transport operator.
@@ -419,7 +424,7 @@ Linearity also allows the covariant derivative to be expressed as the limit of a
 
 
 
-\subsubsection{Metric compatibility}
+\subsubsection{Metric compatibile connections}
 
 A linear connection on a metrical vector bundle $\fibrebundle V 𝒱 ℳ$ is called \textdef{metric compatible} if for any vectors $X, Y ∈ 𝒱$,
 \begin{align}
@@ -467,28 +472,34 @@ where the transport operators are over some common path.
 Metric-compatible connections are not unique.
 If $n = \dim ℳ$ and $d = \dim V$, then there are $nd^2$ components of $Γ_μ{}^a{}_b$, subject to $nd(d+1)/2$ compatibility equations $Γ_{μab} + Γ_{μba} = 0$, leaving $nd(d+1)/2$ degrees of freedom.
 
+
+
 \subsubsection{On algebra bundles}
 
-Vector bundles with a smoothly-varying associative product form an algebra bundle.
-We require the transport operator to respect this product, so that
+On vector bundles equipped with an associative product, we often want the linear connection to be constrained so that $\df ∇$ is a derivation;
+\begin{align}
+	\label{eqn:covder-derivation}
+	\df ∇ (A ⊛ B) = (\df ∇ A) ⊛ B + A ⊛ (\df ∇ B)
+.\end{align}
+This is equivalent to requiring that the transport operator respects multiplication,
 \begin{align}
 	\label{eqn:trans-respect-prod}
 	(\trans X) ⊛ (\trans Y) = \trans (X ⊛ Y)
 ,\end{align}
 similar to the metric compatibility criterion.
-This places further constraints on the connection.
-\begin{lemma}
-	\label{lem:covder-prod}
-	Let $𝒜$ be an algebra bundle whose product $⊛$ is respected by parallel transportation (as in \cref{eqn:trans-respect-prod}).
-	Then, $\df ∇$ is a $⊛$-derivation, and
-	\begin{align}
-		\label{eqn:covder-prod}
-		\df ∇ (\etc{X_\i}⊛k) = \df\dd (\etc{X_\i}⊛k) + \sum_{i=1}^k \etcmid{X_\i}{\df Γ X_i}⊛k
-	\end{align}
-	for $X_i ∈ \secs(𝒱)$.
-\end{lemma}
+% \begin{lemma}
+% 	\label{lem:covder-prod}
+% 	Let $𝒜$ be an algebra bundle whose product $⊛$ is respected by parallel transportation (as in \cref{eqn:trans-respect-prod}).
+% 	Then, $\df ∇$ is a $⊛$-derivation, and
+% 	\begin{align}
+% 		\label{eqn:covder-prod}
+% 		\df ∇ (\etc{X_\i}⊛k) = \df\dd (\etc{X_\i}⊛k) + \sum_{i=1}^k \etcmid{X_\i}{\df Γ X_i}⊛k
+% 	\end{align}
+% 	for $X_i ∈ \secs(𝒱)$.
+% \end{lemma}
 \begin{proof}
-	Let $T_λ ≔ \trans_{γ(λ ← 0)}$ for some path $γ$.
+	We will derive \cref{eqn:covder-derivation} from \cref{eqn:trans-respect-prod}, showing their equivalence.
+	Denote $T_λ ≔ \trans_{γ(λ ← 0)}$ for some path $γ$.
 	Using \cref{lem:trans-and-covariant-der}, we have
 	% \begin{fullwidth}
 	\begin{align}
@@ -496,27 +507,16 @@ This places further constraints on the connection.
 		= \df\dd(\etc{X_\i}⊛k)(\vb{\dot γ}(0))
 		- \dv{λ} T_λ(\etc{X_\i}⊛k) \bigg|_{λ = 0}
 	.\end{align}
-	% \end{fullwidth}
-	Since $⊛$ is respected by parallel transport, and by bilinearity and associativity, the rightmost term is
+	We already know that $\df\dd$ is a derivation.
+	For the rightmost term, \cref{eqn:trans-respect-prod}, linearity and associativity imply
 	\begin{align}
 		-\dv{λ} \etc{T_λ X_i}⊛k \, \bigg|_{λ=0} = -\sum_{i=1}^k \etcmid{X_\i}{\dv{λ} T_λ X_i \big|_{λ=0}}⊛k
 	,\end{align}
 	which by \cref{lem:dtrans-is-hlift} gives the result, after removing reverence to the arbitrary vector $\vb{\dot γ}(0)$.
 \end{proof}
 
-A consequence of \cref{lem:covder-prod} is that a linear connection on a vector bundle $𝒱$ induces a unique $⊛$-respecting connection on the algebra bundle generated by $⊛$.
-In particular, such a connection obeys the product rule:
-\begin{align}
-	\df ∇(X ⊛ Y)
-	&= \df\dd X ⊛ Y + X ⊛ \df\dd Y + \df Γ X ⊛ Y + X ⊛ \df Γ Y
-\\	&= \df ∇ X ⊛ Y + X ⊛ \df ∇ Y
-\end{align}
-For example, for the tensor bundle $\TA{𝒱}$, we obtain the product rule written in component form,
-\begin{align}
-	\label{eqn:covder-tensor-prod}
-	∇_μ X^a Y^b = ∂_μ(X^a Y^b) + Γ_μ{}^a{}_c X^c Y^b + X^a Γ_μ{}^b{}_c Y^c
-,\end{align}
-and if the connection is also compatible with a metric used to raise and lower indices, we derive the familiar formula for covariant differentiation of general type-$(p, q)$ tensors,{}
+Consequently, a linear connection on a vector bundle $𝒱$ induces a \emph{unique} $⊛$-respecting connection on the algebra bundle generated by $⊛$, since the covariant derivative of a product may be reduced to a product of covariant derivatives of vectors.
+For example, for a tensor bundle $\TA{𝒱}$ with a metric compatible connection, we derive the familiar formula for general type-$(p, q)$ tensors, written purely in tems of the connection coefficients for $𝒱$.
 \begin{fullwidth}
 \begin{align}
 	\label{eqn:covder-general-tensor}
@@ -524,7 +524,7 @@ and if the connection is also compatible with a metric used to raise and lower i
 	= ∂_μT^{a_1\cdots a_p}{}_{b_1\cdots b_q}
 	+ \sum_{i = 1}^p Γ_μ{}^{a_i}{}_c T^{a_1\cdots c\cdots a_p}{}_{b_1\cdots b_q}
 	- \sum_{j = 1}^q Γ_μ{}^c{}_{b_j} T^{a_1\cdots a_p}{}_{b_1\cdots c\cdots b_q}
-.\end{align}
+\end{align}
 \end{fullwidth}
 % Note that \cref{eqn:covder-general-tensor} is written only in terms of the connection coefficients $Γ_μ{}^a{}_b$ on $𝒱$.
 
@@ -533,6 +533,7 @@ and if the connection is also compatible with a metric used to raise and lower i
 
 Using the tools of geometric algebra, the covariant derivative associated with a metric--compatible connection may be expressed as a bivector--valued form.
 This representation has the advantage that it is independent of the kind of multivector object being differentiated.
+(In stark contrast to \cref{eqn:covder-general-tensor} for a general tensor.)
 
 To derive the bivector connection, begin with the covariant derivative of a vector $𝑿 ∈ \GA[1](𝒱, η)$,
 \begin{align}
@@ -637,7 +638,7 @@ Like the algebraic derivative $\DD$ of \cref{sec:algder}, $𝒟$ is defined when
 \end{definition}
 
 
-\subsection{Covariant vector derivative}
+\subsection{The covariant vector derivative}
 
 The geometric algebra $\GA(V, η)$ may be defined on a manifold by taking $V$ to be the vector space of tangent sections $\secs(\TT ℳ)$.
 Write $\GA(ℳ, η)$ as shorthand for $\GA(\secs(\TT ℳ), η)$ to indicate this construction.

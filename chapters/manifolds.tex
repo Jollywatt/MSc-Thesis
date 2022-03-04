@@ -5,7 +5,7 @@
 The investigations of \cref{part:1} were restricted to \emph{flat geometries}.
 Special relativity models spacetime as a homogeneous, isotropic Minkowski vector space.
 However, in the general theory of relativity, spacetime no longer has an intrinsic vector space structure, instead exhibiting curvature to incorporate gravity.
-The mathematical demands of curvature call for \emph{differential geometry with smooth manifolds}.
+The mathematical demands of curvature call for the \emph{differential geometry of smooth manifolds}.
 
 
 Here we give a condensed, pragmatic definition of a manifold as a space which locally looks like $\RR^n$ upon which one can do calculus.\sidenote{
@@ -20,7 +20,8 @@ Here we give a condensed, pragmatic definition of a manifold as a space which lo
 		\item \emph{Hausdorff:} each distinct pair of points have mutually disjoint neighbourhoods (so it is ``not too small''); and
 		\item \emph{second-countable:} there exists a countable base (so it is ``not too large'').
 		\end{enumerate}
-	} topological space which is locally Euclidean, meaning for every $x ∈ ℳ$ there exists a neighbourhood $x ∈ \manif U \subseteq ℳ$ and subset $U \subseteq \RR^n$ with a homeomorphism\sidenote{continuous bijection} $φ : \manif U \biject U$, called a \textdef{coordinate chart}, between them.
+	} topological space which is \emph{locally Euclidean}.
+	This means for every point $x ∈ ℳ$ there exists a neighbourhood $x ∈ \manif U \subseteq ℳ$ and subset $U \subseteq \RR^n$ with a homeomorphism\sidenote{continuous bijection} $φ : \manif U \biject U$, called a \textdef{coordinate chart}, between them.
 
 	% Transition functions are the  map $φ∘ϕ^{-1} : U \biject V$ for two homeomorphisms $ϕ : \manif U \biject U$ and $φ : \manif V \biject V$.
 	A \textdef{smooth manifold} is one for which all transition functions
@@ -33,7 +34,7 @@ Here we give a condensed, pragmatic definition of a manifold as a space which lo
 
 Essentially, \cref{def:manifold} is designed to guarantee that well-behaved local coordinates always exist.
 A coordinate chart $φ : 𝒰 → \RR^n$ defines coordinate scalars $\set{x^i} ≡ \set{\etc{x^\i},n}$ by $x^i = \op{pr}_i \circ φ$.
-These are called \textdef{global} if $𝒰 = ℳ$ is the entire manifold, and \textdef{local} if $𝒰 ⊂ ℳ$.
+These are called \textdef{global} if $𝒰 = ℳ$ is the entire manifold, and \textdef{local} if $𝒰 \subsetneq ℳ$.
 We often call a point $x ∈ ℳ$ by the same symbol as the coordinates $x^i : ℳ → \RR$ without the index --- but these objects are not strictly interchangeable.
 
 A structure-preserving map between manifolds is a continuous function; and between smooth manifolds, a differentiable function.
@@ -43,21 +44,21 @@ Thus, the coordinate scalars $x^i$ are continuous functions, and are differentia
 
 
 
-\section{Derivatives of Smooth Maps}
+\section{Differentiation of Smooth Maps}
 \label{sec:differential}
 
 Manifolds themselves do not have inherent vector space structure.
 However, being locally Euclidean means there is a real vector space naturally associated to each point:
 \begin{definition}
 	\label{def:tangent-space-bundle}
-	The \textdef{tangent space $\TT_xℳ$} of a manifold at a point $x ∈ ℳ$ is the vector space of scalar derivatives at that point.\sidenote{
+	The \textdef{tangent space \,$\TT_xℳ$} of a manifold at a point $x ∈ ℳ$ is the vector space of scalar derivatives at that point.\sidenote{
 		More precisely, each vector $𝒖 ∈ \TT_xℳ$ is an equivalence class of derivatives evaluated at the point $x$, where different derivations which agree at the point $x$ are identified.
 	}
 	In any local coordinate chart $\set{x^i}_{i=1}^n$ of $ℳ$ containing $x$, this is
 	\begin{align}
 		\TT_xℳ ≅ \spanof{\eval{\pdv{x^i}}_x}_{i=1}^n
 	.\end{align}
-	The \textdef{tangent bundle $\TTℳ$} is the disjoint union of all tangent spaces
+	The \textdef{tangent bundle \,$\TTℳ$} is the disjoint union of all tangent spaces
 	\begin{math}
 		\TTℳ = \set{(x, 𝒖) | x ∈ ℳ, 𝒖 ∈ \TT_xℳ}
 	\end{math}
@@ -82,7 +83,7 @@ In the same way that the tangent bundle consists of `directional derivatives of 
 
 \begin{definition}
 	\label{def:differential}
-	The \textdef{differential} or \textdef{push forward} of a map $f : ℳ \to \manif N$ between smooth manifolds is the map $\dd f : \TTℳ \to \TT\manif N$ defined by
+	The \textdef{differential $\dd f$} or \textdef{push forward $f_*$} of a map $f : ℳ \to \manif N$ between smooth manifolds is the map $\dd f : \TTℳ \to \TT\manif N$ defined by
 	\begin{align}
 		\label{eqn:differential}
 		\qty(\dd f(𝒖))(φ)\big|_{f(x)} ≔ 𝒖(φ \circ f)\big|_x
@@ -134,7 +135,6 @@ Thus, the coordinate form of $\dd f$ is precisely the Jacobian matrix,
 Turning back to \cref{eqn:differntial-coordinate-form.step1}, the partial derivatives $\pdv*{x^i}$ act on smooth functions $f^j : ℳ → \RR$ to produce smooth functions $\pdv*{f^j}{x^i} : ℳ → \RR$.
 However, since we have an intuitive picture of the directional derivative of the {point} $f(x)$ as $x$ is displaced, it is useful to formally extend the notation $\pdv*{x^i}$ so that we may write the partial derivative of a mapping of \emph{points} $f : ℳ → \manif N$.
 \begin{marginfigure}
-	\centering
 	\includefigure[0.8\columnwidth]{derivative-of-point}
 	\caption{
 		The derivative of the point $x ∈ ℳ$ along the direction of increasing $x^μ$ is a tangent vector $∂_μx ∈ \TT_xℳ$.
@@ -194,18 +194,17 @@ where we have identified the one-dimensional vector space $\TT_{x^i}\RR$ with $\
 For flat geometries, we have modelled ``fields'' as functions into a fixed vector space, e.g., the electromagnetic bivector field $F : \RR^{1+3} → \EA[2]{\RR^4}$.
 Such a map makes no distinction between the vector space $\EA[2]{\RR^4}$ evaluated at one point in spacetime and another.
 This would suggest that all values of a field are directly comparable, making expressions like ``$F(x) + F(y)$'' meaningful for different points $x$ and $y$.
-However, these kinds of expressions are ill-defined for general smooth manifolds, since they depend on the way tangent spaces are identified.
-(Or, as will be defined, on the \emph{choice of trivialisation of the tangent bundle}.)
-Instead, it is beneficial to distinguish between codomains \emph{at each point} in the domain, and treat $F(x)$ and $F(y)$ as belonging to different spaces entirely.
-
 \begin{marginfigure}
-	\centering
 	\includefigure[0.8\columnwidth]{sphere}
 	\caption{
 		Vectors in different tangent spaces, and their basis-dependent representation as an $\RR^2$-valued field.
 	}
 	\label{fig:ball}
 \end{marginfigure}
+However, these kinds of expressions are ill-defined for general smooth manifolds, since they depend on the way tangent spaces are identified.
+(Or, as will be defined, on the \emph{choice of trivialisation of the tangent bundle}.)
+Instead, it is beneficial to distinguish between codomains \emph{at each point} in the domain, and treat $F(x)$ and $F(y)$ as belonging to different spaces entirely.
+
 
 A concrete example of why this is necessary is a fluid flow on the sphere $\Sphere^2$.
 % the instantaneous fluid velocity at a point is a vector lying in the sphere's tangent plane at that point.
@@ -263,7 +262,7 @@ For example,
 
 The bulk $ℱ$ of a fibre bundle $\fibrebundle F ℱ ℳ$ is itself a manifold (of dimension $\dim ℱ = \dim ℳ + \dim F$) so we may always prescribe local coordinates on $ℱ$.
 If we already have coordinates $\set{x^μ}$ on the base $ℳ$ and $\set{x^a}$ on a fibre $F$, then we often want to use the same coordinates $\set{x^μ, x^a}$ to describe the bulk $ℱ$.
-This first requires a way of continuously splitting the bulk $ℱ → ℳ × F$ into its base and fibre ``components'', in a way which respects the fibred structure of the bundle.
+This requires splitting the bulk $ℱ → ℳ × F$ into its base and fibre components, identifying each fibre with $F$ so its $\set{x^a}$ coordinates carry over to all fibres.
 This splitting is known as a \emph{trivialisation} of the bundle.
 \begin{definition}
 	A \textdef{trivialisation} of a fibre bundle $\fibrebundle[π] F ℱ ℳ$ is a homeomorphism $φ : ℱ → ℳ × F$ such that
@@ -271,7 +270,7 @@ This splitting is known as a \emph{trivialisation} of the bundle.
 		\op{pr}_1 ∘ φ = π
 	.\end{math}
 \end{definition}
-It is not always possible to find a global trivialisation of a fibre bundle, and if it is, the bundle is called a \textdef{trivial fibre bundle} and there may be different possible trivialisations.\sidenote{
+It is not always possible to find a global trivialisation of a fibre bundle, but if it is, the bundle is called \textdef{trivial} and there may be many different possible trivialisations.\sidenote{
 	A simple non-trivial fibre bundle is the Möbius strip, viewed as a bundle over the circle $\Sphere^1$ with fibre $[0, 1]$.
 	The trivial bundle $\Sphere^1 × [0, 1]$ describes a strip without a twist.
 }
@@ -303,33 +302,24 @@ In the language of fibre bundles, a field $f : ℳ → F$ is replaced by a \emph
 
 For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is a section $𝒖 ∈ \secs(\TT\Sphere^2)$ of the tangent bundle, with a single vector at $x ∈ \Sphere^2$ is denoted $𝒖|_x ∈ \TT_x\Sphere^2$.
 
+\subsection{Algebra bundles}
 
+A general procedure to convert locally defined objects into structures on a manifold is to form the associated bundle and define the associated operations as acting pointwise on sections.
 
-\subsection{Geometric Algebra Bundles}
+\subsubsection{Geometric algebra bundles}
 
-\todo{Define
-\begin{itemize}
-	\item Vector bundle
-	\item Algebra bundle
-	\item Geometric algebra bundle
-	\item …principal bundle?
-\end{itemize}
-}
-
-We require the product $⊛ : V_x × V_x → V_x$ to vary smoothy with $x ∈ ℳ$, so that $X ⊛ Y ∈ \secs(𝒱)$ is a smooth section whenever $X$ and $Y$ are.
-
-
-As for exterior differential forms, a geometric algebra $\GA(V, η)$ may be defined on a manifold by taking $V$ to be the vector space of \emph{sections} $\secs(𝒱)$ for some vector bundle $𝒱$.
+For instance, a geometric algebra $\GA(V, η)$ may be defined on a manifold by taking $V$ to be the vector space of \emph{sections} $\secs(𝒱)$ for some vector bundle $𝒱$.
 We write
 \begin{math}
-	\GA(ℰ, η) ≔ \GA(\secs(ℰ), η)
+	\GA(𝒱, η) ≔ \GA(\secs(𝒱), η)
 \end{math}
-to indicate this construction.
+to indicate this construction, with $\ip{𝒖, 𝒗}|_x = η_x(𝒖|_x, 𝒗|_x)$.
+We require the metric to vary smoothly, so that $AB ∈ \secs(𝒱)$ is a smooth multivector section whenever $A$ and $B$ are.
+Most often, we take $𝒱$ to be the tangent bundle $\GA(\TT ℳ, η)$; multivectors are then geometrical elements in physical spacetime.
 
 
 
-
-\subsection{Exterior differential forms on manifolds}
+\subsubsection{Exterior differential forms on manifolds}
 \label{sec:forms-on-manifolds}
 
 \Cref{sec:exterior-forms} defined exterior forms $\forms(V, A)$ as alternating multilinear maps from the fixed vector space $\TA{V}$ into $A$.
@@ -360,8 +350,8 @@ Informally, we may write
 	(\dd φ)(\etc[0]{𝒖_\i}⊗k)
 	&= \sum_{i=0}^k (-1)^k (𝒖_i(φ))(\etcskip[0]{𝒖_\i}⊗ik)
 \end{align}
-where $𝒖_i(φ)$ means that only $φ$ is differentiated, not other vector sections.
-Formally, vectors may only act as derivatives on scalars and not forms, so this may be rewritten as
+where $𝒖_i(φ)$ means that only $φ$ is differentiated.
+Formally, however, vectors may only act to differentiate scalars, not forms, so we may rewrite this as
 \begin{fullwidth}
 \begin{align}
 	(\dd φ)(\etc[0]{𝒖_\i}⊗k)
@@ -378,7 +368,7 @@ A useful special case is the exterior derivative of a $1$-form, which reads
 
 
 
-\section{Lie Differentiation}
+\section{Vector Flows and Lie Differentiation}
 \label{sec:lieder}
 
 In general, the derivative of a section of a fibre bundle is not defined, because there is no way of comparing fibres without additional structure (such as a \emph{connection}; see \cref{cha:connections}).
@@ -426,14 +416,6 @@ in terms of the flow of points.\sidenote{
 	Risking overloaded notation, $\flow{𝒖}{t}$ on the left-hand side acts on vectors, while on the right-hand side on points.
 }
 Other flowable objects include structures built from the tangent bundle, e.g., tangent tensors $\TA{(\TT ℳ)}$ or multivectors $\GA(\TT ℳ, η)$.
-\todo{This is the first appearance of $\GA(\TT ℳ, η)$...}
-
-% \begin{align}
-% 	e^{t 𝒖} f(x^μ) = \sum_{n=0}^∞ \frac{(t u^ν)^n}{n!} ∂_ν^n f(x^μ) = f(x^μ + t u^μ)
-% \end{align}
-% \begin{align}
-% 	\flow{𝒖}{t} f(x) = e^{-t𝒖} f
-% \end{align}
 
 
 
@@ -491,7 +473,7 @@ Continuing in this way, it follows that the Lie derivative of a general tensor $
 	+ \sum_{i=1}^q T^{μ_1...μ_p}{}_{ν_1...λ...ν_q} ∂_{ν_i} u^λ
 .\end{align}
 \end{fullwidth}
-This sets the stage for how much simpler Lie derivative formulae are on exterior differential forms and multivectors.
+This sets the stage for how much simpler the form of the Lie derivative is on exterior differential forms and multivectors.
 
 On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula''\sidenotemark
 \begin{align}

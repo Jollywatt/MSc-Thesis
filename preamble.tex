@@ -124,7 +124,7 @@
 \setmathfont[range=\varnothing]{Libertinus Math}
 \fi
 
-\linespread{1.07}
+% \linespread{1.07}
 
 \newcommand{\textdef}{\textsc}
 
@@ -210,6 +210,7 @@
 % FIGURES
 
 \newcommand{\includefigure}[2][\columnwidth]{
+	\centering
 	\graphicspath{{figures/}}
 	\def\svgwidth{#1}
 	\input{figures/#2.pdf_tex}

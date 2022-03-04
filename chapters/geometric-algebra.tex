@@ -7,12 +7,18 @@
 \label{cha:geometric-algebra}
 
 
-In \cref{cha:preliminary-theory}, we defined the metric-independent exterior algebra of multivectors over a vector space $V$.
-While metrical operations can be achieved by tacking the Hodge dual onto $\EA{V}$, the geometric algebra is a generalisation of $\EA{V}$ which has the metric (and concomitant notions of orientation and duality) directly built-in.
+In \cref{cha:preliminary-theory}, we defined the metric-independent exterior algebra over a vector space $V$, in which metrical operations may be later achieved by introducing the Hodge dual.
+The geometric algebra, however, generalises $\EA{V}$ and has the metric (and its concomitant notions of orientation and duality) directly built-in to the product.
+
+Another point of difference is the role of \emph{inhomogeneous} elements.
+While they find little use in exterior algebra,\sidenote{
+	In fact, some authors \cite{flanders1963differential} leave inhomogeneous elements of $\EA{V}$ undefined.
+} inhomogeneous multivectors in $\GA(V, η)$ are central to the description of reflections, rotations and spinors.
+
 
 Geometric algebras are also known as real \emph{Clifford algebras} $Cl(V, q)$ after their first inventor \cite{clifford1878grassmann}.
 Especially in mathematics, Clifford algebras are defined in terms of a quadratic form $q$, and the vector space $V$ may be complex.
-However, in physics, where $V$ is taken to be real and a metric $η$ is usually supplied instead of $q$, the name ``geometric algebra'' is preferred.\sidenote{
+On the other hand, in physics, where $V$ is taken to be real and a metric $η$ is usually supplied instead of $q$, the name ``geometric algebra'' is preferred.\sidenote{
 	The newer name was coined by David Hestenes in the 1970s, who popularised Clifford algebra for physics \cite{hestenes1986ga-unified-language,hestenes1968ga}.
 }
 
@@ -24,8 +30,8 @@ Informally put, the geometric algebra is obtained by enforcing the single rule
 	𝒖^2 = \ip{𝒖, 𝒖}
 \end{align}
 for any vector $𝒖$, along with the associative algebra axioms of \cref{def:associative-algebra}.
-The rich algebraic structure which follows from this is remarkable.
-Formally, we may give the geometric algebra as a quotient, just like our presentation of $\EA{V}$.
+The richness of structure following from this simple rule is remarkable.
+Formally, we may define the geometric algebra as a quotient, as we did for $\EA{V}$.
 \begin{definition}
 	Let $V$ be a finite-dimensional real vector space with metric.
 	The \textdef{geometric algebra} over $V$ is
@@ -123,7 +129,7 @@ We can generalise the definition of the wedge product of vectors $𝒖∧𝒗 = 
 ,\end{align}
 where $A ∈ \GA[p](V, η)$ and $B ∈ \GA[q](V, η)$.
 Dually, we can define an inner product on homogeneous multivectors by taking the lowest-grade part, $|p - q|$.
-These can be extended by linearity to inhomogeneous elements.
+These are extended by linearity to inhomogeneous elements.
 \begin{definition}
 	\label{def:wedge-and-fat-dot-for-multivectors}
 	Let $A, B ∈ \GA(V, η)$ be possibly inhomogeneous multivectors.
@@ -194,7 +200,7 @@ Linear functions with this property are called algebra automorphisms or antiauto
 The geometric algebra possesses several important \paren{anti}automorphism operations.
 
 Isometries of an inner product space $(V, η)$ are linear functions which preserve the metric, so that $\ip{f(𝒖), f(𝒗)} = \ip{𝒖, 𝒗}$ for all $𝒖, 𝒗 ∈ V$.
-There is always the involution isometry $𝒖 ↦ -𝒖$, as well as the trivial isometry $𝒖 ↦ 𝒖$.
+The involution isometry $𝒖 ↦ -𝒖$ is always present, as well as the trivial isometry $𝒖 ↦ 𝒖$.
 
 An isometry $f$ extends uniquely to an algebra \paren{anti}automorphism by defining $f(AB) = f(A)f(B)$ or $f(AB) = f(B)f(A)$.
 Thus, by extending the two fundamental isometries of $(V, η)$ in the two possible ways, we obtain four fundamental \paren{anti}automorphisms on $\GA(V, η)$.
@@ -423,16 +429,17 @@ The inner product $A \lcontr B$
 \subsection{Common algebra isomorphisms}
 \label{sec:common-alg-isos}
 
-While $\GA(V, η)$ contains $\EA{V}$ as a subset, one significance difference between the two algebras is the role of inhomogeneous elements.
-While inhomogeneous multivectors find little use in exterior algebra,\sidenote{
-	In fact, some authors \cite{flanders1963differential} leave sums of terms of $\EA{V}$ of differing grade undefined.
-} they have the important role of describing reflections and rotations in $\GA(V, η)$.
-Many familiar algebraic structures relating to rotations in relativistic or quantum physics are in fact special cases of geometric algebra.
+% One significance difference between the geometric and exterior algebra is the role of \emph{inhomogeneous} elements.
+% While they find little use in exterior algebra,\sidenote{
+% 	In fact, some authors \cite{flanders1963differential} leave sums of terms of $\EA{V}$ of differing grade undefined.
+% } inhomogeneous multivectors have the important role of describing reflections and rotations in $\GA(V, η)$.
+% In fact
+Many familiar algebraic structures in classical, relativistic and quantum physics are in fact special cases of geometric algebra.
 
 \begin{itemize}
 	\item\textbf{Complex numbers: $\GA[+](2) \cong \CC$}
 	
-	The complex plane $\CC ≅ \op{span}_\RR\set{1, \ve_1\ve_2}$ is embedded in $\GA(2)$ as the even subalgebra, with the isomorphism
+	The complex plane $\CC ≅ \op{span}_\RR\set{1, \ve_1\ve_2}$ embeds into $\GA(2)$ as the even subalgebra, with the isomorphism
 	\begin{align}
 	% 	\CC &≅ \GA[+](2)
 	% \\	x + iy &↔︎ x + y\ve_1\ve_2
@@ -519,7 +526,7 @@ Many familiar algebraic structures relating to rotations in relativistic or quan
 
 	\item\textbf{Creation an annihilation operators}
 
-	In an interesting example fundamentally different to those above is the algebra of latter operators appearing in the quantum field theory of fermions.
+	In an interesting example which is fundamentally different to those above is the algebra of `ladder operators' appearing in the quantum theory of fermions.
 	Defined by the anticommutation relations
 	\begin{align}
 		\qty\big{a_i, a_j} &= 0
@@ -533,7 +540,7 @@ Many familiar algebraic structures relating to rotations in relativistic or quan
 		a_i(ψ) = \ve_i \rcontr ψ
 		\marginnote{Right contraction $\rcontr$ is defined in \cref{sec:more-graded-prods}.}
 	\end{align}
-	where $\ve_i$ represents a fermion in state $i$, and $\ve_i ∧ \ve_j = -\ve_j ∧ \ve_i$ a two-fermion state \cite{lundholm2009clifford}.
+	where $\ve_i$ represents a fermion in state $i$, and $\ve_i ∧ \ve_j = -\ve_j ∧ \ve_i$ a two-fermion state \cite{lundholm2009clifford,lundholm2009clifford}.
 	Much more can be said about applications of geometric and Clifford algebras to quantum mechanics \cite[§8--9]{doran2003ga}, though that would divert us from the present subject.
 \end{itemize}
 
@@ -546,9 +553,9 @@ Many familiar algebraic structures relating to rotations in relativistic or quan
 
 
 
-There is a consistent pattern to the algebra isomorphisms listed in \cref{sec:common-alg-isos}.
+There is a consistent pattern to the algebra isomorphisms listed in \cref{sec:common-alg-isos} (excepting the last).
 Note how the complex numbers $\CC$ are fit for describing $\SO(2)$ rotations in the plane, and the quaternions $\HH$ describe $\SO(3)$ rotations in $\RR^3$.
-Common to both their respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is the identification of each ``imaginary unit'' in $\CC$ or $\HH$ with a \emph{unit bivector} in $\GA(n)$.
+Common to both their respective isomorphisms with $\GA[+](2)$ and $\GA[+](3)$ is the identification of each `imaginary unit' in $\CC$ or $\HH$ with a \emph{unit bivector} in $\GA(n)$.
 \begin{itemize}
 	\item In $2$d, there is one linearly independent bivector, $\ve_1\ve_2$, and one imaginary unit, $i$.
 	\item In $3$d, there are $\dim \GA[2](3) = \binom{3}{2} = 3$ such bivectors, and so three imaginary units $\set{\ii, \jj, \kk}$ are needed.
@@ -587,11 +594,11 @@ Immediate advantages to the rotor formalism are clear:
 	\item \emph{Vectors are distinguished from bivectors.}
 
 	One of the subtler points about quaternions is their transformation properties under reflection.
-	A quaternion `vector' $v = x\ii + y\jj + z\kk$ reflects through the origin as $v \mapsto -v$, but a quaternion `rotor' of the same value is invariant --- vectors and pseudovectors are confused with the same kind of object.
-	Not so in the geometric algebra: vectors are $1$-vectors, and $\RR^3$ pseudovectors are bivectors.
+	A quaternion `vector' $v = x\ii + y\jj + z\kk$ reflects through the origin as $v \mapsto -v$, but a quaternion `rotor' of the same value is invariant --- vectors and pseudovectors are confused as the same kind of object.
+	Not so in the geometric algebra: vectors are $1$-vectors, and $\RR^3$ pseudovectors, the `imaginary units' which generate rotations, are \emph{bivectors}.
 
-	The price of introducing more algebraic objects is hardly a cost but a benefit: the generalisation to arbitrary dimensions is immediate and elegant, and the geometric role of objects becomes clear.\sidenote[][-6ex]{
-		See \cite{lasenby2016ga-unified-language,hestenes1986ga-unified-language,chappell2016quat-history} for similarly impassioned testaments to the elegance of geometric algebra.
+	Enlarging the algebra like this to include more kinds of object may appear finicky, but it is beneficial: the generalisation to arbitrary dimensions is immediate and elegant, and the geometric roles of objects becomes clear.\sidenote[][-6ex]{
+		See \cite{lasenby2016ga-unified-language,hestenes1986ga-unified-language,chappell2016quat-history} for more impassioned testaments to the elegance of geometric algebra.
 	}
 \end{itemize}
 
@@ -605,8 +612,8 @@ Immediate advantages to the rotor formalism are clear:
 }[-4.2ex]
 
 We will now see more rigorously how the rotor formalism arises.
-An orthogonal transformation in $n$ dimensions may be achieved by the composition of at most $n$ reflections.\sidenote{This is the Cartan--Dieudonné theorem \cite{cartan-dieudonne-theorem}.}
-A reflection may be described in the geometric algebra by conjugation with an invertible vector.
+An orthogonal transformation in $n$ dimensions is achieved by the composition of at most $n$ reflections.\sidenote{This is the Cartan--Dieudonné theorem \cite{cartan-dieudonne-theorem}.}
+A reflection is described in the geometric algebra by conjugation with an invertible vector.
 For instance, the linear map
 \begin{align}
 	A \mapsto -𝒗A𝒗^{-1}
@@ -618,11 +625,11 @@ By composing reflections of this form, any orthogonal transformation may be buil
 	\label{eqn:multivector-conjugation-by-inverse}
 	A \mapsto \pm RAR^{-1}
 \end{align}
-for some $R = 𝒗_1𝒗_2\cdots 𝒗_3$, where the sign is positive for an even number of reflections, and negative for odd.
+for some $R = 𝒗_1𝒗_2\cdots 𝒗_3$, where the sign is positive for an even number of reflections (giving a proper rotation), and negative for odd.
 
 Scaling the axis of reflection $𝒗$ by a non-zero scalar $λ$ does not affect the reflection map \eqref{eqn:multivector-reflection}, since $𝒗 ↦ λ𝒗$ is cancelled out by $𝒗^{-1} ↦ λ^{-1}𝒗^{-1}$.
 Therefore, a more direct correspondence exists between reflections and normalised vectors $\hat{𝒗}^2 = ±1$ (although there still remains an overall ambiguity in sign).
-For an orthogonal transformation built using normalised vectors,
+For an orthogonal transformation built using normalised vectors, the inverse is
 \begin{align}
 	R^{-1} = \hat{𝒗}_3^{-1}\cdots \hat{𝒗}_2^{-1}\hat{𝒗}_1^{-1} = ±\rev{R}	
 \end{align}
@@ -641,19 +648,6 @@ This is called the \emph{pin} group:
 There are two ``pinors'' for each orthogonal transformation, since $+R$ and $-R$ give the same map \eqref{eqn:multivector-conjugation}.
 Thus, the pin group forms a double cover of the orthogonal group $\operatorname{O}(p,q)$.
 
-Furthermore, the even-grade elements of $\op{Pin}(p,q)$ form a subgroup, called the \emph{spin} group:
-\begin{align}
-	\op{Spin}(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = ±1}
-\end{align}
-This forms a double cover of $\SO(p, q)$.
-
-Finally, the additional requirement that $RR^† = 1$ defines the restricted spinor group, or the \emph{rotor} group:
-\begin{align}
-	\op{Spin}^+(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = 1}
-\end{align}
-The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$.
-Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
-
 \begin{marginfigure}
 \begin{tikzcd}[column sep=tiny, row sep=small]
 	\op{Spin}^+ & \op{Spin} & \op{Pin} \\
@@ -669,10 +663,56 @@ Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply
 \caption{Relationships between Lie groups associated with a geometric algebra. An arrow $A \surject B$ signifies that $A$ is a double-cover of $B$.}
 \end{marginfigure}
 
+Furthermore, the even-grade elements of $\op{Pin}(p,q)$ form a subgroup, called the \emph{spin} group:
+\begin{align}
+	\op{Spin}(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = ±1}
+\end{align}
+This forms a double cover of $\SO(p, q)$.
+
+Finally, the additional requirement that $RR^† = 1$ defines the restricted spinor group, or the \emph{rotor} group:
+\begin{align}
+	\op{Spin}^+(p, q) ≔ \qty{R \in \GA[+](p, q) \mid RR^† = 1}
+\end{align}
+The rotor group is a double cover of the restricted special orthogonal group $\SO^+(p, q)$, which is the identity-connected part of $\SO(p, q)$.
+Except for the degenerate case of $\op{Spin}^+(1, 1)$, the rotor group is simply connected to the identity.
+
 
 \subsection{The bivector subalgebra}
 
-The multivector commutator product
+
+Bivectors play a special role as the generators of rotors.
+Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometric product, the exponential
+\begin{math}
+	e^σ = 1 + σ + σ^2/2 + \cdots
+\end{math}
+of a bivector is an even multivector.
+To show that $e^σ ∈ \op{Spin}^+$ is indeed a rotor, note that the reverse $\rev{(e^σ)} = e^{(\rev{σ})} = e^{-σ}$ is its inverse, and also that $e^σ$ is continuously connected to the identity by the path $e^{λσ}$ for $λ ∈ [0, 1]$.
+
+Indeed, this leads to the Lie algebra--Lie group correspondence shown in \cref{fig:bivector-liealg}.
+To show this, it is helpful to establish some of the useful algebraic features of the bivector subalgebra.
+
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzcd}[column sep=small]
+		\op{Spin}^+ & \SO^+ \\
+		\GA[2] & \liealg{so}
+		\arrow["\exp"{description}, thin, from=2-1, to=1-1]
+		\arrow["\cong"{description}, draw=none, from=2-1, to=2-2]
+		\arrow["\exp"{description}, thin, from=2-2, to=1-2]
+		\arrow[two heads, thin, from=1-1, to=1-2]
+	\end{tikzcd}
+	\caption{
+		The Lie algebras $\GA[2](p, q)$ and $\liealg{so}(p, q)$ are isomorphic, but $\op{Spin}^+(p, q)$ is the universal double cover  of $\SO^+(p, q)$.
+	}
+	\label{fig:bivector-liealg}
+\end{marginfigure}
+
+
+
+
+
+The multivector \textdef{commutator product}
 \begin{align}
 	\label{eqn:commutator-prod}
 	A × B ≔ \frac12(AB - BA)
@@ -756,31 +796,8 @@ enjoys several useful properties, particularly when acting on bivectors.
 A corollary of \cref{lem:bivector-comm-grade-preserving} is that the commutator is closed on the space of bivectors, $\GA[2]$.
 Clearly \cref{eqn:commutator-prod} is bilinear and satisfies the Jacobi identity, so $\GA[2]$ in fact forms a Lie algebra with the bivector commutator $×$ as the Lie bracket.
 
-\begin{marginfigure}
-	\centering
-	\begin{tikzcd}[column sep=small]
-		\op{Spin}^+ & \SO^+ \\
-		\GA[2] & \liealg{so}
-		\arrow["\exp"{description}, thin, from=2-1, to=1-1]
-		\arrow["\cong"{description}, draw=none, from=2-1, to=2-2]
-		\arrow["\exp"{description}, thin, from=2-2, to=1-2]
-		\arrow[two heads, thin, from=1-1, to=1-2]
-	\end{tikzcd}
-	\caption{
-		The Lie algebras $\GA[2](p, q)$ and $\liealg{so}(p, q)$ are isomorphic, but $\op{Spin}^+(p, q)$ is the universal double cover  of $\SO^+(p, q)$.
-	}
-	\label{fig:bivector-liealg}
-\end{marginfigure}
-
-Because the even subalgebra $\GA[+] \supset \GA[2]$ is closed under the geometric product, the exponential
-\begin{math}
-	e^σ = 1 + σ + \frac12 σ^2 + \cdots
-\end{math}
-of a bivector is an even multivector.
-Furthermore, note that the reverse $\rev{(e^σ)} = e^{(\rev{σ})} = e^{-σ}$ is the inverse, and also that $e^σ$ is continuously connected to the identity by the path $e^{λσ}$ for $λ ∈ [0, 1]$.
-Therefore, $e^σ ∈ \op{Spin}^+$ is a rotor, and we have a Lie algebra--Lie group correspondence shown in \cref{fig:bivector-liealg}.
-Thus, both the rotor groups and their Lie algebras are directly represented within the mother algebra $\GA(p, q)$.
-
+We have shown that both the rotor group and its Lie algebra are \emph{directly} represented within the mother algebra $\GA(p, q)$.
+There is no need for matrix representations whose underlying geometries are obscured.
 
 
 
@@ -848,6 +865,14 @@ Informally, $Δ$-orthogonality of $a$ and $b$ means that $ab$ is of the $Δ$th g
 The higher $Δ$, the fewer linearly independent directions are shared by (the spans of) $a$ and $b$.
 Different cases are exemplified in \cref{tbl:blade-product-interpretations}.
 
+
+Familiarity with some special cases may aid intuition when considering general products of blades.
+For instance, if the product of two bivectors is $σ_1σ_2 = σ_1·σ_2 + σ_1×σ_2$, then it is understood that $σ_1$ has a component parallel to $σ_2$, and a component which meets $σ_2$ at right-angles along a line of intersection.
+In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them (see \cref{fig:orthogonal}).
+On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orthogonal planes --- a scenario requiring at least four dimensions.
+
+
+
 \begin{table*}
 	% \centering
 	\renewcommand{\arraystretch}{1.15}
@@ -879,14 +904,6 @@ Different cases are exemplified in \cref{tbl:blade-product-interpretations}.
 	}
 	\label{tbl:blade-product-interpretations}
 \end{table*}
-
-
-Familiarity with some special cases may aid intuition when considering general products of blades.
-For instance, if the product of two bivectors is $σ_1σ_2 = σ_1·σ_2 + σ_1×σ_2$, then it is understood that $σ_1$ has a component parallel to $σ_2$, and a component which meets $σ_2$ at right-angles along a line of intersection.
-In other words, $σ_1$ and $σ_2$ are planes that intersect along a line with some angle between them (see \cref{fig:orthogonal}).
-On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orthogonal planes --- a scenario requiring at least four dimensions.
-
-
 
 
 \section{More Graded Products}
