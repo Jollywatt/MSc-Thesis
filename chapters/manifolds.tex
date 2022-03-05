@@ -476,6 +476,12 @@ Continuing in this way, it follows that the Lie derivative of a general tensor $
 This sets the stage for how much simpler the form of the Lie derivative is on exterior differential forms and multivectors.
 
 On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula''\sidenotemark
+\sidenotetext{
+	\emph{Sketch proof.}
+	$\dd$ and $𝒖 \lcontr$ are anti-derivations, so their anti-commutator is a derivation (\cref{lem:coms-of-derivations}).
+	Derivations agreeing on scalars and exact $1$-forms (which generate the exterior algebra) are equal.
+	Indeed, $𝒖 \lcontr \dd f = 𝒖(f) = \lie_𝒖 f$ while $\dd(𝒖 \lcontr f) = 0$; and for exact $1$-forms, $𝒖 \lcontr \dd \df φ = 0$ while $\dd\big(𝒖 \lcontr \df φ) = \dd \df φ(𝒖) = \lie_𝒖 \df φ$.
+}
 \begin{align}
 	\label{eqn:magic-formula}
 	\lie_𝒖 \df φ = 𝒖 \lcontr \dd \df φ + \dd\big(𝒖 \lcontr \df φ)
@@ -484,12 +490,6 @@ which employs the \textdef{interior derivative} or \textdef{hook product} $𝒖 
 \begin{math}
 	(𝒖 \lcontr \df φ)(\etc[2]{𝒖_\i}⊗k) = \df φ(𝒖 ⊗ \etc[2]{𝒖_\i}⊗k)
 .\end{math}
-\sidenotetext{
-	\emph{Sketch proof.}
-	$\dd$ and $𝒖 \lcontr$ are anti-derivations, so their anti-commutator is a derivation (\cref{lem:coms-of-derivations}).
-	Derivations agreeing on scalars and exact $1$-forms (which generate the exterior algebra) are equal.
-	Indeed, $𝒖 \lcontr \dd f = 𝒖(f) = \lie_𝒖 f$ while $\dd(𝒖 \lcontr f) = 0$; and for exact $1$-forms, $𝒖 \lcontr \dd \df φ = 0$ while $\dd\big(𝒖 \lcontr \df φ) = \dd \df φ(𝒖) = \lie_𝒖 \df φ$.
-}
 Cartan's magic formula is the statement that the Lie derivative on forms is the anti-commutator of the exterior and interior derivatives.
 
 

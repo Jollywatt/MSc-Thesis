@@ -1,31 +1,23 @@
 \chapter{Introduction}
 
-\todo{Intro sucks.}
+
 
 The Special Theory of Relativity is a model of \emph{spacetime} --- the geometry in which physical events take place.
 Spacetime comprises the Euclidean dimensions of space and time, but only in a way relative to each observer moving through it: there exists no single `universal' ruler or clock.
 Instead, two observers in relative motion find their respective clocks and rulers are found to disagree, according to the Lorentz transformation laws.
 The insight of special relativity is that one should focus not on the observer-dependent notions of space and time, but on the Lorentzian geometry of spacetime itself.
 
-Seven years after Albert Einstein introduced this theory,\sidenote{
-	Einstein’s paper \cite{einstein1905electrodynamics} was published in 1905, the so-called \emph{Annus Mirabilis} or ``miracle year'' during which he also published on the photoelectric effect, Brownian motion and the mass-energy equivalence.
-	Each of the four papers was a monumental contribution to modern physics.
-} he succeeded in formulating a relativistic picture which included gravity.
-In this General Theory of Relativity, gravitation is identified with the curvature of spacetime over astronomical distances.
-Both theories coincide locally (i.e., when confined to sufficiently small extents of spacetime, over which the effects of curvature are negligible).
-In \cref{part:1}, we will focus on special relativity, leaving considerations of curvature to \cref{part:2}.
-
 The study of local spacetime geometry amounts to the study of its intrinsic symmetries.\sidenote{
 	This insight is part of Felix Klein's Erlangen programme of 1872 \cite{klein1893erlangen}, wherein geometries (Euclidean, hyperbolic, projective, etc.) are studied in terms of their symmetry groups and their invariants.
 }
-These symmetries form the Poincaré group, and consist of spacetime translations and Lorentz transformations, the latter being the extension of the rotation group for Euclidean space to relativistic rotations of spacetime.
-The standard matrix representation of the Lorentz group, $\SO^+(1, 3)$, is the connected component of the orthogonal group
+These consist of spacetime translations and Lorentz transformations, the latter including rotations in space and hyperbolic rotations in spacetime, or boosts.
+% To the Poincaré group, consist of spacetime translations and Lorentz transformations, the latter being the extension of the rotation group for Euclidean space to relativistic rotations of spacetime.
+The standard matrix representation of the Lorentz group, $\SO^+(1, 3)$, familiar to any relativist is the connected component of the orthogonal group
 \begin{align}
 	\op{O}(1,3) = \set{\lin Λ ∈ \GL(\RR^4) | \lin Λ\transpose\lin η\lin Λ = \lin η}
 \end{align}
 with respect to the bilinear form $η = ±\op{diag}(-1,+1,+1,+1)$.
-The rudimentary tools of matrix algebra are sufficient for an analysis the Lorentz group, and are familiar to any physicist.
-However, they are not always the most suitable tool available for problems of relativity.
+The rudimentary tools of matrix algebra are sufficient for an analysis the Lorentz group, but are not always the most suitable tool available.
 
 The last century has seen many other mathematical objects be applied to the study of generalised rotation groups such as $\SO^+(1,3)$ or the $\RR^3$ rotation group $\SO(3)$.
 Among these tools is the \emph{geometric algebra}, invented\sidenote{
@@ -75,8 +67,21 @@ Although some physicists come away from quantum theory with the impression that 
 	See \cite{doran2003ga} for discussion of diverse applications of geometric algebra.
 }
 
+
+\subsubsection{Outline of this thesis}
+
+
 \Cref{part:1} of this thesis introduces geometric algebra with emphasis on its relation to other common formalisms in physics.
 The principal focus is then on its applications to special relativity, where Lorentz transformations are described as rotors in the geometric algebra.
-In \cref{cha:bch}, this leads to a novel technique for composing Lorentz transformations in terms of rotor generators, also explicated in \cite{wilson2021ga-bch}.
-Later, the focus is on calculus and the extension of the ideas of \cref{part:1} to manifolds and general relativity in \cref{part:2}.
-\todo{Summarise \cref{part:2} better.}
+In \cref{cha:bch}, this leads to a novel technique for composing Lorentz transformations in terms of rotor generators (also described in \cite{wilson2021ga-bch}).
+% Later, the focus is on calculus and the extension of the ideas of \cref{part:1} to manifolds and general relativity in \cref{part:2}.
+
+Seven years after Albert Einstein introduced this theory,\sidenotemark\ he succeeded in formulating a relativistic picture which included gravity.
+In this General Theory of Relativity, gravitation is identified with the curvature of spacetime over astronomical distances.
+\sidenotetext{
+	Einstein’s paper \cite{einstein1905electrodynamics} was published in 1905, the so-called \emph{Annus Mirabilis} or ``miracle year'' during which he also published on the photoelectric effect, Brownian motion and the mass-energy equivalence.
+	Each of the four papers was a monumental contribution to modern physics.
+}
+Both theories coincide locally (i.e., when confined to sufficiently small extents of spacetime, over which the effects of curvature are negligible).
+In \cref{part:2}, we extend the ideas of \cref{part:1} to curved manifolds, and investigate some advantages of the geometric algebra formalism in differential geometry.
+We present an interesting non-Abelian Stokes' theorem for relating a manifold's curvature across a surface to parallel transport around the surfaces boundary.

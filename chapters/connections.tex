@@ -533,7 +533,7 @@ For example, for a tensor bundle $\TA{𝒱}$ with a metric compatible connection
 
 Using the tools of geometric algebra, the covariant derivative associated with a metric--compatible connection may be expressed as a bivector--valued form.
 This representation has the advantage that it is independent of the kind of multivector object being differentiated.
-(In stark contrast to \cref{eqn:covder-general-tensor} for a general tensor.)
+(In stark contrast to \cref{eqn:covder-general-tensor} for a general tensor, for example.)
 
 To derive the bivector connection, begin with the covariant derivative of a vector $𝑿 ∈ \GA[1](𝒱, η)$,
 \begin{align}
@@ -543,22 +543,22 @@ Rewrite the non-derivative term as
 \begin{align}
 	Γ_μ{}^a{}_b \, \ve_a X^b
 	&= Γ_{μab} \, \ve^a (\ve^b \fatdot 𝑿)
-\\	&= \frac12 Γ_{μab} \, (\ve^a (\ve^b \fatdot 𝑿) - (\ve^a \fatdot 𝑿) \ve^b )
+\\	&= \frac12 Γ_{μab} \, (\ve^a (\ve^b \fatdot 𝑿) - (𝑿 \fatdot \ve^a) \ve^b )
 \end{align}
-using the fact that $Γ_{μab} = -Γ_{μba}$ for a metric compatible connection, and that $\ve^a \fatdot 𝑿$ is a scalar commuting with $\ve^b$.
-Then, since for vectors the inner product is $𝑿 \fatdot 𝒀 = \frac12(𝑿𝒀 + 𝒀𝑿)$, this is b
+using the fact that $Γ_{μab} = -Γ_{μba}$ for a metric compatible connection, and that $\ve^a \fatdot 𝑿 = 𝑿 \fatdot \ve^a$ is a scalar commuting with $\ve^b$.
+Then, since for vectors the inner product is $𝑿 \fatdot 𝒀 = \frac12(𝑿𝒀 + 𝒀𝑿)$, this is
 \begin{align}
-	\frac14 Γ_{μab} \, (\ve^a \ve^b 𝑿 + \ve^a 𝑿 \ve^b - \ve^b 𝑿 \ve^a - 𝑿 \ve^b \ve^a)
-	&= \frac12 Γ_{μab} \, (\ve^a \ve^b 𝑿 - 𝑿 \ve^a \ve^b)
+	\frac14 Γ_{μab} \, (\ve^a \ve^b 𝑿 + \ve^a 𝑿 \ve^b - 𝑿 \ve^a \ve^b - \ve^a 𝑿 \ve^a)
+	&= \frac14 Γ_{μab} \, (\ve^a \ve^b 𝑿 - 𝑿 \ve^a \ve^b)
 .\end{align}
 In the right-hand side, the scalar parts from the products between $\ve^a$ and $\ve^b$ cancel, leaving a commutator product of the bivector $\ve^a ∧ \ve^b$ with $𝑿$,
 \begin{align}
-	Γ_{μab} \, (\ve^a ∧ \ve^b) × 𝑿 = ω_μ × 𝑿
+	\frac12 Γ_{μab} \, (\ve^a ∧ \ve^b) × 𝑿 = ω_μ × 𝑿
 ,\end{align}
 where we define the \textdef{connection bivectors} in the basis $\set{\ve_a}$ by
 \begin{align}
 	\label{eqn:connection-bivectors}
-	ω_μ ≔ Γ_{μab} \, \ve^a ∧ \ve^b
+	ω_μ ≔ \frac12 Γ_{μab} \, \ve^a ∧ \ve^b
 .\end{align}
 Thus, we may write the covariant derivative of $𝑿$ as
 \begin{align}
@@ -566,11 +566,11 @@ Thus, we may write the covariant derivative of $𝑿$ as
 	∇_μ 𝑿 = ∂_μ 𝑿 + ω_μ × 𝑿
 ,\end{align}
 and define the \textdef{connection bivector $1$-form} $\df ω$ by
-\begin{align}
+\begin{math}
 	\df ω(𝒖) ≡ ω_𝒖 ≔ u^a ω_a
-.\end{align}
+.\end{math}
 
-The connection bivector is especially useful because the form of \cref{eqn:covder-connection-bivectors} is in fact general to \emph{all} multivectors --- in sharp contrast to \cref{eqn:covder-tensor-prod,eqn:covder-general-tensor} written in terms of connection coefficients.
+The connection bivector is especially useful because the form of \cref{eqn:covder-connection-bivectors} is in fact general to \emph{all} multivectors.
 
 
 \begin{lemma}
@@ -620,36 +620,35 @@ where $ω_𝒖$ is the required bivector.
 
 
 
-\section{Covariant Algebraic Derivatives}
+% \section{Covariant Algebraic Derivatives}
 
 
-The covariant derivative $∇_𝒖$ is analogous to the directional derivative $∂_𝒖$ of \cref{sec:algder}, but defined for sections on a manifold $F ∈ \secs(𝒜)$ instead of fields on a vector space $F : V → A$.
-In identical vein to \cref{def:algder}, it is useful to define a `total' derivative operator $𝒟$ which is independent of a direction $𝒖 ∈ \TT ℳ$.
-Like the algebraic derivative $\DD$ of \cref{sec:algder}, $𝒟$ is defined whenever an inclusion $ι : \TT^*ℳ → 𝒜$ is given (but usually left implicit) enabling tangent vectors to be multiplied by elements in the algebra.
+% The covariant derivative $∇_𝒖$ is analogous to the directional derivative $∂_𝒖$ of \cref{sec:algder}, but defined for sections on a manifold $F ∈ \secs(𝒜)$ instead of fields on a vector space $F : V → A$.
+% In identical vein to \cref{def:algder}, it is useful to define a `total' derivative operator $𝒟$ which is independent of a direction $𝒖 ∈ \TT ℳ$.
+% Like the algebraic derivative $\DD$ of \cref{sec:algder}, $𝒟$ is defined whenever an inclusion $ι : \TT^*ℳ → 𝒜$ is given (but $ι$ is usually left implicit) enabling tangent vectors to be multiplied by elements in the algebra.
 
-\begin{definition}
-	\label{def:covalgder}
-	Let $\fibrebundle A 𝒜 ℳ$ be an algebra bundle with product $⊛$ and connection $\df ∇$, equipped with an inclusion $ι : \TT^*ℳ → 𝒜$.
-	The \textdef{covariant algebraic derivative} of a section $F ∈ \secs(𝒜)$ is
-	\begin{align}
-		𝒟 F ≔ ι(\ve^a) ⊛ ∇_{\ve_a} F
-	\end{align}
-	(summation on $a$) where $\set{\ve_a} ⊂ \secs(\TT ℳ)$ and $\set{\ve^a} ⊂ \secs(\TT^* ℳ)$ are dual bases of tangent sections.
-\end{definition}
+% \begin{definition}
+% 	\label{def:covalgder}
+% 	Let $\fibrebundle A 𝒜 ℳ$ be an algebra bundle with product $⊛$ and connection $\df ∇$, equipped with an inclusion $ι : \TT^*ℳ → 𝒜$.
+% 	The \textdef{covariant algebraic derivative} of a section $F ∈ \secs(𝒜)$ is
+% 	\begin{align}
+% 		𝒟 F ≔ ι(\ve^a) ⊛ ∇_{\ve_a} F
+% 	\end{align}
+% 	(summation on $a$) where $\set{\ve_a} ⊂ \secs(\TT ℳ)$ and $\set{\ve^a} ⊂ \secs(\TT^* ℳ)$ are dual bases of tangent sections.
+% \end{definition}
 
 
-\subsection{The covariant vector derivative}
+% \subsection{The covariant vector derivative}
 
-The geometric algebra $\GA(V, η)$ may be defined on a manifold by taking $V$ to be the vector space of tangent sections $\secs(\TT ℳ)$.
-Write $\GA(ℳ, η)$ as shorthand for $\GA(\secs(\TT ℳ), η)$ to indicate this construction.
 
-On a geometric algebra bundle $\GA(ℳ, η)$, \cref{def:covalgder} is the \textdef{covariant vector derivative} $\VD$ and has similar properties to the vector derivative $\vd$ on $\GA(V, η)$.
-Given a basis $\set{\ve^a}$ (of $\secs(\TT^* ℳ)$ and $\GA[1](ℳ, η)$ alike), the covariant vector derivative is the operator
-\begin{align}
-	\VD = \ve^a ∇_a
-,\end{align}
-sharing the algebraic properties of a grade-$1$ vector.\sidenote{Hence its bold symbol, like $\vd$.}
-In particular, for a $k$-vector section $F ∈ \GA[k](ℳ, η)$, there is a decomposition into $(k ± 1)$-grade parts,
-\begin{align}
-	\VD F = \VD \lcontr F + \VD ∧ F
-.\end{align}
+% On a geometric algebra bundle $\GA(\TT ℳ, η)$, \cref{def:covalgder} is the \textdef{covariant vector derivative} $\VD$ and has similar properties to the vector derivative $\vd$ on $\GA(V, η)$.
+% Given a basis $\set{\ve^a}$ (simultaneously of $\secs(\TT^* ℳ)$ and $\GA[1](ℳ, η)$, so $ι$ may be omitted), we have the operator
+% \begin{align}
+% 	\VD = \ve^a ∇_a
+% ,\end{align}
+% sharing the algebraic properties of a grade-$1$ vector.\sidenote{Hence its bold symbol, like $\vd$.}
+% In particular, for a $k$-vector section $F ∈ \GA[k](ℳ, η)$, there is a decomposition into $(k ± 1)$-grade parts,
+% \begin{align}
+% 	\VD F = \VD \lcontr F + \VD ∧ F
+% ,\end{align}
+% corresponding to the covariant curl and `cocurl'.
