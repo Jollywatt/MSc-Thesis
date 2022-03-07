@@ -187,6 +187,10 @@ The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, re
 
 
 
+
+\pagebreak
+\subsection{With tensor calculus}
+
 \begin{margintable}
 	\footnotesize
 	\begin{tabular}{cl}
@@ -216,8 +220,6 @@ The constants $ε_0$ and $μ_0$ are the vacuum permittivity and permeability, re
 		In the relativistic formulation, $T$ and $L$ are unified and replaced by \emph{spacetime interval} $S$.
 	}
 \end{margintable}
-
-\subsection{With tensor calculus}
 
 The above can be expressed relativistically as eight scalar equations,
 \setlength{\fboxsep}{1.4ex}
@@ -404,7 +406,7 @@ and
 .\end{align}
 \Cref{eqn:F-is-E-iB} should be compared with the Riemann-Silberstein vector \cite{silberstein} which has the form $\vec F_\CC = \vec E + ic\vec B$.
 
-Similarly, the current density spacetime vector $J$ may be viewed under the space\slash time split by (left) multiplying by the frame velocity $\vg_0$,
+The current density spacetime vector $J$ may be viewed under the space\slash time split by (left) multiplying by the frame velocity $\vg_0$,
 \begin{align}
 	\vg_0 \vb J = cρ - \vec J
 ,\end{align}
@@ -423,7 +425,7 @@ is
 \begin{align}
 	\qty(\frac1c \pdv{t} + \vec ∇)\qty(\frac1c \vec E + \vol \vec B) &= μ_0\qty(cρ - \vec J)
 .\end{align}
-By expanding and equating grades, we obtain four equations:
+By expanding and equating grades, we instantly obtain four equations:
 \begin{align}
 	\frac1c \vec ∇ · \vec E &= μ_0 cρ
 &	&\text{(scalar)}
@@ -445,3 +447,70 @@ Hence, by adjusting by factors of $c$ and $\vol$ (and using $μ_0ε_0c^2 = 1$), 
 The calculations in this section were performed assuming the metric $η = \op{diag}\sig{+---}$.
 In the $\sig{-+++}$ signature, $\vg_0 \vb J = -cρ + \vec J$ differs by an overall sign, which is absorbed by the change of sign $F \mapsto -F$.
 
+
+
+\subsubsection{Circularly polarized plane wave solutions}
+
+In a vacuum, Maxwell's equation
+\begin{align}
+	\label{eqn:maxwell-vacuum-split}
+	\qty(\frac1c \pdv{t} + \vec ∇)F = 0
+\end{align}
+admits plane wave solutions
+\begin{align}
+	\label{eqn:plane-wave}
+	F_± = F_0 e^{±\vol(ωt - \vec k \cdot \vec x)}
+,\end{align}
+where $ω > 0$ is the frequency and $\vec k$ the wave vector.
+It should be emphasised that, in the geometric algebra, \cref{eqn:plane-wave} is a \emph{real} multivector --- we are not invoking the unit imaginary $i$, and do not implicitly take the real part of $F_±$ at the end of calculations.
+Instead, the `complex plane' is replaced with something geometrical: the $\vec E$-$\vec B$ plane.
+Indeed, from the geometric meaning inherent in the algebra, the solution \eqref{eqn:plane-wave} necessarily describes \emph{circularly polarized light}, with the $\vec E$ and $\vec B$ vectors rotating within the plane normal to the propagation direction \cite{hestenes1971sta}.
+
+This can be established by substituting the plane wave \cref{eqn:plane-wave} into \cref{eqn:maxwell-vacuum-split} to get
+\begin{align}
+	±\vol \qty(\fracωc - \vec k) F = 0
+.\end{align}
+The condition $(ω/c - \vec k)F = 0$ encodes several geometrical relationships.
+Firstly, by multiplying on the left by $(ω/c + \vec k)$, we see that
+\begin{align}
+	\qty(\frac{ω^2}{c^2} - k^2) F = 0
+\end{align}
+which, since $F ≠ 0$ gives the expected dispersion relation $ω = c\|\vec k\|$.
+Hence, by dividing by the magnitude of $\vec k$, we have
+\begin{math}
+	(1 - \hat{k})F = 0
+\end{math}
+where $\hat{k}^2 = 1$.
+Reintroducing the unknown electric and magnetic field vectors, this implies
+\begin{align}
+	(1 - \hat{k})(\vec E + \vol \vec B)
+	= \underbrace{\vec E }_1 + \underbrace{\vol \vec B}_2 - \underbrace{\hat{k} \vec E}_{0,2} - \underbrace{\hat{k} \vol \vec B}_{1,3}
+	= 0
+,\end{align}
+where the grades of terms as multivectors in $\GA(3)$ are indicated.
+Taking only the even or odd parts yields the condition
+\begin{align}
+	\hat{k}\vec E = \vol \vec B
+,\end{align}
+which implies two things: firstly, by multiplying both sides by their reverse, we see that $\|\vec E\| = \|\vec B\|$; secondly, by dividing on the right by the vector $\vec B$ to obtain
+\begin{align}
+	\hat{k} \hat E \hat B = \vol
+,\end{align}
+we conclude that $(\hat{k}, \hat E, \hat B)$ forms a right-handed orthonormal frame.
+
+Finally, to see the time dependence, evaluate the solution on the $\vec k \fatdot \vec x = 0$ plane,
+\begin{math}
+	F_+(t) = F_0 e^{-\vol ωt}
+\end{math}
+and expand noting that $\vol \vec B_0 = \hat{k} \vec E_0 = -\vec E_0 \hat{k}$.
+\begin{align}
+	\vec E(t) + \vol \vec B(t)
+	&= (\vec E_0 + \vol \vec B_0) (\cos ωt + \vol \sin ωt)
+\\	&= (\vec E_0 + \vol \vec B_0) \cos ωt + (\vol \vec E_0 - \vec B_0) \sin ωt
+% \\	&= \mp \vec E_0 (1 - \hat {k}) (\cos ωt + \vol \sin ωt)
+\end{align}
+Taking only the vector part of this equation yields
+\begin{align}
+	\vec E(t) = \vec E_0 \cos ωt - \vec B_0 \sin ωt
+.\end{align}
+Thus, looking toward the approaching plane wave $F_+(t)$ moving in the $\hat{k}$ direction, the $\vec E(t)$ and hence $\vec B(t)$ vectors are rotating clockwise; for $F_-(t)$, anticlockwise.
