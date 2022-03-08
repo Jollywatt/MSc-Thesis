@@ -419,3 +419,17 @@ Therefore, using the initial data $\trans_{γ(0 ← 0)} = \op{id}$, \cref{eqn:tr
 	But since the surface and loop are arbitrary, the curvature must vanish everywhere.
 \end{proof}
 
+\Cref{thm:nast} doesn't only apply to parallel transport on a tangent bundle; the connection $\df Γ$ may be on any abstract vector bundle.
+For example, in gauge theories, matter fields (or \emph{fermions}, after quantisation) are (more or less) represented as sections of a complex vector bundle equipped with a connection $\df A$.
+The degrees of freedom in the connection coefficients $A_μ{}^a{}_b$ also enter into the equations of motion, and represent force carriers (or \emph{bosons}).
+\marginnote{
+	\emph{Quantum electrodynamics} (QED) describes electrons as quanta in a fermion bundle, and photons as quanta of the Abelian connection $A_μ ∈ \CC$.
+	\emph{Quantum chromodynamics} (QCD) describes quarks with a fermion bundle, and gluons with a non-Abelian connection $A_μ{}^a{}_b ∈ \liealg{su}(3)$.
+}
+In this context, the trace of the holonomy of the connection $\df A$ is known as a \emph{Wilson loop}.
+In physicists' notation, \cref{thm:nast} then gives a non-Abelian Stokes' theorem
+\begin{align}
+	W[γ] &= \tr\qty(\mathds{P} e^{i λ \int_0^1 dt \, A_μ(x(t)) \dv{x^μ(t)}{t}}) 
+\\	&= \tr\qty(\mathds{P} e^{i λ \int_0^1 dt \int_0^1 ds \, w(x) \, F_{μν}(x(s,t)) \, w^{-1}(x) \pdv{x^μ(s,t)}{s} \pdv{x^ν(s,t)}{t}})
+\end{align}
+relating the Wilson loop $W[γ]$ to the gauge field strength $F_{μν}$ over the enclosed surface \cite{hirayama2000wilsonloops}.

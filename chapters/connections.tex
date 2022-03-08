@@ -248,11 +248,11 @@ defined by $\op{proj}_{H_p} 𝒖 + \op{rej}_{H_p} 𝒖 = 𝒖 ∈ \TT_p ℱ$ and
 defined at each $x ∈ ℳ$.
 Acting on a vector $𝒖 ∈ \TT_x ℳ$, this reads
 \begin{align}
-	∇_𝒖f ≔ \df ∇f(𝒖) = \op{rej}_{H_{f(x)}} \dd f(𝒖) ∈ \VV_{f(x)} ℱ
+	∇_𝒖f ≔ \df ∇f(𝒖) = \op{rej}_{H_{f(x)}}(\dd f(𝒖)) ∈ \VV_{f(x)} ℱ
 .\end{align}
-This can be interpreted intuitively as follows.
+This can be interpreted geometrically as follows.
 The true gradient vector $\dd f(𝒖) ∈ \TT_{f(x)}ℱ$ of the section $f$ lies outside the fibre's tangent space $\VV_{f(x)}ℱ ⊆ \TT_{f(x)}ℱ$.
-However, we do not want to measure horizontal motion --- just the \emph{effective} vertical change of $f(x)$ within the fibre induced by moving $x$ in the direction of $𝒖$.
+But we do not want to measure horizontal motion --- just the \emph{effective} vertical change of $f(x)$ induced by moving $x$ in the direction of $𝒖$.
 Thus, the covariant derivative $∇_𝒖f ∈ \VV_{f(x)}ℱ$ is the vertical projection of $\dd f(𝒖)$ obtained by discarding its horizontal component, where `horizontal' is of course specified by the connection  (see \cref{fig:covariant-derivative}).
 
 
@@ -336,7 +336,7 @@ so that
 \begin{math}
 	Γ_𝒖(f) = u^μ Γ_μ(f)
 .\end{math}
-Since $Γ_𝒖(f)|_x ∈ H_{f(x)}$ is a horizontal vector, we may also define the $2$-component object $Γ_μ{}^A$ by
+Since $Γ_𝒖(f)|_x ∈ H_{f(x)}$ is a (horizontal) vector, we may also define the $2$-component object $Γ_μ{}^A$ by
 \begin{align}
 	Γ_μ(f) = Γ_μ{}^A(f) \, \∂_A
 .\end{align}
@@ -348,7 +348,7 @@ Indeed, the same applies to the push-forward
 \begin{math}
 	\dd f = \dd f^μ \, \∂_μ + \dd f^a \, \∂_a
 \end{math}
-since $\dd f$ is not vertical (see \cref{fig:covariant-derivative} --- the non-verticality of the usual derivative $\dd f$ is what the covariant derivative attempts to fix).
+since $\dd f$ is not vertical (the non-verticality of the usual derivative $\dd f$ is what the covariant derivative attempts to fix).
 However, since $∇_μ f ∈ \VV ℱ$ as a whole \emph{is} vertical, the base components $Γ_μ{}^ν$ and $∂_μ f^ν$ must cancel.
 
 This is verified by noting that
@@ -385,7 +385,7 @@ We now consider connections and their associated covariant derivatives on \emph{
 % \subsubsection{On vector bundles}
 
 In general, the transport operator over a path is an invertible map between the start and end fibres.
-For a vector bundle, we require this to be a \emph{linear} map.
+For a vector bundle, we often require this to be a \emph{linear} map, in which case the connection is said to be linear.
 By \cref{lem:trans-ode}, this means the horizontal lift is also linear in its fibre argument,
 \begin{math}
 	\df Γ(λ^i X_i) = λ^i \df Γ(X_i)
@@ -395,9 +395,14 @@ so we may regard $Γ_𝒖$ as a matrix and $\df Γ$ as a matrix-valued $1$-form,
 	\df Γ X ≔ \df Γ(X)
 .\end{math}
 
-If $\set{\ve_a}$ is a basis for some vector bundle $\fibrebundle V 𝒱 ℳ$, then we may introduce the $3$-component \textdef{connection coefficients},
+If $\set{\ve_a}$ is a basis for some vector bundle $𝒱$ with a linear connection, then we define $3$-component \textdef{connection coefficients},
 \begin{align}
 	Γ_μ{}^a{}_b ≔ Γ_μ{}^a \ve_b
+	\marginnote{
+		Our notation suggest a $1$-form
+		$\df Γ = Γ_μ \dx^μ$ of matrices $Γ_μ{} = Γ_μ{}^a{}_b \ve_a ⊗ \ve^b$, but index placement varies in the literature:
+		\cite{misner1973gravitation} uses $Γ^a{}_{bμ}$; \cite{carroll2019gr} uses $Γ^a_{μb}$.
+	}
 .\end{align}
 We may write expressions in both basis-free and component forms; 
 \begin{align}
