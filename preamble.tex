@@ -167,6 +167,9 @@
 	font=footnotesize,
 }
 
+\renewcommand{\figurename}{Fig.}
+
+
 \newcommand{\ragged}{\Ifthispageodd{\raggedright}{\raggedleft}}
 \DeclareCaptionJustification{raggedauto}{\Ifthispageodd{\raggedright}{\raggedleft}}% <- changed
 \DeclareCaptionStyle{marginfigure}{
@@ -219,7 +222,12 @@
 \usepackage{array}
 \newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
 \newcolumntype{L}{>{$}l<{$}} % math-mode version of "c" column type
+\newcolumntype{R}{>{$}r<{$}} % math-mode version of "c" column type
 
+
+\newcommand\mytikzmark[3][]{%
+  \tikz[remember picture,baseline=(#2.base)]{\node(#2)[outer sep=0pt,#1]{#3};}%
+}
 
 % REFERENCING
 

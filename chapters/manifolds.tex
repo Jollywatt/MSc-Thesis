@@ -69,17 +69,9 @@ However, being locally Euclidean means there is a real vector space naturally as
 
 Given a smooth manifold, its tangent bundle comes for free: its construction is canonical.
 Similarly, given a smooth function $f$ between manifolds, there is a kind of `tangent' or derivative $\dd f$ which also comes for free.
-In the same way that the tangent bundle consists of `directional derivatives of points' in the manifold (i.e., tangent vectors), the differential $\dd f$ encodes the directional derivatives of $f$ at all points in the domain.\sidenote{
-	This parallel is precise: $\dd$ and $\TT$ form a functor in category of smooth manifolds, sending
-	\begin{math}
-		f: ℳ → 𝒩
-	\end{math}
-	to
-	\begin{math}
-		\dd f: \TTℳ → \TT𝒩
-	.\end{math}
-	Some authors use the symbol $\TT$ for both.
-}
+In the same way that the tangent bundle consists of `directional derivatives of points' in the manifold (i.e., tangent vectors), the differential $\dd f$ encodes the directional derivatives of $f$ at all points in the domain.\sidenotemark
+
+\pagebreak
 
 \begin{definition}
 	\label{def:differential}
@@ -90,6 +82,18 @@ In the same way that the tangent bundle consists of `directional derivatives of 
 	\end{align}
 	for each point $x ∈ ℳ$, vector $𝒖 ∈ \TT_xℳ$ and smooth function $φ : \manif N → \RR$.
 \end{definition}
+
+\sidenotetext{
+	This parallel is precise: $\dd$ and $\TT$ form a functor in category of smooth manifolds, sending
+	\begin{math}
+		f: ℳ → 𝒩
+	\end{math}
+	to
+	\begin{math}
+		\dd f: \TTℳ → \TT𝒩
+	.\end{math}
+	Some authors use the symbol $\TT$ for both.
+}
 
 \todo{Consider notation overhaul: $\dd f ⟼ f_*$}
 
@@ -475,8 +479,8 @@ Continuing in this way, it follows that the Lie derivative of a general tensor $
 \end{fullwidth}
 This sets the stage for how much simpler the form of the Lie derivative is on exterior differential forms and multivectors.
 
-On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula''\sidenotemark
-\sidenotetext{
+On exterior differential forms $\df φ$, the Lie derivative may be expressed in a basis-free fashion using Cartan's ``magic formula''\,\sidenotemark
+\sidenotetext[][-5ex]{
 	\emph{Sketch proof.}
 	$\dd$ and $𝒖 \lcontr$ are anti-derivations, so their anti-commutator is a derivation (\cref{lem:coms-of-derivations}).
 	Derivations agreeing on scalars and exact $1$-forms (which generate the exterior algebra) are equal.

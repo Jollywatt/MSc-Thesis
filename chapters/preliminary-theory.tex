@@ -19,6 +19,11 @@ The excitable reader may skip this chapter and refer back as needed.
 
 Throughout, $\FF$ denotes the underlying field of some vector space.
 (Eventually, $\FF$ will always be taken to be $\RR$, but we may begin in generality.)
+\pagebreak
+\begin{definition}
+	\label{def:associative-algebra}
+	An \textdef{associative algebra} $A$ is a vector space equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
+\end{definition}
 \marginnote{
 	\emph{Examples.}
 	Any ring forms an associative algebra when considered as a one-dimensional vector space.
@@ -27,10 +32,6 @@ Throughout, $\FF$ denotes the underlying field of some vector space.
 		(x_1, y_1)⊛(x_2, y_2) ≔ (x_1x_2 - y_1y_2, x_1y_2 + y_1x_2)
 	.\end{math}
 }
-\begin{definition}
-	\label{def:associative-algebra}
-	An \textdef{associative algebra} $A$ is a vector space equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
-\end{definition}
 Associativity means $(a ⊛ b) ⊛ c = a ⊛ (b ⊛ c)$ for $a,b,c ∈ A$, while bilinearity means the product is:
 \begin{itemize}
 	\item compatible with scalars: $(λa) ⊛ b = a ⊛ (λb) = λ(a ⊛ b)$ for $λ \in \FF$; and

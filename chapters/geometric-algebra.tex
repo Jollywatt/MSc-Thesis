@@ -86,6 +86,19 @@ Thus, the geometric product on vectors is
 	\label{eqn:geometric-prod-of-vectors}
 	𝒖𝒗 = \ip{𝒖, 𝒗} + 𝒖∧𝒗
 ,\end{align}
+\begin{marginfigure}
+	\centering
+	\begin{tabular}{CC|C}
+		& \mytikzmark{block2}{$𝒖 ∧ 𝒗\vphantom{⟩}$} & 2
+	\\	\mytikzmark{block1}{$𝒖𝒗$} & & 1
+	\\	& \mytikzmark{block0}{$\ip{𝒖,𝒗}$} & 0
+	\end{tabular}
+	\begin{tikzpicture}[remember picture,overlay]
+		\draw(block1.east)to(block2.west);
+		\draw(block1.east)to(block0.west);
+	\end{tikzpicture}
+	\caption{Grade diagram for \cref{eqn:geometric-prod-of-vectors}.}
+\end{marginfigure}
 and some important features are immediate:
 \begin{itemize}
 	\item \emph{Parallel vectors commute, and vice versa:}
@@ -738,10 +751,30 @@ enjoys several useful properties, particularly when acting on bivectors.
 \begin{lemma}
 	For a bivector $σ$ and multivector $A$,
 	\begin{align}
+		\label{eqn:bivector-multivector-prod}
 		σA = σ \lcontr A + σ × A + σ ∧ A
 	,\end{align}
 	where $a×b = \frac12(ab - ba)$ is the commutator product.
 \end{lemma}
+\begin{marginfigure}
+	\centering
+	\begin{tabular}{CC|R}
+		& \mytikzmark{blockN}{$σ ∧ A$} & +2
+	\\	& & +1
+	\\	\mytikzmark{blockW}{$σA$} & \mytikzmark{blockE}{$σ×A$} & 0
+	\\	& & -1
+	\\	& \mytikzmark{blockS}{$σ \lcontr A$} & -2
+	\end{tabular}
+	\begin{tikzpicture}[remember picture,overlay]
+		\draw(blockW.east)to(blockN.west);
+		\draw(blockW.east)to(blockS.west);
+		\draw(blockW.east)to(blockE.west);
+	\end{tikzpicture}
+	\caption{
+		Grade diagram for \cref{eqn:bivector-multivector-prod}.
+		Grades are labelled relative to the grade of $A$.
+	}
+\end{marginfigure}
 \begin{proof}
 	Suppose $A$ is a $k$-vector.
 	The geometric product with a bivector then contains non-zero parts of three grades,
@@ -809,6 +842,8 @@ There is no need for matrix representations whose underlying geometries are obsc
 As discussed at the start of this chapter, the lack of a $\ZZ$-grading means that a geometric product of blades is generally an inhomogeneous multivector.
 Geometrically, the grade $k$ part of product of blades reveals the degree to which the two blades are `orthogonal' or `parallel', in a certain $k$-dimensional sense.
 
+
+
 To see this, first consider the special case where the product of blades $a$ and $b$ is a homogeneous $k$-blade.
 This occurs when there exists a common orthonormal basis $\qty{𝒆_i}$ such that
 \begin{align}
@@ -822,6 +857,30 @@ Then, the product is
 	ab = ±αβ \etc{\ve_{h_\i}}{}k
 .\end{align}
 Each pair of parallel basis vectors in $a$ and $b$ contributes an overall factor of $\ve_i^2 = ±1$, and each transposition required to bring each pair together flips the overall sign.
+
+\begin{marginfigure}
+	\centering
+	\footnotesize
+	\begin{tabular}{CC|L}
+		& \mytikzmark{blockNN}{$a ∧ b$} & p + q
+	% \\	& & p + q - 1
+	\\	& \mytikzmark{blockN}{$\phantom{a ∧ b}$} & p + q - 2
+	% \\	& & \vdots
+	\\	\mytikzmark{blockW}{$ab$} & \mytikzmark{blockE}{$\ooalign{\phantom{a ∧ b}\cr\hfil\vdots\hfil}$} & \;\;\;\,\vdots
+	% \\	& & \vdots
+	\\	& \mytikzmark{blockS}{$\phantom{a ∧ b}$} & |p - q| + 2
+	% \\	& & |p - q| + 1
+	\\	& \mytikzmark{blockSS}{$a \fatdot b$} & |p - q|
+	\end{tabular}
+	\begin{tikzpicture}[remember picture,overlay]
+		\draw(blockW.east)to(blockNN.west);
+		\draw(blockW.east)to(blockN.west);
+		\draw(blockW.east)to(blockE.west);
+		\draw(blockW.east)to(blockS.west);
+		\draw(blockW.east)to(blockSS.west);
+	\end{tikzpicture}
+	\caption{Grade diagram for a $p$-vector and $q$-vector.}
+\end{marginfigure}
 
 The resulting grade $k$ is the number of basis vectors $𝒆_{h_i}$ which are not common to both $a$ and $b$; i.e., $\set{h_i}$ is the symmetric difference of $i$ and $j$.
 % $\set{\etc{i_\i},p} \ominus \set{\etc{j_\i},q}$.
