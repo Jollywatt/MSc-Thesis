@@ -63,7 +63,7 @@ In particular, this establishes a duality between vectors and trivectors, and be
 \label{sec:spacetime-split}
 
 While we actually live in $\RR^{1,3}$ spacetime, to any particular observer it appears that space is $\RR^3$ with a separate scalar time parameter.
-This is reflected in the fact that $\GA[+](1,3)$ and $\GA(3)$ are isomorphic if one `flattens' the time dimension.
+This is reflected in the fact that $\GA[+](1,3)$ and $\GA(3)$ are isomorphic by `flattening' the time dimension.
 In fact, from \cref{lem:even-subalg-isos}, there is a separate isomorphism associated to each timelike direction, corresponding to each inertial observer's experience of space and time.
 Such a \textdef{space\slash time split} identifies \emph{even} multivectors in the spacetime algebra $\GA[+](1,3)$ with $\GA(3)$ multivectors, and provides an efficient, purely algebraic method for switching between inertial frames \cite{hestenes2003sta}.
 
@@ -72,9 +72,10 @@ Let $K$ be an inertial observer and for simplicity choose the standard basis $\q
 The three \textdef{relative vectors} $\vs_i ≔ \vg_i\vg_0$ form a vector basis for $\GA(3)$, since the $\vg_i\vg_0$ indeed satisfy $\vs_i^2 = -\vg_i^2\vg_0^2 = 1$ and $\vs_i\vs_j = -\vs_j\vs_i$ for $i ≠ j$.
 Because of the dependence on $\vg_0$, the relative vectors $\vs_i$ are specific to the $K$ frame.
 Note that the same volume element $\vol = \vs_1\vs_2\vs_3 = \vg_0\vg_1\vg_2\vg_3$ is shared by both algebras and all frames.
-With respect to the $K$ frame, we may view $\GA(3) ⊂ \GA(1,3)$ as embedded in the STA, allowing us to consider multivectors as belonging to both spaces as convenient.
+With respect to the $K$ frame, we may view $\GA(3) ⊂ \GA(1,3)$ as embedded in the STA, allowing us to consider multivectors as belonging to both algebras as convenient.
 
-For example a spacetime bivector $F = F^{μν}\vg_μ\vg_ν$ may be separated into timelike $F^{i0}$ and spacelike $F^{ij}$ components with respect to the $K$ frame and viewed as a $\qty{1,2}$\hyp multivector in $\GA(3)$,
+For example a spacetime bivector $F = F^{μν}\vg_μ\vg_ν$ may be separated into timelike $F^{i0}$ and spacelike $F^{ij}$ components and viewed as a $\qty{1,2}$\hyp multivector in $\GA(3)$.
+With respect to the $K$ frame,
 \begin{align}
 	\label{eqn:sta-bivector-split}
 	F = F^{i0}\vg_i\vg_0 + F^{ij}\vg_i\vg_j
@@ -214,7 +215,7 @@ exponentiates to the same rotor, up to an overall sign:
 \end{align}
 Note that $e^{\hat σ + \vol\hat σ} = e^{\hat σ}e^{\vol\hat σ}$ since $[\hat σ, \vol\hat σ] = 0$.
 All the rotors in \cref{eqn:equivalent-rotors} correspond to the same $\SO^+(1,3)$ Lorentz transformation.
-\Cref{eqn:equivalent-rotors} shows that every Lorentz rotor $±e^{σ_0}$ is equal to a pure bivector exponential $e^{σ_n}$ with a shifted rotational part $λ_- \mapsto λ_- + n\pi$.
+\Cref{eqn:equivalent-rotors} also shows that every Lorentz rotor $±e^{σ_0}$ is equal to a pure bivector exponential $e^{σ_n}$ with a shifted rotational part $λ_- \mapsto λ_- + n\pi$.
 
 
 \section{Lorentz Conjugacy Classes}
