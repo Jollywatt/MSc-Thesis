@@ -4,8 +4,7 @@
 
 Many of the tools we will develop take place in various associative algebras.
 As well as the geometric algebra of spacetime, we will encounter tensors, exterior forms, quaternions, and other structures in this category.
-Instead of defining each algebra axiomatically as needed, it is easier to develop the general theory of associative algebras, taking special 
-This enables the use of the same tools and the same terminology throughout.
+Instead of defining each algebra axiomatically as needed, it is easier to develop the general theory of associative algebras, and looks at special cases.
 
 Therefore, this section is an overview of the abstract theory of associative algebras, which more generally belongs to \emph{ring theory}.\sidenote{
 	A \textdef{ring} is a field without the requiring commutativity nor existence of multiplicative inverses.
@@ -47,7 +46,7 @@ However, we will use ``algebra'' exclusively to mean an associative algebra over
 
 The most general (associative) algebra containing a given vector space $V$ is the \textdef{tensor algebra $\TA{V}$}.
 The tensor product $⊗$ satisfies exactly the relations of \cref{def:associative-algebra} with no others.
-Thus, the tensor algebra associative, bilinear and \emph{free} in the sense that no further information is required in its definition.
+Thus, the tensor algebra is associative, bilinear and \emph{free} in the sense that no further information is required in its definition.
 
 As a vector space, the tensor algebra is equal to the infinite direct sum
 \begin{align}
@@ -160,7 +159,7 @@ Furthermore, both can be given in terms of a homomorphism between algebras,\side
 	Thus, $\ker Ψ$ is an ideal by \cref{def:ideal}.
 
 	The first equivalence in \cref{item:first-iso:iso} follows from \cref{lem:congruence-ideal-equiv}.
-	For an isomorphism $Φ : \quot A {\ker Ψ} → Ω(A)$, pick $Φ([a]) = Ψ(a)$.
+	For an isomorphism $Φ : \quot A {\ker Ψ} → Ψ(A)$, pick $Φ([a]) = Ψ(a)$.
 	This is well-defined because the choice of representative of the equivalence class $[a]$ does not matter; $a \sim a'$ if and only if $Ψ(a) = Ψ(a')$ by definition of $\sim$, which simultaneously shows that $Φ$ is injective.
 	Surjectivity follows since any element of $Ψ(A)$ is of the form $Ψ(a)$ which is the image of $[a]$.
 \end{proof}
@@ -381,7 +380,7 @@ In fact, any $k$-blade may be viewed as a subspace of $V$ with an oriented scala
 \begin{definition}
 	The \textdef{span} of a non-zero $k$-blade $b = \etc{𝒖_\i}∧k$ is the $k$-dimensional subspace
 	$\spanof b = \spanof{\etc{𝒖_\i},k}$.
-	Define the span of zero to be the trivial subspace.
+	The span of the trivial blade is defined to be the zero-dimensional subspace.
 \end{definition}
 
 \begin{marginfigure}
@@ -478,7 +477,7 @@ These different normalisations of $∧$ lead to distinct identifications of mult
 \end{table}
 
 Both conventions are present in literature.
-We employ the Kobayashi--Nomizu convention for $\EA{V}$ as this is coincides with the wedge product of geometric algebra (see \cref{cha:geometric-algebra}).
+We employ the Kobayashi--Nomizu convention for $\EA{V}$ as this coincides with the wedge product of geometric algebra (see \cref{cha:geometric-algebra}).
 However, the Spivak convention is dominant for exterior differential forms in physics.\sidenote{
 	E.g., Misner, Thorne, Wheeler \cite{misner1973gravitation}; Flanders \cite{flanders1963differential}; Sharpe, Chern \cite{sharpe2000dg}.	
 }
@@ -633,20 +632,20 @@ The names become justified when working with a basis: the relations
 \end{align}
 show that $\flat$ \emph{lowers} indices, while $\sharp$ \emph{raises} them.
 
-Given a metric, a choice of basis $\set{\ve_i} ⊂ V$ also defines a \textdef{dual basis $\set{\ve^i} \subset V^*$ of $V$} via
+Even without a metric, a choice of basis $\set{\ve_i} ⊂ V$ defines a \textdef{dual basis $\set{\ve^i} \subset V^*$ of $V$} via
 \begin{math}
-	\ve^i ≔ η^{ij}\ve_j^\flat
+	\ve^i(\ve_j) ≔ δ^i_j
+	% \ve^i ≔ η^{ij}\ve_j^\flat
 .\end{math}
-Note that basis vectors and covectors defined in this way do not exist in the same vector space, but are related by their evaluation on one another by $\ve^i(\ve_j) = δ^i_j$.
-In some contexts, we will define a dual basis $\set{\ve^i}$ in $V$ (not in $V^*$), a.k.a.\ a \textdef{reciprocal basis}, and by this we mean
-\begin{math}
+Note that basis vectors and covectors defined in this way do not exist in the same vector space, but are related by their evaluation on one another.
+Given a metric, we may use the musical isomorphisms to transport basis vectors between $V$ and $V^*$, leading to the relationship $\ve^i = η^{ij}\ve_j^\flat$.
+This motivates the definition of a \textdef{reciprocal basis} \begin{math}
 	\ve^i ≔ η^{ij}\ve_j
-.\end{math}
-Then, dual and non-dual basis vectors are related via $\ip{\ve^i, \ve_j} = δ^i_j$.
+,\end{math}
+where the musical isomorphism is omitted, and everything belongs to the same space $V$.
+Then, dual and non-dual (reciprocal) basis vectors are related via $\ip{\ve^i, \ve_j} = δ^i_j$.
 
-We use both senses of the term ``dual basis''.
-In particular, $V^*$ is never needed in the geometric algebra; its role is filled by reciprocal bases.
-Often, the distinction can be safely ignored (since, after all, $V \cong V^*$).
+In practice, $V^*$ is never needed in the geometric algebra, but we still speak of `dual bases' and `dual vectors', in the sense of reciprocal bases.
 
 %  or $\ve^i = η^{ij}\ve_j$.
 

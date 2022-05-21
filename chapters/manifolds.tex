@@ -4,7 +4,8 @@
 
 The investigations of \cref{part:1} were restricted to \emph{flat geometries}.
 Special relativity models spacetime as a homogeneous, isotropic Minkowski vector space.
-However, in the general theory of relativity, spacetime no longer has an intrinsic vector space structure, instead exhibiting curvature to incorporate gravity.
+Removing reference to an origin, this is an \emph{affine} space.
+However, in the general theory of relativity, spacetime no longer has an intrinsic affine structure, instead exhibiting curvature to incorporate gravity.
 The mathematical demands of curvature call for the \emph{differential geometry of smooth manifolds}.
 
 
@@ -379,7 +380,7 @@ In general, the derivative of a section of a fibre bundle is not defined, becaus
 For some kinds of object, however, it is possible to define transport between fibres using the \emph{flow} of a tangent vector section.
 We call objects for which this is possible \textdef{flowable}.
 
-Thus, the value of a flowable object at a point $x$ to may be directly compared to its value at some other point $y$ by flowing the $y$-value back to the $x$-fibre.
+In this vein, the value of a flowable object at a point $x$ may be directly compared to its value at some other point $y$ by flowing the $y$-value back to the $x$-fibre.
 This enables the definition of a kind of derivative with respect to the flow --- a construction called the \emph{Lie derivative}.
 
 % However, tangent vectors can be transported by differentials of smooth maps.
@@ -395,6 +396,9 @@ This enables the definition of a kind of derivative with respect to the flow ---
 	\end{align}
 	for all values of the parameter $t$.
 \end{definition}
+\sidenote{
+	Note that the same symbol $\flow{𝒖}{t}$ is used to denote the flow of different kinds of objects.
+}
 \begin{definition}
 	\label{def:lieder}
 	The \textdef{Lie derivative} $\lie_𝒖 A$ of a flowable object $A$ along a tangent section $𝒖 ∈ \secs(\TT ℳ)$ is
@@ -458,7 +462,7 @@ Other flowable objects include structures built from the tangent bundle, e.g., t
 	\begin{align}
 		(\lie_𝒖 𝒗)f = -𝒗(𝒖(f)) + 𝒖(𝒗(f))
 	\end{align}
-	which is the lie bracket acting on the arbitrary scalar section $f$.
+	which is the Lie bracket acting on the arbitrary scalar section $f$.
 \end{proof}
 
 \subsection{On tensors and differential forms}

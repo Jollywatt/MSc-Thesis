@@ -25,7 +25,7 @@
 
 	Let $\set{U_i}$ be a cover of $R$ consisting of such neighbourhoods.
 	Since $R$ is compact, we may assume $\bigcup_{i=1}^N \set{U_i} = R$ to be a finite covering.
-	Thus, we have finitely maps $h_i : U_i → X$ where $X$ is either $\RR^k$ or the half-space $H^k$, where $U_i \cong h_i(U_i)$ are diffeomorphic (see \cref{fig:stokes-theorem}).
+	Thus, we have finitely many maps $h_i : U_i → X$ where $X$ is either $\RR^k$ or the half-space $H^k$, where $U_i \cong h_i(U_i)$ are diffeomorphic (see \cref{fig:stokes-theorem}).
 
 	Finally, let $\set{ϕ_i : R → [0, 1]}$ be a partition of unity subordinate to $\set{U_i}$, so that $\set{x ∈ R | ϕ_i(x) > 0} ⊆ U_i$ and $ω = \sum_{i=1}^N ϕ_iω$.
 	We need only prove the equality \eqref{eqn:stokes} for each $ω_i ≔ ϕ_iω$, and the full result follows be linearity.
@@ -49,12 +49,12 @@
 		\end{align}
 		The left-hand side evaluates to
 		\begin{align}
-			\int_R \dd ω_i
-			&= \int_X \dd (h_i^*ω_i)
-			= \int_{\RR^k} \sum_{j=1}^k \pdv{f_j}{x^j} \dd x^{1\cdots n}
+		  	\int_R \dd ω_i
+		  	&= \int_X \dd (h_i^*ω_i)
+		  	= \int_{\RR^k} \sum_{j=1}^k \pdv{f_j}{x^j} \dd x^{1\cdots n}
 		\\	&= \underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_k \sum_{j=1}^k \pdv{f_j}{x^j} \etc{dx^\i}{}{k}
 		\\	&= \underbrace{\etc{\int_{-∞}^{+∞}}{}{}}_{k - 1} \sum_{j=1}^k \eval{f_j}_{x^j=-∞}^{+∞} (-1)^{j-1} dx^1\cdots\widehat{dx^j}\cdots dx^k
-			= 0
+		  	= 0
 		,\end{align}
 		which vanishes because $h_i^*ω_i$, and hence the $f_j$, vanish outside the neighbourhood $h_i(U_i) ⊂ \RR^k$.
 

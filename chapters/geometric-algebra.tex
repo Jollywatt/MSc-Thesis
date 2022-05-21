@@ -158,7 +158,7 @@ These are extended by linearity to inhomogeneous elements.
 	.\end{align}
 \end{definition}
 
-With the wedge product defined on all of $\GA(V, η)$, we use language of multivectors as we did with the exterior algebra, so that $\etc{𝒖_\i}∧k ∈ \GA[k](V, η)$ is a $k$-blade, and a sum of $k$-blades is a $k$\hyp multivector, etcetea.
+With the wedge product defined on all of $\GA(V, η)$, we use language of multivectors as we did with the exterior algebra, so that $\etc{𝒖_\i}∧k ∈ \GA[k](V, η)$ is a $k$-blade, and a sum of $k$-blades is a $k$\hyp multivector, etcetera.
 
 The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nicely; the induced metric on $k$-vectors introduced in \cref{sec:metrical-exterior-alg} is expressible in any of the following ways.
 \begin{align}
@@ -166,8 +166,11 @@ The products in \cref{def:wedge-and-fat-dot-for-multivectors} work together nice
 	\ip{A, B} = \revsign{k} \, \grade{AB}
 	= \grade{\rev{A}B} = \grade{A\rev{B}}
 	= \rev{A} \fatdot B = A \fatdot \rev{B}
+	\marginnote{
+		$\revsign{k} = (-1)^{(k - 1)k/2}$; see \eqref{eqn:reversion-sign}.
+	}
 ,\end{align}
-The reversion in necessary because the vectors in the product of two blades $(\etc{\ve_{i_\i}}{}k)(\etc{\ve_{j_\i}}{}k)$ are paired `inside first'.
+The reversion is necessary because the vectors in the product of two blades $(\etc{\ve_{i_\i}}{}k)(\etc{\ve_{j_\i}}{}k)$ are paired `inside first'.
 
 % \begin{lemma}
 % 	For $k$-vectors $A$ and $B$,
@@ -208,7 +211,7 @@ An efficient way to become familiar with the geometric algebra is to exemplify i
 
 \subsection{Fundamental algebra automorphisms}
 
-Operations such complex conjugation $\overline{AB} = \overline{A}\,\overline{B}$ or matrix transposition $(AB)\transpose = B\transpose A\transpose$ are useful because they preserve or reverse multiplication.
+Operations such as complex conjugation $\overline{AB} = \overline{A}\,\overline{B}$ or matrix transposition $(AB)\transpose = B\transpose A\transpose$ are useful because they preserve or reverse multiplication.
 Linear functions with this property are called algebra automorphisms or antiautomorphisms, respectively.
 The geometric algebra possesses several important \paren{anti}automorphism operations.
 
@@ -219,7 +222,7 @@ An isometry $f$ extends uniquely to an algebra \paren{anti}automorphism by defin
 Thus, by extending the two fundamental isometries of $(V, η)$ in the two possible ways, we obtain four fundamental \paren{anti}automorphisms on $\GA(V, η)$.
 
 \begin{definition}
-	Let $𝒖 ∈ \GA[1](V, η)$ be a vector and $A, B ∈ \GA(V, η)$ possubly inhomogeneous multivectors in a geometric algebra.
+	Let $𝒖 ∈ \GA[1](V, η)$ be a vector and $A, B ∈ \GA(V, η)$ possibly inhomogeneous multivectors in a geometric algebra.
 	\begin{itemize}
 		\item \textdef{Reversion $\dagger$} is the identity map on vectors $\rev{𝒖} = 𝒖$ extended to general multivectors by the rule $\rev{(AB)} = \rev{B}\rev{A}$.
 		
@@ -537,12 +540,12 @@ Many familiar algebraic structures in classical, relativistic and quantum physic
 	These form a complex representation of the \emph{algebra of spacetime}, $\GA(1,3)$, via $\ve_μ ⟷ γ_μ$.
 	Again, reversion corresponds to the adjoint, and $\vol ≔ \ve_0\ve_1\ve_2\ve_3 ⟷ γ_0γ_1γ_2γ_3 = -iγ_5$.
 
-	\item\textbf{Creation an annihilation operators}
+	\item\textbf{Creation and annihilation operators}
 
 	In an interesting example which is fundamentally different to those above is the algebra of `ladder operators' appearing in the quantum theory of fermions.
 	Defined by the anticommutation relations
 	\begin{align}
-		\qty\big{a_i, a_j} &= 0
+	  	\qty\big{a_i, a_j} &= 0
 	,&	\qty\big{a_i, a_j^*} &= δ_{ij}
 	,&	\qty\big{a_i^*, a_j^*} &= 0
 	,\end{align}
