@@ -4,10 +4,10 @@
 
 Many of the tools we will develop take place in various associative algebras.
 As well as the geometric algebra of spacetime, we will encounter tensors, exterior forms, quaternions, and other structures in this category.
-Instead of defining each algebra axiomatically as needed, it is easier to develop the general theory of associative algebras, and looks at special cases.
+Instead of defining each algebra axiomatically when needed, it is easier to develop the general theory of associative algebras and then to look at special cases.
 
 Therefore, this section is an overview of the abstract theory of associative algebras, which more generally belongs to \emph{ring theory}.\sidenote{
-	A \textdef{ring} is a field without the requiring commutativity nor existence of multiplicative inverses.
+	A \textdef{ring} is a field which does not require commutativity nor the existence of multiplicative inverses.
 }
 \emph{Algebras}, \emph{quotients} and \emph{gradings} are defined, as well as \emph{tensors}, \emph{multivectors} and \emph{exterior forms}.
 Most definitions in this chapter can be readily generalised by replacing the field $\FF$ with a ring.
@@ -21,11 +21,11 @@ Throughout, $\FF$ denotes the underlying field of some vector space.
 \pagebreak
 \begin{definition}
 	\label{def:associative-algebra}
-	An \textdef{associative algebra} $A$ is a vector space equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
+	An \textdef{associative algebra} $A$ is a vector space over $\FF$ equipped with a product $⊛ : A × A \to A$ which is associative and bilinear.
 \end{definition}
 \marginnote{
 	\emph{Examples.}
-	Any ring forms an associative algebra when considered as a one-dimensional vector space.
+	Any field forms an associative algebra when considered as a one-dimensional vector space.
 	The complex numbers can be viewed as a real $2$-dimensional algebra by defining $⊛$ to be complex multiplication;
 	\begin{math}
 		(x_1, y_1)⊛(x_2, y_2) ≔ (x_1x_2 - y_1y_2, x_1y_2 + y_1x_2)
@@ -52,6 +52,7 @@ As a vector space, the tensor algebra is equal to the infinite direct sum
 \begin{align}
 	\label{eqn:tensor-algebra-graded-decomposition}
 	\TA{V} ≅ \bigoplus_{k=0}^∞ V^{⊗k} ≡ \FF ⊕ V ⊕ (V ⊗ V) ⊕ (V ⊗ V ⊗ V) ⊕ \cdots
+	\marginnote{`$≡$' denotes notational equivalence}
 \end{align}
 where each $\TA[k]{V}$ is the subspace of \textdef{tensors of grade $k$}.
 
@@ -185,13 +186,13 @@ Informally, an algebra's grading provides a labelling for some of its elements, 
 
 \begin{definition}
 	\label{def:grading}
-	An algebra $A$ is \textdef{$R$-graded} for $(R, +)$ a monoid\,\sidenote{A \textdef{monoid} is a group without the requirement of inverses; i.e., a set with an associative binary operation for which there is an identity element.} if there exists a decomposition
+	An algebra $A$ is \textdef{$R$-graded} for $(R, +)$ a monoid\,\sidenote{A \textdef{monoid} is a group without the requirement of inverses; i.e., a set with an associative binary operation $+$ for which there is an identity element.} if there exists a decomposition
 	\begin{align}
 		A = \bigoplus_{k ∈ R} A_{k}
 	\end{align}
 	such that $A_{i} ⊛ A_{j} ⊆ A_{i + j}$, i.e., $a ∈ A_{i}, b ∈ A_{j} ⟹ a ⊛ b ∈ A_{i + j}$.
 \end{definition}
-The monoid is usually taken to additive over $\NN$ or $\ZZ$, possibly modulo some integer.
+The monoid is usually taken to be additive over $\NN$ or $\ZZ$, possibly modulo some integer.
 For instance, the tensor algebra $\TA{V}$ is $\NN$-graded, since if $a ∈ \TA[p]{V}$ and $b ∈ \TA[q]{V}$ then $a ⊗ b ∈ \TA[p + q]{V}$.
 Indeed, $\TA{V}$ is also $\ZZ$-graded if for $k < 0$ we understand $\TA[k]{V} ≔ \qty{\mathbf{0}}$ to be the trivial vector space.
 The tensor algebra is also $\ZZ_p$-graded, where $\ZZ_p ≡ \quot \ZZ {p\ZZ}$ is addition modulo any $p > 0$, since the decomposition
@@ -204,7 +205,7 @@ The tensor algebra is also $\ZZ_p$-graded, where $\ZZ_p ≡ \quot \ZZ {p\ZZ}$ is
 satisfies $Z_i ⊗ Z_j \subseteq Z_k$ when $k ≡ i + j \mod p$.
 In particular, $\TA{V}$ is $\ZZ_2$-graded,\sidenote{
 	Algebras which are $\ZZ_2$-graded are sometimes called \emph{superalgebras}, with the prefix `super-' originating from supersymmetry theory.
-} and its elements admit a notion of \emph{parity}: elements of $Z_0 = \FF ⊗ \TA[2]{V} ⊗ \cdots$ are even, while elements of $Z_1 = V ⊗ \TA[3]{V} ⊗ \cdots$ are odd, with parity is respected by $⊗$ as it is for the integers.
+} and its elements admit a notion of \emph{parity}: elements of $Z_0 = \FF ⊗ \TA[2]{V} ⊗ \cdots$ are even, while elements of $Z_1 = V ⊗ \TA[3]{V} ⊗ \cdots$ are odd, with parity respected by $⊗$ as it is for the integers.
 
 Just as not all functions $f : \RR → \RR$ are even or odd, not all elements of a $\ZZ_2$-graded algebra are even or odd.
 More generally, not all elements of a graded algebra belong to a single graded subspace.
@@ -587,6 +588,13 @@ Throughout, we will not have need to consider degenerate metrics,\sidenote{
 	Degenerate signatures do find use in computer graphics, especially via \emph{projective geometric algebra} \cite{hestenes1991pga,vince2008ga-graphics}.
 } so we assume non-degeneracy.
 
+A non-degenerate metric $η$ on a real vector space has \textdef{signature $(p, q)$} if it has a matrix representation
+\begin{align}
+	[η_{ij}] = \op{diag}(\underbrace{1, \dots, 1}_p, \underbrace{-1, \dots, -1}_q)
+\end{align}
+with respect to some basis.
+This is well-defined, because the metric has this representation with respect to all orthonormal bases (up to permutations on the basis vectors).
+
 A vector space $V$ together with a metric $η$ is called an \textdef{inner product space} $(V, η)$.
 Alternatively, instead of a metric, an inner product space may be constructed with a quadratic form:
 \begin{definition}
@@ -667,9 +675,9 @@ In particular, a metric on $\EA{V}$ defines a magnitude for pseudoscalars.
 		Similar notation is used in \cite{doran2003ga,hestenes2003sta,hestenes1986ga-unified-language}.
 	}
 	Let $V$ be an $n$-dimensional vector space with a metric.
-	There are two volume elements $\vol ∈ \EA[n]{V}$ of the metrical exterior algebra $\EA{V}$ is a pseudoscalar satisfying $\ip{\vol, \vol} = 1$, each differing by sign.
+	The two \textdef{volume elements} $\vol ∈ \EA[n]{V}$ of the metrical exterior algebra $\EA{V}$ are pseudoscalars satisfying $\ip{\vol, \vol} = 1$.
 
-	A choice of volume element defines an \textdef{orientation}.
+	Each volume element differs by a sign, and a choice of volume element defines an \textdef{orientation}.
 \end{definition}
 Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$, the basis is called right-handed if $\etc{\ve_\i}∧n = \vol$ is the chosen volume element, and left-handed otherwise.
 
@@ -683,11 +691,11 @@ Given an ordered orthonormal basis $\set{\ve_i}$ with $\ip{\ve_i, \ve_i} = ±1$,
 
 A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a metric and orientation, which relates the $k$- and $(n - k)$-grade subspaces.
 \begin{definition}
-	\label{def:hodge-dual}
+	\label{def:Hodge-dual}
 	Let $\EA{V}$ be a metrical exterior algebra with base dimension $n$ and volume element $\vol$.
 	The \textdef{Hodge dual} $\star$ is the unique linear operator satisfying
 	\begin{align}
-		\label{eqn:hodge-dual}
+		\label{eqn:Hodge-dual}
 		A ∧ \star B = \ip{A, B}\vol
 	\end{align}
 	for any $k$-vectors $A, B ∈ \EA[k]{V}$.
@@ -696,7 +704,7 @@ A useful duality operation can be defined in an exterior algebra $\EA{V}$ with a
 The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ defines an isomorphism between pairs of fixed-grade subspaces of the same dimension; in particular, scalars with pseudoscalars via $\star 1 = \vol$.
 
 \begin{lemma}
-	The hodge dual of a $p$-vector $A = A^{i_1⋯i_p} \etc{\ve_{i_\i}}∧p$ has components
+	The Hodge dual of a $p$-vector $A = A^{i_1⋯i_p} \etc{\ve_{i_\i}}∧p$ has components
 	\begin{align}
 		(\star A)^{j_1⋯j_q} = \frac1{p!} A_{i_1⋯i_p} ε^{i_1⋯i_p j_1⋯j_q}
 		\marginnote{
@@ -709,7 +717,7 @@ The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ defines an isomorphism betw
 	We will show this by writing $A ∧ \star B = \ip{A, B}\vol$ in component form and rearranging for $\star B$.
 	The left-hand side is
 	\begin{align}
-		\label{eqn:hodge-dual-lem.1}
+		\label{eqn:Hodge-dual-lem.1}
 		A ∧ \star B
 		&= A^{i_1⋯i_p} \, (\star B)^{j_1⋯j_q} \, \etc{\ve_{i_\i}}∧p ∧ \etc{\ve_{j_\i}}∧q
 	\\	&= A^{i_1⋯i_p} \, (\star B)^{j_1⋯j_q} \, ε_{i_1⋯i_p j_1⋯j_q} \vol
@@ -732,7 +740,7 @@ The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ defines an isomorphism betw
 \end{proof}
 
 \begin{lemma}
-	\label{lem:inv-hodge}
+	\label{lem:inv-Hodge}
 	The inverse Hodge dual of a $k$-vector $A$ is
 	\begin{align}
 		\star^{-1} A = (-1)^s (-1)^{k(n - k)} \star A
@@ -740,7 +748,7 @@ The Hodge dual $\star : \EA[k]{V} → \EA[n - k]{V}$ defines an isomorphism betw
 	where $s = \tr η$ is the signature of the metric.
 \end{lemma}
 \begin{proof}
-	It is much easier to work in the (yet to be defined) geometric algebra, referring forward to \cref{sec:ga-hodge-dual} for the relation $\star A = \rev{A}\vol$.
+	It is much easier to work in the (yet to be defined) geometric algebra, referring forward to \cref{sec:ga-Hodge-dual} for the relation $\star A = \rev{A}\vol$.
 	\marginnote{
 		$†$ is reversion; \cref{eqn:rev-notation}.
 		$\revsign{k} = ±1$ is the reversion sign; \cref{eqn:reversion-sign}.
