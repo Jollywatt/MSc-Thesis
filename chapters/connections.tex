@@ -120,7 +120,7 @@ The minus sign is present to later align with the convention that a plus sign is
 With a connection $H ⊆ \TT ℱ$ defined on a bundle, a bulk value may be moved between fibres so that the motion is always horizontal with respect to the connection.
 This is called \textdef{parallel transportation} of the value along a path.
 
-More precisely, a path $γ : [0, 1] → ℳ$ representing the motion of a value $p_0 ∈ ℱ$ from $γ(0) = π(p_0)$ can be \textdef{lifted} to a horizontal path $p_0 : [0, 1] → ℱ$ in the bulk.
+More precisely, a path $γ : [0, 1] → ℳ$ representing the motion of a value $p_0 ∈ ℱ$ from $γ(0) = π(p_0)$ can be \textdef{lifted} to a unique horizontal path $p_γ : [0, 1] → ℱ$ in the bulk.
 This path is `above' $γ$ in the sense that $π(p_γ(λ)) = γ(λ)$, and `horizontal' in the sense that $\dd p_γ(λ) ∈ H_{p_γ(λ)}$ (see \cref{fig:lifted-path}).
 % In other words, $p_γ$ is a one-dimensional integral manifold of the connection $H$ restricted to the `wall' $π^{-1}(γ) ⊂ ℱ$.
 In other words, $p_γ$ is an integral curve of the connection along $γ$ through $p_0$.
@@ -475,7 +475,7 @@ where the transport operators are over some common path.
 \end{proof}
 
 Metric-compatible connections are not unique.
-If $n = \dim ℳ$ and $d = \dim V$, then there are $nd^2$ components of $Γ_μ{}^a{}_b$, subject to $nd(d+1)/2$ compatibility equations $Γ_{μab} + Γ_{μba} = 0$, leaving $nd(d+1)/2$ degrees of freedom.
+If $n = \dim ℳ$ and $d = \dim V$, then there are $nd^2$ components of $Γ_μ{}^a{}_b$, subject to $nd(d+1)/2$ compatibility equations $Γ_{μab} + Γ_{μba} = 0$, leaving $nd(d-1)/2$ degrees of freedom.
 
 
 
@@ -553,7 +553,7 @@ Rewrite the non-derivative term as
 using the fact that $Γ_{μab} = -Γ_{μba}$ for a metric compatible connection, and that $\ve^a \fatdot 𝑿 = 𝑿 \fatdot \ve^a$ is a scalar commuting with $\ve^b$.
 Then, since for vectors the inner product is $𝑿 \fatdot 𝒀 = \frac12(𝑿𝒀 + 𝒀𝑿)$, this is
 \begin{align}
-	\frac14 Γ_{μab} \, (\ve^a \ve^b 𝑿 + \ve^a 𝑿 \ve^b - 𝑿 \ve^a \ve^b - \ve^a 𝑿 \ve^a)
+	\frac14 Γ_{μab} \, (\ve^a \ve^b 𝑿 + \ve^a 𝑿 \ve^b - 𝑿 \ve^a \ve^b - \ve^a 𝑿 \ve^b)
 	&= \frac14 Γ_{μab} \, (\ve^a \ve^b 𝑿 - 𝑿 \ve^a \ve^b)
 .\end{align}
 In the right-hand side, the scalar parts from the products between $\ve^a$ and $\ve^b$ cancel, leaving a commutator product of the bivector $\ve^a ∧ \ve^b$ with $𝑿$,

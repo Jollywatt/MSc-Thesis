@@ -445,7 +445,7 @@ Many familiar algebraic structures in classical, relativistic and quantum physic
 
 \subsection{Relation to exterior forms}
 
-The geometric algebra differs from the algebra of exterior forms in two independent ways:
+The geometric algebra differs from the algebra of exterior forms (defined in \cref{sec:exterior-forms}) in two independent ways:
 Firstly, $\GA(V, η)$ is an associative algebra over $V$, while $\forms(V)$ is an algebra of alternating maps which act \emph{on} tensor powers of $V$.
 Secondly, the product in $\GA(V, η)$ is an intrinsically metrical generalisation of the product in $\forms{V}$.
 We will address these two aspects separately, to more clearly see how each is translated between the two algebras.
@@ -484,14 +484,17 @@ Note that there is no space for a choice of normalisation convention within the 
 \subsubsection{Pseudoscalars and Hodge duality}
 \label{sec:ga-Hodge-dual}
 
-Since the metric is built into the geometric algebra, so are the features of metrical exterior algebra from \cref{sec:metrical-exterior-alg}, including the Hodge dual.
-In geometric algebra, Hodge duality is identical to reversion composed with multiplication by the volume element, $\star A = \rev{A}\vol$.
+Since the metric is built into the geometric algebra, so are the features of metrical exterior algebra from \cref{sec:metrical-exterior-alg}, including Hodge duality.
+In geometric algebra, the Hodge dual is identical to reversion composed with multiplication by the volume element, $\star A = \rev{A}\vol$.
 
 Consider two $k$-vectors $A$ and $B$.
 The object $\rev{B}\vol$ is thus a $(n - k)$-vector, and its wedge product with $A$ a pseudoscalar.
 From associativity of the geometric product, we immediately have
 \begin{align}
 	A ∧ (\rev{B}\vol) = \grade[n]{A(\rev{B}\vol)} = \grade[n]{(A\rev{B})\vol} = \grade{A\rev{B}}\vol = \ip{A, B}\vol
+	\marginnote{
+		Recall the induced metric on $k$-vectors, \cref{eqn:induced-metric-ga}.
+	}
 ,\end{align}
 which is the definition of the Hodge dual, \cref{eqn:Hodge-dual}.
 The reversion is only necessary for exact agreement with $\star$; simple multiplication by the volume element is an appropriate dual operation, differing from $\star$ only by an overall grade-dependent sign.
@@ -528,40 +531,6 @@ Indeed, \cref{eqn:geoprod-in-ea} reduces to the familiar formula
 by \cref{eqn:Hodge-dual}.
 However, \cref{eqn:geoprod-in-ea} does not apply to general multivectors, and the equivalent formulae for higher-grade objects are more complex and tend to obscure the underlying simplicity of the geometric product.
 
-Following this idea, the inner product $A \rcontr B$ introduced in the next section can also be expressed in terms of the Hodge dual:
-\begin{lemma}
-	Right contraction is expressible in terms of Hodge duality as
-	\begin{align}
-		B \rcontr \rev{A} = \star^{-1} (A ∧ \star B)
-	.\end{align}
-\end{lemma}
-\begin{proof}
-	Begin by reversing the left-hand side and inserting $1 = \vol\vol^{-1}$,
-	\begin{align}
-		\label{eqn:intprod-duals.1}
-		B \rcontr \rev{A}
-		= \rev{\qty((A \lcontr \rev{B}) \vol \vol^{-1})}
-	.\end{align}
-	If $A$ and $B$ are of grades $a$ and $b$, respectively, we can dualise the contraction into a wedge product with
-	\begin{align}
-		\label{eqn:intprod-duals.2}
-		(A \lcontr \rev{B})\vol
-		= \grade[b - a]{A\rev{B}}\vol
-		&= \grade[n - (b - a)]{A\rev{B}\vol}
-		= \grade[a + (n - b)]{A(\rev{B}\vol)}
-		= A ∧ (\rev{B}\vol)
-	.\end{align}
-	Therefore, \cref{eqn:intprod-duals.1} is equal to
-	\begin{align}
-		\rev{\qty((A ∧ (\rev{B} \vol)) \vol^{-1})}
-		= \star^{-1} (A ∧ \star B)
-	\end{align}
-	using $\star A = \rev{A}\vol$ and $\star^{-1} A = \rev{(A\vol^{-1})}$.
-\end{proof}
-
-
-
-
 
 
 
@@ -593,7 +562,7 @@ Specifically, if $A$ is a $p$-vector and $B$ a $q$-vector, then
 \begin{align}
 	A \fatdot B =
 	\begin{cases}
-		A \lcontr B & p ≤ q
+	  	A \lcontr B & p ≤ q
 	\\	A \rcontr B & q ≥ p
 	\end{cases}
 ,\end{align}
@@ -653,6 +622,45 @@ While in some expressions the grades of multivectors are clear so that the sense
 	\end{align}
 	This also implies that vector contraction is an anti-derivation with respect to the wedge product, i.e., $𝒖 \lcontr (A ∧ B) = (𝒖 \lcontr A) ∧ B + \invol{A} ∧ (𝒖 \lcontr B)$.
 \end{proof}
+
+
+\subsubsection{Contractions in terms of Hodge duality}
+
+
+In \cref{sec:geoprod-in-ea}, we showed that the vector metric $\ip{𝒖, 𝒗} = \star^{-1} (𝒖 ∧ \star 𝒗)$ may be eliminated in favour of the metric-free wedge product using Hodge duality.
+We may extend this idea to the contraction inner product $A \rcontr B$, valid not only for vectors, but objects of any grade.
+\begin{lemma}
+	Right contraction is expressible in terms of Hodge duality as
+	\begin{align}
+		B \rcontr \rev{A} = \star^{-1} (A ∧ \star B)
+	.\end{align}
+\end{lemma}
+\begin{proof}
+	Begin by reversing the left-hand side and inserting $1 = \vol\vol^{-1}$,
+	\begin{align}
+		\label{eqn:intprod-duals.1}
+		B \rcontr \rev{A}
+		= \rev{\qty((A \lcontr \rev{B}) \vol \vol^{-1})}
+	.\end{align}
+	If $A$ and $B$ are of grades $a$ and $b$, respectively, we can dualise the contraction into a wedge product with
+	\begin{align}
+		\label{eqn:intprod-duals.2}
+		(A \lcontr \rev{B})\vol
+		= \grade[b - a]{A\rev{B}}\vol
+		&= \grade[n - (b - a)]{A\rev{B}\vol}
+		= \grade[a + (n - b)]{A(\rev{B}\vol)}
+		= A ∧ (\rev{B}\vol)
+	.\end{align}
+	Therefore, \cref{eqn:intprod-duals.1} is equal to
+	\begin{align}
+		\rev{\qty((A ∧ (\rev{B} \vol)) \vol^{-1})}
+		= \star^{-1} (A ∧ \star B)
+	\end{align}
+	using $\star A = \rev{A}\vol$ and $\star^{-1} A = \rev{(A\vol^{-1})}$.
+\end{proof}
+
+
+
 
 
 
@@ -1007,6 +1015,7 @@ enjoys several useful properties, particularly when acting on bivectors.
 		σA = σ \lcontr A + σ × A + σ ∧ A
 	,\end{align}
 	where $a×b = \frac12(ab - ba)$ is the commutator product.
+	\label{lem:bivector-multivector-prod}
 \end{lemma}
 \begin{marginfigure}
 	\centering
@@ -1038,6 +1047,12 @@ enjoys several useful properties, particularly when acting on bivectors.
 	\begin{align}
 		Aσ &= A \rcontr σ + \grade[k]{Aσ} + A ∧ σ
 	\intertext{and reverse each term, noting that $\rev{σ} = -σ$ and $\rev{A} = \revsign{k}A$,}
+	\marginnote{
+		Recall from \cref{eqn:reversion-sign} that $\rev{A} = \revsign{k}A$ for a $k$-vector where
+		\begin{math}
+			\revsign{k} = (-1)^{\frac{(k - 1)k}2}
+		.\end{math}
+	}
 		% &= \revsign{k - 2}\; \rev{σ} \lcontr \rev{A} + \revsign{k}\; \grade[k]{\rev{σ}\rev{A}} + \revsign{k + 2}\; \rev{σ} ∧ \rev{A}
 		&= -\revsign{k}\qty(\revsign{k - 2}\; σ \lcontr A + \revsign{k}\; \grade[k]{σA} + \revsign{k + 2}\; σ ∧ A)
 	\intertext{simplifying with $\revsign{k}\revsign{k ± 2} = -1$.}
@@ -1070,12 +1085,7 @@ enjoys several useful properties, particularly when acting on bivectors.
 	\begin{math}
 		\grade[k±2]{σA} = \revsign{k ± 2}\grade[k ± 2]{\rev{A}\rev{σ}} = -\revsign{k ± 2}\revsign{k}\grade[k ± 2]{Aσ}
 	\end{math}
-	and the reversion signs\sidenote{
-		Recall from \cref{eqn:reversion-sign} that $\rev{A} = \revsign{k}A$ for a $k$-vector where
-		\begin{math}
-			\revsign{k} = (-1)^{\frac{(k - 1)k}2}
-		.\end{math}
-	} satisfy $\revsign{k±2}\revsign{k} = -1$ for any $k$.
+	and the reversion signs satisfy $\revsign{k±2}\revsign{k} = -1$ for any $k$.
 	Hence, $\grade[k±2]{A×σ} = 0$, leaving only the grade $k$ part, $A × σ = \grade[k]{A × σ}$.
 \end{proof}
 A corollary of \cref{lem:bivector-comm-grade-preserving} is that the commutator is closed on the space of bivectors, $\GA[2]$.
@@ -1162,7 +1172,7 @@ Similarly, blades of higher grade can be `parallel' or `orthogonal' to varying d
 	\label{fig:orthogonal}
 \end{marginfigure}
 
-For example, the intersection of two $2$-blades may be of dimension two, one or (in four or more dimensions) zero.
+For example, the intersection of (the spans of) two $2$-blades may be of dimension two, one or (in four or more dimensions) zero.
 The notion of parallel (i.e., being a scalar multiple) remains clear ($m = 2$), but there are now two different types of orthogonality for 2-blades ($m = 1$ and $m = 0$).
 An example of the first type can be pictured as two planes meeting at right-angles along a line; the second type requires at least four dimensions.
 
@@ -1185,7 +1195,7 @@ On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orth
 
 
 \begin{table*}
-	% \centering
+	\centering
 	\renewcommand{\arraystretch}{1.15}
 	\begin{tabular}{CCCCCCcl}
 		p & q & k & \grade[k]{ab} & Δ & m & \emph{commutativity} & \emph{geometric interpretation of $ab = \ip{ab}_k$}
@@ -1210,6 +1220,9 @@ On the other hand, if $σ_1σ_2 = σ_1∧σ_2$, then the bivectors exist in orth
 	% \\	3 & 3 & 4 & \grade[4]{ab} & 2 & 1 & commuting     & trivectors are $2$-orthogonal
 	% \\	3 & 3 & 6 & a∧b           & 3 & 0 & anticommuting & trivectors are $3$-orthogonal
 	\end{tabular}
+	
+	\captionsetfullwidth[5em]
+	\captionsetup{skip=2em}
 	\caption{
 		Geometric interpretation of the $k$-blade $ab = \grade[k]{ab}$ where $a$ and $b$ are of grades $p$ and $q$ respectively, and where $m = \dim(\spanof a ∩ \spanof b)$.
 	}

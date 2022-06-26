@@ -15,8 +15,8 @@ These assumptions are acceptable in special relativity, but in arbitrary regions
 It is then \emph{un-physical} to compare field values at different points in spacetime.
 (Curvature leads to differential geometry and comprises \cref{part:2}.)
 
-This chapter defines differentiation of fields, introducing the \emph{exterior} and \emph{vector derivatives} as instances of the `algebraic derivative' in the exterior and geometric algebras, respectively.
-These devices combine derivative information with the geometrical structure inherent in the respective algebras.
+This chapter defines differentiation of fields, introducing the \emph{exterior} and \emph{vector derivatives} as instances of the `algebraic derivative', within the exterior and geometric algebras, respectively.
+These devices combine derivative information with the geometrical structure inherent in the algebra at hand.
 To demonstrate their utility, Maxwell's equations of electromagnetism are exhibited in both algebras.
 
 
@@ -44,13 +44,13 @@ Of course, it may be viewed as such by setting $f(\etc{x^\i},n) = f(x^i\ve_i)$ s
 \begin{align}
 	∂_{\ve_a}f(x^i\ve_i) = \pdv{x^a}f(\etc{x^\i},n)
 ,\end{align}
-though this is a basis-dependent definition.
+though this is a basis-dependent definition, and we seek freedom from coordinates wherever possible.
 
 
 Suppose $F : V → A$ is some algebra--valued field.
-It is useful to define a kind of ``total'' derivative $\DD F$ which does not depend on a direction $𝒖$, but instead encompasses, in a sense, all directional derivatives in a single object $\DD F : V → A$.
+It is useful to define a kind of ``total'' derivative $\DD F$ which does not depend on a direction $𝒖$ in $∂_𝒖 F$, but instead encompasses, in a sense, all directional derivatives in a single object $\DD F : V → A$.
 The motivation for this is that the soon-to-be-defined exterior derivative (of exterior algebra) and vector derivative (of geometric algebra) are realised as special cases of such a construction.
-The derivative $\DD$ will be defined given an inclusion $ι : V^* → A$ of dual vectors into the algebra.
+The derivative $\DD$ will be defined whenever an inclusion $ι : V^* → A$ of dual vectors into the algebra is given.
 
 \begin{definition}
 	\label{def:algder}
@@ -84,7 +84,7 @@ The algebraic derivative in this case is called the \textdef{exterior derivative
 \begin{align}
 	\dd F = \ve^a ∧ ∂_a F
 ,\end{align}
-where $\set{\ve^a} ⊂ V^*$ also form a basis of $\EA{V^*}$ (so $ι : V^* → \EA{V^*}$ may be omitted).
+where $\set{\ve^a} ⊂ V^*$ also determine a basis of $\EA{V^*}$ (so the canonical inclusion $ι : V^* → \EA{V^*}$ may be omitted).
 More explicitly, if $F$ is a $k$-vector field, then
 \begin{math}
 	\dd F = ∂_a F_{\etc{a_\i}{}k} \ve^a ∧ \etc{\ve^{a_\i}}∧k
@@ -102,10 +102,10 @@ In components,
 .\end{math}
 
 The treatment of exterior forms is identical.
-On an exterior form field $φ : V → \forms[k](V, U)$, the exterior derivative i formally defined by its action on vectors,
+On an exterior form field $φ : V → \forms[k](V, U)$, the exterior derivative is formally defined by its action on vectors,
 \begin{align}
-	(\dd φ)(𝒖_0, \etc{𝒖_\i},{k})
-	&= (\ve^a ∧ ∂_a φ)(𝒖_0, \etc{𝒖_\i},k)
+  	(\dd φ)(𝒖_0, \etc{𝒖_\i},{k})
+  	&= (\ve^a ∧ ∂_a φ)(𝒖_0, \etc{𝒖_\i},k)
 \\	&= \frac1{k!} \sum_{σ ∈ S_{k + 1}} (-1)^σ \ve^a(𝒖_{σ(0)}) \, ∂_a φ(\etc{𝒖_{σ(\i)}}{}k)
 \\	&= \sum_{i = 0}^k (-1)^i \, ∂_{𝒖_{i}} φ(𝒖_0, ..., \widehat{𝒖_i}, ..., 𝒖_k)
 ,\end{align}
@@ -121,7 +121,7 @@ This is not possible in the geometric algebra, however, because $\GA(V, η)$ is 
 The algebraic derivative is, however, still geometrically significant and extremely useful in geometric algebra.
 
 In $\GA(V, η)$, the algebraic derivative is called the \textdef{vector derivative}, denoted $\vd$.
-Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then in \cref{eqn:algder} $⊛$ is the geometric product and we take inclusion\sidenote{
+Explicitly, if $F : V → \GA(V, η)$ is a multivector field, then in \cref{eqn:algder} $⊛$ is the geometric product and we take inclusion an\sidenote{
 	We could just as well consider fields $V → \GA(V^*, η)$, avoiding the need for $\sharp : V^* → V$.
 	But the metric is already defined, and we prefer to think about multivectors over `dual multivectors'.
 }
@@ -492,11 +492,11 @@ Taking only the even or odd parts yields the condition
 \begin{align}
 	\hat{k}\vec E = \vol \vec B
 ,\end{align}
-which implies two things: firstly, by multiplying both sides by their reverse, we see that $\|\vec E\| = \|\vec B\|$; secondly, by dividing on the right by the vector $\vec B$ to obtain
+which implies two things: firstly, by multiplying both sides by their reverse, we see that $\|\vec E\| = \|\vec B\|$; secondly, by dividing the right by the vector $\vec B$ we obtain
 \begin{align}
 	\hat{k} \hat E \hat B = \vol
 ,\end{align}
-we conclude that $(\hat{k}, \hat E, \hat B)$ forms a right-handed orthonormal frame.
+and conclude that $(\hat{k}, \hat E, \hat B)$ forms a right-handed orthonormal frame.
 
 Finally, to see the time dependence, evaluate the solution on the $\vec k \fatdot \vec x = 0$ plane,
 \begin{math}

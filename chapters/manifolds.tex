@@ -22,14 +22,14 @@ Here we give a condensed, pragmatic definition of a manifold as a space which lo
 		\item \emph{second-countable:} there exists a countable base (so it is ``not too large'').
 		\end{enumerate}
 	} topological space which is \emph{locally Euclidean}.
-	This means for every point $x ∈ ℳ$ there exists a neighbourhood $x ∈ \manif U \subseteq ℳ$ and subset $U \subseteq \RR^n$ with a homeomorphism\sidenote{continuous bijection} $φ : \manif U \biject U$, called a \textdef{coordinate chart}, between them.
+	This means for every point $x ∈ ℳ$ there exists a neighbourhood $x ∈ \manif U \subseteq ℳ$ and subset $U \subseteq \RR^n$ with a homeomorphism\sidenote{continuous bijection with continuous inverse} $φ : \manif U \biject U$, called a \textdef{coordinate chart}, between them.
 
 	% Transition functions are the  map $φ∘ϕ^{-1} : U \biject V$ for two homeomorphisms $ϕ : \manif U \biject U$ and $φ : \manif V \biject V$.
 	A \textdef{smooth manifold} is one for which all transition functions
 	\begin{math}
 		ϕ \circ φ^{-1} : φ^{-1}(𝒰 ∩ 𝒱) \biject ϕ^{-1}(𝒰 ∩ 𝒱)
 	\end{math}
-	between coordinate charts $φ : 𝒰 \biject U$ and $ϕ : 𝒱 \biject V$ are smooth (as maps between subsets of $\RR^n$).
+	between coordinate charts $φ : 𝒰 \biject U$ and $ϕ : 𝒱 \biject V$ are smooth (meaning infinitely differentiable).
 \end{definition}
 
 
@@ -52,7 +52,7 @@ Manifolds themselves do not have inherent vector space structure.
 However, being locally Euclidean means there is a real vector space naturally associated to each point:
 \begin{definition}
 	\label{def:tangent-space-bundle}
-	The \textdef{tangent space \,$\TT_xℳ$} of a manifold at a point $x ∈ ℳ$ is the vector space of scalar derivatives at that point.\sidenote{
+	The \textdef{tangent space \,$\TT_xℳ$} of a smooth manifold at a point $x ∈ ℳ$ is the vector space of scalar derivatives at that point.\sidenote{
 		More precisely, each vector $𝒖 ∈ \TT_xℳ$ is an equivalence class of derivatives evaluated at the point $x$, where different derivations which agree at the point $x$ are identified.
 	}
 	In any local coordinate chart $\set{x^i}_{i=1}^n$ of $ℳ$ containing $x$, this is
@@ -76,7 +76,7 @@ In the same way that the tangent bundle consists of `directional derivatives of 
 
 \begin{definition}
 	\label{def:differential}
-	The \textdef{differential $\dd f$} or \textdef{push forward $f_*$} of a map $f : ℳ \to \manif N$ between smooth manifolds is the map $\dd f : \TTℳ \to \TT\manif N$ defined by
+	The \textdef{differential} or \textdef{push forward} $\dd f ≡f_*$ of a map $f : ℳ \to \manif N$ between smooth manifolds is the map $\dd f : \TTℳ \to \TT\manif N$ defined by
 	\begin{align}
 		\label{eqn:differential}
 		\qty(\dd f(𝒖))(φ)\big|_{f(x)} ≔ 𝒖(φ \circ f)\big|_x
@@ -98,12 +98,12 @@ In the same way that the tangent bundle consists of `directional derivatives of 
 
 \todo{Consider notation overhaul: $\dd f ⟼ f_*$}
 
-In the definition above, vectors act on scalar functions as derivations; hence $\dd f(𝒖)$ is defined by its action on an arbitrary scalar field.
+In the definition above, vectors act on scalar functions as derivations; hence $\dd f(𝒖)$, a vector, is defined by its action on an arbitrary scalar field.
 Intuitively, if $𝒖 ∈ \TT_xℳ$ is a vector at a point $x ∈ ℳ$, then the vector $\dd f(𝒖) ∈ \TT_{f(x)}\manif N$ is interpreted as the derivative of $f(x) ∈ \manif N$ in the direction $𝒖$.
 
 
 Note that $\dd f(𝒖)$ may not be defined everywhere on $𝒩$.
-If $𝒖|_x ∈ \TT_xℳ$ is now a family of vectors defined everywhere over $x ∈ ℳ$, then $\dd f(𝒖)|_{f(x)} = \dd f(𝒖|_x)$ is defined only at each $f(x) ∈ \manif N$.
+If $𝒖|_x ∈ \TT_xℳ$ is now a family of vectors defined everywhere over $ℳ$, then $\dd f(𝒖)|_{f(x)} = \dd f(𝒖|_x)$ is defined only at each $f(x) ∈ \manif N$.
 This means that if $f$ fails to be surjective, then $\dd f(𝒖)$ is not defined at those points lying outside the image $f(ℳ) \subset \manif N$.
 Likewise, if $f$ fails to be injective at a point $y ∈ \manif N$, then $\dd f(𝒖)$ is \emph{multivalued} at $y$.
 Only if $f$ is bijective does $\dd f(𝒖)|_y$ have a single value everywhere.
@@ -207,24 +207,25 @@ This would suggest that all values of a field are directly comparable, making ex
 	\label{fig:ball}
 \end{marginfigure}
 However, these kinds of expressions are ill-defined for general smooth manifolds, since they depend on the way tangent spaces are identified.
-(Or, as will be defined, on the \emph{choice of trivialisation of the tangent bundle}.)
+% (In other words, as will be defined, they depend on the choice of \emph{trivialisation} of the tangent bundle.)
 Instead, it is beneficial to distinguish between codomains \emph{at each point} in the domain, and treat $F(x)$ and $F(y)$ as belonging to different spaces entirely.
 
 
-A concrete example of why this is necessary is a fluid flow on the sphere $\Sphere^2$.
+For a concrete example of why this is necessary, take fluid flow on the sphere $\Sphere^2$.
 % the instantaneous fluid velocity at a point is a vector lying in the sphere's tangent plane at that point.
 % If the fluid flow is given as a field $f : \Sphere^2 → \RR^2$, then any two velocity vectors exist in the ``same'' space, though \emph{geometrically} they do not (\cref{fig:ball}).
-Any representation of the fluid flow as a field $f : \Sphere^2 → \RR^2$ is only defined after the fixed codomain $\RR^2$ is identified with each geometrically--distinct tangent plane on the sphere --- and this choice is not canonical.
-Even worse, it is not even possible to do this smoothly for the sphere\sidenote{
-	Consider a constant non-zero vector field $f(x) = 𝒖 ∈ \RR^2$.
-	If the tangent bundle is trivialised smoothly, then $f$ represents a fluid flow which is smooth and nowhere vanishing.
-	But this is forbidden by the hairy ball theorem, which states that any smooth vector field on the sphere must vanish at some point.
+Any representation of the fluid flow as a field $f : \Sphere^2 → \RR^2$ is only defined after the fixed codomain $\RR^2$ is identified with each geometrically--distinct tangent plane on the sphere.
+Notice, such an identification is not canonical.
+Even worse, it is not even possible to do this smoothly everywhere on the sphere\sidenote{
+	\emph{Proof.} Consider a constant non-zero vector field $f(x) = 𝒖 ∈ \RR^2$.
+	If all tangent spaces are smoothly identified with $\RR^2$, then $f$ represents a fluid flow on $\Sphere^2$ which is smooth and nowhere vanishing.
+	But this is forbidden by the hairy ball theorem (which states that any smooth vector field on the sphere must vanish at some point).
 } (or more generally, for any \emph{non-parallizable} manifold).
 A basis-independent representation of $f$ requires treating each tangent space as distinct.
 
 In doing this, we are led to the tangent \emph{bundle} $\TT \Sphere^2$, where all the tangent planes of $\Sphere^2$ are collected in a disjoint union.
-The vector field on the sphere now becomes a \emph{section} of $\TT \Sphere^2$, which is a map $f : \Sphere^2 → \TT \Sphere^2$ such that $f(x)$ belongs to the tangent space at $x$.
-No longer is the expression $f(x) + f(y)$ well-defined.
+The vector field $f$ on the sphere now becomes a \emph{section} of $\TT \Sphere^2$, or a map $g : \Sphere^2 → \TT \Sphere^2$ such that $g(x)$ belongs to the tangent space at $x$.
+No longer is the expression $g(x) + g(y)$ well-defined.
 
 The tangent bundle is a special case of a \emph{fibre bundle}, which is a manifold consisting of disjoint copies of a space (called the \emph{fibre}) taken at every point in a base manifold.
 
@@ -247,14 +248,15 @@ The tangent bundle is a special case of a \emph{fibre bundle}, which is a manifo
 	\includefigure[\columnwidth]{fibre-bundle}
 	\caption{
 		(a) A field $f : ℳ → F$, where values at any point can be compared.
-		(b) A fibre bundle $\fibrebundle F ℱ ℳ$ with a section $f ∈ \secs(ℱ)$ whose individual fibres $F$ are labelled by base point in $ℳ$.
+		(b) A fibre bundle $\fibrebundle F ℱ ℳ$ with a section $f ∈ \secs(ℱ)$ whose individual fibres $F_x$ are labelled by base point $x$.
 	}
+	\label{fig:fibre-bundle}
 \end{marginfigure}
 
-\Cref{def:fibre-bundle} takes place in the category of manifolds, so the projection $π : ℱ → ℳ$ is continuous.
+\Cref{def:fibre-bundle} takes place in the category of manifolds, so the projection $π : ℱ → ℳ$ is assumed continuous.
 In a \textdef{smooth fibre bundle}, the projection $π$ is differentiable and $F$, $ℱ$ and $ℳ$ are all smooth manifolds.
 
-Many different kinds of fibre bundle may be considered by giving $F$ more structure.
+Many different kinds of fibre bundle may be considered by giving $F$ more structure.{}
 For example,
 \begin{itemize}
 	\item a \textdef{vector bundle} is one where the fibre is a vector space;
@@ -267,8 +269,8 @@ For example,
 
 The bulk $ℱ$ of a fibre bundle $\fibrebundle F ℱ ℳ$ is itself a manifold (of dimension $\dim ℱ = \dim ℳ + \dim F$) so we may always prescribe local coordinates on $ℱ$.
 If we already have coordinates $\set{x^μ}$ on the base $ℳ$ and $\set{x^a}$ on a fibre $F$, then we often want to use the same coordinates $\set{x^μ, x^a}$ to describe the bulk $ℱ$.
-This requires splitting the bulk $ℱ → ℳ × F$ into its base and fibre components, identifying each fibre with $F$ so its $\set{x^a}$ coordinates carry over to all fibres.
-This splitting is known as a \emph{trivialisation} of the bundle.
+This requires locally splitting the bulk $ℱ → ℳ × F$ into its base and fibre components, identifying each fibre with $F$ so its $\set{x^a}$ coordinates carry over to all fibres.
+This splitting, if it can be done globally, is known as a (global) \emph{trivialisation} of the bundle.
 \begin{definition}
 	A \textdef{trivialisation} of a fibre bundle $\fibrebundle[π] F ℱ ℳ$ is a homeomorphism $φ : ℱ → ℳ × F$ such that
 	\begin{math}
@@ -277,13 +279,13 @@ This splitting is known as a \emph{trivialisation} of the bundle.
 \end{definition}
 It is not always possible to find a global trivialisation of a fibre bundle, but if it is, the bundle is called \textdef{trivial} and there may be many different possible trivialisations.\sidenote{
 	A simple non-trivial fibre bundle is the Möbius strip, viewed as a bundle over the circle $\Sphere^1$ with fibre $[0, 1]$.
-	The trivial bundle $\Sphere^1 × [0, 1]$ describes a strip without a twist.
+	The trivial bundle $\Sphere^1 × (0, 1)$ describes a strip without a twist.
 }
 
 However, it is always possible trivialise \emph{locally}.
 That is, for any base point $x ∈ ℳ$, there exists a neighbourhood $x ∈ U ⊆ ℳ$ for which the subbundle $\fibrebundle[π] F {π^{-1}(U)} U$ admits a trivialisation.
 Hence, it is always possible to assign \emph{local} coordinates $\set{x^μ, x^a}$ to the bulk of a fibre bundle, where $x^μ$ are coordinates on the base and $x^a$ are coordinates on the fibres, such that $x^μ$ do not vary along the fibres.
-In other words, local trivialisations are equivalent to local coordinates.
+In other words, local trivialisations are equivalent to local coordinates $\set{x^μ, x^a}$.
 
 
 
@@ -294,7 +296,7 @@ In other words, local trivialisations are equivalent to local coordinates.
 \subsubsection{Sections of fibre bundles}
 
 
-In the language of fibre bundles, a field $f : ℳ → F$ is replaced by a \emph{section}, which is a ``vertical'' map $f : ℳ → ℱ$ into the bulk $ℱ$ such that $f(x) ∈ F_x$.
+In the language of fibre bundles, a field $f : ℳ → F$ is replaced by a \emph{section}, which is a `vertical' map\sidenote{The adjectives `vertical' and `horizontal' are used in reference to e.g., \cref{fig:fibre-bundle}, where fibres are drawn as vertical stalks over a horizontal base manifold.α	} $f : ℳ → ℱ$ into the bulk $ℱ$ such that $f(x) ∈ F_x$.
 \begin{definition}
 	A \textdef{section} $f$ of a fibre bundle $\fibrebundle[π] F ℱ ℳ$ is a right-inverse of $π$.
 	The space of sections is denoted
@@ -309,7 +311,7 @@ For example, the instantaneous fluid velocity $𝒖$ on a sphere $\Sphere^2$ is 
 
 \subsection{Algebra bundles}
 
-A general procedure to convert locally defined objects into structures on a manifold is to form the associated bundle and define the associated operations as acting pointwise on sections.
+A general procedure to convert locally defined objects into structures on a manifold is to form the associated bundle, with operations acting pointwise on sections.
 
 \subsubsection{Geometric algebra bundles}
 
@@ -337,7 +339,7 @@ Hence, we may consider the space
 \begin{math}
 	\forms(ℳ, ℰ) ≔ \forms(\secs(\TT ℳ), \secs(ℰ))
 \end{math}
-of $\secs(ℰ)$-valued exterior forms, for some vector bundle $\fibrebundle ℳ {ℰ} V$.
+of $\secs(ℰ)$-valued exterior forms, for some vector bundle $\fibrebundle V {ℰ} ℳ$.
 As with exterior forms, the wedge product is defined as in \cref{eqn:wedge-of-forms}, only now acting pointwise on \emph{sections} of exterior forms.
 
 An element of $\forms[k](ℳ, ℰ)$ is called an \textdef{$ℰ$-valued exterior differential $k$-form}, where `differential' distinguishes it as an object on a manifold.
@@ -379,6 +381,7 @@ A useful special case is the exterior derivative of a $1$-form, which reads
 In general, the derivative of a section of a fibre bundle is not defined, because there is no way of comparing fibres without additional structure (such as a \emph{connection}; see \cref{cha:connections}).
 For some kinds of object, however, it is possible to define transport between fibres using the \emph{flow} of a tangent vector section.
 We call objects for which this is possible \textdef{flowable}.
+Generally, tangent vectors and objects built on top of the tangent bundle are flowable.
 
 In this vein, the value of a flowable object at a point $x$ may be directly compared to its value at some other point $y$ by flowing the $y$-value back to the $x$-fibre.
 This enables the definition of a kind of derivative with respect to the flow --- a construction called the \emph{Lie derivative}.
@@ -390,15 +393,13 @@ This enables the definition of a kind of derivative with respect to the flow ---
 
 \begin{definition}
 	\label{def:flow}
-	The \textdef{flow} of $𝒖 ∈ \secs(\TT ℳ)$ is the diffeomorphism $\flow{𝒖}{t} : ℳ → ℳ$ satisfying
+	The \textdef{flow} of $𝒖 ∈ \secs(\TT ℳ)$ is the $1$-parameter family of diffeomorphisms $\flow{𝒖}{t} : ℳ → ℳ$ satisfying
 	\begin{align}
-		\dv{t}\eval{\flow{𝒖}{t}(x)}_y = 𝒖|_y
+		\dv{t}\eval{\flow{𝒖}{t}(x)}_{t=0} = 𝒖|_x
 	\end{align}
 	for all values of the parameter $t$.
 \end{definition}
-\sidenote{
-	Note that the same symbol $\flow{𝒖}{t}$ is used to denote the flow of different kinds of objects.
-}
+
 \begin{definition}
 	\label{def:lieder}
 	The \textdef{Lie derivative} $\lie_𝒖 A$ of a flowable object $A$ along a tangent section $𝒖 ∈ \secs(\TT ℳ)$ is
@@ -408,15 +409,18 @@ This enables the definition of a kind of derivative with respect to the flow ---
 \end{definition}
 
 Scalar sections $f : ℳ → \RR$ are flowable by defining
+\marginnote{
+	Note that the same symbol $\flow{𝒖}{t}$ is used to denote the flow of different kinds of objects.
+}
 \begin{math}
 	\flow{𝒖}{t} f ≔ e^{-t𝒖} f
 .\end{math}
-For example, in one dimension, $\flow{∂_x}{t}f = e^{-t∂_x}f(x) = f(x - t)$ is the Taylor series of $f$ translated by $+t$.
-Tangent vectors $𝒗 ∈ \secs(\TT ℳ)$ are also flowable, using the differential of a flow
+For example, if $\manif M = \RR$ is one dimensional, $\flow{∂_x}{t}f = e^{-t∂_x}f(x) = f(x - t)$ is the Taylor series of $f$ translated by $+t$.
+Tangent vectors $𝒗 ∈ \TT ℳ$ are also flowable, using the differential of a flow
 \begin{math}
 	\dd(\flow{𝒖}{t}) : \TT ℳ → \TT ℳ
 .\end{math}
-Thus, we also define the flow of tangent vectors
+Specifically, we define the flow of tangent vectors
 \begin{align}
 	\flow{𝒖}{t} 𝒗 ≔ \dd(\flow{𝒖}{t})(𝒗)
 \end{align}
@@ -428,11 +432,11 @@ Other flowable objects include structures built from the tangent bundle, e.g., t
 
 
 \begin{lemma}
-	The Lie derivative on scalars is
+	The Lie derivative on scalar functions is
 	\begin{math}
 		\lie_𝒖 f = 𝒖(f)
 	,\end{math}
-	and on tangent vectors is the Lie bracket,
+	and on tangent sections is the Lie bracket,
 	\begin{math}
 		\lie_𝒖 𝒗 = [𝒖, 𝒗] ≔ 𝒖 ∘ 𝒗 - 𝒗 ∘ 𝒖
 	.\end{math}
@@ -443,7 +447,7 @@ Other flowable objects include structures built from the tangent bundle, e.g., t
 		\lie_𝒖 f = \dv{t}\eval{e^{-t𝒖} f \, }_{t=0} = 𝒖(f)
 	.\end{math}
 
-	For tangent vectors, unpacking \cref{def:lieder} for a vector argument, and then using \cref{def:differential} to rewrite the pushforward, we have
+	For tangent sections, unpacking \cref{def:lieder} for a vector argument, and then using \cref{def:differential} to rewrite the pushforward, we have
 	\begin{align}
 		(\lie_𝒖 𝒗)f|_x
 		&= \dv{t}\eval{\dd(\flow{𝒖}{-t})\qty(𝒗|_{\flow{𝒖}{t}(x)})f \, }_{t=0}

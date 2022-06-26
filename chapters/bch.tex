@@ -54,13 +54,27 @@ Note that the overall sign of the rotor is not recovered, and $\log(+\rotor R) =
 However, this does not affect the Lorentz transformation $\lin R ∈ \SO^+(p, q)$, since it is defined by $R(𝒖) = \rotor R𝒖\rev{\rotor R}$.
 The exact sign can be recovered by considering the relative signs of $\arev{\rotor R}$ and $\srev{\rotor R}$, as in \cite[§5.3]{lasenby2011ga-practical}.
 
+\begin{marginfigure}
+	\begin{tabular}{CC}
+	\text{Object} & \text{Grade}
+	\\	σ & 2
+	\\	\rotor R & 0, 2, 4
+	\\	\Co{i} & 0, 4
+	\\	\Si{i} & 2
+	\\	\Ta{i} & 2
+	\\	\Ta1\fatdot\Ta2 & 0
+	\\	\Ta1 × \Ta2 & 2
+	\\	\Ta1 ∧ \Ta2 & 4
+	\end{tabular}
+	\caption{Grades of terms appearing in formuale.}
+\end{marginfigure}
 
 From \cref{eqn:log-rotor} we may derive a \x{BCH} formula by substituting $\rotor R = e^{σ_1}e^{σ_2}$ for any two bivectors $σ_i ∈ \GA[2](p, q)$.
 Using the shorthand $\Co{i} ≔ \cosh σ_i$ and $\Si{i} ≔ \sinh σ_i$, the composite rotor is
 \begin{align}
 	\rotor R = e^{σ_1}e^{σ_2}
 	= (\Co1 + \Si1)(\Co2 + \Si2)
-	= \Co1\Co2 + \Si1\Co2 + \Co1\Si1 + \Si1\Si2
+	= \Co1\Co2 + \Si1\Co2 + \Co1\Si2 + \Si1\Si2
 .\end{align}
 For $p + q < 4$, any even function of a bivector (such as $\Co{i}$) is a scalar, and for $p + q = 4$, is a $\qty{0,4}$\hyp multivector $α + β\vol$.
 In either case, the $\Co{i}$ commute with even multivectors, so $[\Co{i}, \Co{j}] = [\Co{i}, \Si{j}] = 0$.
@@ -91,12 +105,12 @@ Hence, from \cref{eqn:log-rotor} we obtain an explicit \x{BCH} formula.
 \end{theorem}
 
 We may wish to express \cref{eqn:geometric-BCH} in terms of geometrically significant products instead of \paren{anti}commutators.
-A bivector product is generally a $\qty{0,2,4}$\hyp multivector
+As in \cref{lem:bivector-multivector-prod}, a bivector product is generally a $\qty{0,2,4}$\hyp multivector
 \begin{align}
-	ab
-	&= \grade[0]{ab} + \grade[2]{ab} + \grade[4]{ab}
+  	ab
+  	&= \grade[0]{ab} + \grade[2]{ab} + \grade[4]{ab}
 \\	&= a \fatdot b + a × b + a ∧ b
-	\label{eqn:bivector-products}
+  	\label{eqn:bivector-products}
 .\end{align}
 where $a×b = \grade[2]{ab} = \frac12[a, b]$ is the commutator product.
 We may then write \cref{eqn:geometric-BCH} so that the grade of each term is explicit:
